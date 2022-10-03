@@ -16,9 +16,27 @@ class
       let (x,y) = hd(r), j=r\{(x,y)} in {x} union {y} union getPieceSet(j) 
         end
     end,
-  
 
-   isValidColour : Colour >< Piece >< Relation-> Bool
+    getValidColour : Colouring >< Piece >< Relation -> Colour
+    getValidColour(cols, piece, r) is
+    /* return empty set to create a new color is no color is made */
+    if (cols = {}) 
+    then 
+      {}
+    else
+      let col = hd(cols)
+      in 
+        /* return colour if all pieces in colour are not a neigbour to the piece */
+        if(isValidColour(col, piece, r)) then 
+          col
+        else
+          /* keep looking */
+          getValidColour(cols \ {col}, piece, r)
+        end
+      end
+    end,
+
+   isValidColour : Colour >< Piece >< Relation -> Bool
    isValidColour(col, piece, r) is
     (all p : Piece :- p isin col =>
       areNb(p, piece, r) = false
