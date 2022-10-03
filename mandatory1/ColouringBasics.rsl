@@ -14,8 +14,21 @@ class
 
     areNb : Piece >< Piece >< Relation -> Bool
     areNb(cn1, cn2, r) is 
-      (cn1, cn2) isin r \/ (cn2, cn1) isin r
+      (cn1, cn2) isin r \/ (cn2, cn1) isin r,
 
-    /*isCorrectColouring : Colouring >< Relation -> Bool
-    isCorrectColouring(cols, r) is ...,*/
+    isCorrectColouring : Colouring >< Relation -> Bool
+    isCorrectColouring(cols, r) is  
+      (all col : Colour :- col isin cols =>
+        (all cn : Piece :- cn isin col =>
+          (exists (cn1,cn2) : Piece >< Piece :- (cn1,cn2) isin r =>
+            (cn = cn1 \/ cn = cn2)
+          )
+        )
+      ) 
+      /\
+      (all col : Colour :- col isin cols =>
+        (all (cn1, cn2) : Piece >< Piece :- cn1 isin col /\ cn2 isin col =>
+          areNb(cn1, cn2, r) = false
+        )
+      )
  end
