@@ -1,0 +1,10 @@
+ColouringBasics
+
+scheme ColouringEx =
+extend ColouringBasics with 
+class
+  value
+   col : Relation -~-> Colouring
+   col(r) is ...
+   pre isRelation(r)
+end

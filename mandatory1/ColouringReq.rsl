@@ -1,0 +1,11 @@
+ColouringBasics
+
+scheme ColouringReq  =
+extend ColouringBasics with 
+class
+  value /* requirement spec */
+    col : Relation -~-> Colouring
+    col(r) as cols 
+    post isCorrectColouring(cols, r)  
+    pre isRelation(r)
+ end

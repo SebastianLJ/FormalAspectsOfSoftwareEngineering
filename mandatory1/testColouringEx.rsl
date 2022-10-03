@@ -1,0 +1,13 @@
+ColouringEx
+
+scheme testColouringEx =
+extend ColouringEx with 
+class
+  value 
+    ... 
+
+  test_case 
+    ...
+
+ end
+ 

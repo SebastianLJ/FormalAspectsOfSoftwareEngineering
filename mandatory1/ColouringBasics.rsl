@@ -1,0 +1,21 @@
+scheme  ColouringBasics =
+class
+  type 
+    Piece = Text,
+    Relation = (Piece >< Piece)-set,
+    Colour = Piece-set,
+    Colouring = Colour-set
+    
+  value /* auxiliary functions */ 
+
+    isRelation : Relation -> Bool
+    isRelation(r) is ...,
+
+    areNb : Piece >< Piece >< Relation -> Bool
+    areNb(cn1, cn2, r) is ...,
+
+    isCorrectColouring : Colouring >< Relation -> Bool
+    isCorrectColouring(cols, r) is ...,
+
+    ...
+ end
