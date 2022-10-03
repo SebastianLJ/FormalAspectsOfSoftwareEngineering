@@ -6,5 +6,15 @@ class
   value
    col : Relation -~-> Colouring
    col(r) is ...
-   pre isRelation(r)
+   pre isRelation(r),
+
+   getPieceSet : Relation -> Piece-set
+   getPieceSet(r) is
+   
+
+   isValidColour : Colour >< Piece -> Bool
+   isValidColour(col, piece, r) is
+    (all p : Piece :- p isin col =>
+      areNb(p, piece, r) = false
+    )
 end
