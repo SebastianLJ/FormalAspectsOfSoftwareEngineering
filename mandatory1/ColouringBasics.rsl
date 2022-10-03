@@ -17,15 +17,22 @@ class
       (cn1, cn2) isin r \/ (cn2, cn1) isin r,
 
     isCorrectColouring : Colouring >< Relation -> Bool
-    isCorrectColouring(cols, r) is  
+    isCorrectColouring(cols, r) is
+      /* All Pieces in a Colour of cols must also appear in r */
       (all col : Colour :- col isin cols =>
         (all cn : Piece :- cn isin col =>
           (exists (cn1,cn2) : Piece >< Piece :- (cn1,cn2) isin r =>
             (cn = cn1 \/ cn = cn2)
           )
         )
-      ) 
+      )
       /\
+      /* All Pieces must only appear in exactly one Colour of cols */
+      (all col1, col2 : Colour :- col1 isin cols /\ col2 isin cols /\ col1 ~= col2 =>
+        col1 inter col2 = {}
+      )
+      /\
+      /* All Pieces in the same Colour of cols must not be neighbours */
       (all col : Colour :- col isin cols =>
         (all (cn1, cn2) : Piece >< Piece :- cn1 isin col /\ cn2 isin col =>
           areNb(cn1, cn2, r) = false
