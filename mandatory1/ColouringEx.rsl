@@ -4,15 +4,21 @@ scheme ColouringEx =
 extend ColouringBasics with 
 class
   value
-   col : Relation -~-> Colouring
+   /*col : Relation -~-> Colouring
    col(r) is ...
-   pre isRelation(r),
+   pre isRelation(r),*/
 
    getPieceSet : Relation -> Piece-set
-   getPieceSet(r) is
-   
+   getPieceSet(r) is 
+    if r = {} 
+      then {} 
+    else 
+      let (x,y) = hd(r), j=r\{(x,y)} in {x} union {y} union getPieceSet(j) 
+        end
+    end,
+  
 
-   isValidColour : Colour >< Piece -> Bool
+   isValidColour : Colour >< Piece >< Relation-> Bool
    isValidColour(col, piece, r) is
     (all p : Piece :- p isin col =>
       areNb(p, piece, r) = false
