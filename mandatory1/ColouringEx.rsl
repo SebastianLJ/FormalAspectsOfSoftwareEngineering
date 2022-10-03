@@ -4,18 +4,32 @@ scheme ColouringEx =
 extend ColouringBasics with 
 class
   value
-   /*col : Relation -~-> Colouring
-   col(r) is ...
-   pre isRelation(r),*/
+    col : Relation -~-> Colouring
+    col(r) is getSolution(getPieceSet(r), {}, r)
+    pre isRelation(r),
 
-   getPieceSet : Relation -> Piece-set
-   getPieceSet(r) is 
-    if r = {} 
-      then {} 
-    else 
-      let (x,y) = hd(r), j=r\{(x,y)} in {x} union {y} union getPieceSet(j) 
+    getPieceSet : Relation -> Piece-set
+    getPieceSet(r) is 
+     if r = {} 
+       then {} 
+     else 
+       let (x,y) = hd(r), j=r\{(x,y)} in {x} union {y} union getPieceSet(j) 
+         end
+     end,
+
+    getSolution : Piece-set >< Colouring >< Relation -> Colouring
+    getSolution(pieces,cols, r) is
+      if (pieces = {})
+      then
+        cols
+      else
+        let 
+          piece = hd(pieces),
+          col = getValidColour(cols, piece, r)
+        in
+          getSolution(pieces \ {piece}, cols \ {col} union {col union {piece}}, r)
         end
-    end,
+      end,
 
     getValidColour : Colouring >< Piece >< Relation -> Colour
     getValidColour(cols, piece, r) is
