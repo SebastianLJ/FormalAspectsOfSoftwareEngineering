@@ -8,14 +8,13 @@ class
     
   value /* auxiliary functions */ 
 
-    isRelation : Relation -> Bool
-    isRelation(r) is ...,
+    /*isRelation : Relation -> Bool
+    isRelation(r) is ...,*/
 
     areNb : Piece >< Piece >< Relation -> Bool
-    areNb(cn1, cn2, r) is ...,
+    areNb(cn1, cn2, r) is 
+      (cn1, cn2) isin r \/ (cn2, cn1) isin r
 
-    isCorrectColouring : Colouring >< Relation -> Bool
-    isCorrectColouring(cols, r) is ...,
-
-    ...
+    /*isCorrectColouring : Colouring >< Relation -> Bool
+    isCorrectColouring(cols, r) is ...,*/
  end
