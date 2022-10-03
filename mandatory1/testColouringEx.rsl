@@ -1,13 +1,37 @@
 ColouringEx
 
 scheme testColouringEx =
-extend ColouringEx with 
-class
-  value 
-    ... 
-
-  test_case 
-    ...
-
- end
+  extend ColouringEx with 
+  class
+    value 
+      r1 : Relation = {("P1","P2"), ("P1","P3"),
+  ("P2","P3"), ("P2","P4"),
+  ("P2","P5"), ("P3","P7"), ("P3","P9"),
+  ("P3","P5"), ("P4","P5"),("P5","P9"),
+  ("P3","P6"),("P6","P9"),("P6","P8"),("P7","P9"),
+  ("P7","P8")},
+      r2 : Relation = {("P1","P1")},
+      r3 : Relation = {("P1","P2")}, 
+  
+      col1 : Colouring = {{"P1","P9"}, {"P5"}, {"P3","P5","P8"}, {"P2","P7"}},
+      col2 : Colouring = {{"P1","P9","P3"}, {"P5"}, {"P3","P5","P8"}, {"P2","P7"}}
+  
+    test_case 
+      /* isCorrectColouring */
+      [t01] isCorrectColouring(col1, r1),
+      [t02] isCorrectColouring(col2, r1),
+      
+      /* isRelation */
+      [t03] isRelation(r1)
+      [t04] isRelation(r2)
+      [t05] isRelation(r3)
+  
+      /* areNb */
+      [t06] areNb("P1","P2", r1)
+      [t07] areNb("P1","P2", r3)
+      [t08] areNb("P1","P5", r1)
+      [t09] areNb("P1","P5", r2)
+  
+   end
+   
  
