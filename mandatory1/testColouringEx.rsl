@@ -32,6 +32,22 @@ scheme testColouringEx =
       [t08] areNb("P1","P5", r1)
       [t09] areNb("P1","P5", r2)
   
+      /*col*/
+      [t10]col(r1)
+      [t11]col(r2)
+      [t12]col(r3)
+
+      /*getPieceSet*/
+      [t13]getPieceSet(r1)
+      [t14]getPieceSet(r2)
+      [t15]getPieceSet(r3)
+
+      /*getSolution*/
+
+      /*getValidColour*/
+
+      /*isValidColour*/
+
    end
    
  
