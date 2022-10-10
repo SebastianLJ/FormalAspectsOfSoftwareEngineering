@@ -34,7 +34,7 @@ scheme testColouringEx =
   
       /* areNb */
       [t09] areNb("P1","P2", r1) = true, /*   */
-      [t10] areNb("P1","P2", r3) = false, /*   */
+      [t10] areNb("P1","P2", r3) = true, /*   */
       [t11] areNb("P1","P5", r1) = false, /*   */
       [t12] areNb("P1","P5", r2) = false, /*    */
   
@@ -48,7 +48,7 @@ scheme testColouringEx =
       [t17]getPieceSet(r3) = {"P1","P2"}, /**/
 
       /*getSolution*/
-      [t18]getSolution(getPieceSet(r1),{}, r1) = col1,
+      [t18]isCorrectColouring(getSolution(getPieceSet(r1),{}, r1),r1) = true,
 
       /*getValidColour*/
       [t19]getValidColour(col1,"P1", r1) = {"P1","P9","P4"},
