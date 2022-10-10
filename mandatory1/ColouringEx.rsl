@@ -33,7 +33,7 @@ class
 
     getValidColour : Colouring >< Piece >< Relation -> Colour
     getValidColour(cols, piece, r) is
-    /* return empty set to create a new color is no color is made */
+    /* return empty set to create a new color if no color is made */
     if (cols = {}) 
     then 
       {}
