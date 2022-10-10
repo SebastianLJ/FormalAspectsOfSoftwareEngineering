@@ -158,7 +158,7 @@ structure testColouringEx =
         
         fun areNb'35ED_ (cn1'3657_, cn2'365C_, r'3661_) = (R_coverage.cancel(RT_Text.fromLit "./ColouringBasics.rsl", (17, 7)); (RT_s_2.R_mem ((cn1'3657_, cn2'365C_), r'3661_)) orelse (R_coverage.cancel(RT_Text.fromLit "./ColouringBasics.rsl", (17, 28)); RT_s_2.R_mem ((cn2'365C_, cn1'3657_), r'3661_)));
         
-        fun isCorrectColouring'377D_ (cols'37F4_, r'37FA_) = (R_coverage.cancel(RT_Text.fromLit "./ColouringBasics.rsl", (22, 7)); (((RT_s_4.R_all (fn (col'38B0_:RT_s_3.t) => ((RT_s_3.R_all (fn (cn'3916_:RT_Text.t) => ((RT_s_2.R_exists (fn ((cn1'3980_, cn2'3984_):RT_x_1.t) => ((RT_Text.equ (cn'3916_, cn1'3980_)) orelse (R_coverage.cancel(RT_Text.fromLit "./ColouringBasics.rsl", (25, 26)); RT_Text.equ (cn'3916_, cn2'3984_)))) (r'37FA_)))) (col'38B0_)))) (cols'37F4_)))) andalso (R_coverage.cancel(RT_Text.fromLit "./ColouringBasics.rsl", (31, 7)); (((RT_s_4.R_all (fn (col1'3C34_:RT_s_3.t) => ((RT_s_4.R_all (fn (col2'3C9A_:RT_s_3.t) => ((RSL.C_not RT_s_3.equ) (col1'3C34_, col2'3C9A_)) andalso (R_coverage.cancel(RT_Text.fromLit "./ColouringBasics.rsl", (33, 27)); RT_s_3.equ (RT_s_3.R_inter (col1'3C34_, col2'3C9A_), RT_s_3.R_fromList []))) (cols'37F4_)))) (cols'37F4_)))) andalso (R_coverage.cancel(RT_Text.fromLit "./ColouringBasics.rsl", (38, 7)); (((RT_s_2.R_all (fn ((cn1'3EF1_, cn2'3EF6_):RT_x_1.t) => ((RT_s_4.R_exists (fn (col1'3F59_:RT_s_3.t) => ((RT_s_4.R_exists (fn (col2'3FBF_:RT_s_3.t) => (RT_s_3.R_mem (cn1'3EF1_, col1'3F59_)) andalso (R_coverage.cancel(RT_Text.fromLit "./ColouringBasics.rsl", (41, 30)); RT_s_3.R_mem (cn2'3EF6_, col2'3FBF_))) (cols'37F4_)))) (cols'37F4_)))) (r'37FA_)))) andalso (R_coverage.cancel(RT_Text.fromLit "./ColouringBasics.rsl", (47, 7)); ((RT_s_4.R_all (fn (col'4274_:RT_s_3.t) => ((RT_s_3.R_all (fn (cn1'42DA_:RT_Text.t) => ((RT_s_3.R_all (fn (cn2'4340_:RT_Text.t) => RT_Bool.equ (((areNb'35ED_) (cn1'42DA_, cn2'4340_, r'37FA_)), false)) (col'4274_)))) (col'4274_)))) (cols'37F4_)))))));
+        fun isCorrectColouring'377D_ (cols'37F4_, r'37FA_) = (R_coverage.cancel(RT_Text.fromLit "./ColouringBasics.rsl", (22, 7)); (((RT_s_4.R_all (fn (col'38B0_:RT_s_3.t) => ((RT_s_3.R_all (fn (cn'3916_:RT_Text.t) => ((RT_s_2.R_exists (fn ((cn1'3980_, cn2'3984_):RT_x_1.t) => ((RT_Text.equ (cn'3916_, cn1'3980_)) orelse (R_coverage.cancel(RT_Text.fromLit "./ColouringBasics.rsl", (25, 26)); RT_Text.equ (cn'3916_, cn2'3984_)))) (r'37FA_)))) (col'38B0_)))) (cols'37F4_)))) andalso (R_coverage.cancel(RT_Text.fromLit "./ColouringBasics.rsl", (31, 7)); (((RT_s_4.R_all (fn (col1'3C34_:RT_s_3.t) => ((RT_s_4.R_all (fn (col2'3C9A_:RT_s_3.t) => not ((RSL.C_not RT_s_3.equ) (col1'3C34_, col2'3C9A_)) orelse (R_coverage.cancel(RT_Text.fromLit "./ColouringBasics.rsl", (33, 27)); RT_s_3.equ (RT_s_3.R_inter (col1'3C34_, col2'3C9A_), RT_s_3.R_fromList []))) (cols'37F4_)))) (cols'37F4_)))) andalso (R_coverage.cancel(RT_Text.fromLit "./ColouringBasics.rsl", (38, 7)); (((RT_s_2.R_all (fn ((cn1'3EF1_, cn2'3EF6_):RT_x_1.t) => ((RT_s_4.R_exists (fn (col1'3F59_:RT_s_3.t) => ((RT_s_4.R_exists (fn (col2'3FBF_:RT_s_3.t) => (RT_s_3.R_mem (cn1'3EF1_, col1'3F59_)) andalso (R_coverage.cancel(RT_Text.fromLit "./ColouringBasics.rsl", (41, 30)); RT_s_3.R_mem (cn2'3EF6_, col2'3FBF_))) (cols'37F4_)))) (cols'37F4_)))) (r'37FA_)))) andalso (R_coverage.cancel(RT_Text.fromLit "./ColouringBasics.rsl", (47, 7)); ((RT_s_4.R_all (fn (col'4274_:RT_s_3.t) => ((RT_s_3.R_all (fn (cn1'42DA_:RT_Text.t) => ((RT_s_3.R_all (fn (cn2'4340_:RT_Text.t) => RT_Bool.equ (((areNb'35ED_) (cn1'42DA_, cn2'4340_, r'37FA_)), false)) (col'4274_)))) (col'4274_)))) (cols'37F4_)))))));
         
         fun isRelation'345D_ r'34CC_ = (R_coverage.cancel(RT_Text.fromLit "./ColouringBasics.rsl", (13, 7)); ((RT_s_2.R_all (fn ((cn1'352D_, cn2'3532_):RT_x_1.t) => (((RSL.C_not RT_Text.equ) (cn1'352D_, cn2'3532_)) andalso (R_coverage.cancel(RT_Text.fromLit "./ColouringBasics.rsl", (13, 79)); ((RSL.C_not RT_Text.equ) (cn1'352D_, RT_Text.fromLit "")) andalso (R_coverage.cancel(RT_Text.fromLit "./ColouringBasics.rsl", (13, 92)); (RSL.C_not RT_Text.equ) (cn2'3532_, RT_Text.fromLit ""))))) (r'34CC_))));
         
@@ -226,12 +226,12 @@ R_coverage.mark(RT_Text.fromLit "./ColouringBasics.rsl", (13, 92), (14, 1));
 R_coverage.mark(RT_Text.fromLit "./ColouringBasics.rsl", (13, 79), (14, 1));
 R_coverage.mark(RT_Text.fromLit "./ColouringBasics.rsl", (13, 7), (14, 3));
 R_coverage.mark(RT_Text.fromLit "./ColouringBasics.rsl", (41, 30), (42, 11));
-R_coverage.mark(RT_Text.fromLit "./ColouringBasics.rsl", (47, 7), (54, 4));
+R_coverage.mark(RT_Text.fromLit "./ColouringBasics.rsl", (47, 7), (55, 4));
 R_coverage.mark(RT_Text.fromLit "./ColouringBasics.rsl", (33, 27), (34, 9));
-R_coverage.mark(RT_Text.fromLit "./ColouringBasics.rsl", (38, 7), (54, 4));
+R_coverage.mark(RT_Text.fromLit "./ColouringBasics.rsl", (38, 7), (55, 4));
 R_coverage.mark(RT_Text.fromLit "./ColouringBasics.rsl", (25, 26), (25, 34));
-R_coverage.mark(RT_Text.fromLit "./ColouringBasics.rsl", (31, 7), (54, 4));
-R_coverage.mark(RT_Text.fromLit "./ColouringBasics.rsl", (22, 7), (54, 4));
+R_coverage.mark(RT_Text.fromLit "./ColouringBasics.rsl", (31, 7), (55, 4));
+R_coverage.mark(RT_Text.fromLit "./ColouringBasics.rsl", (22, 7), (55, 4));
 R_coverage.mark(RT_Text.fromLit "./ColouringBasics.rsl", (17, 28), (17, 45));
 R_coverage.mark(RT_Text.fromLit "./ColouringBasics.rsl", (17, 7), (17, 45)));
 (RSL.C_output "[t01] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((isCorrectColouring'377D_) (col1'6AB_, r1'2C3_)), true)));
@@ -252,7 +252,7 @@ R_coverage.mark(RT_Text.fromLit "./ColouringBasics.rsl", (17, 7), (17, 45)));
 
 (RSL.C_output "[t09] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((areNb'35ED_) (RT_Text.fromLit "P1", RT_Text.fromLit "P2", r1'2C3_)), true)));
 
-(RSL.C_output "[t10] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((areNb'35ED_) (RT_Text.fromLit "P1", RT_Text.fromLit "P2", r3'57F_)), false)));
+(RSL.C_output "[t10] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((areNb'35ED_) (RT_Text.fromLit "P1", RT_Text.fromLit "P2", r3'57F_)), true)));
 
 (RSL.C_output "[t11] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((areNb'35ED_) (RT_Text.fromLit "P1", RT_Text.fromLit "P5", r1'2C3_)), false)));
 
@@ -268,7 +268,7 @@ R_coverage.mark(RT_Text.fromLit "./ColouringBasics.rsl", (17, 7), (17, 45)));
 
 (RSL.C_output "[t17] " RT_Bool.toStringSafe (fn _ => RT_s_3.equ (((getPieceSet'1D51_) (r3'57F_)), RT_s_3.R_fromList ([RT_Text.fromLit "P1", RT_Text.fromLit "P2"]))));
 
-(RSL.C_output "[t18] " RT_Bool.toStringSafe (fn _ => RT_s_4.equ (((getSolution'20D5_) (((getPieceSet'1D51_) (r1'2C3_)), RT_s_4.R_fromList [], r1'2C3_)), col1'6AB_)));
+(RSL.C_output "[t18] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((isCorrectColouring'377D_) (((getSolution'20D5_) (((getPieceSet'1D51_) (r1'2C3_)), RT_s_4.R_fromList [], r1'2C3_)), r1'2C3_)), true)));
 
 (RSL.C_output "[t19] " RT_Bool.toStringSafe (fn _ => RT_s_3.equ (((getValidColour'264D_) (col1'6AB_, RT_Text.fromLit "P1", r1'2C3_)), RT_s_3.R_fromList ([RT_Text.fromLit "P1", RT_Text.fromLit "P9", RT_Text.fromLit "P4"]))));
 
