@@ -6,47 +6,58 @@ scheme testColouringEx =
     value 
       r1 : Relation = {("P1","P2"), ("P1","P3"),
   ("P2","P3"), ("P2","P4"),
-  ("P2","P5"), ("P3","P7"), ("P3","P9"),
-  ("P3","P5"), ("P4","P5"),("P5","P9"),
-  ("P3","P6"),("P6","P9"),("P6","P8"),("P7","P9"),
+  ("P2","P5"), ("P3","P6"), ("P3","P5"),
+  ("P4","P5"), ("P4","P9"),("P4","P8"),
+  ("P5","P9"),("P6","P9"),("P6","P7"),("P7","P9"),
   ("P7","P8")},
       r2 : Relation = {("P1","P1")},
-      r3 : Relation = {("P1","P2")}, 
+      r3 : Relation = {("P1","P2")},
+      r4 : Relation = {("P1","")},  
   
-      col1 : Colouring = {{"P1","P9"}, {"P5"}, {"P3","P5","P8"}, {"P2","P7"}},
-      col2 : Colouring = {{"P1","P9","P3"}, {"P5"}, {"P3","P5","P8"}, {"P2","P7"}}
-  
+      col1 : Colouring = {{"P1","P9","P4"}, {"P5"}, {"P3","P7"}, {"P2","P6","P8"}},
+      col2 : Colouring = {{"P1","P9"}, {"P5","P4"}, {"P3","P7"}, {"P2","P6","P8"}},
+      col3 : Colouring = {{"P1","P9","P3"}, {"P5"}, {"P3","P5","P8"}, {"P2","P7"}},     
+      col4 : Colouring = {{"P1","P9"}, {"P5"}, {"P3","P5","P8"}, {"P2","P7"}}
+
     test_case 
       /* isCorrectColouring */
-      [t01] isCorrectColouring(col1, r1),
-      [t02] isCorrectColouring(col2, r1),
+      [t01] isCorrectColouring(col1, r1) = true,  /*   */
+      [t02] isCorrectColouring(col2, r1) = false, /*   */
+      [t03] isCorrectColouring(col3, r1) = false, /*   */
+      [t04] isCorrectColouring(col4, r1) = false, /*   */
       
       /* isRelation */
-      [t03] isRelation(r1),
-      [t04] isRelation(r2),
-      [t05] isRelation(r3),
+      [t05] isRelation(r1) = true, /*   */
+      [t06] isRelation(r2) = false, /*   */
+      [t07] isRelation(r3) = true, /*  */
+      [t08] isRelation(r4) = false, /*   */
   
       /* areNb */
-      [t06] areNb("P1","P2", r1),
-      [t07] areNb("P1","P2", r3),
-      [t08] areNb("P1","P5", r1),
-      [t09] areNb("P1","P5", r2),
+      [t09] areNb("P1","P2", r1) = true, /*   */
+      [t10] areNb("P1","P2", r3) = false, /*   */
+      [t11] areNb("P1","P5", r1) = false, /*   */
+      [t12] areNb("P1","P5", r2) = false, /*    */
   
       /*col*/
-      [t10]col(r1),
-      [t11]col(r2),
-      [t12]col(r3),
+      [t13]col(r1), /**/
+      [t14]col(r2), /**/
 
       /*getPieceSet*/
-      [t13]getPieceSet(r1),
-      [t14]getPieceSet(r2),
-      [t15]getPieceSet(r3)
+      [t15]getPieceSet(r1) = {"P1","P2","P3","P4","P5","P6","P7","P8","P9"}, /**/
+      [t16]getPieceSet(r2) = {"P1"}, /**/
+      [t17]getPieceSet(r3) = {"P1","P2"}, /**/
 
       /*getSolution*/
+      [t18]getSolution(getPieceSet(r1),{}, r1) = col1,
 
       /*getValidColour*/
+      [t19]getValidColour(col1,"P1", r1) = {"P1","P9","P4"},
+      [t20]getValidColour(col1,"P1", r1) ~= {"P1"},
 
       /*isValidColour*/
+      [t21]isValidColour({"P1","P9","P4"}, "P1", r1) = true,
+      [t22]isValidColour({"P1","P9","P4"}, "P2", r1) = false
+
     end
    
  
