@@ -22,24 +22,24 @@ scheme testColouringEx =
       [t02] isCorrectColouring(col2, r1),
       
       /* isRelation */
-      [t03] isRelation(r1)
-      [t04] isRelation(r2)
-      [t05] isRelation(r3)
+      [t03] isRelation(r1),
+      [t04] isRelation(r2),
+      [t05] isRelation(r3),
   
       /* areNb */
-      [t06] areNb("P1","P2", r1)
-      [t07] areNb("P1","P2", r3)
-      [t08] areNb("P1","P5", r1)
-      [t09] areNb("P1","P5", r2)
+      [t06] areNb("P1","P2", r1),
+      [t07] areNb("P1","P2", r3),
+      [t08] areNb("P1","P5", r1),
+      [t09] areNb("P1","P5", r2),
   
       /*col*/
-      [t10]col(r1)
-      [t11]col(r2)
-      [t12]col(r3)
+      [t10]col(r1),
+      [t11]col(r2),
+      [t12]col(r3),
 
       /*getPieceSet*/
-      [t13]getPieceSet(r1)
-      [t14]getPieceSet(r2)
+      [t13]getPieceSet(r1),
+      [t14]getPieceSet(r2),
       [t15]getPieceSet(r3)
 
       /*getSolution*/
@@ -47,7 +47,6 @@ scheme testColouringEx =
       /*getValidColour*/
 
       /*isValidColour*/
-
-   end
+    end
    
  
