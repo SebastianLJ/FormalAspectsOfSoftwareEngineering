@@ -40,7 +40,7 @@ class
     else
       let col = hd(cols)
       in 
-        /* return colour if all pieces in colour are not a neigbour to the piece */
+        /* return colour if all pieces in colour are not a neighbour to the piece */
         if(isValidColour(col, piece, r)) then 
           col
         else
