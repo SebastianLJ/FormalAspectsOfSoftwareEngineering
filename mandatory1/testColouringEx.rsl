@@ -17,7 +17,7 @@ scheme testColouringEx =
       col1 : Colouring = {{"P1","P9","P4"}, {"P5"}, {"P3","P7"}, {"P2","P6","P8"}},
       col2 : Colouring = {{"P1","P9"}, {"P5","P4"}, {"P3","P7"}, {"P2","P6","P8"}},
       col3 : Colouring = {{"P1","P9","P4"}, {"P5"}, {"P3","P7"}, {"P2","P6","P8"},{"P3"}},     
-      col4 : Colouring = {{"P1","P9"}, {"P5"}, {"P3","P5","P8"}, {"P2","P7"}},
+      col4 : Colouring = {{"P1","P9"}, {"P5"}, {"P3","P7"}, {"P2","P6","P8"}},
       col5 : Colouring = {{"P1","P9","P4"}, {"P5"}, {"P3","P7"}, {"P2","P6","P8","P10"}}
       
     test_case 
