@@ -26,35 +26,35 @@ scheme testColouringEx =
       [t02] isCorrectColouring(col2, r1) = false, /*   */
       [t03] isCorrectColouring(col3, r1) = false, /*   */
       [t04] isCorrectColouring(col4, r1) = false, /*   */
-      [t04] isCorrectColouring(col5, r1) = false
+      [t05] isCorrectColouring(col5, r1) = false
       
       /* isRelation */
-      [t05] isRelation(r1) = true, /*   */
-      [t06] isRelation(r2) = false, /*   */
-      [t07] isRelation(r3) = true, /*  */
-      [t08] isRelation(r4) = false, /*   */
+      [t06] isRelation(r1) = true, /*   */
+      [t07] isRelation(r2) = false, /*   */
+      [t08] isRelation(r3) = true, /*  */
+      [t09] isRelation(r4) = false, /*   */
   
       /* areNb */
-      [t09] areNb("P1","P2", r1) = true, /*   */
-      [t10] areNb("P1","P2", r3) = true, /*   */
-      [t11] areNb("P1","P5", r1) = false, /*   */
-      [t12] areNb("P1","P5", r2) = false, /*    */
+      [t10] areNb("P1","P2", r1) = true, /*   */
+      [t11] areNb("P1","P2", r3) = true, /*   */
+      [t12] areNb("P1","P5", r1) = false, /*   */
+      [t13] areNb("P1","P5", r2) = false, /*    */
   
       /*col*/
-      [t13]col(r1), /**/
-      [t14]col(r2), /**/
+      [t14]col(r1), /**/
+      [t15]col(r2), /**/
 
       /*getPieceSet*/
-      [t15]getPieceSet(r1) = {"P1","P2","P3","P4","P5","P6","P7","P8","P9"}, /**/
-      [t16]getPieceSet(r2) = {"P1"}, /**/
-      [t17]getPieceSet(r3) = {"P1","P2"}, /**/
+      [t16]getPieceSet(r1) = {"P1","P2","P3","P4","P5","P6","P7","P8","P9"}, /**/
+      [t17]getPieceSet(r2) = {"P1"}, /**/
+      [t18]getPieceSet(r3) = {"P1","P2"}, /**/
 
       /*getSolution*/
-      [t18]isCorrectColouring(getSolution(getPieceSet(r1),{}, r1),r1) = true,
+      [t19]isCorrectColouring(getSolution(getPieceSet(r1),{}, r1),r1) = true,
 
       /*getValidColour*/
-      [t19]getValidColour(col1,"P1", r1) = {"P1","P9","P4"},
-      [t20]getValidColour(col1,"P1", r1) ~= {"P1"},
+      [t20]getValidColour(col1,"P1", r1) = {"P1","P9","P4"},
+      [t21]getValidColour(col1,"P1", r1) ~= {"P1"},
 
       /*isValidColour*/
       [t21]isValidColour({"P1","P9","P4"}, "P1", r1) = true,
