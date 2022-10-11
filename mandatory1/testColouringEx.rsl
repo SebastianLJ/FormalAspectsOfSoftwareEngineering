@@ -16,15 +16,17 @@ scheme testColouringEx =
   
       col1 : Colouring = {{"P1","P9","P4"}, {"P5"}, {"P3","P7"}, {"P2","P6","P8"}},
       col2 : Colouring = {{"P1","P9"}, {"P5","P4"}, {"P3","P7"}, {"P2","P6","P8"}},
-      col3 : Colouring = {{"P1","P9","P3"}, {"P5"}, {"P3","P5","P8"}, {"P2","P7"}},     
-      col4 : Colouring = {{"P1","P9"}, {"P5"}, {"P3","P5","P8"}, {"P2","P7"}}
-
+      col3 : Colouring = {{"P1","P9"},{"P3"}, {"P5"}, {"P3","P5","P8"}, {"P2","P7"}},     
+      col4 : Colouring = {{"P1","P9"}, {"P5"}, {"P3","P5","P8"}, {"P2","P7"}},
+      col5 : Colouring = {{"P1","P9","P4"}, {"P5"}, {"P3","P7"}, {"P2","P6","P8","P10"}}
+      
     test_case 
       /* isCorrectColouring */
       [t01] isCorrectColouring(col1, r1) = true,  /*   */
       [t02] isCorrectColouring(col2, r1) = false, /*   */
       [t03] isCorrectColouring(col3, r1) = false, /*   */
       [t04] isCorrectColouring(col4, r1) = false, /*   */
+      [t04] isCorrectColouring(col5, r1) = false
       
       /* isRelation */
       [t05] isRelation(r1) = true, /*   */
