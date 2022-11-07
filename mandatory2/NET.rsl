@@ -45,7 +45,12 @@ class
  
     -- get minimum driving time between two connected stops        
     minDrivingTime : StopId >< StopId >< Net -~-> DrivingTime
-    ...
+    minDrivingTime(stopId1, stopid2, (stopCapacityMap, connectionMap)) is
+      let (headway, drivingTime) = connectionMap(stopId1, stopId2)
+      in 
+        drivingTime
+      end
+
 
  
   value /* predicates to check nets */
