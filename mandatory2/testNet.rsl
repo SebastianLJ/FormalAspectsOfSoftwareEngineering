@@ -8,8 +8,6 @@ scheme testNet =
 
       /* Stop A */
       StopA : StopId = A,
-      DrivingTimeA : DrivingTime = 10,
-      HeadwayA : Headway = 1,
       CapacityA : Capacity = 2,
 
       /* Stop B */
@@ -18,14 +16,10 @@ scheme testNet =
 
       /* Stop C */
       StopC : StopId = C,
-      DrivingTimeC : DrivingTime = 12,
-      HeadwayC : Headway = 2,
       CapacityC : Capacity = 2,
 
       /* Stop D */
       StopD: StopId = D,
-      DrivingTimeD : DrivingTime = 7,
-      HeadwayD : Headway = 2,
       CapacityD : Capacity = 2,
 
       /* Connection */
@@ -55,9 +49,7 @@ scheme testNet =
     test_case 
       /* generators  */ 
       /* insertStop (Mads) */ 
-      [t01]
-
-      [t02]
+      
       
       /* addConnection (Susan)  */
 
