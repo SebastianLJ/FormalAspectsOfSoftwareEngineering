@@ -25,11 +25,8 @@ class
   value /* observers */
     -- check whether a stop is in a network     
     isIn : StopId >< Net -> Bool
-    isIn(stopId, net) is 
-    let (StopCapacityMap, connectionMap) = net
-    in (exist stops : StopId :- stops isin stopCapacityMap /\ stops = stopId)        
-    end,
- 
+    isIn(stopId, (stopCapacityMap, connecitonMap)) is 
+      stopId isin dom(stopCapacityMap),
     -- get the capacity of a stop 
     capacity : StopId >< Net -~-> Capacity
     capacity (stopId,(stopCapacityMap, connectionMap)) is 
