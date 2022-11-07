@@ -1,47 +1,65 @@
 scheme NET =
 class
   type 
-    Net ..., -- tram nets
+    Net = StopCapacityMap >< ConnectionMap,
     Headway = Time, -- minimum headways
     DrivingTime = Time, -- minimum driving times
     Time = Nat, -- times in number of minutes
     Capacity = Nat, -- capacities
-    StopId = Text  -- names of stops
+    StopId = Text,  -- names of stops
+    StopCapacityMap = StopId -m-> Capacity, -- capacities of stops
+    ConnectionMap = (StopId >< StopId) -m-> (Headway >< DrivingTime >< Capacity) -- connection map with headway and driving time
   value /* generators */
-    empty :  Net = ... ,  -- the empty net
+    empty :  Net = ([],[]) ,  -- the empty net
 
     -- insert a stop with a given name and capacity 
     insertStop : StopId >< Capacity >< Net -> Net
-    ...,
-
+    insertStop (stopId, capacity, (stopCapacityMap, connectionMap)) is
+      stopCapacityMap !! [stopId +> capacity],
+    
     -- add a connection between given stops, 
     -- with the given minimum headway, capacity and minimum driving time
     addConnection : StopId >< StopId  >< Headway >< Capacity >< DrivingTime >< Net -> Net
-    ... 
+    addConnection (stopId1, stopId2, headway, capacity, drivingTime, (stopCapacityMap, connectionMap)) is
+      connectionMap !! [(stopId1, stopId2) +> (headway, drivingTime, capacity)]
   value /* observers */
     -- check whether a stop is in a network     
     isIn : StopId >< Net -> Bool
-    ...,
- 
+    isIn(stopId, (stopCapacityMap, connecitonMap)) is 
+      stopId isin dom(stopCapacityMap),
     -- get the capacity of a stop 
     capacity : StopId >< Net -~-> Capacity
-    ...,
-
+    capacity (stopId,(stopCapacityMap, connectionMap)) is 
+      stopCapacityMap(stopId),
     -- check whether two stops are directly connected in a network        
     areDirectlyConnected : StopId >< StopId >< Net -> Bool
-    ...,
+    areDirectlyConnected(stopId1, stopId2, (stopCapacityMap, connectionMap)) is
+      (stopId1, stopId2) isin dom(connecitonMap),
 
     -- get minimum headway between two connected stops        
     minHeadway : StopId >< StopId >< Net -~-> Headway
-    ..., 
+    minHeadway(stopId1, stopId2, (stopCapacityMap, connectionMap)) is
+      let (headway, drivingTime, capacity) = connectionMap(stopId1, stopId2)
+      in
+        headway
+      end,
 
    -- get the capacity for a connection between two connected stops
     capacity : StopId >< StopId >< Net -~-> Capacity
-    ...,
+    capacity(stopId1, stopId2, (stopCapacityMap, connectionMap)) is
+      let (headway, drivingTime, capacity) = connectionMap(stopid1, stopId2)
+      in
+        capacity
+      end,
  
     -- get minimum driving time between two connected stops        
     minDrivingTime : StopId >< StopId >< Net -~-> DrivingTime
-    ...
+    minDrivingTime(stopId1, stopid2, (stopCapacityMap, connectionMap)) is
+      let (headway, drivingTime, capacity) = connectionMap(stopId1, stopId2)
+      in 
+        drivingTime
+      end
+
 
  
   value /* predicates to check nets */
