@@ -33,15 +33,20 @@ class
 
     -- check whether two stops are directly connected in a network        
     areDirectlyConnected : StopId >< StopId >< Net -> Bool
-    ...,
+    areDirectlyConnected(stopId1, stopId2, (stopCapacityMap, connectionMap)) is
+      (stopId1, stopId2) isin dom(connecitonMap),
 
     -- get minimum headway between two connected stops        
     minHeadway : StopId >< StopId >< Net -~-> Headway
-    ..., 
+    minHeadway(stopId1, stopId2, (stopCapacityMap, connectionMap)) is
+      let (headway, drivingTime, capacity) = connectionMap(stopId1, stopId2)
+      in
+        headway
+      end,
 
    -- get the capacity for a connection between two connected stops
     capacity : StopId >< StopId >< Net -~-> Capacity
-    capacity (stopId1, stopId2, (stopCapacityMap, connectionMap)) is
+    capacity(stopId1, stopId2, (stopCapacityMap, connectionMap)) is
       let (headway, drivingTime, capacity) = connectionMap(stopid1, stopId2)
       in
         capacity
