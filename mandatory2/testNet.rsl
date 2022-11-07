@@ -44,7 +44,7 @@ scheme testNet =
       StopCapacity : StopCapacityMap = [StopA +> CapacityA, StopB +> CapacityB, StopC +> CapacityC, StopD +> CapacityD],
 
       /* NET */
-      Net : Net = (StopCapacity, ConnectioMap)
+      Net : Net = (StopCapacity, ConnectionMap)
 
     test_case 
       /* generators  */ 
