@@ -60,8 +60,6 @@ class
         drivingTime
       end
 
-
- 
   value /* predicates to check nets */
     -- a stop can not connect to itself
     noSelfConnection : Net -> Bool
