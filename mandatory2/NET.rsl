@@ -28,8 +28,8 @@ class
  
     -- get the capacity of a stop 
     capacity : StopId >< Net -~-> Capacity
-    ...,
-
+    capacity (stopId,(StopCapacityMap >< ConnectionMap)) is 
+      StopCapacityMap(StopId),
     -- check whether two stops are directly connected in a network        
     areDirectlyConnected : StopId >< StopId >< Net -> Bool
     ...,
