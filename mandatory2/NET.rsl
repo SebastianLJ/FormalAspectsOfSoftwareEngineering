@@ -1,12 +1,14 @@
 scheme NET =
 class
   type 
-    Net ..., -- tram nets
+    Net = StopCapacityMap >< ConnectionMap
     Headway = Time, -- minimum headways
     DrivingTime = Time, -- minimum driving times
     Time = Nat, -- times in number of minutes
     Capacity = Nat, -- capacities
     StopId = Text  -- names of stops
+    StopCapacityMap = StopId -m-> Capacity, -- capacities of stops
+    ConnectionMap = (StopId, StopId) -m-> (Headway, DrivingTime), -- connection map with headway and driving time
   value /* generators */
     empty :  Net = ... ,  -- the empty net
 
