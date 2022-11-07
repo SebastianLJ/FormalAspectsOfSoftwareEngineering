@@ -10,18 +10,18 @@ class
     StopCapacityMap = StopId -m-> Capacity, -- capacities of stops
     ConnectionMap = (StopId >< StopId) -m-> (Headway >< DrivingTime >< Capacity) -- connection map with headway and driving time
   value /* generators */
-    empty :  Net = ([],[]) ,  -- the empty net
+    empty :  Net = ([],[]),  -- the empty net
 
     -- insert a stop with a given name and capacity 
     insertStop : StopId >< Capacity >< Net -> Net
-    insertStop (stopId, capacity, (stopCapacityMap, connectionMap)) is
-      stopCapacityMap !! [stopId +> capacity],
+    insertStop(stopId, capacity, (stopCapacityMap, connectionMap)) is
+      (stopCapacityMap !! [stopId +> capacity], connectionMap),
     
     -- add a connection between given stops, 
     -- with the given minimum headway, capacity and minimum driving time
-    addConnection : StopId >< StopId  >< Headway >< Capacity >< DrivingTime >< Net -> Net
-    addConnection (stopId1, stopId2, headway, capacity, drivingTime, (stopCapacityMap, connectionMap)) is
-      connectionMap !! [(stopId1, stopId2) +> (headway, drivingTime, capacity)]
+    addConnection : StopId >< StopId >< Headway >< Capacity >< DrivingTime >< Net -> Net
+    addConnection(stopId1, stopId2, headway, capacity, drivingTime, (stopCapacityMap, connectionMap)) is
+      (stopCapacityMap ,connectionMap !! [(stopId1, stopId2) +> (headway, drivingTime, capacity)])
   value /* observers */
     -- check whether a stop is in a network     
     isIn : StopId >< Net -> Bool
