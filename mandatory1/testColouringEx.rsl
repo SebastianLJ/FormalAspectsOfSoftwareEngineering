@@ -1,13 +1,65 @@
 ColouringEx
 
 scheme testColouringEx =
-extend ColouringEx with 
-class
-  value 
-    ... 
+  extend ColouringEx with 
+  class
+    value 
+      r1 : Relation = {("P1","P2"), ("P1","P3"),
+  ("P2","P3"), ("P2","P4"),
+  ("P2","P5"), ("P3","P6"), ("P3","P5"),
+  ("P4","P5"), ("P4","P9"),("P4","P8"),
+  ("P5","P9"),("P6","P9"),("P6","P7"),("P7","P9"),
+  ("P7","P8")},
+      r2 : Relation = {("P1","P1")},
+      r3 : Relation = {("P1","P2")},
+      r4 : Relation = {("P1","")},  
+  
+      col1 : Colouring = {{"P1","P9","P4"}, {"P5"}, {"P3","P7"}, {"P2","P6","P8"}},
+      col2 : Colouring = {{"P1","P9"}, {"P5","P4"}, {"P3","P7"}, {"P2","P6","P8"}},
+      col3 : Colouring = {{"P1","P9","P4"}, {"P5"}, {"P3","P7"}, {"P2","P6","P8"},{"P3"}},     
+      col4 : Colouring = {{"P1","P9"}, {"P5"}, {"P3","P7"}, {"P2","P6","P8"}},
+      col5 : Colouring = {{"P1","P9","P4"}, {"P5"}, {"P3","P7"}, {"P2","P6","P8","P10"}}
+      
+    test_case 
+      /* isCorrectColouring */
+      [t01] isCorrectColouring(col1, r1) = true,  /*   */
+      [t02] isCorrectColouring(col2, r1) = false, /*   */
+      [t03] isCorrectColouring(col3, r1) = false, /*   */
+      [t04] isCorrectColouring(col4, r1) = false, /*   */
+      [t05] isCorrectColouring(col5, r1) = false
+      
+      /* isRelation */
+      [t06] isRelation(r1) = true, /*   */
+      [t07] isRelation(r2) = false, /*   */
+      [t08] isRelation(r3) = true, /*  */
+      [t09] isRelation(r4) = false, /*   */
+  
+      /* areNb */
+      [t10] areNb("P1","P2", r1) = true, /*   */
+      [t11] areNb("P1","P2", r3) = true, /*   */
+      [t12] areNb("P1","P5", r1) = false, /*   */
+      [t13] areNb("P1","P5", r2) = false, /*    */
+  
+      /*col*/
+      [t14]col(r1), /**/
+      [t15]col(r2), /**/
 
-  test_case 
-    ...
+      /*getPieceSet*/
+      [t16]getPieceSet(r1) = {"P1","P2","P3","P4","P5","P6","P7","P8","P9"}, /**/
+      [t17]getPieceSet(r2) = {"P1"}, /**/
+      [t18]getPieceSet(r3) = {"P1","P2"}, /**/
 
- end
+      /*getSolution*/
+      [t19]isCorrectColouring(getSolution(getPieceSet(r1),{}, r1),r1) = true,
+
+      /*getValidColour*/
+      [t20]getValidColour(col1,"P1", r1) = {"P1","P9","P4"},
+      [t21]getValidColour(col1,"P1", r1) ~= {"P1"},
+
+      /*isValidColour*/
+      [t21]isValidColour({"P1","P9","P4"}, "P1", r1) = true,
+      [t22]isValidColour({"P1","P9","P4"}, "P2", r1) = false
+
+    end
+   
  

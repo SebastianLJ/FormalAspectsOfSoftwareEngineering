@@ -30,7 +30,7 @@ class
       /* All Pieces in a Colour must only appear in exactly one Colour of cols */
       (all col1 : Colour :- col1 isin cols =>
         (all col2 : Colour :- col2 isin cols =>
-          col1 ~= col2 /\ col1 inter col2 = {}
+          col1 ~= col2 => col1 inter col2 = {}
         ) 
       )
       /\
@@ -51,4 +51,5 @@ class
           )
         )
       )
+
  end
