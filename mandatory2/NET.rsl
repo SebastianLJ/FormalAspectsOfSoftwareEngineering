@@ -63,6 +63,30 @@ class
 
  
   value /* predicates to check nets */
+    -- a stop can not connect to itself
+    noSelfConnection : Net -> Bool
+    noSelfConnection(stopCapacityMap, connectionMap) is
+      (all (stopId1, stopId2) : StopId >< StopId 
+        :- (stopId1, stopId2) isin dom(connectionMap) =>
+        stopId1 ~= stopId2),
+
+    -- all stopIds included in the domain of the ConnectionMap must also be in the domain of the StopCapacityMap
+    allStopsInConnectionMapAreInStopCapacityMap : Net -> Bool
+    allStopsInConnectionMapAreInStopCapacityMap(stopCapacityMap, connectionMap) is
+      (all (stopId1, stopId2) : StopId >< StopId 
+        :- (stopId1, stopId2) isin dom(connectionMap) =>
+        stopId1 isin dom(stopCapacityMap) /\ stopId2 isin dom(stopCapacityMap)),
+
+    -- all stops must have a connection to another stop
+    allStopsHaveConnection : Net -> Bool
+    allStopsHaveConnection(stopCapacityMap, connectionMap) is
+      (all stopId : StopId 
+        :- stopId isin dom(stopCapacityMap) =>
+        (exists stopId2 : StopId 
+          :- stopId2 isin dom(stopCapacityMap) /\ ((stopId, stopId2) isin dom(connectionMap) \/ (stopId2, stopId) isin dom(connectionMap)))),
+
+    -- check whether a net is valid
     isWellformed : Net -> Bool
-    isWellformed(n) is ...
+    isWellformed(n) is 
+      noSelfConnection(n) /\ allStopsInConnectionMapAreInStopCapacityMap(n) /\ allStopsHaveConnection(n)
 end  
