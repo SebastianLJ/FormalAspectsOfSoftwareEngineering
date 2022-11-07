@@ -11,12 +11,10 @@ class
     ConnectionMap = (StopId >< StopId) -m-> (Headway >< DrivingTime >< Capacity) -- connection map with headway and driving time
   value /* generators */
     empty :  Net = ([],[]),  -- the empty net
-
     -- insert a stop with a given name and capacity 
     insertStop : StopId >< Capacity >< Net -> Net
     insertStop(stopId, capacity, (stopCapacityMap, connectionMap)) is
-      (stopCapacityMap !! [stopId +> capacity], connectionMap),
-    
+      (stopCapacityMap !! [stopId +> capacity], connectionMap), 
     -- add a connection between given stops, 
     -- with the given minimum headway, capacity and minimum driving time
     addConnection : StopId >< StopId >< Headway >< Capacity >< DrivingTime >< Net -> Net
@@ -81,10 +79,14 @@ class
       (all stopId : StopId 
         :- stopId isin dom(stopCapacityMap) =>
         (exists stopId2 : StopId 
-          :- stopId2 isin dom(stopCapacityMap) /\ ((stopId, stopId2) isin dom(connectionMap) \/ (stopId2, stopId) isin dom(connectionMap)))),
+          :- stopId2 isin dom(stopCapacityMap) /\ 
+            ((stopId, stopId2) isin dom(connectionMap) \/ 
+            (stopId2, stopId) isin dom(connectionMap)))),
 
     -- check whether a net is valid
     isWellformed : Net -> Bool
     isWellformed(net) is 
-      noSelfConnection(net) /\ allStopsInConnectionMapAreInStopCapacityMap(net) /\ allStopsHaveConnection(net)
+      noSelfConnection(net) /\ 
+      allStopsInConnectionMapAreInStopCapacityMap(net) /\ 
+      allStopsHaveConnection(net)
 end  
