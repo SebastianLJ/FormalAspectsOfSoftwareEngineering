@@ -10,18 +10,16 @@ class
     StopCapacityMap = StopId -m-> Capacity, -- capacities of stops
     ConnectionMap = (StopId >< StopId) -m-> (Headway >< DrivingTime >< Capacity) -- connection map with headway and driving time
   value /* generators */
-    empty :  Net = ([],[]) ,  -- the empty net
-
+    empty :  Net = ([],[]),  -- the empty net
     -- insert a stop with a given name and capacity 
     insertStop : StopId >< Capacity >< Net -> Net
-    insertStop (stopId, capacity, (stopCapacityMap, connectionMap)) is
-      stopCapacityMap !! [stopId +> capacity],
-    
+    insertStop(stopId, capacity, (stopCapacityMap, connectionMap)) is
+      (stopCapacityMap !! [stopId +> capacity], connectionMap), 
     -- add a connection between given stops, 
     -- with the given minimum headway, capacity and minimum driving time
-    addConnection : StopId >< StopId  >< Headway >< Capacity >< DrivingTime >< Net -> Net
-    addConnection (stopId1, stopId2, headway, capacity, drivingTime, (stopCapacityMap, connectionMap)) is
-      connectionMap !! [(stopId1, stopId2) +> (headway, drivingTime, capacity)]
+    addConnection : StopId >< StopId >< Headway >< Capacity >< DrivingTime >< Net -> Net
+    addConnection(stopId1, stopId2, headway, capacity, drivingTime, (stopCapacityMap, connectionMap)) is
+      (stopCapacityMap ,connectionMap !! [(stopId1, stopId2) +> (headway, drivingTime, capacity)])
   value /* observers */
     -- check whether a stop is in a network     
     isIn : StopId >< Net -> Bool
@@ -34,7 +32,7 @@ class
     -- check whether two stops are directly connected in a network        
     areDirectlyConnected : StopId >< StopId >< Net -> Bool
     areDirectlyConnected(stopId1, stopId2, (stopCapacityMap, connectionMap)) is
-      (stopId1, stopId2) isin dom(connecitonMap),
+      (stopId1, stopId2) isin dom(connectionMap),
 
     -- get minimum headway between two connected stops        
     minHeadway : StopId >< StopId >< Net -~-> Headway
@@ -47,22 +45,48 @@ class
    -- get the capacity for a connection between two connected stops
     capacity : StopId >< StopId >< Net -~-> Capacity
     capacity(stopId1, stopId2, (stopCapacityMap, connectionMap)) is
-      let (headway, drivingTime, capacity) = connectionMap(stopid1, stopId2)
+      let (headway, drivingTime, capacity) = connectionMap(stopId1, stopId2)
       in
         capacity
       end,
  
     -- get minimum driving time between two connected stops        
     minDrivingTime : StopId >< StopId >< Net -~-> DrivingTime
-    minDrivingTime(stopId1, stopid2, (stopCapacityMap, connectionMap)) is
+    minDrivingTime(stopId1, stopId2, (stopCapacityMap, connectionMap)) is
       let (headway, drivingTime, capacity) = connectionMap(stopId1, stopId2)
       in 
         drivingTime
       end
 
-
- 
   value /* predicates to check nets */
+    -- a stop can not connect to itself
+    noSelfConnection : Net -> Bool
+    noSelfConnection(stopCapacityMap, connectionMap) is
+      (all (stopId1, stopId2) : StopId >< StopId 
+        :- (stopId1, stopId2) isin dom(connectionMap) =>
+        stopId1 ~= stopId2),
+
+    -- all stopIds included in the domain of the ConnectionMap must also be in the domain of the StopCapacityMap
+    allStopsInConnectionMapAreInStopCapacityMap : Net -> Bool
+    allStopsInConnectionMapAreInStopCapacityMap(stopCapacityMap, connectionMap) is
+      (all (stopId1, stopId2) : StopId >< StopId 
+        :- (stopId1, stopId2) isin dom(connectionMap) =>
+        stopId1 isin dom(stopCapacityMap) /\ stopId2 isin dom(stopCapacityMap)),
+
+    -- all stops must have a connection to another stop
+    allStopsHaveConnection : Net -> Bool
+    allStopsHaveConnection(stopCapacityMap, connectionMap) is
+      (all stopId : StopId 
+        :- stopId isin dom(stopCapacityMap) =>
+        (exists stopId2 : StopId 
+          :- stopId2 isin dom(stopCapacityMap) /\ 
+            ((stopId, stopId2) isin dom(connectionMap) \/ 
+            (stopId2, stopId) isin dom(connectionMap)))),
+
+    -- check whether a net is valid
     isWellformed : Net -> Bool
-    isWellformed(n) is ...
+    isWellformed(net) is 
+      noSelfConnection(net) /\ 
+      allStopsInConnectionMapAreInStopCapacityMap(net) /\ 
+      allStopsHaveConnection(net)
 end  
