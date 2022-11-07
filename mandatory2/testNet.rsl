@@ -46,34 +46,33 @@ scheme testNet =
 
 
       /* ConnectioMap */
-      Connections : ConnectionMap = ((StopB, StopD) +> (HeadwayBD >< DriveTimeBD >< CapacityBD), (stopA,StopB) +> (HeadwayAB >< DriveTimeAB >< CapacityAB), (StopB, StopC) +> (HeadwayBC >< DriveTimeBC >< CapacityBC) ) ,
-      StopCapacity : StopCapacityMap = (StopA +> CapacityA, StopB +> CapacityB, StopC +> CapacityC, StopD +> CapacityD),
+      connectionmap : ConnectionMap = [(StopB, StopD) +> (HeadwayBD, DriveTimeBD, CapacityBD), (stopA,StopB) +> (HeadwayAB, DriveTimeAB, CapacityAB), (StopB, StopC) +> (HeadwayBC, DriveTimeBC, CapacityBC)],
+      StopCapacity : StopCapacityMap = [StopA +> CapacityA, StopB +> CapacityB, StopC +> CapacityC, StopD +> CapacityD],
 
       /* NET */
       Net : Net = (StopCapacity, ConnectioMap)
 
     test_case 
-      /* generators */ 
-      /* insertStop */
+      /* generators  */ 
+      /* insertStop (Mads) */ 
       [t01]
 
       [t02]
       
-      /* addConnection  */
-
+      /* addConnection (Susan)  */
 
       /* observers */
-      /* isIn */
+      /* isIn (Mads) */
 
-      /* capacity  */
+      /* capacity (Mads)  */
 
-      /* areDirectlyConnect */
+      /* areDirectlyConnect (Mads) */
 
-      /* minHeadWay */
+      /* minHeadWay (Susan) */
 
-      /* capacity */
+      /* capacity (Susan) */
 
-      /* minDrivingTime */
+      /* minDrivingTime (Susan) */
 
     end
    
