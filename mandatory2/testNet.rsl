@@ -47,7 +47,9 @@ class
       
     connectionMap2 : ConnectionMap = [(StopB, StopD) +> (HeadwayBD, DriveTimeBD, CapacityBD), (StopA,StopB) +> (HeadwayAB, DriveTimeAB, CapacityAB), (StopB, StopC) +> (HeadwayBC, DriveTimeBC, CapacityBC),(StopD, StopF) +> (HeadwayBD, DriveTimeBD, CapacityBD)],
     stopCapacity2 : StopCapacityMap = [StopA +> CapacityA, StopB +> CapacityB, StopC +> CapacityC, StopD +> CapacityD, StopF +> CapacityF],
-      
+     
+    connectionMapSelfConnection : ConnectionMap = [(StopB, StopB) +> (HeadwayBD, DriveTimeBD, CapacityBD), (StopA,StopB) +> (HeadwayAB, DriveTimeAB, CapacityAB), (StopB, StopC) +> (HeadwayBC, DriveTimeBC, CapacityBC),(StopD, StopF) +> (HeadwayBD, DriveTimeBD, CapacityBD)],
+
     /* NET */
     Net : Net = (stopCapacity, connectionMap),
     Net2 : Net = (stopCapacity2, connectionMap2),
@@ -65,7 +67,7 @@ class
     /* observers */
     /* isIn (Mads) */
     [T02] isIn(StopA, Net), -- true
-    [T03] isIn(StopB, Net), -- true
+    [T03] isIn(StopF, Net), -- false
     [T04] isIn("A", Net), -- true
     [T05] isIn("B", Net), -- true
     [T06] isIn("T", Net), -- false
@@ -73,21 +75,31 @@ class
     [T08] isIn(StopF, insertStop(stopId, 2, Net)), -- true
       
     /* capacity (Mads)  */
-    [T09] capacity (StopB, StopD, Net) = 2, -- True
-    [T10] capacity (StopA, StopB, Net) = 1, -- True
-    [T11] capacity (StopB, StopD, Net) = 3, -- False
-    [T12] capacity (StopB, StopC, Net) = 8, -- False
+    [T09] capacity (StopB, Net) = 6, -- True
+    [T10] capacity (StopA, Net) = 2, -- True
+    [T11] capacity (StopB, Net) = 3, -- False
+    [T12] capacity (StopB, Net) = 8, -- False
 
     /* areDirectlyConnect (Mads) */
     [T13] areDirectlyConnect(stopA, stopB, Net), -- True
     [T14] areDirectlyConnect(stopA, StopC, Net), -- False
-    [T15] areDirectlyConnect(stopB, stopC, Net) -- True
+    [T15] areDirectlyConnect(stopB, stopC, Net), -- True
 
     /* minHeadWay (Susan) */
 
     /* capacity (Susan) */
 
     /* minDrivingTime (Susan) */
+
+    /* noSelfConnection (Mads ) */
+    [T00] noSelfConnection(Net), -- true
+    [T00] noSelfConnection(connectionMapSelfConnection), -- false
+    /* allStopsInConnectionMapAreInCapacityMap (Mads) */
+    [T00] allStopsInConnectionMapAreInCapacityMap(Net), -- true
+    [T00] allStopsInConnectionMapAreInCapacityMap((stopCapacity2,connectionMap)), -- false
+    /* allStopsHaveConnection (Susan) */
+
+    /* isWellformed (Susan)*/
   end 
 
    
