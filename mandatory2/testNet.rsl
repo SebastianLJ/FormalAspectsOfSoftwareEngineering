@@ -1,3 +1,5 @@
+NET
+
 scheme TESTNET =
 extend NET with 
 class
@@ -96,7 +98,7 @@ class
     [T00] noSelfConnection(connectionMapSelfConnection), -- false
     /* allStopsInConnectionMapAreInCapacityMap (Mads) */
     [T00] allStopsInConnectionMapAreInCapacityMap(Net), -- true
-    [T00] allStopsInConnectionMapAreInCapacityMap((stopCapacity2,connectionMap)), -- false
+    [T00] allStopsInConnectionMapAreInCapacityMap((stopCapacity2,connectionMap)) -- false
     /* allStopsHaveConnection (Susan) */
 
     /* isWellformed (Susan)*/
