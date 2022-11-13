@@ -53,8 +53,11 @@ scheme testNet =
       
       /* addConnection (Susan)  */
 
-/*       [t05] addConnection(StopA,StopB,HeadwayAB,CapacityAB,DriveTimeAB) = Net
- */
+      [t05] addConnection(StopA,StopB,HeadwayAB,CapacityAB,DriveTimeAB) = Net
+      [t05] addConnection(StopB,StopC,HeadwayBC,CapacityBC,DriveTimeBC) = Net
+      [t05] addConnection(StopB,StopD,HeadwayBD,CapacityBD,DriveTimeBD) = Net
+
+
       /* observers */
       /* isIn (Mads) */
 
@@ -63,10 +66,27 @@ scheme testNet =
       /* areDirectlyConnect (Mads) */
 
       /* minHeadWay (Susan) */
+      [td1]minHeadWay(StopA,StopB,Net) = HeadwayAB,
+      [td1]minHeadWay(StopB,StopC,Net) = HeadwayBC,
+      [td1]minHeadWay(StopB,StopD,Net) = HeadwayBD,
+      [td1]minHeadWay(StopA,StopB,Net) ~= HeadwayBD,
+
+
+
 
       /* capacity (Susan) */
+      [tm1]capacity(StopA,StopB,Net) = CapacityAB,
+      [tm1]capacity(StopB,Stopc,Net) = CapacityBC,
+      [tm1]capacity(StopB,StopD,Net) = CapacityBD,
+      [tm1]capacity(StopB,StopD,Net) ~= CapacityAB,
+
+
 
       /* minDrivingTime (Susan) */
+      [t00]minDrivingTime(StopA,StopB,Net) = DriveTimeAB,
+      [t01]minDrivingTime(StopB,StopC,Net) = DriveTimeBC,
+      [t02]minDrivingTime(StopB,StopD,Net) = DriveTimeBD,
+      [t02]minDrivingTime(StopA,StopB,Net) ~= DriveTimeBD,
    end 
 
    
