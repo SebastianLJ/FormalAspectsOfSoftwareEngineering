@@ -39,7 +39,16 @@ class
             nextStop(planRow, tl plan)
           end
         end
-      pre len l > 1
+      pre len plan > 1,
+
+      getConnection : StopId >< StopId >< Net -> Connection
+      getConnection(stop1, stop2, (capacityMap, connectionMap)) is
+      if connectionMap((stop1, stop2)) = []
+      then
+        connectionMap((stop2, stop1))
+      else
+        connectionMap((stop1, stop2))
+      end
 
      -- you can add more observers here
 
@@ -47,11 +56,45 @@ class
   value /* predicates to check time tables */   
 
 
-     -- every tram must have one plan)
-     -- the travel times between each stop must be greater than or equal to the driving time
-     -- the difference in departure times for any two trams moving on the same track must be greater than or equal to the headway time
-     -- the difference in arrival times for any two trams moving on the same track must be greater than or equal to the headway time
-     -- a tram must stop at any stop it visits
+    -- every tram must have exactly one plan
+    --  holds implicitly because TimeTable is mapping TramIds
+
+    -- the travel times between each stop must be greater than or equal to the driving time
+    timeBetweenStopsIsDrivingTime : Plan >< Net -~-> Bool
+    timeBetweenStopsIsDrivingTime(plan, net) is
+      if len plan > 1 then
+        let
+          (stopid1, arrTime1, depTime1) = hd plan,
+          (stopid2, arrTime2, depTime2) = hd (tl plan)
+        in
+          let 
+            (headway,drivingTime, capacity) = getConnection(stopid1, stopid2, net)
+          in
+            (depTime1 - arrTime2 >= drivingTime) /\ timeBetweenStopsIsDrivingTime(tl plan)
+          end
+        end
+      else
+        true
+      end,
+    -- the difference in departure times for any two trams moving on the same track must be greater than or equal to the headway time
+    timeBetweenDeparturesIsValidHeadway : TimeTable >< Net -> Bool
+    timeBetweenDeparturesIsValidHeadway(timetable, (capacityMap, connectionMap)) is
+      (all (stopid1, stopid2) : StopId >< StopId :- (stopid1, stopid2) isin dom(connectionMap) =>
+        let (headway,drivingTime, capacity) = connectionMap((stopid1, stopid2))
+        in
+          (all plan: Plan :- plan isin rng(timetable) =>
+            (all planRow : PlanRow :- planRow isin plan =>
+              let 
+                (stopid1, arrTime1, depTime1) = planRow
+                (stopid2, arrTime2, depTime2) = nextStop(planRow, plan)
+            )
+          )
+        end
+        
+      )
+
+    -- the difference in arrival times for any two trams moving on the same track must be greater than or equal to the headway time
+    -- a tram must stop at any stop it visits
     tramStopsAtAllStopsItPasses : TimeTable -> Bool
     tramStopsAtAllStopsItPasses(timetable) is
       (all tramid : TramId :- tramid isin dom(timetable) =>
@@ -66,7 +109,7 @@ class
         (all stopid : StopId :- stopid isin dom(capacitymap) =>
           (all tramid : TramId :- tramid isin dom(timetable) =>
             (all (stopid, arrTime, depTime) : PlanRow :- planRow isin timetable(tramid) =>
-              
+
                 
 
               (depTime - arrTime) <= capacity(stopid, net)
