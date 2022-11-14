@@ -59,8 +59,22 @@ class
           depTime - arrTime >= 1
         )
       )
-     -- the departure time and the arrival time can not exceed 60 
+      
      -- the number of trains stopped at a stop must not exceed the capacity of the stop
+     trainStopCapacity : CapacityMap >< TimeTable -> Bool
+     trainStopCapacity(capacitymap, timetable) is 
+        (all stopid : StopId :- stopid isin dom(capacitymap) =>
+          (all tramid : TramId :- tramid isin dom(timetable) =>
+            (all (stopid, arrTime, depTime) : PlanRow :- planRow isin timetable(tramid) =>
+              
+                
+
+              (depTime - arrTime) <= capacity(stopid, net)
+            )
+          )
+        )
+     
+    
      -- the number of trains on a track must not exceed the capacity of the track
      isWellformed : TimeTable >< Net -~-> Bool
      isWellformed(t, n) is ...,
