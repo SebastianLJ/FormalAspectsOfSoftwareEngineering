@@ -31,9 +31,9 @@ class
      -- you can add more observers here
 
  
-  value /* predicates to check time tables */   
-     isWellformed : TimeTable >< Net -~-> Bool
-     isWellformed(t, n) is ...,
+   /* predicates to check time tables */   
+   --  isWellformed : TimeTable >< Net -~-> Bool
+   --  isWellformed(t, n) is ...,
 
      -- every tram must have one plan
      -- the travel times between each stop must be greater than or equal to the driving time
@@ -43,6 +43,6 @@ class
      -- the departure time and the arrival time can not exceed 60 
      -- the number of trains stopped at a stop must not exceed the capacity of the stop
      -- the number of trains on a track must not exceed the capacity of the track
-     ...
+     
      
 end  
