@@ -22,10 +22,10 @@ class
         timetable !! [tramid +> timetable(tramid) ^ <.(stopid, arrival, departure).>]
 
   value /* observers */
-     -- check whether a tram with a given name exists in a given time table
-     isIn : TramId >< TimeTable -> Bool
-     isIn(tramid, timetable) is
-       tramid isin dom(timetable),
+    -- check whether a tram with a given name exists in a given time table
+    isIn : TramId >< TimeTable -> Bool
+    isIn(tramid, timetable) is
+      tramid isin dom(timetable),
 
       nextStop : PlanRow >< Plan -~-> StopId
       nextStop(planRow, plan) is
@@ -44,7 +44,7 @@ class
             nextStop(planRow, tl plan)
           end
         end
-      pre len plan > 1,
+        pre len plan > 1,
 
       getConnection : StopId >< StopId >< Net -~-> Connection
       getConnection(stop1, stop2, (capacityMap, connectionMap)) is
@@ -53,9 +53,46 @@ class
         connectionMap((stop2, stop1))
       else
         connectionMap((stop1, stop2))
-      end
+      end,
+    -- you can add more observers here
+    getAllPlansUsingConnection : StopId >< StopId >< TimeTable -> PlanRow-set
+    getAllPlansUsingConnection(stopid1, stopid2, timetable) is
+      let
+        allPlans = rng(timetable)
+      in
+        buildAllPlansUsingConnection(stopid1, stopid2, allPlans)
+      end,
 
-     -- you can add more observers here
+    buildAllPlansUsingConnection : StopId >< StopId >< Plan-set -> PlanRow-set
+    buildAllPlansUsingConnection(stopid1, stopid2, plans) is
+      if plans = {}
+      then {}
+      else
+        let
+          plan = hd plans
+        in
+          {findPlanRowInPlan} union buildAllPlansUsingConnection(stopid1, stopid2, plans \ {plan})
+        end
+      end,
+
+    findPlanRowInPlan : StopId >< StopId >< Plan -~-> PlanRow
+    findPlanRowInPlan(stopid1, stopid2, plan) is
+      if len plan > 0
+      then
+        let
+          (hStopId, hArrTime, hDepTime) = hd plan,
+          nStopId = nextStop(hd plan, plan)
+        in
+          if hStopId = stopid1 /\ nStopId = stopid2
+          then
+            (hStopId, hArrTime, hDepTime)
+          else
+            findPlanRowInPlan(stopid1, stopid2, tl plan)
+          end
+        end
+      else
+        ("0",0,0)
+      end
 
  
   value /* predicates to check time tables */   
