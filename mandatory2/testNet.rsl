@@ -1,5 +1,4 @@
 NET
-
 scheme TESTNET =
 extend NET with 
 class
@@ -51,11 +50,12 @@ class
     stopCapacity2 : CapacityMap = [StopA +> CapacityA, StopB +> CapacityB, StopC +> CapacityC, StopD +> CapacityD, StopF +> CapacityF],
      
     connectionMapSelfConnection : ConnectionMap = [(StopB, StopD) +> (HeadwayBD, DriveTimeBD, CapacityBD), (StopA,StopB) +> (HeadwayAB, DriveTimeAB, CapacityAB), (StopB, StopC) +> (HeadwayBC, DriveTimeBC, CapacityBC),(StopD, StopF) +> (HeadwayBD, DriveTimeBD, CapacityBD)],
-
+    
     /* NET */
     Net : Net = (stopCapacity, connectionMap),
     Net2 : Net = (stopCapacity2, connectionMap2),
-    NetWithAddedStop : Net = (stopCapacity2, connectionMap)
+    NetWithAddedStop : Net = (stopCapacity2, connectionMap),
+    NetWithSelfConnect : Net = (stopCapacity, connectionMapSelfConnection)
 
   test_case 
     /* generators  */ 
@@ -122,8 +122,8 @@ class
 
     /* noSelfConnection (Mads ) */
     [T34] noSelfConnection(Net), -- true
-/*     [T35] noSelfConnection(connectionMapSelfConnection), -- false
- */    /* allStopsInConnectionMapAreInCapacityMap (Mads) */
+     [T35] noSelfConnection(NetWithSelfConnect), -- false
+    /* allStopsInConnectionMapAreInCapacityMap (Mads) */
     [T36] allStopsInConnectionMapAreInCapacityMap(Net), -- true
     [T37] allStopsInConnectionMapAreInCapacityMap((stopCapacity2,connectionMap)), -- false
     /* allStopsHaveConnection (Susan) */
