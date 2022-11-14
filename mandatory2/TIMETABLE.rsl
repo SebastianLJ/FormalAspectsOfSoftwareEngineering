@@ -56,9 +56,10 @@ class
   value /* predicates to check time tables */   
 
 
-     -- every tram must have one plan)
-     -- the travel times between each stop must be greater than or equal to the driving time
-
+    -- every tram must have exactly one plan
+    --  holds implicitly because TimeTable is mapping TramIds
+    
+    -- the travel times between each stop must be greater than or equal to the driving time
     timeBetweenStopsIsDrivingTime : Plan >< Net -~-> Bool
     timeBetweenStopsIsDrivingTime(plan, net) is
       if len plan > 1 then
