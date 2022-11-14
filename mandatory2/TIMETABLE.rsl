@@ -4,7 +4,7 @@ class
   type 
     TimeTable = TramId -m-> Plan, -- time tables
     TramId = Text, -- tram names
-    Plan = StopId -m-> (Time >< Time)
+    Plan = (StopId >< Time >< Time)-list
 
 
     value /* generators */
@@ -35,9 +35,14 @@ class
      isWellformed : TimeTable >< Net -~-> Bool
      isWellformed(t, n) is ...,
 
-     -- every tram must have one plan
+     -- every tram must have one plan)
      -- the travel times between each stop must be greater than or equal to the driving time
      -- the difference in departure times for any two trams moving on the same track must be greater than or equal to the headway time
+     isValidHeadway : TimeTable >< Net -> Bool
+     isValidHeadway(timetable, net) is
+        (all (tramId, plan) : TramId >< Plan :- (tramId, plan) isin timetable =>
+
+        )
      -- the difference in arrival times for any two trams moving on the same track must be greater than or equal to the headway time
      -- any stop must be visited by a tram
      -- the departure time and the arrival time can not exceed 60 
