@@ -49,91 +49,87 @@ class
     connectionMap2 : ConnectionMap = [(StopB, StopD) +> (HeadwayBD, DriveTimeBD, CapacityBD), (StopA,StopB) +> (HeadwayAB, DriveTimeAB, CapacityAB), (StopB, StopC) +> (HeadwayBC, DriveTimeBC, CapacityBC),(StopD, StopF) +> (HeadwayBD, DriveTimeBD, CapacityBD)],
     stopCapacity2 : CapacityMap = [StopA +> CapacityA, StopB +> CapacityB, StopC +> CapacityC, StopD +> CapacityD, StopF +> CapacityF],
      
-    connectionMapSelfConnection : ConnectionMap = [(StopB, StopD) +> (HeadwayBD, DriveTimeBD, CapacityBD), (StopA,StopB) +> (HeadwayAB, DriveTimeAB, CapacityAB), (StopB, StopC) +> (HeadwayBC, DriveTimeBC, CapacityBC),(StopD, StopF) +> (HeadwayBD, DriveTimeBD, CapacityBD)],
+    connectionMapSelfConnection : ConnectionMap = [(StopB, StopB) +> (HeadwayBD, DriveTimeBD, CapacityBD), (StopA,StopB) +> (HeadwayAB, DriveTimeAB, CapacityAB), (StopB, StopC) +> (HeadwayBC, DriveTimeBC, CapacityBC),(StopD, StopF) +> (HeadwayBD, DriveTimeBD, CapacityBD)],
     
     /* NET */
     Net : Net = (stopCapacity, connectionMap),
-    Net2 : Net = (stopCapacity2, connectionMap2),
+    Net2 : Net = (stopCapacity2, connectionMap),
     NetWithAddedStop : Net = (stopCapacity2, connectionMap),
     NetWithSelfConnect : Net = (stopCapacity, connectionMapSelfConnection)
 
   test_case 
     /* generators  */ 
     /* insertStop (Mads) */       
-    [T01] insertStop(StopF, CapacityF, Net) = NetWithAddedStop, -- return true
+    [T_insertStop] insertStop(StopF, CapacityF, Net) = NetWithAddedStop, -- return true
       
     /* addConnection (Susan)  */
-    [t02] addConnection(StopA,StopB,HeadwayAB,CapacityAB,DriveTimeAB,Net) = Net,
-    [t03] addConnection(StopB,StopC,HeadwayBC,CapacityBC,DriveTimeBC,Net) = Net,
-    [t04] addConnection(StopB,StopD,HeadwayBD,CapacityBD,DriveTimeBD,Net) = Net,
+    [T_addConnection] addConnection(StopA,StopB,HeadwayAB,CapacityAB,DriveTimeAB,Net) = Net,
+    
 
 
     /* observers */
     /* isIn (Mads) */
-    [T05] isIn(StopA, Net), -- true
-    [T06] isIn(StopF, Net), -- false
-    [T07] isIn("A", Net), -- true
-    [T08] isIn("B", Net), -- true
-    [T09] isIn("T", Net), -- false
-    [T10] isIn("Q", Net), -- false
-    [T11] isIn(StopF, insertStop(StopF, 2, Net)), -- true
+    [T_AisIn] isIn(StopA, Net), -- true
+    [T_FisNotIn] isIn(StopF, Net) = false, -- false
+    [T_charAisIn] isIn("A", Net), -- true
+    [T_charBisIn] isIn("B", Net), -- true
+    [T_charTisNotIn] isIn("T", Net) = false, -- false
+    [T_charQisNotIn] isIn("Q", Net) = false, -- false
+    [T_isInInsertStop] isIn(StopF, insertStop(StopF, 2, Net)), -- true
       
     /* capacity (Mads)  */
-    [T12] capacity (StopB, Net) = 6, -- True
-    [T13] capacity (StopA, Net) = 2, -- True
-    [T14] capacity (StopB, Net) = 3, -- False
-    [T15] capacity (StopB, Net) = 8, -- False
+    [T_checkCapacityB] capacity (StopB, Net) = 6, -- True
+    [T_checkCapacityA] capacity (StopA, Net) = 2, -- True
+    [T_checkFalseCapacityB] capacity (StopB, Net) ~= 3, -- False
+    [T_checkFalseCapacityA] capacity (StopA, Net) ~= 8, -- False
 
     /* areDirectlyConnect (Mads) */
-    [T16] areDirectlyConnected(StopA, StopB, Net), -- True
-    [T17] areDirectlyConnected(StopA, StopC, Net), -- False
-    [T18] areDirectlyConnected(StopB, StopC, Net), -- True
+    [T_checkDirectConnectionAB] areDirectlyConnected(StopA, StopB, Net), -- True
+    [T_checkNotExistingDirectConnectionAC] areDirectlyConnected(StopA, StopC, Net) = false , -- False
+    [T_checkDirectConnectionBC] areDirectlyConnected(StopB, StopC, Net), -- True
 
 
     /* minHeadWay (Susan) */
-    [t19]minHeadway(StopA,StopB,Net) = HeadwayAB, --True
-    [t20]minHeadway(StopB,StopC,Net) = HeadwayBC, --True
-    [t21]minHeadway(StopB,StopD,Net) = HeadwayBD, --True
-    [t22]minHeadway(StopA,StopD,Net) = HeadwayAB, --False
-    [t23]minHeadway(StopA,StopB,Net) ~= HeadwayBD, --True
+    [T_ExistingMinimumHeadwayAB]minHeadway(StopA,StopB,Net) = HeadwayAB, --True
+    [T_ExistingMinimumHeadwayBC]minHeadway(StopB,StopC,Net) = HeadwayBC, --True
+    [T_ExistingMinimumHeadwayBD]minHeadway(StopB,StopD,Net) = HeadwayBD, --True
+    [T_FalseExisting_MinimumHeadwayAB]minHeadway(StopA,StopB,Net) ~= HeadwayBD, --True
 
 
 
 
     /* capacity (Susan) */
-    [t24]capacity(StopA,StopB,Net) = CapacityAB, --true
-    [t25]capacity(StopB,StopC,Net) = CapacityBC, --true
-    [t26]capacity(StopB,StopD,Net) = CapacityBD, --true
-    [t27]capacity(StopA,StopD,Net) = CapacityBD, --false
-    [t28]capacity(StopB,StopD,Net) ~= CapacityAB, --true
+    [T_ExistingCapacityAB]capacity(StopA,StopB,Net) = CapacityAB, --true
+    [T_ExistingCapacityBC]capacity(StopB,StopC,Net) = CapacityBC, --true
+    [T_ExistingCapacityBD]capacity(StopB,StopD,Net) = CapacityBD, --true
+    [T_FalseCapacityBD]capacity(StopB,StopD,Net) ~= CapacityAB, --true
     
 
 
 
 
     /* minDrivingTime (Susan) */
-    [t29]minDrivingTime(StopA,StopB,Net) = DriveTimeAB, --true
-    [t30]minDrivingTime(StopB,StopC,Net) = DriveTimeBC, --true
-    [t31]minDrivingTime(StopB,StopD,Net) = DriveTimeBD, --true
-    [t32]minDrivingTime(StopA,StopF,Net) = DriveTimeBD, --false
-    [t33]minDrivingTime(StopA,StopB,Net) ~= DriveTimeBD, --true
+    [T_ExistingMinimumDrivingTimeAB]minDrivingTime(StopA,StopB,Net) = DriveTimeAB, --true
+    [T_ExistingMinimumDrivingTimeBC]minDrivingTime(StopB,StopC,Net) = DriveTimeBC, --true
+    [T_ExistingMinimumDrivingTimeBD]minDrivingTime(StopB,StopD,Net) = DriveTimeBD, --true
+    [T_FalseMinimumDrivingTimeAB]minDrivingTime(StopA,StopB,Net) ~= DriveTimeBD, --true
 
     
 
     /* noSelfConnection (Mads ) */
-    [T34] noSelfConnection(Net), -- true
-     [T35] noSelfConnection(NetWithSelfConnect), -- false
+    [T_NotExistingSelfConnection] noSelfConnection(Net), -- true
+     [T_ExistingSelfConnection] noSelfConnection(NetWithSelfConnect) = false, -- false
     /* allStopsInConnectionMapAreInCapacityMap (Mads) */
-    [T36] allStopsInConnectionMapAreInCapacityMap(Net), -- true
-    [T37] allStopsInConnectionMapAreInCapacityMap((stopCapacity2,connectionMap)), -- false
+    [T_allStopsInConnectionMapAreInCapacityMap] allStopsInConnectionMapAreInCapacityMap(Net), -- true
+    [T_allStopsInConnectionMapAreNotInCapacityMap] allStopsInConnectionMapAreInCapacityMap((stopCapacity,connectionMap2)) = false, -- false
     /* allStopsHaveConnection (Susan) */
-    [T38] allStopsHaveConnection(Net), -- true
-    [T39] allStopsHaveConnection(Net2), -- false
+    [T_allStopsHaveConnection] allStopsHaveConnection(Net), -- true
+    [T_allStopsDoesnotHaveConnection] allStopsHaveConnection(Net2) = false, -- false
 
     /* isWellformed (Susan)*/
-    [T40] isWellformed(Net), -- true
-    [T41] isWellformed(Net2), -- false
-    [T42] isWellformed((stopCapacity2,connectionMap)) -- false
+    [T_validNet] isWellformed(Net), -- true
+    [T_NotValidNet] isWellformed(Net2) = false, -- false
+    [T_NotValidNetCheckinginDifferentWay] isWellformed((stopCapacity2,connectionMap)) = false -- false
 
   end 
 
