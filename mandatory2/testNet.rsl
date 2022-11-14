@@ -1,5 +1,5 @@
 NET
-scheme TESTNET =
+scheme testNet =
 extend NET with 
 class
   value
