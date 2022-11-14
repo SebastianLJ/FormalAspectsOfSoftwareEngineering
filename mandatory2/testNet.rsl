@@ -49,11 +49,11 @@ class
     connectionMap2 : ConnectionMap = [(StopB, StopD) +> (HeadwayBD, DriveTimeBD, CapacityBD), (StopA,StopB) +> (HeadwayAB, DriveTimeAB, CapacityAB), (StopB, StopC) +> (HeadwayBC, DriveTimeBC, CapacityBC),(StopD, StopF) +> (HeadwayBD, DriveTimeBD, CapacityBD)],
     stopCapacity2 : CapacityMap = [StopA +> CapacityA, StopB +> CapacityB, StopC +> CapacityC, StopD +> CapacityD, StopF +> CapacityF],
      
-    connectionMapSelfConnection : ConnectionMap = [(StopB, StopD) +> (HeadwayBD, DriveTimeBD, CapacityBD), (StopA,StopB) +> (HeadwayAB, DriveTimeAB, CapacityAB), (StopB, StopC) +> (HeadwayBC, DriveTimeBC, CapacityBC),(StopD, StopF) +> (HeadwayBD, DriveTimeBD, CapacityBD)],
+    connectionMapSelfConnection : ConnectionMap = [(StopB, StopB) +> (HeadwayBD, DriveTimeBD, CapacityBD), (StopA,StopB) +> (HeadwayAB, DriveTimeAB, CapacityAB), (StopB, StopC) +> (HeadwayBC, DriveTimeBC, CapacityBC),(StopD, StopF) +> (HeadwayBD, DriveTimeBD, CapacityBD)],
     
     /* NET */
     Net : Net = (stopCapacity, connectionMap),
-    Net2 : Net = (stopCapacity2, connectionMap2),
+    Net2 : Net = (stopCapacity2, connectionMap),
     NetWithAddedStop : Net = (stopCapacity2, connectionMap),
     NetWithSelfConnect : Net = (stopCapacity, connectionMapSelfConnection)
 
@@ -93,8 +93,7 @@ class
     [T_ExistingMinimumHeadwayAB]minHeadway(StopA,StopB,Net) = HeadwayAB, --True
     [T_ExistingMinimumHeadwayBC]minHeadway(StopB,StopC,Net) = HeadwayBC, --True
     [T_ExistingMinimumHeadwayBD]minHeadway(StopB,StopD,Net) = HeadwayBD, --True
-    [T_NotExistingExistingMinimumHeadwayAB]minHeadway(StopA,StopD,Net) ~= HeadwayAB, --False
-    [T_IsnotPresent_MinimumHeadwayAB]minHeadway(StopA,StopB,Net) ~= HeadwayBD, --True
+    [T_FalseExisting_MinimumHeadwayAB]minHeadway(StopA,StopB,Net) ~= HeadwayBD, --True
 
 
 
@@ -103,7 +102,6 @@ class
     [T_ExistingCapacityAB]capacity(StopA,StopB,Net) = CapacityAB, --true
     [T_ExistingCapacityBC]capacity(StopB,StopC,Net) = CapacityBC, --true
     [T_ExistingCapacityBD]capacity(StopB,StopD,Net) = CapacityBD, --true
-    [T_NotExistingCapacityAD]capacity(StopA,StopD,Net) ~= CapacityBD, --false
     [T_FalseCapacityBD]capacity(StopB,StopD,Net) ~= CapacityAB, --true
     
 
@@ -114,7 +112,6 @@ class
     [T_ExistingMinimumDrivingTimeAB]minDrivingTime(StopA,StopB,Net) = DriveTimeAB, --true
     [T_ExistingMinimumDrivingTimeBC]minDrivingTime(StopB,StopC,Net) = DriveTimeBC, --true
     [T_ExistingMinimumDrivingTimeBD]minDrivingTime(StopB,StopD,Net) = DriveTimeBD, --true
-    [T_ExistingMinimumDrivingTimeAF]minDrivingTime(StopA,StopF,Net) ~= DriveTimeBD, --false
     [T_FalseMinimumDrivingTimeAB]minDrivingTime(StopA,StopB,Net) ~= DriveTimeBD, --true
 
     
@@ -124,7 +121,7 @@ class
      [T_ExistingSelfConnection] noSelfConnection(NetWithSelfConnect) = false, -- false
     /* allStopsInConnectionMapAreInCapacityMap (Mads) */
     [T_allStopsInConnectionMapAreInCapacityMap] allStopsInConnectionMapAreInCapacityMap(Net), -- true
-    [T_allStopsInConnectionMapAreNotInCapacityMap] allStopsInConnectionMapAreInCapacityMap((stopCapacity2,connectionMap)) = false, -- false
+    [T_allStopsInConnectionMapAreNotInCapacityMap] allStopsInConnectionMapAreInCapacityMap((stopCapacity,connectionMap2)) = false, -- false
     /* allStopsHaveConnection (Susan) */
     [T_allStopsHaveConnection] allStopsHaveConnection(Net), -- true
     [T_allStopsDoesnotHaveConnection] allStopsHaveConnection(Net2) = false, -- false

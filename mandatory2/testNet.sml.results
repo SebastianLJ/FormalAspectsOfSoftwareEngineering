@@ -1,0 +1,41 @@
+[T_insertStop] true
+[T_addConnection] true
+[T_AisIn] true
+[T_FisNotIn] false
+[T_charAisIn] true
+[T_charBisIn] true
+[T_charTisNotIn] false
+[T_charQisNotIn] false
+[T_isInInsertStop] true
+[T_checkCapacityB] true
+[T_checkCapacityA] true
+[T_checkFalseCapacityB] false
+[T_checkFalseCapacityA] false
+[T_checkDirectConnectionAB] true
+[T_checkNotExistingDirectConnectionAC] false
+[T_checkDirectConnectionBC] true
+[T_ExistingMinimumHeadwayAB] true
+[T_ExistingMinimumHeadwayBC] true
+[T_ExistingMinimumHeadwayBD] true
+[T_NotExistingExistingMinimumHeadwayAB] Map [("B","C") +> (2,12,3), ("A","B") +> (1,10,1), ("B","D") +> (2,7,2)] applied to non-domain value ("A","D")
+[T_IsnotPresent_MinimumHeadwayAB] true
+[T_ExistingCapacityAB] true
+[T_ExistingCapacityBC] true
+[T_ExistingCapacityBD] true
+[T_NotExistingCapacityAD] Map [("B","C") +> (2,12,3), ("A","B") +> (1,10,1), ("B","D") +> (2,7,2)] applied to non-domain value ("A","D")
+[T_FalseCapacityBD] true
+[T_ExistingMinimumDrivingTimeAB] true
+[T_ExistingMinimumDrivingTimeBC] true
+[T_ExistingMinimumDrivingTimeBD] true
+[T_ExistingMinimumDrivingTimeAF] Map [("B","C") +> (2,12,3), ("A","B") +> (1,10,1), ("B","D") +> (2,7,2)] applied to non-domain value ("A","F")
+[T_FalseMinimumDrivingTimeAB] true
+[T_NotExistingSelfConnection] true
+[T_ExistingSelfConnection] true
+[T_allStopsInConnectionMapAreInCapacityMap] true
+[T_allStopsInConnectionMapAreNotInCapacityMap] true
+[T_allStopsHaveConnection] true
+[T_allStopsDoesnotHaveConnection] true
+[T_validNet] true
+[T_NotValidNet] true
+[T_NotValidNetCheckinginDifferentWay] false
+3 error(s)
