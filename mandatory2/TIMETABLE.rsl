@@ -19,14 +19,31 @@ class
       -- add a stop with arrival time and departure time to the plan for a given tram
       addStop : TramId >< StopId >< Time >< Time >< TimeTable -> TimeTable
       addStop(tramid, stopid, arrival, departure, timetable) is
-        timetable !! [tramid +> ([stopid +> (arrival, departure)])]
+        timetable !! [tramid +> timetable(tramid) ^ <.stopid, arrival, departure.>]
 
   value /* observers */
      -- check whether a tram with a given name exists in a given time table
      isIn : TramId >< TimeTable -> Bool
      isIn(tramid, timetable) is
-       tramid isin dom(timetable)
-      
+       tramid isin dom(timetable),
+
+      nextStop : StopId >< Plan -~-> stopId
+      nextStop(stopid, plan) is
+        if len plan > 1
+        then
+          let
+            (istop, iarrival, ideparture) = hd plan
+          in
+            if iStop = stopid
+            then 
+              let (nstop, narrival, ndeparture) = hd (tl plan)
+              in nstop end
+            else
+              nextStop(StopId, tl plan)
+            end
+          end
+        end
+        pre len l > 0
 
      -- you can add more observers here
 
@@ -38,12 +55,12 @@ class
      -- every tram must have one plan)
      -- the travel times between each stop must be greater than or equal to the driving time
      -- the difference in departure times for any two trams moving on the same track must be greater than or equal to the headway time
-     isValidHeadway : TimeTable >< Net -> Bool
-     isValidHeadway(timetable, net) is
-        (all (tramId, plan) : TramId >< Plan :- (tramId, plan) isin timetable =>
-
-        )
      -- the difference in arrival times for any two trams moving on the same track must be greater than or equal to the headway time
+     isValidMinHeadway : TimeTable >< Net -> Bool
+     isValidMinHeadway(timetable, net) is
+        (all (tramId, plan) : TramId >< Plan :- (tramId, plan) isin timetable =>
+          
+        )
      -- any stop must be visited by a tram
      -- the departure time and the arrival time can not exceed 60 
      -- the number of trains stopped at a stop must not exceed the capacity of the stop
