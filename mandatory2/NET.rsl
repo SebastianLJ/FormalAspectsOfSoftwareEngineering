@@ -8,7 +8,8 @@ class
     Capacity = Nat, -- capacities
     StopId = Text,  -- names of stops
     CapacityMap = StopId -m-> Capacity, -- capacities of stops
-    ConnectionMap = (StopId >< StopId) -m-> (Headway >< DrivingTime >< Capacity) -- connection map with headway and driving time
+    Connection = (Headway >< DrivingTime >< Capacity),
+    ConnectionMap = (StopId >< StopId) -m-> Connection -- connection map with headway and driving time
   value /* generators */
     empty :  Net = ([],[]),  -- the empty net
     -- insert a stop with a given name and capacity 
