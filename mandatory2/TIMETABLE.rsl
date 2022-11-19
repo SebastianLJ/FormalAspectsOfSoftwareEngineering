@@ -71,7 +71,7 @@ class
         let
           plan = hd plans
         in
-          {findPlanRowInPlan} union buildAllPlansUsingConnection(stopid1, stopid2, plans \ {plan})
+          {findPlanRowInPlan(stopid1, stopid2, plan)} union buildAllPlansUsingConnection(stopid1, stopid2, plans \ {plan})
         end
       end,
 
