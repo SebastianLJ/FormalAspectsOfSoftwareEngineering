@@ -102,17 +102,25 @@ class
           depTime - arrTime >= 1
         )
       )
+
+     TramsinStops : StopId >< TimeTable  -> Nat
+     TramIds(stopid, timetable) is
+        (all tramid : TramId :- tramid isin dom(timetable) =>
+          (all (stopid, arrTime, depTime) : PlanRow :- planRow isin timetable(tramid) =>
+            stopid = stopid
+          )
+        )
+
+
       
      -- the number of trains stopped at a stop must not exceed the capacity of the stop
      trainStopCapacity : CapacityMap >< TimeTable -> Bool
      trainStopCapacity(capacitymap, timetable) is 
         (all stopid : StopId :- stopid isin dom(capacitymap) =>
-          (all tramid : TramId :- tramid isin dom(timetable) =>
-            (all (stopid, arrTime, depTime) : PlanRow :- planRow isin timetable(tramid) =>
+          (all tramid : TramId >< TramId :- tramid isin dom(timetable) =>
+            (all (stopid, arrTime, depTime) : PlanRow :- planRow isin timetable(tramid) =>                
 
-                
-
-              (depTime - arrTime) <= capacity(stopid, net)
+               (depTime - arrTime) <= capacity(stopid, net)
             )
           )
         )
