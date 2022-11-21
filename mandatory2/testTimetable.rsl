@@ -56,7 +56,6 @@ scheme testTimeTable =
             timetable1 : TimeTable = ["tram1" +> plan1, "tram2" +> plan2]
 
         test_case
-            [t01] getAllPlansUsingConnection("B", "D", timetable1),
             [ValidDrivingTime] timeBetweenStopsIsDrivingTime(plan1, net),
             [ValidTimeBetweenDeparture] timeBetweenDeparturesIsValidHeadway(timetable1, net),
             [tramStopsAtAllStopsItPasses] tramStopsAtAllStopsItPasses(timetable1)

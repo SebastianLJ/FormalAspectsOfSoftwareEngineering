@@ -68,9 +68,9 @@ class
       getConnection(stop1, stop2, (capacityMap, connectionMap)) is
       if (stop1, stop2) isin dom(connectionMap)
       then
-        connectionMap((stop2, stop1))
-      else
         connectionMap((stop1, stop2))
+      else
+        connectionMap((stop2, stop1))
       end,
     -- you can add more observers here
     getAllPlansUsingConnection : StopId >< StopId >< TimeTable -> PlanRow-set
@@ -121,21 +121,22 @@ class
 
     -- the travel times between each stop must be greater than or equal to the driving time
     timeBetweenStopsIsDrivingTime : Plan >< Net -~-> Bool
-    timeBetweenStopsIsDrivingTime(plan, net) is
+    timeBetweenStopsIsDrivingTime(plan, (capacityMap, connectionMap)) is
       if len plan > 1 then
         let
           (stopid1, arrTime1, depTime1) = hd plan,
           (stopid2, arrTime2, depTime2) = hd (tl plan)
         in
           let 
-            (headway,drivingTime, capacity) = getConnection(stopid1, stopid2, net)
+            (headway,drivingTime, capacity) = getConnection(stopid1, stopid2, (capacityMap, connectionMap))
           in
-            (depTime1 - arrTime2 >= drivingTime) /\ timeBetweenStopsIsDrivingTime(tl plan, net)
+            (arrTime2 - depTime1 >= drivingTime) /\ timeBetweenStopsIsDrivingTime(tl plan, (capacityMap, connectionMap))
           end
         end
       else
         true
       end,
+
     -- the difference in departure times for any two trams moving on the same track must be greater than or equal to the headway time
     timeBetweenDeparturesIsValidHeadway : TimeTable >< Net -> Bool
     timeBetweenDeparturesIsValidHeadway(timetable, (capacityMap, connectionMap)) is
@@ -159,7 +160,7 @@ class
           depTime - arrTime >= 1
         )
       ),
-      
+
      -- the number of trains stopped at a stop must not exceed the capacity of the stop
 /*      StopCapacityIsNotExceeded : Plan >< Net -> Bool
      StopCapacityIsNotExceeded(plan, net) is (all stopId : StopId :- stopId isin dom(planRow) =>
