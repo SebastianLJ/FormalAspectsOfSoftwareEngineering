@@ -36,7 +36,7 @@ class
     isIn(tramid, timetable) is
       tramid isin dom(timetable),
 
-      nextStop : PlanRow >< Plan -~-> StopId
+      nextStop : PlanRow >< Plan -~-> PlanRow
       nextStop(planRow, plan) is
         let
           iPlanRow = hd plan
@@ -46,7 +46,7 @@ class
             let 
               (sid, arrt, dept) = hd (tl plan)
             in 
-              sid
+              (sid, arrt, dept)
             end
           else
             if len(tl plan) > 1
@@ -56,7 +56,7 @@ class
               let 
                 (sid, arrt, dept) = iPlanRow
               in 
-                sid
+                iPlanRow
               end
             end
           end
@@ -96,7 +96,7 @@ class
     findDepartureRowInPlan(stopid1, stopid2, plan) is
       let
         (hStopId, hArrTime, hDepTime) = hd plan,
-        nStopId = nextStop(hd plan, plan)
+        (nStopId, nArrTime, nDepTime) = nextStop(hd plan, plan)
       in
         if hStopId = stopid1 /\ nStopId = stopid2
         then
@@ -136,7 +136,7 @@ class
     findArrivalRowInPlan(stopid1, stopid2, plan) is
       let
         (hStopId, hArrTime, hDepTime) = hd plan,
-        (nStopId, nArrTime, nDepTime) = hd (tl plan)
+        (nStopId, nArrTime, nDepTime) = nextStop(hd plan, plan)
       in
         if hStopId = stopid1 /\ nStopId = stopid2
         then
@@ -183,7 +183,7 @@ class
         let (headway,drivingTime, capacity) = connectionMap((stopid1, stopid2))
         in
           (all (sid1, arrt1, dept1) : PlanRow :- (sid1, arrt1, dept1) isin getAllDepaturesUsingConnection(stopid1, stopid2, timetable) =>
-            (exists (sid2, arrt2, dept2) : PlanRow :- (sid2, arrt2, dept2) isin getAllDepaturesUsingConnection(stopid1, stopid2, timetable) \ {(sid1, arrt1, dept1)} /\
+            (all (sid2, arrt2, dept2) : PlanRow :- (sid2, arrt2, dept2) isin getAllDepaturesUsingConnection(stopid1, stopid2, timetable) \ {(sid1, arrt1, dept1)} =>
               (abs(dept1 - dept2) >= headway))
           )
         end
@@ -238,7 +238,7 @@ class
 
 
           
-      buildAllTimesForTrack : StopId >< StopId >< TramId-set >< TimeTable -> (Time><Time)-set
+      buildAllTimesForTrack : StopId >< StopId >< TramId-set >< TimeTable -> (TramId>< Time><Time)-set
       buildAllTimesForTrack(stopid1, stopid2, trams, timetable) is 
         if trams = {}
         then {}
@@ -252,7 +252,7 @@ class
 
     
 
-       buildTimesForTramOnTrack : StopId >< StopId >< Plan >< TramId -> (Time><Time)-set
+       buildTimesForTramOnTrack : StopId >< StopId >< Plan >< TramId -> (TramId ><Time><Time)-set
        buildTimesForTramOnTrack (stopid1, stopid2, plan, tramid) is 
           if plan = <..>
           then {}
@@ -261,7 +261,7 @@ class
               (sid, arrt, dept) = hd plan,
               (sid2, arrt2, dept2) = nextStop((sid,arrt,dept), plan)
             in
-              if sid = stopid1 /\ nextStop((sid, arrt, dept), plan) = stopid2
+              if sid = stopid1 /\ sid2 = stopid2
               then {(tramid, dept, arrt2)} union buildTimesForTramOnTrack(stopid1, stopid2, tl plan, tramid)
               else buildTimesForTramOnTrack(stopid1, stopid2, tl plan, tramid)
               end
@@ -271,6 +271,9 @@ class
 
 
      isWellformed : TimeTable >< Net -~-> Bool
-     isWellformed(t, n) is true
+     isWellformed(t, n) is
+       tramStopsAtAllStopsItPasses(t) /\ timeBetweenDeparturesIsValidHeadway(t, n) /\
+       (all plan : Plan :- plan isin rng(t) => timeBetweenStopsIsDrivingTime(plan, n))
+ 
      
 end  
