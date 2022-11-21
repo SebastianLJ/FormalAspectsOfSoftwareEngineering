@@ -213,7 +213,9 @@ class
  */
      -- the number of trains on a track must not exceed the capacity of the track
 
-     isWellformed : TimeTable >< Net -~-> Bool
-     isWellformed(t, n) is true
-     
+    isWellformed : TimeTable >< Net -~-> Bool
+    isWellformed(t, n) is
+      tramStopsAtAllStopsItPasses(t) /\ timeBetweenDeparturesIsValidHeadway(t, n) /\
+      (all plan : Plan :- plan isin rng(t) => timeBetweenStopsIsDrivingTime(plan, n))
+      
 end  
