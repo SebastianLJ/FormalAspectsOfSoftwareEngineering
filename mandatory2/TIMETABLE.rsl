@@ -3,9 +3,12 @@ scheme TIMETABLE = extend NET with
 class
   type 
     TimeTable = TramId -m-> Plan, -- time tables
-    TramId = Text, -- tram names
-    PlanRow = StopId >< Time >< Time,
-    Plan = PlanRow-list
+    TramId = Text, -- tram names,
+    PlanRow = StopId >< ArrivalT >< DepatureT,
+    Plan = PlanRow-list,
+
+    ArrivalT = Time, 
+    DepatureT = Time
 
     value /* generators */
       -- the empty timetable
@@ -20,6 +23,11 @@ class
       addStop : TramId >< StopId >< Time >< Time >< TimeTable -> TimeTable
       addStop(tramid, stopid, arrival, departure, timetable) is
         timetable !! [tramid +> timetable(tramid) ^ <.(stopid, arrival, departure).>]
+
+      -- Max capacity for a giving stop
+      findMaxCapacity : Time-list >< Time-list -> Int
+      findMaxCapacity(arrivals, departures)
+      pre len(arrs) = len(deps),
 
   value /* observers */
     -- check whether a tram with a given name exists in a given time table
@@ -162,18 +170,16 @@ class
 
       
      -- the number of trains stopped at a stop must not exceed the capacity of the stop
-     trainStopCapacity : CapacityMap >< TimeTable -> Bool
-     trainStopCapacity(capacitymap, timetable) is 
-        (all stopid : StopId :- stopid isin dom(capacitymap) =>
-          (all tramid : TramId >< TramId :- tramid isin dom(timetable) =>
-            (all (stopid, arrTime, depTime) : PlanRow :- planRow isin timetable(tramid) =>                
+     StopCapacityIsNotExceeded : Plan, PlanRow, ArrivalT, DepatureT >< Net -> Bool
+     StopCapacityIsNotExceeded(plan, planRow, net) is (all stopId : StopId :- stopId isin dom(planRow) =>
+        let
+           arrivals = ArrivalT(plan(planRow(stopId))),
+           departures = DepartureT(plan(planRow(stopId)))
+        in
+           findMaxCapacity(arrivals, departures) <= capacity(stopId, net)
+        end
+      ),
 
-               (depTime - arrTime) <= capacity(stopid, net)
-            )
-          )
-        )
-     
-    
      -- the number of trains on a track must not exceed the capacity of the track
      isWellformed : TimeTable >< Net -~-> Bool
      isWellformed(t, n) is true
