@@ -212,6 +212,44 @@ class
       ),
  */
      -- the number of trains on a track must not exceed the capacity of the track
+<<<<<<< HEAD
+   /*    TrackCapacityIsNotExceeded : TimeTable >< Net -> Bool
+      TrackCapacityIsNotExceeded((capacitymap, connectionmap), net) is 
+        (all (stopid1, stopid2) : StopId >< StopId :- (stopid1, stopid2) isin dom(connectionmap) =>
+          let
+            (headway,drivingTime, capacity) = connectionmap((stopid1, stopid2)),
+            dpt_times_dir1 = getAllDepartureTimesForTrack(stopid1, stopid2, timetable),
+            arr_times_dir2 = getAllArrivalTimesForTrack(stopid2, stopid1, timetable),
+           -- arr_times_dir1 = getAllArrivalTimesForTrack(stopid1, stopid2, timetable),
+           -- dpt_times_dir2 = getAllDepartureTimesForTrack(stopid2, stopid1, timetable),
+
+          in
+          end */
+         --   )
+          
+        
+      getAllDepartureTimesForTrack : StopId >< StopId >< TimeTable -> Time-list
+      getAllDepartureTimesForTrack(stopid1, stopid2, timetable) is
+        let 
+          departures = <..> : Time-list
+        in
+          (all tramid : TramId :- tramid isin dom(timetable) =>
+            (all (stopid, arrTime, depTime) : PlanRow :- (stopid, arrTime, depTime) isin timetable(tramid) =>
+              if stopid = stopid1 /\ nextStop((stopid, arrTime, depTime), timetable(tramid)) = stopid2
+              then
+                departures is <.depTime.> ^ departures
+              else
+                departures is departures
+              end
+            )
+          ),
+          departures
+          end,
+        
+
+
+=======
+>>>>>>> 032b9074ebf39664512c308c087d713da3fc74ce
 
     isWellformed : TimeTable >< Net -~-> Bool
     isWellformed(t, n) is
