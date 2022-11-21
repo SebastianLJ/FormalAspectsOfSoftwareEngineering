@@ -25,10 +25,11 @@ class
         timetable !! [tramid +> timetable(tramid) ^ <.(stopid, arrival, departure).>]
 
       -- Max capacity for a giving stop
-      findMaxCapacity : Time-list >< Time-list -> Int
-      findMaxCapacity(arrivals, departures)
-      pre len(arrs) = len(deps),
-
+   /*    findMaxCapacity : Time-list >< Time-list -> Int
+      findMaxCapacity(arrivals, departures) is 
+        len(arrs)
+      pre len(arrs) = len(deps)
+ */
   value /* observers */
     -- check whether a tram with a given name exists in a given time table
     isIn : TramId >< TimeTable -> Bool
@@ -144,7 +145,6 @@ class
             )
 
           )
-          PlanRow
         end
       ),
         
@@ -159,27 +159,21 @@ class
         )
       ),
 
-     TramsinStops : StopId >< TimeTable  -> Nat
-     TramsinStops(stopid, timetable) is
-        (all tramid : TramId :- tramid isin dom(timetable) =>
-          (all (stopid, arrTime, depTime) : PlanRow :- planRow isin timetable(tramid) =>
-            stopid = stopid
-          )
-        ),
+  
 
 
       
      -- the number of trains stopped at a stop must not exceed the capacity of the stop
-     StopCapacityIsNotExceeded : Plan, PlanRow, ArrivalT, DepatureT >< Net -> Bool
-     StopCapacityIsNotExceeded(plan, planRow, net) is (all stopId : StopId :- stopId isin dom(planRow) =>
+/*      StopCapacityIsNotExceeded : Plan >< Net -> Bool
+     StopCapacityIsNotExceeded(plan, net) is (all stopId : StopId :- stopId isin dom(planRow) =>
         let
-           arrivals = ArrivalT(plan(planRow(stopId))),
+           arrivals = ArrivalT,
            departures = DepartureT(plan(planRow(stopId)))
         in
            findMaxCapacity(arrivals, departures) <= capacity(stopId, net)
         end
       ),
-
+ */
      -- the number of trains on a track must not exceed the capacity of the track
      isWellformed : TimeTable >< Net -~-> Bool
      isWellformed(t, n) is true
