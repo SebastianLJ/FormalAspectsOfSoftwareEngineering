@@ -152,12 +152,12 @@ class
       ),
 
      TramsinStops : StopId >< TimeTable  -> Nat
-     TramIds(stopid, timetable) is
+     TramsinStops(stopid, timetable) is
         (all tramid : TramId :- tramid isin dom(timetable) =>
           (all (stopid, arrTime, depTime) : PlanRow :- planRow isin timetable(tramid) =>
             stopid = stopid
           )
-        )
+        ),
 
 
       
@@ -171,7 +171,7 @@ class
                (depTime - arrTime) <= capacity(stopid, net)
             )
           )
-        )
+        ),
      
     
      -- the number of trains on a track must not exceed the capacity of the track
