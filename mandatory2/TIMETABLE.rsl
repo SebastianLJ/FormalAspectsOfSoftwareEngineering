@@ -73,28 +73,28 @@ class
         connectionMap((stop2, stop1))
       end,
     -- you can add more observers here
-    getAllPlansUsingConnection : StopId >< StopId >< TimeTable -> PlanRow-set
-    getAllPlansUsingConnection(stopid1, stopid2, timetable) is
+    getAllDepaturesUsingConnection : StopId >< StopId >< TimeTable -> PlanRow-set
+    getAllDepaturesUsingConnection(stopid1, stopid2, timetable) is
       let
         allPlans = rng(timetable)
       in
-        buildAllPlansUsingConnection(stopid1, stopid2, allPlans)
+        buildAllDeparturesUsingConnection(stopid1, stopid2, allPlans)
       end,
 
-    buildAllPlansUsingConnection : StopId >< StopId >< Plan-set -> PlanRow-set
-    buildAllPlansUsingConnection(stopid1, stopid2, plans) is
+    buildAllDeparturesUsingConnection : StopId >< StopId >< Plan-set -> PlanRow-set
+    buildAllDeparturesUsingConnection(stopid1, stopid2, plans) is
       if plans = {}
       then {}
       else
         let
           plan = hd plans
         in
-          {findPlanRowInPlan(stopid1, stopid2, plan)} union buildAllPlansUsingConnection(stopid1, stopid2, plans \ {plan})
+          {findDepartureRowInPlan(stopid1, stopid2, plan)} union buildAllDeparturesUsingConnection(stopid1, stopid2, plans \ {plan})
         end
       end,
 
-    findPlanRowInPlan : StopId >< StopId >< Plan -~-> PlanRow
-    findPlanRowInPlan(stopid1, stopid2, plan) is
+    findDepartureRowInPlan : StopId >< StopId >< Plan -~-> PlanRow
+    findDepartureRowInPlan(stopid1, stopid2, plan) is
       let
         (hStopId, hArrTime, hDepTime) = hd plan,
         nStopId = nextStop(hd plan, plan)
@@ -105,7 +105,7 @@ class
         else
           if len tl plan > 1
           then
-            findPlanRowInPlan(stopid1, stopid2, tl plan)
+            findDepartureRowInPlan(stopid1, stopid2, tl plan)
           else
             ("", 0, 0)
           end
@@ -143,8 +143,8 @@ class
       (all (stopid1, stopid2) : StopId >< StopId :- (stopid1, stopid2) isin dom(connectionMap) =>
         let (headway,drivingTime, capacity) = connectionMap((stopid1, stopid2))
         in
-          (all (sid1, arrt1, dept1) : PlanRow :- (sid1, arrt1, dept1) isin getAllPlansUsingConnection(stopid1, stopid2, timetable) =>
-            (exists (sid2, arrt2, dept2) : PlanRow :- (sid2, arrt2, dept2) isin getAllPlansUsingConnection(stopid1, stopid2, timetable) \ {(sid1, arrt1, dept1)} /\
+          (all (sid1, arrt1, dept1) : PlanRow :- (sid1, arrt1, dept1) isin getAllDepaturesUsingConnection(stopid1, stopid2, timetable) =>
+            (exists (sid2, arrt2, dept2) : PlanRow :- (sid2, arrt2, dept2) isin getAllDepaturesUsingConnection(stopid1, stopid2, timetable) \ {(sid1, arrt1, dept1)} /\
               (abs(dept1 - dept2) >= headway))
           )
         end

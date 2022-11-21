@@ -53,10 +53,12 @@ scheme testTimeTable =
             /* PLANS */
             plan1 : Plan = <.("A", 0, 1), ("B", 12, 14), ("C", 28, 32), ("B", 46, 48), ("A", 59, 60).>,
             plan2 : Plan = <.("D", 0, 2), ("B", 11, 13), ("A", 28, 32), ("B", 47, 50), ("D", 58, 60).>,
+            planInvalidDrivingTime : Plan = <.("D", 0, 2), ("B", 8, 13), ("A", 28, 32), ("B", 47, 50), ("D", 58, 60).>,
             timetable1 : TimeTable = ["tram1" +> plan1, "tram2" +> plan2]
 
         test_case
             [ValidDrivingTime] timeBetweenStopsIsDrivingTime(plan1, net),
+            [InvalidDrivingTime] timeBetweenStopsIsDrivingTime(plan1, net) = false,
             [ValidTimeBetweenDeparture] timeBetweenDeparturesIsValidHeadway(timetable1, net),
             [tramStopsAtAllStopsItPasses] tramStopsAtAllStopsItPasses(timetable1)
 end
