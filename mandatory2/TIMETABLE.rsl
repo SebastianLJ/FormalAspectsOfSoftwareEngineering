@@ -5,6 +5,7 @@ class
     TimeTable = TramId -m-> Plan, -- time tables
     TramId = Text, -- tram names,
     PlanRow = StopId >< ArrivalT >< DepatureT,
+    TramPlanRow = TramId >< StopId >< ArrivalT >< DepatureT,
     Plan = PlanRow-list,
 
     ArrivalT = Time, 
@@ -72,45 +73,45 @@ class
         connectionMap((stop2, stop1))
       end,
     -- you can add more observers here
-    getAllDepaturesUsingConnection : StopId >< StopId >< TimeTable -> PlanRow-set
+    getAllDepaturesUsingConnection : StopId >< StopId >< TimeTable -> TramPlanRow-set
     getAllDepaturesUsingConnection(stopid1, stopid2, timetable) is
       let
-        allPlans = rng(timetable)
+        allTrams = dom timetable
       in
-        buildAllDeparturesUsingConnection(stopid1, stopid2, allPlans)
+        buildAllDeparturesUsingConnection(stopid1, stopid2, allTrams)
       end,
 
-    buildAllDeparturesUsingConnection : StopId >< StopId >< Plan-set -> PlanRow-set
-    buildAllDeparturesUsingConnection(stopid1, stopid2, plans) is
-      if plans = {}
+    buildAllDeparturesUsingConnection : StopId >< StopId >< TramId-set -> TramPlanRow-set
+    buildAllDeparturesUsingConnection(stopid1, stopid2, trams) is
+      if trams = {}
       then {}
       else
         let
-          plan = hd plans
+          tram = hd trams
         in
-          {findDepartureRowInPlan(stopid1, stopid2, plan)} union buildAllDeparturesUsingConnection(stopid1, stopid2, plans \ {plan})
+          {findDepartureRowInPlan(stopid1, stopid2, tram)} union buildAllDeparturesUsingConnection(stopid1, stopid2, trams \ {tram})
         end
       end,
 
-    findDepartureRowInPlan : StopId >< StopId >< Plan -~-> PlanRow
-    findDepartureRowInPlan(stopid1, stopid2, plan) is
+    findDepartureRowInPlan : StopId >< StopId >< TramId -~-> TramPlanRow
+    findDepartureRowInPlan(stopid1, stopid2, tram) is
       let
+        plan = timetable(tram),
         (hStopId, hArrTime, hDepTime) = hd plan,
         (nStopId, nArrTime, nDepTime) = nextStop(hd plan, plan)
       in
         if hStopId = stopid1 /\ nStopId = stopid2
         then
-          (hStopId, hArrTime, hDepTime)
+          (tram, hStopId, hArrTime, hDepTime)
         else
           if len tl plan > 1
           then
             findDepartureRowInPlan(stopid1, stopid2, tl plan)
           else
-            ("", 0, 0)
+            ("", "", 0, 0)
           end
         end
-      end
-      pre len plan > 1,
+      end,
 
     getAllArrivalsUsingConnection : StopId >< StopId >< TimeTable -> PlanRow-set
     getAllArrivalsUsingConnection(stopid1, stopid2, timetable) is
@@ -182,8 +183,8 @@ class
       (all (stopid1, stopid2) : StopId >< StopId :- (stopid1, stopid2) isin dom(connectionMap) =>
         let (headway,drivingTime, capacity) = connectionMap((stopid1, stopid2))
         in
-          (all (sid1, arrt1, dept1) : PlanRow :- (sid1, arrt1, dept1) isin getAllDepaturesUsingConnection(stopid1, stopid2, timetable) =>
-            (all (sid2, arrt2, dept2) : PlanRow :- (sid2, arrt2, dept2) isin getAllDepaturesUsingConnection(stopid1, stopid2, timetable) \ {(sid1, arrt1, dept1)} =>
+          (all (tram1, sid1, arrt1, dept1) : TramPlanRow :- (tram1, sid1, arrt1, dept1) isin getAllDepaturesUsingConnection(stopid1, stopid2, timetable) =>
+            (all (tram2, sid2, arrt2, dept2) : TramPlanRow :- (tram2, sid2, arrt2, dept2) isin getAllDepaturesUsingConnection(stopid1, stopid2, timetable) \ {(tram1, sid1, arrt1, dept1)} =>
               (abs(dept1 - dept2) >= headway))
           )
         end
