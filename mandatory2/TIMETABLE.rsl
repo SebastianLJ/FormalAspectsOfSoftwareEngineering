@@ -213,10 +213,68 @@ class
       ),
  */
      -- the number of trains on a track must not exceed the capacity of the track
+   /*    TrackCapacityIsNotExceeded : TimeTable >< Net -> Bool
+      TrackCapacityIsNotExceeded((capacitymap, connectionmap), net) is 
+        (all (stopid1, stopid2) : StopId >< StopId :- (stopid1, stopid2) isin dom(connectionmap) =>
+          let
+            (headway,drivingTime, capacity) = connectionmap((stopid1, stopid2)),
+            dpt_times_dir1 = getAllDepartureTimesForTrack(stopid1, stopid2, timetable),
+            arr_times_dir2 = getAllArrivalTimesForTrack(stopid2, stopid1, timetable),
+           -- arr_times_dir1 = getAllArrivalTimesForTrack(stopid1, stopid2, timetable),
+           -- dpt_times_dir2 = getAllDepartureTimesForTrack(stopid2, stopid1, timetable),
 
-    isWellformed : TimeTable >< Net -~-> Bool
-    isWellformed(t, n) is
-      tramStopsAtAllStopsItPasses(t) /\ timeBetweenDeparturesIsValidHeadway(t, n) /\
-      (all plan : Plan :- plan isin rng(t) => timeBetweenStopsIsDrivingTime(plan, n))
+          in
+          end */
+         --   )
+      
+    -- the number of trains on a track must not exceed the capacity of the track
+   --  TrackCapacityIsNotExceeded : StopId >< StopId >< TimeTable >< Net -> Bool
+    -- TrackCapacityIsNotExceeded(stopid1 ,stopid2, timetable, (capacityMap, connectionMap)) is
+     --   let
+       --   times = buildAllTimesForTrack(stopid1, stopid2, dom(timetable) ,timetable)
+       -- in
+        --  all((tramid, deptime, arrtime): TramId >< Time >< Time :- (tramid, deptime, arrtime) isin times =>
+            
+         -- )
 
+
+          
+      buildAllTimesForTrack : StopId >< StopId >< TramId-set >< TimeTable -> (TramId>< Time><Time)-set
+      buildAllTimesForTrack(stopid1, stopid2, trams, timetable) is 
+        if trams = {}
+        then {}
+        else
+          let
+            tramid = hd trams
+          in
+            buildTimesForTramOnTrack(stopid1, stopid2, timetable(tramid), tramid) union buildAllTimesForTrack(stopid1, stopid2, trams \ {tramid}, timetable)
+          end
+        end,
+
+    
+
+       buildTimesForTramOnTrack : StopId >< StopId >< Plan >< TramId -> (TramId ><Time><Time)-set
+       buildTimesForTramOnTrack (stopid1, stopid2, plan, tramid) is 
+          if plan = <..>
+          then {}
+          else
+            let
+              (sid, arrt, dept) = hd plan,
+              (sid2, arrt2, dept2) = nextStop((sid,arrt,dept), plan)
+            in
+              if sid = stopid1 /\ sid2 = stopid2
+              then {(tramid, dept, arrt2)} union buildTimesForTramOnTrack(stopid1, stopid2, tl plan, tramid)
+              else buildTimesForTramOnTrack(stopid1, stopid2, tl plan, tramid)
+              end
+            end
+          end,
+
+
+
+     isWellformed : TimeTable >< Net -~-> Bool
+     isWellformed(t, n) is
+       tramStopsAtAllStopsItPasses(t) /\ timeBetweenDeparturesIsValidHeadway(t, n) /\
+       (all plan : Plan :- plan isin rng(t) => timeBetweenStopsIsDrivingTime(plan, n))
+ 
+     
 end  
