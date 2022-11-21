@@ -58,7 +58,8 @@ scheme testTimeTable =
 
         test_case
             [ValidDrivingTime] timeBetweenStopsIsDrivingTime(plan1, net),
-            [InvalidDrivingTime] timeBetweenStopsIsDrivingTime(plan1, net) = false,
+            [InvalidDrivingTime] timeBetweenStopsIsDrivingTime(planInvalidDrivingTime, net) = false,
             [ValidTimeBetweenDeparture] timeBetweenDeparturesIsValidHeadway(timetable1, net),
-            [tramStopsAtAllStopsItPasses] tramStopsAtAllStopsItPasses(timetable1)
+            [tramStopsAtAllStopsItPasses] tramStopsAtAllStopsItPasses(timetable1),
+            [findArrivalRowInPlan] getAllArrivalsUsingConnection("A", "B", timetable1)
 end

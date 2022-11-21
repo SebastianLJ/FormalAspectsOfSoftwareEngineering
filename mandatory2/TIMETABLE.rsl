@@ -48,7 +48,6 @@ class
             in 
               sid
             end
-
           else
             if len(tl plan) > 1
             then
@@ -106,6 +105,46 @@ class
           if len tl plan > 1
           then
             findDepartureRowInPlan(stopid1, stopid2, tl plan)
+          else
+            ("", 0, 0)
+          end
+        end
+      end
+      pre len plan > 1,
+
+    getAllArrivalsUsingConnection : StopId >< StopId >< TimeTable -> PlanRow-set
+    getAllArrivalsUsingConnection(stopid1, stopid2, timetable) is
+      let
+        allPlans = rng(timetable)
+      in
+        buildAllArrivalsUsingConnection(stopid1, stopid2, allPlans)
+      end,
+
+    buildAllArrivalsUsingConnection : StopId >< StopId >< Plan-set -> PlanRow-set
+    buildAllArrivalsUsingConnection(stopid1, stopid2, plans) is
+      if plans = {}
+      then {}
+      else
+        let
+          plan = hd plans
+        in
+          {findArrivalRowInPlan(stopid1, stopid2, plan)} union buildAllArrivalsUsingConnection(stopid1, stopid2, plans \ {plan})
+        end
+      end,
+
+    findArrivalRowInPlan : StopId >< StopId >< Plan -~-> PlanRow
+    findArrivalRowInPlan(stopid1, stopid2, plan) is
+      let
+        (hStopId, hArrTime, hDepTime) = hd plan,
+        (nStopId, nArrTime, nDepTime) = hd (tl plan)
+      in
+        if hStopId = stopid1 /\ nStopId = stopid2
+        then
+          (nStopId, nArrTime, nDepTime)
+        else
+          if len tl plan > 1
+          then
+            findArrivalRowInPlan(stopid1, stopid2, tl plan)
           else
             ("", 0, 0)
           end
@@ -173,6 +212,7 @@ class
       ),
  */
      -- the number of trains on a track must not exceed the capacity of the track
+<<<<<<< HEAD
    /*    TrackCapacityIsNotExceeded : TimeTable >< Net -> Bool
       TrackCapacityIsNotExceeded((capacitymap, connectionmap), net) is 
         (all (stopid1, stopid2) : StopId >< StopId :- (stopid1, stopid2) isin dom(connectionmap) =>
@@ -208,6 +248,8 @@ class
         
 
 
+=======
+>>>>>>> 032b9074ebf39664512c308c087d713da3fc74ce
 
      isWellformed : TimeTable >< Net -~-> Bool
      isWellformed(t, n) is true
