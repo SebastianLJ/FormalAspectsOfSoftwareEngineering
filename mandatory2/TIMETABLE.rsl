@@ -183,7 +183,7 @@ class
         let (headway,drivingTime, capacity) = connectionMap((stopid1, stopid2))
         in
           (all (sid1, arrt1, dept1) : PlanRow :- (sid1, arrt1, dept1) isin getAllDepaturesUsingConnection(stopid1, stopid2, timetable) =>
-            (exists (sid2, arrt2, dept2) : PlanRow :- (sid2, arrt2, dept2) isin getAllDepaturesUsingConnection(stopid1, stopid2, timetable) \ {(sid1, arrt1, dept1)} /\
+            (all (sid2, arrt2, dept2) : PlanRow :- (sid2, arrt2, dept2) isin getAllDepaturesUsingConnection(stopid1, stopid2, timetable) \ {(sid1, arrt1, dept1)} =>
               (abs(dept1 - dept2) >= headway))
           )
         end
@@ -217,5 +217,5 @@ class
     isWellformed(t, n) is
       tramStopsAtAllStopsItPasses(t) /\ timeBetweenDeparturesIsValidHeadway(t, n) /\
       (all plan : Plan :- plan isin rng(t) => timeBetweenStopsIsDrivingTime(plan, n))
-      
+
 end  
