@@ -50,7 +50,16 @@ class
             end
 
           else
-            nextStop(planRow, tl plan)
+            if len(tl plan) > 1
+            then
+              nextStop(planRow, tl plan)
+            else
+              let 
+                (sid, arrt, dept) = iPlanRow
+              in 
+                sid
+              end
+            end
           end
         end
         pre len plan > 1,
@@ -59,50 +68,50 @@ class
       getConnection(stop1, stop2, (capacityMap, connectionMap)) is
       if (stop1, stop2) isin dom(connectionMap)
       then
-        connectionMap((stop2, stop1))
-      else
         connectionMap((stop1, stop2))
+      else
+        connectionMap((stop2, stop1))
       end,
     -- you can add more observers here
-    getAllPlansUsingConnection : StopId >< StopId >< TimeTable -> PlanRow-set
-    getAllPlansUsingConnection(stopid1, stopid2, timetable) is
+    getAllDepaturesUsingConnection : StopId >< StopId >< TimeTable -> PlanRow-set
+    getAllDepaturesUsingConnection(stopid1, stopid2, timetable) is
       let
         allPlans = rng(timetable)
       in
-        buildAllPlansUsingConnection(stopid1, stopid2, allPlans)
+        buildAllDeparturesUsingConnection(stopid1, stopid2, allPlans)
       end,
 
-    buildAllPlansUsingConnection : StopId >< StopId >< Plan-set -> PlanRow-set
-    buildAllPlansUsingConnection(stopid1, stopid2, plans) is
+    buildAllDeparturesUsingConnection : StopId >< StopId >< Plan-set -> PlanRow-set
+    buildAllDeparturesUsingConnection(stopid1, stopid2, plans) is
       if plans = {}
       then {}
       else
         let
           plan = hd plans
         in
-          {findPlanRowInPlan(stopid1, stopid2, plan)} union buildAllPlansUsingConnection(stopid1, stopid2, plans \ {plan})
+          {findDepartureRowInPlan(stopid1, stopid2, plan)} union buildAllDeparturesUsingConnection(stopid1, stopid2, plans \ {plan})
         end
       end,
 
-    findPlanRowInPlan : StopId >< StopId >< Plan -~-> PlanRow
-    findPlanRowInPlan(stopid1, stopid2, plan) is
-      if len plan > 0
-      then
-        let
-          (hStopId, hArrTime, hDepTime) = hd plan,
-          nStopId = nextStop(hd plan, plan)
-        in
-          if hStopId = stopid1 /\ nStopId = stopid2
+    findDepartureRowInPlan : StopId >< StopId >< Plan -~-> PlanRow
+    findDepartureRowInPlan(stopid1, stopid2, plan) is
+      let
+        (hStopId, hArrTime, hDepTime) = hd plan,
+        nStopId = nextStop(hd plan, plan)
+      in
+        if hStopId = stopid1 /\ nStopId = stopid2
+        then
+          (hStopId, hArrTime, hDepTime)
+        else
+          if len tl plan > 1
           then
-            (hStopId, hArrTime, hDepTime)
+            findDepartureRowInPlan(stopid1, stopid2, tl plan)
           else
-            findPlanRowInPlan(stopid1, stopid2, tl plan)
+            ("", 0, 0)
           end
         end
-      else
-        ("0",0,0)
       end
-
+      pre len plan > 1
  
   value /* predicates to check time tables */   
 
@@ -112,38 +121,31 @@ class
 
     -- the travel times between each stop must be greater than or equal to the driving time
     timeBetweenStopsIsDrivingTime : Plan >< Net -~-> Bool
-    timeBetweenStopsIsDrivingTime(plan, net) is
+    timeBetweenStopsIsDrivingTime(plan, (capacityMap, connectionMap)) is
       if len plan > 1 then
         let
           (stopid1, arrTime1, depTime1) = hd plan,
           (stopid2, arrTime2, depTime2) = hd (tl plan)
         in
           let 
-            (headway,drivingTime, capacity) = getConnection(stopid1, stopid2, net)
+            (headway,drivingTime, capacity) = getConnection(stopid1, stopid2, (capacityMap, connectionMap))
           in
-            (depTime1 - arrTime2 >= drivingTime) /\ timeBetweenStopsIsDrivingTime(tl plan, net)
+            (arrTime2 - depTime1 >= drivingTime) /\ timeBetweenStopsIsDrivingTime(tl plan, (capacityMap, connectionMap))
           end
         end
       else
         true
       end,
+
     -- the difference in departure times for any two trams moving on the same track must be greater than or equal to the headway time
     timeBetweenDeparturesIsValidHeadway : TimeTable >< Net -> Bool
     timeBetweenDeparturesIsValidHeadway(timetable, (capacityMap, connectionMap)) is
       (all (stopid1, stopid2) : StopId >< StopId :- (stopid1, stopid2) isin dom(connectionMap) =>
         let (headway,drivingTime, capacity) = connectionMap((stopid1, stopid2))
         in
-          (all plan: Plan :- plan isin rng(timetable) =>
-            (all (sid1, arrt1, dept1) : PlanRow :- (sid1, arrt1, dept1) isin plan /\ sid1 = stopid1 /\ 
-            nextStop((sid1, arrt1, dept1), plan) = stopid2 =>
-              ~ (exists plan2 : Plan :- plan2 isin rng(timetable) /\ plan2~= plan /\
-              (all (sid2, arrt2, dept2) : PlanRow :- (sid2,arrt2, dept2) isin plan2 /\ sid2 = stopid1 /\ 
-              nextStop((sid2, arrt2, dept2), plan) = stopid2 =>
-              abs(dept2 - dept1) < headway
-              )
-                )
-            )
-
+          (all (sid1, arrt1, dept1) : PlanRow :- (sid1, arrt1, dept1) isin getAllDepaturesUsingConnection(stopid1, stopid2, timetable) =>
+            (exists (sid2, arrt2, dept2) : PlanRow :- (sid2, arrt2, dept2) isin getAllDepaturesUsingConnection(stopid1, stopid2, timetable) \ {(sid1, arrt1, dept1)} /\
+              (abs(dept1 - dept2) >= headway))
           )
         end
       ),
@@ -159,10 +161,6 @@ class
         )
       ),
 
-  
-
-
-      
      -- the number of trains stopped at a stop must not exceed the capacity of the stop
 /*      StopCapacityIsNotExceeded : Plan >< Net -> Bool
      StopCapacityIsNotExceeded(plan, net) is (all stopId : StopId :- stopId isin dom(planRow) =>
