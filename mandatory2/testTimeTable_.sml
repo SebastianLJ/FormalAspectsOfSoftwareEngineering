@@ -569,11 +569,11 @@ structure testTimeTable =
             if RT_x_14.equ (iPlanRow'245F_, planRow'239C_) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (46, 13)); let
                 val (sid'2658_, arrt'265D_, dept'2663_) = ((RT_l_15.R_hd((RT_l_15.R_tl(plan'23A5_)))):RT_x_14.t)
             in
-                sid'2658_
+                (sid'2658_, arrt'265D_, dept'2663_)
             end) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (52, 13)); if RT_Nat.R_gt (RT_l_15.R_length((RT_l_15.R_tl(plan'23A5_))), RT_Int.fromLit "1") then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (54, 15)); ((nextStop'232F_) (planRow'239C_, RT_l_15.R_tl(plan'23A5_)))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (56, 15)); let
                 val (sid'2A42_, arrt'2A47_, dept'2A4D_) = ((iPlanRow'245F_):RT_x_14.t)
             in
-                sid'2A42_
+                iPlanRow'245F_
             end))
         end);
         
@@ -583,9 +583,9 @@ structure testTimeTable =
             (RT_Nat.R_ge (x90_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x91_'0_, RT_Int.fromLit "0"))
         end) (plan'399A_))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:95:5: Argument of findDepartureRowInPlan" ^ RT_x_24.toString (stopid1'3988_, stopid2'3991_, plan'399A_) ^ " not in subtype") else if not(RT_Nat.R_gt (RT_l_15.R_length(plan'399A_), RT_Int.fromLit "1")) then raise RSL.RSL_exception ("./TIMETABLE.rsl:113:11: Precondition of findDepartureRowInPlan" ^ RT_x_24.toString (stopid1'3988_, stopid2'3991_, plan'399A_) ^ " not satisfied") else let
             val (hStopId'3A3E_, hArrTime'3A47_, hDepTime'3A51_) = ((RT_l_15.R_hd(plan'399A_)):RT_x_14.t); 
-            val nStopId'3AA1_ = ((((nextStop'232F_) (RT_l_15.R_hd(plan'399A_), plan'399A_))):RT_Text.t)
+            val (nStopId'3AA2_, nArrTime'3AAB_, nDepTime'3AB5_) = ((((nextStop'232F_) (RT_l_15.R_hd(plan'399A_), plan'399A_))):RT_x_14.t)
         in
-            if (RT_Text.equ (hStopId'3A3E_, stopid1'3988_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (101, 33)); RT_Text.equ (nStopId'3AA1_, stopid2'3991_)) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (103, 11)); (hStopId'3A3E_, hArrTime'3A47_, hDepTime'3A51_)) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (105, 11)); if RT_Nat.R_gt (RT_l_15.R_length(RT_l_15.R_tl(plan'399A_)), RT_Int.fromLit "1") then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (107, 13)); ((findDepartureRowInPlan'390D_) (stopid1'3988_, stopid2'3991_, RT_l_15.R_tl(plan'399A_)))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (109, 13)); (RT_Text.fromLit "", RT_Int.fromLit "0", RT_Int.fromLit "0")))
+            if (RT_Text.equ (hStopId'3A3E_, stopid1'3988_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (101, 33)); RT_Text.equ (nStopId'3AA2_, stopid2'3991_)) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (103, 11)); (hStopId'3A3E_, hArrTime'3A47_, hDepTime'3A51_)) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (105, 11)); if RT_Nat.R_gt (RT_l_15.R_length(RT_l_15.R_tl(plan'399A_)), RT_Int.fromLit "1") then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (107, 13)); ((findDepartureRowInPlan'390D_) (stopid1'3988_, stopid2'3991_, RT_l_15.R_tl(plan'399A_)))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (109, 13)); (RT_Text.fromLit "", RT_Int.fromLit "0", RT_Int.fromLit "0")))
         end);
         
         fun buildAllDeparturesUsingConnection'345D_ (stopid1'34E3_, stopid2'34EC_, plans'34F5_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (85, 7)); if not((RT_s_18.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
@@ -646,7 +646,7 @@ structure testTimeTable =
             (RT_Nat.R_ge (x99_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x100_'0_, RT_Int.fromLit "0"))
         end) (plan'4938_))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:135:5: Argument of findArrivalRowInPlan" ^ RT_x_24.toString (stopid1'4926_, stopid2'492F_, plan'4938_) ^ " not in subtype") else if not(RT_Nat.R_gt (RT_l_15.R_length(plan'4938_), RT_Int.fromLit "1")) then raise RSL.RSL_exception ("./TIMETABLE.rsl:153:11: Precondition of findArrivalRowInPlan" ^ RT_x_24.toString (stopid1'4926_, stopid2'492F_, plan'4938_) ^ " not satisfied") else let
             val (hStopId'49DE_, hArrTime'49E7_, hDepTime'49F1_) = ((RT_l_15.R_hd(plan'4938_)):RT_x_14.t); 
-            val (nStopId'4A42_, nArrTime'4A4B_, nDepTime'4A55_) = ((RT_l_15.R_hd((RT_l_15.R_tl(plan'4938_)))):RT_x_14.t)
+            val (nStopId'4A42_, nArrTime'4A4B_, nDepTime'4A55_) = ((((nextStop'232F_) (RT_l_15.R_hd(plan'4938_), plan'4938_))):RT_x_14.t)
         in
             if (RT_Text.equ (hStopId'49DE_, stopid1'4926_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (141, 33)); RT_Text.equ (nStopId'4A42_, stopid2'492F_)) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (143, 11)); (nStopId'4A42_, nArrTime'4A4B_, nDepTime'4A55_)) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (145, 11)); if RT_Nat.R_gt (RT_l_15.R_length(RT_l_15.R_tl(plan'4938_)), RT_Int.fromLit "1") then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (147, 13)); ((findArrivalRowInPlan'48AD_) (stopid1'4926_, stopid2'492F_, RT_l_15.R_tl(plan'4938_)))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (149, 13)); (RT_Text.fromLit "", RT_Int.fromLit "0", RT_Int.fromLit "0")))
         end);
