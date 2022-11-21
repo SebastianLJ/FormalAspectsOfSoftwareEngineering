@@ -113,45 +113,46 @@ class
       end
       pre len plan > 1,
 
-    getAllArrivalsUsingConnection : StopId >< StopId >< TimeTable -> PlanRow-set
+    getAllArrivalsUsingConnection : StopId >< StopId >< TimeTable -> TramPlanRow-set
     getAllArrivalsUsingConnection(stopid1, stopid2, timetable) is
       let
-        allPlans = rng(timetable)
+        allTrams = dom timetable
       in
-        buildAllArrivalsUsingConnection(stopid1, stopid2, allPlans)
+        buildAllArrivalsUsingConnection(stopid1, stopid2, allTrams, timetable)
       end,
 
-    buildAllArrivalsUsingConnection : StopId >< StopId >< Plan-set -> PlanRow-set
-    buildAllArrivalsUsingConnection(stopid1, stopid2, plans) is
-      if plans = {}
+    buildAllArrivalsUsingConnection : StopId >< StopId >< TramId-set >< TimeTable -> TramPlanRow-set
+    buildAllArrivalsUsingConnection(stopid1, stopid2, trams, timetable) is
+      if trams = {}
       then {}
       else
         let
-          plan = hd plans
+          tram = hd trams
         in
-          {findArrivalRowInPlan(stopid1, stopid2, plan)} union buildAllArrivalsUsingConnection(stopid1, stopid2, plans \ {plan})
+          {findArrivalRowInPlan(stopid1, stopid2, timetable(tram), tram)} union buildAllArrivalsUsingConnection(stopid1, stopid2, trams \ {tram}, timetable)
         end
       end,
 
-    findArrivalRowInPlan : StopId >< StopId >< Plan -~-> PlanRow
-    findArrivalRowInPlan(stopid1, stopid2, plan) is
+    findArrivalRowInPlan : StopId >< StopId >< Plan >< TramId -~-> TramPlanRow
+    findArrivalRowInPlan(stopid1, stopid2, plan, tram) is
       let
         (hStopId, hArrTime, hDepTime) = hd plan,
         (nStopId, nArrTime, nDepTime) = nextStop(hd plan, plan)
       in
         if hStopId = stopid1 /\ nStopId = stopid2
         then
-          (nStopId, nArrTime, nDepTime)
+          (tram, nStopId, nArrTime, nDepTime)
         else
           if len tl plan > 1
           then
-            findArrivalRowInPlan(stopid1, stopid2, tl plan)
+            findArrivalRowInPlan(stopid1, stopid2, tl plan, tram)
           else
-            ("", 0, 0)
+            ("", "", 0, 0)
           end
         end
       end
       pre len plan > 1
+
  
   value /* predicates to check time tables */   
 
@@ -189,6 +190,8 @@ class
           )
         end
       ),
+
+      
         
 
     -- the difference in arrival times for any two trams moving on the same track must be greater than or equal to the headway time
