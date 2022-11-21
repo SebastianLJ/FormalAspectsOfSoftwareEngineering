@@ -1,0 +1,60 @@
+TIMETABLE
+
+scheme testTimeTable =
+    extend TIMETABLE with
+    class
+        value
+            /* STOPS */
+
+            /* Stop A */
+            StopA : StopId = "A",
+            CapacityA : Capacity = 2,
+
+            /* Stop B */
+            StopB: StopId = "B",
+            CapacityB : Capacity = 6,
+
+            /* Stop C */
+            StopC : StopId = "C",
+            CapacityC : Capacity = 2,
+
+            /* Stop D */
+            StopD: StopId = "D",
+            CapacityD : Capacity = 2,
+
+            /* Stop D */
+            StopF: StopId = "F",
+            CapacityF : Capacity = 2,
+
+            /* Connection */
+            /* AB */
+            DriveTimeAB : DrivingTime = 10,
+            CapacityAB : Capacity = 1,
+            HeadwayAB : Headway = 1,  
+
+            /* BC */
+            DriveTimeBC : DrivingTime = 12,
+            CapacityBC : Capacity = 3,
+            HeadwayBC : Headway = 2,
+
+            /* BD */
+            DriveTimeBD : DrivingTime = 7,
+            CapacityBD : Capacity = 2,
+            HeadwayBD : Headway = 2,
+
+
+            /* ConnectioMap */
+            connectionMap : ConnectionMap = [(StopB, StopD) +> (HeadwayBD, DriveTimeBD, CapacityBD), (StopA,StopB) +> (HeadwayAB, DriveTimeAB, CapacityAB), (StopB, StopC) +> (HeadwayBC, DriveTimeBC, CapacityBC)],
+            stopCapacity : CapacityMap = [StopA +> CapacityA, StopB +> CapacityB, StopC +> CapacityC, StopD +> CapacityD],
+            
+            /* NET */
+            Net : Net = (stopCapacity, connectionMap),
+
+            /* PLANS */
+            plan1 : Plan = <.("A", 0, 1), ("B", 12, 14), ("C", 28, 32), ("B", 46, 48), ("A", 59, 60).>,
+            plan2 : Plan = <.("D", 0, 2), ("B", 11, 13), ("A", 28, 32), ("B", 47, 50), ("D", 58, 60).>,
+            timetable1 : TimeTable = ["tram1" +> plan1, "tram2" +> plan2]
+
+        test_case
+            [t01] getAllPlansUsingConnection("A", "B", timetable1)
+end
