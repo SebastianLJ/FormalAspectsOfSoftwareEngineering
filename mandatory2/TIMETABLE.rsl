@@ -195,6 +195,17 @@ class
         
 
     -- the difference in arrival times for any two trams moving on the same track must be greater than or equal to the headway time
+    timeBetweenArrivalIsValidHeadway : TimeTable >< Net -> Bool
+    timeBetweenArrivalIsValidHeadway(timetable, (capacityMap, connectionMap)) is
+      (all (stopid1, stopid2) : StopId >< StopId :- (stopid1, stopid2) isin dom(connectionMap) =>
+        let (headway,drivingTime, capacity) = connectionMap((stopid1, stopid2))
+        in
+          (all (tram1, sid1, arrt1, dept1) : TramPlanRow :- (tram1, sid1, arrt1, dept1) isin getAllArrivalsUsingConnection(stopid1, stopid2, timetable) =>
+            (all (tram2, sid2, arrt2, dept2) : TramPlanRow :- (tram2, sid2, arrt2, dept2) isin getAllArrivalsUsingConnection(stopid1, stopid2, timetable) \ {(tram1, sid1, arrt1, dept1)} =>
+              (abs(dept1 - dept2) >= headway))
+          )
+        end
+      ),
     -- a tram must stop at any stop it visits
     tramStopsAtAllStopsItPasses : TimeTable -> Bool
     tramStopsAtAllStopsItPasses(timetable) is
