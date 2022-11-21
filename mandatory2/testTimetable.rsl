@@ -48,7 +48,7 @@ scheme testTimeTable =
             stopCapacity : CapacityMap = [StopA +> CapacityA, StopB +> CapacityB, StopC +> CapacityC, StopD +> CapacityD],
             
             /* NET */
-            Net : Net = (stopCapacity, connectionMap),
+            net : Net = (stopCapacity, connectionMap),
 
             /* PLANS */
             plan1 : Plan = <.("A", 0, 1), ("B", 12, 14), ("C", 28, 32), ("B", 46, 48), ("A", 59, 60).>,
@@ -56,5 +56,6 @@ scheme testTimeTable =
             timetable1 : TimeTable = ["tram1" +> plan1, "tram2" +> plan2]
 
         test_case
-            [t01] getAllPlansUsingConnection("A", "B", timetable1)
+            [t01] getAllPlansUsingConnection("A", "B", timetable1),
+            [ValidDrivingTime] timeBetweenStopsIsDrivingTime(plan1, net)
 end
