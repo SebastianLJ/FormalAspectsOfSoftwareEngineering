@@ -1,16 +1,14 @@
 NET
 scheme TIMETABLE = extend NET with
 class
-  type 
+  type /* types (Sebastian and Noah) */
     TimeTable = TramId -m-> Plan, -- time tables
     TramId = Text, -- tram names,
-    PlanRow = StopId >< ArrivalT >< DepatureT,
-    Plan = PlanRow-list,
+    PlanRow = StopId >< Time >< Time,
+    Plan = PlanRow-list
 
-    ArrivalT = Time, 
-    DepatureT = Time
 
-    value /* generators */
+    value /* generators (Noah and Sebastian) */
       -- the empty timetable
       empty : TimeTable = [],
 
@@ -24,18 +22,15 @@ class
       addStop(tramid, stopid, arrival, departure, timetable) is
         timetable !! [tramid +> timetable(tramid) ^ <.(stopid, arrival, departure).>]
 
-      -- Max capacity for a giving stop
-   /*    findMaxCapacity : Time-list >< Time-list -> Int
-      findMaxCapacity(arrivals, departures) is 
-        len(arrs)
-      pre len(arrs) = len(deps)
- */
   value /* observers */
+
     -- check whether a tram with a given name exists in a given time table
+    -- (Sebastian)
     isIn : TramId >< TimeTable -> Bool
     isIn(tramid, timetable) is
       tramid isin dom(timetable),
 
+    -- (Sebastian)
       nextStop : PlanRow >< Plan -~-> PlanRow
       nextStop(planRow, plan) is
         let
@@ -63,6 +58,7 @@ class
         end
         pre len plan > 1,
 
+    -- (Sebastian and Noah)
       getConnection : StopId >< StopId >< Net -~-> Connection
       getConnection(stop1, stop2, (capacityMap, connectionMap)) is
       if (stop1, stop2) isin dom(connectionMap)
@@ -72,6 +68,8 @@ class
         connectionMap((stop2, stop1))
       end,
     -- you can add more observers here
+
+    -- (Sebastian)
     getAllDepaturesUsingConnection : StopId >< StopId >< TimeTable -> PlanRow-set
     getAllDepaturesUsingConnection(stopid1, stopid2, timetable) is
       let
@@ -80,6 +78,7 @@ class
         buildAllDeparturesUsingConnection(stopid1, stopid2, allPlans)
       end,
 
+    -- (Sebastian)
     buildAllDeparturesUsingConnection : StopId >< StopId >< Plan-set -> PlanRow-set
     buildAllDeparturesUsingConnection(stopid1, stopid2, plans) is
       if plans = {}
@@ -92,6 +91,7 @@ class
         end
       end,
 
+    -- (Sebastian)
     findDepartureRowInPlan : StopId >< StopId >< Plan -~-> PlanRow
     findDepartureRowInPlan(stopid1, stopid2, plan) is
       let
@@ -112,6 +112,7 @@ class
       end
       pre len plan > 1,
 
+    -- (Sebastian)
     getAllArrivalsUsingConnection : StopId >< StopId >< TimeTable -> PlanRow-set
     getAllArrivalsUsingConnection(stopid1, stopid2, timetable) is
       let
@@ -120,6 +121,7 @@ class
         buildAllArrivalsUsingConnection(stopid1, stopid2, allPlans)
       end,
 
+    -- (Sebastian)
     buildAllArrivalsUsingConnection : StopId >< StopId >< Plan-set -> PlanRow-set
     buildAllArrivalsUsingConnection(stopid1, stopid2, plans) is
       if plans = {}
@@ -132,6 +134,7 @@ class
         end
       end,
 
+    -- (Sebastian)
     findArrivalRowInPlan : StopId >< StopId >< Plan -~-> PlanRow
     findArrivalRowInPlan(stopid1, stopid2, plan) is
       let
@@ -159,6 +162,7 @@ class
     --  holds implicitly because TimeTable is mapping TramIds
 
     -- the travel times between each stop must be greater than or equal to the driving time
+    -- (Sebastian)
     timeBetweenStopsIsDrivingTime : Plan >< Net -~-> Bool
     timeBetweenStopsIsDrivingTime(plan, (capacityMap, connectionMap)) is
       if len plan > 1 then
@@ -177,6 +181,7 @@ class
       end,
 
     -- the difference in departure times for any two trams moving on the same track must be greater than or equal to the headway time
+    -- (Sebastian and Noah)
     timeBetweenDeparturesIsValidHeadway : TimeTable >< Net -> Bool
     timeBetweenDeparturesIsValidHeadway(timetable, (capacityMap, connectionMap)) is
       (all (stopid1, stopid2) : StopId >< StopId :- (stopid1, stopid2) isin dom(connectionMap) =>
@@ -189,9 +194,8 @@ class
         end
       ),
         
-
-    -- the difference in arrival times for any two trams moving on the same track must be greater than or equal to the headway time
     -- a tram must stop at any stop it visits
+    -- (Sebastian and Noah)
     tramStopsAtAllStopsItPasses : TimeTable -> Bool
     tramStopsAtAllStopsItPasses(timetable) is
       (all tramid : TramId :- tramid isin dom(timetable) =>
@@ -200,45 +204,51 @@ class
         )
       ),
 
-     -- the number of trains stopped at a stop must not exceed the capacity of the stop
-/*      StopCapacityIsNotExceeded : Plan >< Net -> Bool
-     StopCapacityIsNotExceeded(plan, net) is (all stopId : StopId :- stopId isin dom(planRow) =>
-        let
-           arrivals = ArrivalT,
-           departures = DepartureT(plan(planRow(stopId)))
-        in
-           findMaxCapacity(arrivals, departures) <= capacity(stopId, net)
-        end
+  
+  -- for all connections check track capacity is not exceeded
+  -- (Noah)
+    allTrackCapacitiesAreNotExceeded : TimeTable >< Net -> Bool
+    allTrackCapacitiesAreNotExceeded(timetable, (capacityMap,connectionMap)) is
+      (all (stopid1, stopid2) : StopId >< StopId :- (stopid1, stopid2) isin dom(connectionMap) =>
+       trackCapacityIsNotExceeded(stopid1, stopid2, timetable, connectionMap)
       ),
- */
-     -- the number of trains on a track must not exceed the capacity of the track
-   /*    TrackCapacityIsNotExceeded : TimeTable >< Net -> Bool
-      TrackCapacityIsNotExceeded((capacitymap, connectionmap), net) is 
-        (all (stopid1, stopid2) : StopId >< StopId :- (stopid1, stopid2) isin dom(connectionmap) =>
-          let
-            (headway,drivingTime, capacity) = connectionmap((stopid1, stopid2)),
-            dpt_times_dir1 = getAllDepartureTimesForTrack(stopid1, stopid2, timetable),
-            arr_times_dir2 = getAllArrivalTimesForTrack(stopid2, stopid1, timetable),
-           -- arr_times_dir1 = getAllArrivalTimesForTrack(stopid1, stopid2, timetable),
-           -- dpt_times_dir2 = getAllDepartureTimesForTrack(stopid2, stopid1, timetable),
-
-          in
-          end */
-         --   )
       
-    -- the number of trains on a track must not exceed the capacity of the track
-   --  TrackCapacityIsNotExceeded : StopId >< StopId >< TimeTable >< Net -> Bool
-    -- TrackCapacityIsNotExceeded(stopid1 ,stopid2, timetable, (capacityMap, connectionMap)) is
-     --   let
-       --   times = buildAllTimesForTrack(stopid1, stopid2, dom(timetable) ,timetable)
-       -- in
-        --  all((tramid, deptime, arrtime): TramId >< Time >< Time :- (tramid, deptime, arrtime) isin times =>
-            
-         -- )
-
-
-          
-      buildAllTimesForTrack : StopId >< StopId >< TramId-set >< TimeTable -> (TramId>< Time><Time)-set
+   -- the number of trains on a track must not exceed the capacity of the track
+    -- (Noah)
+    trackCapacityIsNotExceeded : StopId >< StopId >< TimeTable >< ConnectionMap -> Bool
+    trackCapacityIsNotExceeded(stopid1 ,stopid2, timetable, connectionMap) is
+       let
+         times1 = buildAllTimesForTrack(stopid1, stopid2, dom(timetable), timetable),
+         times2 = buildAllTimesForTrack(stopid2, stopid1, dom(timetable), timetable),
+         (headway, drivingtime, trackcapacity) = connectionMap(stopid1, stopid2)          
+       in
+         (all (tramid, deptime, arrtime) : TramId >< Time >< Time :- (tramid, deptime, arrtime) isin times1 =>
+               (1 +countOverLappingTimesForTrack(tramid, deptime, arrtime, times1) <= trackcapacity)
+         ) /\ (all (tramid, deptime, arrtime) : TramId >< Time >< Time :- (tramid, deptime, arrtime) isin times2 =>
+              (1 + countOverLappingTimesForTrack(tramid, deptime, arrtime, times2) <= trackcapacity)
+         )
+       end,
+    
+    -- count the number of times that overlap with the given time
+    -- (Noah)
+      countOverLappingTimesForTrack : TramId >< Time >< Time >< (TramId >< Time >< Time)-set -> Nat
+      countOverLappingTimesForTrack(tramid,deptime, arrtime, times) is
+        if times = {}
+        then 0
+        else
+          let
+            (tramid2, deptime2, arrtime2) = hd times
+          in
+            if tramid ~= tramid2 /\ ((deptime <= deptime2 /\ deptime2<= arrtime) \/ (deptime <= arrtime2 /\ arrtime2 <= arrtime))
+            then 1 + countOverLappingTimesForTrack(tramid,deptime, arrtime, times \ {(tramid2, deptime2, arrtime2)})
+            else countOverLappingTimesForTrack(tramid, deptime, arrtime, times \ {(tramid2, deptime2, arrtime2)})
+            end
+          end
+        end,
+      
+    -- build a set of all departure and arrival times for a given track   
+    -- (Noah)  
+      buildAllTimesForTrack : StopId >< StopId >< TramId-set >< TimeTable -> (TramId >< Time><Time)-set
       buildAllTimesForTrack(stopid1, stopid2, trams, timetable) is 
         if trams = {}
         then {}
@@ -251,25 +261,98 @@ class
         end,
 
     
-
-       buildTimesForTramOnTrack : StopId >< StopId >< Plan >< TramId -> (TramId ><Time><Time)-set
-       buildTimesForTramOnTrack (stopid1, stopid2, plan, tramid) is 
-          if plan = <..>
-          then {}
-          else
-            let
-              (sid, arrt, dept) = hd plan,
-              (sid2, arrt2, dept2) = nextStop((sid,arrt,dept), plan)
-            in
-              if sid = stopid1 /\ sid2 = stopid2
-              then {(tramid, dept, arrt2)} union buildTimesForTramOnTrack(stopid1, stopid2, tl plan, tramid)
-              else buildTimesForTramOnTrack(stopid1, stopid2, tl plan, tramid)
-              end
+    -- build a set of all departure and arrival times for a given tram on a given track
+    -- (Noah)
+      buildTimesForTramOnTrack : StopId >< StopId >< Plan >< TramId -> (TramId ><Time><Time)-set
+      buildTimesForTramOnTrack (stopid1, stopid2, plan, tramid) is 
+        if len plan <= 1
+        then {}
+        else
+          let
+            (sid, arrt, dept) = hd plan,
+            (sid2, arrt2, dept2) = nextStop((sid,arrt,dept), plan)
+          in
+            if sid = stopid1 /\ sid2 = stopid2
+            then {(tramid, dept, arrt2)} union buildTimesForTramOnTrack(stopid1, stopid2, tl plan, tramid)
+            else buildTimesForTramOnTrack(stopid1, stopid2, tl plan, tramid)
             end
-          end,
+          end
+        end,
+    
+    -- for all stops check that the capacity is not exceeded    
+    -- (Noah)
+      allStopCapacitiesAreNotExceeded : TimeTable >< Net -> Bool
+      allStopCapacitiesAreNotExceeded(timetable, (capacityMap,connectionMap)) is
+        (all stopid : StopId :- stopid isin dom(capacityMap) =>
+          stopCapacityIsNotExceeded(stopid, timetable, capacityMap)
+        ),  
+    
+    -- the number of trains at a stop must not exceed the capacity of the stop
+    -- (Noah)
+      stopCapacityIsNotExceeded : StopId >< TimeTable >< CapacityMap -> Bool
+      stopCapacityIsNotExceeded(stopid, timetable, capacityMap) is
+        let 
+          times = buildAllTimesForStop(stopid, dom(timetable), timetable),
+          capacity = capacityMap(stopid)
+        in
+          (all (tramid, arrtime, deptime) : TramId >< Time >< Time :- (tramid, arrtime, deptime) isin times =>
+            (1 + countOverLappingTimesForStop(tramid, arrtime, deptime, times) <= capacity)
+          )
+        end,
+
+    -- count the number of arrival and departure times that overlap with the given arrival and departure time
+    -- (Noah)
+      countOverLappingTimesForStop : TramId >< Time >< Time >< (TramId >< Time >< Time)-set -> Nat
+      countOverLappingTimesForStop(tramid,arrtime, deptime, times) is
+        if times = {}
+        then 0
+        else
+          let
+            (tramid2, arrtime2, deptime2) = hd times
+          in
+            if tramid ~= tramid2 /\ ((arrtime <= arrtime2 /\ arrtime2<= deptime) \/ (arrtime <= deptime2 /\ deptime2 <= deptime))
+            then 1 + countOverLappingTimesForStop(tramid,arrtime, deptime, times \ {(tramid2, arrtime2, deptime2)})
+            else countOverLappingTimesForStop(tramid, arrtime, deptime, times \ {(tramid2, arrtime2, deptime2)})
+            end
+          end
+        end,
+      
+    -- build a set of all arrival and departure times for a given stop
+    -- (Noah)
+      buildAllTimesForStop : StopId >< TramId-set >< TimeTable -> (TramId >< Time><Time)-set
+      buildAllTimesForStop(stopid, trams, timetable) is 
+        if trams = {}
+        then {}
+        else
+          let
+            tramid = hd trams
+          in
+            buildTimesForTramOnStop(stopid, timetable(tramid), tramid) union buildAllTimesForStop(stopid, trams \ {tramid}, timetable)
+          end
+        end,
+
+    -- build a set of all arrival and departure times for a given tram on a given stop
+    -- (Noah)
+      buildTimesForTramOnStop: StopId >< Plan >< TramId -> (TramId >< Time >< Time)-set
+      buildTimesForTramOnStop(stopid, plan, tramid) is
+        if len plan < 1
+        then {}
+        else
+          let
+            (sid, arrt, dept) = hd plan
+          in
+            if sid = stopid
+            then {(tramid, arrt, dept)} union buildTimesForTramOnStop(stopid, tl plan, tramid)
+            else buildTimesForTramOnStop(stopid, tl plan, tramid)
+            end
+          end
+        end,
 
 
+    -- a tram must not drive on a track that is not connected to the previous track?!?!??!?!??!?!?!
 
+    -- check that the given timetable is valid
+    -- (Sebastian)
      isWellformed : TimeTable >< Net -~-> Bool
      isWellformed(t, n) is
        tramStopsAtAllStopsItPasses(t) /\ timeBetweenDeparturesIsValidHeadway(t, n) /\
