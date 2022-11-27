@@ -50,15 +50,19 @@ scheme testTimeTable =
             -- Scenario 1 (Sebastian)
             [s1_WellFormedTimetable] isWellformed(timetableWF, net) = true,
             -- Scenario 2 (Sebastian)
+            [s2_validDrivingTime] timeBetweenStopsIsDrivingTime(timetableWF, net) = true,
             [s2_InvalidDrivingTime] timeBetweenStopsIsDrivingTime(planInvalidDrivingTime, net) = false,
             [s2_NotWellFormedWithInvalidDrivingTime] isWellformed(timetableInvalidDrivingTime, net) = false,
             -- Scenario 3 (Sebastian)
+            [s3_invalidHeadwayBetweenDeparture] timeBetweenDeparturesIsValidHeadway(timetableWF, net) = true,
             [s3_invalidHeadwayBetweenDeparture] timeBetweenDeparturesIsValidHeadway(timetableInvalidDepartureHeadway, net) = false,
             [s3_NotWellFormedDepatureHeadway] isWellformed(timetableInvalidDepartureHeadway, net) = false,
             -- Scenario 4 (Sebastian)
+            [s4_HeadwayBetweenDeparture] timeBetweenDeparturesIsValidHeadway(timetableWF, net) = true,
             [s4_duplicateHeadwayBetweenDeparture] timeBetweenDeparturesIsValidHeadway(timetableDuplicateDepartureHeadway, net) = false,
             [s4_NotWellFormedDuplicateDepatureHeadway] isWellformed(timetableDuplicateDepartureHeadway, net) = false,
             -- Scenario 5 (Sebastian)
+            [s5_tramStopsAtAllStopsItPasses] tramStopsAtAllStopsItPasses(timetableWF) = true,
             [s5_tramDoesNotStopAtAllStopsItPasses] tramStopsAtAllStopsItPasses(timetableWithoutStopTime) = false,
             [s5_NotWellFormedTramDoesNotStopAtAllStopsItPasses] isWellformed(timetableWithoutStopTime, net) = false,
             --Scenario 6 (Noah)
@@ -67,4 +71,5 @@ scheme testTimeTable =
             --Scenario 7 (Noah)
             [s7_NumberOfTrainsAtStopDontExceedStopCapacity] allStopCapacitiesAreNotExceeded(timetableWF, net) = true,
             [s7_NumberOfTrainsAtStopDoExceedStopCapacity] allStopCapacitiesAreNotExceeded(timeTableWithExceededStopCapacities, net) = false
+
 end
