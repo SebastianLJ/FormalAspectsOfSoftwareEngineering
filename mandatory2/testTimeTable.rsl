@@ -129,7 +129,7 @@ scheme testTimeTable =
 
             -- Scenario 16 (Susan) --
             [s16_getConnection] getConnection("A", "B", net) = connectionTest,
-            [s16_getConnectionFail] getConnection("A", "E", net) = connectionTest,
+            [s16_getConnectionFail] getConnection("A", "E", net) = connectionTest
 
 
 end
