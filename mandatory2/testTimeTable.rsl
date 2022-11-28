@@ -5,9 +5,9 @@ scheme testTimeTable =
     class
         value
             -- Trams --
-            tramIdA : tramid = "tram1",
-            tramIdB : tramid = "tram2",
-            tramNotIn : tramid = "tramG",
+            tramIdA : TramId = "tram1",
+            tramIdB : TramId = "tram2",
+            tramNotIn : TramId = "tramG",
 
             /* ConnectionMap and CapacityMap */
             connectionMap : ConnectionMap = [("B", "D") +> (2, 7, 2), ("A","B") +> (1, 10, 1), ("B", "C") +> (2, 12, 3)],
@@ -67,9 +67,9 @@ scheme testTimeTable =
            timetableWithAddedTram : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, tramNotIn +> plan11],
 
             /* Scenario 12 adding a stop to the net*/
-            plan8 : Plan = <.("A", 0, 1), ("B", 12, 14), ("C", 28, 32), ("B", 46, 48), ("A", 59, 60), ("G", 5, 10).>,
-            plan9 : Plan = <.("D", 0, 2), ("B", 11, 13), ("A", 28, 32), ("B", 47, 50), ("D", 58, 60).>,
-            timetableWithAddedStop : TimeTable = ["tram1" +> plan8, "tram2" +> plan2],
+            plan12 : Plan = <.("A", 0, 1), ("B", 12, 14), ("C", 28, 32), ("B", 46, 48), ("A", 59, 60), ("G", 5, 10).>,
+            plan13 : Plan = <.("D", 0, 2), ("B", 11, 13), ("A", 28, 32), ("B", 47, 50), ("D", 58, 60).>,
+            timetableWithAddedStop : TimeTable = ["tram1" +> plan12, "tram2" +> plan13],
 
              /* Scenario 14 */
              stopCapacitywithAddedStop : CapacityMap = ["A" +> 2, "B" +> 6, "C" +> 2, "D" +> 2, "E" +> 2],
