@@ -54,7 +54,7 @@ scheme testTimeTable =
 
            /* Scenario 10 */
            plan9: Plan = <.("A", 0, 1), ("B", 12, 14), ("C", 28, 32), ("A", 59, 60).>,
-           timeTableWithInvalidConnection : TimeTable = ["tram1" +> plan1, "tram2" +> plan9]
+           timeTableWithInvalidConnection : TimeTable = ["tram1" +> plan1, "tram2" +> plan9],
 
            /* Scenario 11 adding a tram to the time table  with an empty table*/
            plan11 : Plan = <..>,
@@ -107,13 +107,13 @@ scheme testTimeTable =
             -- Scenario 13  (Mads) --
             [s13_isinExisting01]isIn(tram1, timetableWF) = true,
             [s13_isinExisting02]isIn(tram2, timetableWF) = true,
-            [s13_isNotin]isIn(tramNotIn, timetableWF) = false
+            [s13_isNotin]isIn(tramNotIn, timetableWF) = false,
             -- Scenario 14 (Susan) --
             [s14_allStopsInPlanExist] allStopsInPlanExist(timetableWF, net) = true,
             [s14_notAllStopsInPlanExist] allStopsInPlanExist(timetableWF, netWithAddedStop) = false,
             -- Scenario 15 (Susan) --
             [s15_stopsExist] stopsExist(plan1, stopCapacity) = true,
-            [s15_stopsDoNotExist] stopsExist(plan2, stopCapacitywithAddedStop) = false,
+            [s15_stopsDoNotExist] stopsExist(plan2, stopCapacitywithAddedStop) = false
 
 
 end
