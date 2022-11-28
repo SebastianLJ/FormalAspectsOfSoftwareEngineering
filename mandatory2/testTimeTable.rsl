@@ -75,7 +75,10 @@ scheme testTimeTable =
              stopCapacitywithAddedStop : CapacityMap = ["A" +> 2, "B" +> 6, "C" +> 2, "D" +> 2, "E" +> 2],
 
              /* Scenario 15 */
-             netWithAddedStop : Net = (stopCapacitywithAddedStop, connectionMap)
+             netWithAddedStop : Net = (stopCapacitywithAddedStop, connectionMap),
+
+             /* Scenario 16 */
+             connectionTest : Connection = (1, 10, 1)
            
 
         test_case
@@ -120,15 +123,12 @@ scheme testTimeTable =
             [s13_isinExisting01]isIn(tramIdA, timetableWF) = true,
             [s13_isinExisting02]isIn(tramIdB, timetableWF) = true,
             [s13_isNotin]isIn(tramNotIn, timetableWF) = false,
-            -- Scenario 14 (Susan) --
-            [s14_allStopsInPlanExist] allStopsInPlanExist(timetableWF, net) = true,
-            [s14_notAllStopsInPlanExist] allStopsInPlanExist(timetableWF, netWithAddedStop) = false,
             -- Scenario 15 (Susan) --
             [s15_stopsExist] stopsExist(plan1, stopCapacity) = true,
             [s15_stopsDoNotExist] stopsExist(plan2, stopCapacitywithAddedStop) = false,
-
             -- Scenario 16 (Susan) --
-            [s16_getConnection] getConnection("A", "B", net) = "B"
+            [s16_getConnection] getConnection("A", "B", net) = connectionTest,
+            [s16_getConnectionFail] getConnection("A", "E", net) = connectionTest,
 
 
 end
