@@ -193,7 +193,11 @@ class
           (all (tram1, sid1, arrt1, dept1) : TramPlanRow :- (tram1, sid1, arrt1, dept1) isin getAllDepaturesUsingConnection(stopid1, stopid2, timetable) =>
             (all (tram2, sid2, arrt2, dept2) : TramPlanRow :- (tram2, sid2, arrt2, dept2) isin getAllDepaturesUsingConnection(stopid1, stopid2, timetable) \ {(tram1, sid1, arrt1, dept1)} =>
               (abs(dept1 - dept2) >= headway))
-          )
+          ) /\
+          (all (tram1, sid1, arrt1, dept1) : TramPlanRow :- (tram1, sid1, arrt1, dept1) isin getAllDepaturesUsingConnection(stopid2, stopid1, timetable) =>
+          (all (tram2, sid2, arrt2, dept2) : TramPlanRow :- (tram2, sid2, arrt2, dept2) isin getAllDepaturesUsingConnection(stopid2, stopid1, timetable) \ {(tram1, sid1, arrt1, dept1)} =>
+            (abs(dept1 - dept2) >= headway))
+        )
         end
       ),
 
@@ -201,6 +205,7 @@ class
         
 
     -- the difference in arrival times for any two trams moving on the same track must be greater than or equal to the headway time
+    -- (Sebastian and Noah)
     timeBetweenArrivalIsValidHeadway : TimeTable >< Net -> Bool
     timeBetweenArrivalIsValidHeadway(timetable, (capacityMap, connectionMap)) is
       (all (stopid1, stopid2) : StopId >< StopId :- (stopid1, stopid2) isin dom(connectionMap) =>
@@ -208,7 +213,11 @@ class
         in
           (all (tram1, sid1, arrt1, dept1) : TramPlanRow :- (tram1, sid1, arrt1, dept1) isin getAllArrivalsUsingConnection(stopid1, stopid2, timetable) =>
             (all (tram2, sid2, arrt2, dept2) : TramPlanRow :- (tram2, sid2, arrt2, dept2) isin getAllArrivalsUsingConnection(stopid1, stopid2, timetable) \ {(tram1, sid1, arrt1, dept1)} =>
-              (abs(dept1 - dept2) >= headway))
+              (abs(arrt1 - arrt2) >= headway))
+          ) /\
+          (all (tram1, sid1, arrt1, dept1) : TramPlanRow :- (tram1, sid1, arrt1, dept1) isin getAllArrivalsUsingConnection(stopid2, stopid1, timetable) =>
+            (all (tram2, sid2, arrt2, dept2) : TramPlanRow :- (tram2, sid2, arrt2, dept2) isin getAllArrivalsUsingConnection(stopid2, stopid1, timetable) \ {(tram1, sid1, arrt1, dept1)} =>
+              (abs(arrt1 - arrt2) >= headway))
           )
         end
       ),
