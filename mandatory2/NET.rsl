@@ -1,6 +1,6 @@
 scheme NET =
 class
-  type /* types (Sebastian and Noah) */
+  type /* types  */
     Net = CapacityMap >< ConnectionMap,
     Headway = Time, -- minimum headways
     DrivingTime = Time, -- minimum driving times
@@ -10,7 +10,7 @@ class
     CapacityMap = StopId -m-> Capacity, -- capacities of stops
     Connection = (Headway >< DrivingTime >< Capacity),
     ConnectionMap = (StopId >< StopId) -m-> Connection -- connection map with headway and driving time
-  value /* generators  (Sebastian and Noah)*/
+  value /* generators  */
     empty :  Net = ([],[]),  -- the empty net
     -- insert a stop with a given name and capacity 
     insertStop : StopId >< Capacity >< Net -> Net
@@ -59,7 +59,7 @@ class
         drivingTime
       end
 
-  value /* predicates to check nets (Sebastian and Noah) */
+  value /* predicates to check nets  */
     -- a stop can not connect to itself
     noSelfConnection : Net -> Bool
     noSelfConnection(capacityMap, connectionMap) is
