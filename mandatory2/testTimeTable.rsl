@@ -58,7 +58,6 @@ scheme testTimeTable =
             [s3_invalidHeadwayBetweenDeparture] timeBetweenDeparturesIsValidHeadway(timetableInvalidDepartureHeadway, net) = false,
             [s3_NotWellFormedDepatureHeadway] isWellformed(timetableInvalidDepartureHeadway, net) = false,
             -- Scenario 4 (Sebastian)
-            [s4_validHeadwayBetweenDeparture] timeBetweenDeparturesIsValidHeadway(timetableWF, net) = true,
             [s4_duplicateHeadwayBetweenDeparture] timeBetweenDeparturesIsValidHeadway(timetableDuplicateDepartureHeadway, net) = false,
             [s4_NotWellFormedDuplicateDepatureHeadway] isWellformed(timetableDuplicateDepartureHeadway, net) = false,
             -- Scenario 5 (Sebastian)
