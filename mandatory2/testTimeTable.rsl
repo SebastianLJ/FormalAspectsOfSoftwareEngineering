@@ -4,6 +4,11 @@ scheme testTimeTable =
     extend TIMETABLE with
     class
         value
+            -- Trams --
+            tramIdA : TramId = "tram1",
+            tramIdB : TramId = "tram2",
+            tramNotIn : TramId = "tramG",
+
             /* ConnectionMap and CapacityMap */
             connectionMap : ConnectionMap = [("B", "D") +> (2, 7, 2), ("A","B") +> (1, 10, 1), ("B", "C") +> (2, 12, 3)],
             stopCapacity : CapacityMap = ["A" +> 2, "B" +> 6, "C" +> 2, "D" +> 2],
@@ -52,11 +57,28 @@ scheme testTimeTable =
            plan7 : Plan = <.("C", 5, 7), ("B", 19, 21), ("Q", 31, 33).>,
            timeTableWithInvalidStop : TimeTable = ["tram1" +> plan1, "tram2" +> plan7],
 
+
            /* Scenario 10 */
            plan9: Plan = <.("A", 0, 1), ("B", 12, 14), ("C", 28, 32), ("A", 59, 60).>,
-           timeTableWithInvalidConnection : TimeTable = ["tram1" +> plan1, "tram2" +> plan9]
+           timeTableWithInvalidConnection : TimeTable = ["tram1" +> plan1, "tram2" +> plan9],
 
+           /* Scenario 11 adding a tram to the time table  with an empty table*/
+           plan11 : Plan = <..>,
+           timetableWithAddedTram : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, tramNotIn +> plan11],
 
+            /* Scenario 12 adding a stop to the net*/
+            plan12 : Plan = <.("A", 0, 1), ("B", 12, 14), ("C", 28, 32), ("B", 46, 48), ("A", 59, 60), ("G", 5, 10).>,
+            plan13 : Plan = <.("D", 0, 2), ("B", 11, 13), ("A", 28, 32), ("B", 47, 50), ("D", 58, 60).>,
+            timetableWithAddedStop : TimeTable = ["tram1" +> plan12, "tram2" +> plan13],
+
+             /* Scenario 14 */
+             stopCapacitywithAddedStop : CapacityMap = ["A" +> 2, "B" +> 6, "C" +> 2, "D" +> 2, "E" +> 2],
+
+             /* Scenario 15 */
+             netWithAddedStop : Net = (stopCapacitywithAddedStop, connectionMap),
+
+             /* Scenario 16 */
+             connectionTest : Connection = (1, 10, 1)
            
 
         test_case
@@ -92,7 +114,21 @@ scheme testTimeTable =
             [s9_AllStopsInPlansDoNotExist] allStopsInPlanExist(timeTableWithInvalidStop, net) = false,
             -- Scenario 10 (Noah)
             [s10_allStopsAreConnected] allStopsAreConnected(timetableWF, net) = true,
-            [s10_allStopsAreNotConnected] allStopsAreConnected(timeTableWithInvalidConnection, net) = false
+            [s10_allStopsAreNotConnected] allStopsAreConnected(timeTableWithInvalidConnection, net) = false,           
+             -- Scenario 11 (Mads) --
+            [s12_AddingTram] addTram (tramNotIn, timetableWF) = timetableWithAddedTram,
+            -- Scenario 12 (Mads) --
+            [s12_addStop] addStop (tramIdA, "G", 5, 10, timetableWF ) = timetableWithAddedStop,
+            -- Scenario 13  (Mads) --
+            [s13_isinExisting01]isIn(tramIdA, timetableWF) = true,
+            [s13_isinExisting02]isIn(tramIdB, timetableWF) = true,
+            [s13_isNotin]isIn(tramNotIn, timetableWF) = false,
+            -- Scenario 15 (Susan) --
+            [s15_stopsExist] stopsExist(plan1, stopCapacity) = true,
+            [s15_stopsDoNotExist] stopsExist(plan7, stopCapacity) = false,
+            -- Scenario 16 (Susan) --
+            [s16_getConnection] getConnection("A", "B", net) = connectionTest
+
 
 
 end
