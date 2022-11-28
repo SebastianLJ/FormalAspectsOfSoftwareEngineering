@@ -401,7 +401,7 @@ class
           end
         end,
     
-    -- all stops in all plants must exist 
+    -- all stops in all plans must exist 
     -- (Noah)
     allStopsInPlanExist : TimeTable >< Net -> Bool
     allStopsInPlanExist(timetable, (capacityMap, connectionMap)) is 
