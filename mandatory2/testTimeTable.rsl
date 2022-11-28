@@ -29,6 +29,10 @@ scheme testTimeTable =
             planDuplicateDepartureHeadway : Plan = <.("A", 0, 1), ("B", 14, 16).>,
             timetableDuplicateDepartureHeadway : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, "tram3" +> planDuplicateDepartureHeadway],
 
+            /* Scenario 5 a plan in the timetable has a stop with a too short arrival headway */
+            planTooShortArrivalTime : Plan = <.("C", 0, 2), ("B", 46, 48).>,
+            timetableInvalidArrivalHeadway : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, "tram3" +> planTooShortArrivalTime],
+
             /* Scenario 5 a tram does not stop a all stops in its plan */
             planWithoutStopTime : Plan = <.("A", 0, 1), ("B", 12, 12), ("C", 28, 32), ("B", 46, 48), ("A", 59, 60).>,
             timetableWithoutStopTime : TimeTable = ["tram1" +> planWithoutStopTime],
@@ -43,6 +47,8 @@ scheme testTimeTable =
            plan5 : Plan = <.("C", 5, 7), ("B", 19, 21), ("A", 31, 33), ("B", 46, 48), ("A", 60, 3).>,
            plan6 : Plan = <.("B", 15, 17), ("A", 29, 30), ("B", 46, 48), ("A", 60, 3).>,
            timeTableWithExceededStopCapacities : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, "tram3" +> plan5, "tram4" +> plan6]
+
+            /* Scenario 3 a plan in the timetable has a stop with a too short depature headway */
 
 
 
@@ -60,6 +66,10 @@ scheme testTimeTable =
             -- Scenario 4 (Sebastian)
             [s4_duplicateHeadwayBetweenDeparture] timeBetweenDeparturesIsValidHeadway(timetableDuplicateDepartureHeadway, net) = false,
             [s4_NotWellFormedDuplicateDepatureHeadway] isWellformed(timetableDuplicateDepartureHeadway, net) = false,
+            -- Scenario 5 (Sebastian)
+            [s5_validHeadwayBetweenArrivals] timeBetweenArrivalIsValidHeadway(timetableWF, net) = true,
+            [s5_invalidHeadwayBetweenArrivals] timeBetweenArrivalIsValidHeadway(timetableInvalidArrivalHeadway, net) = false,
+            [s5_NotWellFormedArrivalHeadway] isWellformed(timetableInvalidArrivalHeadway, net) = false,
             -- Scenario 5 (Sebastian)
             [s5_tramStopsAtAllStopsItPasses] tramStopsAtAllStopsItPasses(timetableWF) = true,
             [s5_tramDoesNotStopAtAllStopsItPasses] tramStopsAtAllStopsItPasses(timetableWithoutStopTime) = false,
