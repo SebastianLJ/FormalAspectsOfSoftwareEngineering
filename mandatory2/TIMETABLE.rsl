@@ -250,16 +250,16 @@ class
          (headway, drivingtime, trackcapacity) = connectionMap(stopid1, stopid2)          
        in
          (all (tramid, deptime, arrtime) : TramId >< Time >< Time :- (tramid, deptime, arrtime) isin times1 =>
-               (1 +countOverLappingTimesForTrack(tramid, deptime, arrtime, times1) <= trackcapacity)
+               (1 +countOverlappingTimesForTrack(tramid, deptime, arrtime, times1) <= trackcapacity)
          ) /\ (all (tramid, deptime, arrtime) : TramId >< Time >< Time :- (tramid, deptime, arrtime) isin times2 =>
-              (1 + countOverLappingTimesForTrack(tramid, deptime, arrtime, times2) <= trackcapacity)
+              (1 + countOverlappingTimesForTrack(tramid, deptime, arrtime, times2) <= trackcapacity)
          )
        end,
     
     -- count the number of times that overlap with the given time
     -- (Noah)
-      countOverLappingTimesForTrack : TramId >< Time >< Time >< (TramId >< Time >< Time)-set -> Nat
-      countOverLappingTimesForTrack(tramid,deptime, arrtime, times) is
+      countOverlappingTimesForTrack : TramId >< Time >< Time >< (TramId >< Time >< Time)-set -> Nat
+      countOverlappingTimesForTrack(tramid,deptime, arrtime, times) is
         if times = {}
         then 0
         else
@@ -267,8 +267,8 @@ class
             (tramid2, deptime2, arrtime2) = hd times
           in
             if tramid ~= tramid2 /\ ((deptime <= deptime2 /\ deptime2<= arrtime) \/ (deptime <= arrtime2 /\ arrtime2 <= arrtime))
-            then 1 + countOverLappingTimesForTrack(tramid,deptime, arrtime, times \ {(tramid2, deptime2, arrtime2)})
-            else countOverLappingTimesForTrack(tramid, deptime, arrtime, times \ {(tramid2, deptime2, arrtime2)})
+            then 1 + countOverlappingTimesForTrack(tramid,deptime, arrtime, times \ {(tramid2, deptime2, arrtime2)})
+            else countOverlappingTimesForTrack(tramid, deptime, arrtime, times \ {(tramid2, deptime2, arrtime2)})
             end
           end
         end,
@@ -323,14 +323,14 @@ class
           capacity = capacityMap(stopid)
         in
           (all (tramid, arrtime, deptime) : TramId >< Time >< Time :- (tramid, arrtime, deptime) isin times =>
-            (1 + countOverLappingTimesForStop(tramid, arrtime, deptime, times) <= capacity)
+            (1 + countOverlappingTimesForStop(tramid, arrtime, deptime, times) <= capacity)
           )
         end,
 
     -- count the number of arrival and departure times that overlap with the given arrival and departure time
     -- (Noah)
-      countOverLappingTimesForStop : TramId >< Time >< Time >< (TramId >< Time >< Time)-set -> Nat
-      countOverLappingTimesForStop(tramid,arrtime, deptime, times) is
+      countOverlappingTimesForStop : TramId >< Time >< Time >< (TramId >< Time >< Time)-set -> Nat
+      countOverlappingTimesForStop(tramid,arrtime, deptime, times) is
         if times = {}
         then 0
         else
@@ -338,8 +338,8 @@ class
             (tramid2, arrtime2, deptime2) = hd times
           in
             if tramid ~= tramid2 /\ ((arrtime <= arrtime2 /\ arrtime2<= deptime) \/ (arrtime <= deptime2 /\ deptime2 <= deptime))
-            then 1 + countOverLappingTimesForStop(tramid,arrtime, deptime, times \ {(tramid2, arrtime2, deptime2)})
-            else countOverLappingTimesForStop(tramid, arrtime, deptime, times \ {(tramid2, arrtime2, deptime2)})
+            then 1 + countOverlappingTimesForStop(tramid,arrtime, deptime, times \ {(tramid2, arrtime2, deptime2)})
+            else countOverlappingTimesForStop(tramid, arrtime, deptime, times \ {(tramid2, arrtime2, deptime2)})
             end
           end
         end,
