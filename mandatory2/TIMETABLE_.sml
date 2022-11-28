@@ -563,6 +563,48 @@ structure RT_x_33 =
                               ")";
     end;
     
+structure RT_x_34 =
+    struct
+        type t = RT_l_15.t * RT_m_4.t;
+        
+        fun equ (x:t, y:t) = RT_l_15.equ(#1 x, #1 y) andalso 
+                             RT_m_4.equ(#2 x, #2 y);
+        
+        fun toString (x:t) = "(" ^
+                             (RT_l_15.toString(#1 x )) ^ "," ^
+                             (RT_m_4.toString(#2 x )) ^
+                             ")";
+        
+        fun toStringSafe x = toString(x())
+          handle RSL.RSL_exception s => (RSL.inc_exception_count(); s);
+        
+        fun typeToString () = "(" ^
+                              (RT_l_15.typeToString ()) ^ " >< " ^
+                              (RT_m_4.typeToString ()) ^
+                              ")";
+    end;
+    
+structure RT_x_35 =
+    struct
+        type t = RT_l_15.t * RT_m_1.t;
+        
+        fun equ (x:t, y:t) = RT_l_15.equ(#1 x, #1 y) andalso 
+                             RT_m_1.equ(#2 x, #2 y);
+        
+        fun toString (x:t) = "(" ^
+                             (RT_l_15.toString(#1 x )) ^ "," ^
+                             (RT_m_1.toString(#2 x )) ^
+                             ")";
+        
+        fun toStringSafe x = toString(x())
+          handle RSL.RSL_exception s => (RSL.inc_exception_count(); s);
+        
+        fun typeToString () = "(" ^
+                              (RT_l_15.typeToString ()) ^ " >< " ^
+                              (RT_m_1.typeToString ()) ^
+                              ")";
+    end;
+    
 structure TIMETABLE =
     struct
         type Net_ = RT_x_5.t;
@@ -583,95 +625,95 @@ structure TIMETABLE =
         
         type ConnectionMap_ = RT_m_4.t;
         
-        fun allStopsHaveConnection'B351_ (capacityMap'B3CC_, connectionMap'B3D9_) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (80, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'B3CC_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun allStopsHaveConnection'C611_ (capacityMap'C68C_, connectionMap'C699_) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (80, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'C68C_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x53_'0_, x54_'0_, x55_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x53_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x54_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x55_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'B3D9_))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:78:5: Argument of allStopsHaveConnection" ^ RT_x_5.toString (capacityMap'B3CC_, connectionMap'B3D9_) ^ " not in subtype") else ((RT_m_1.R_all (fn (stopId'B420_:RT_Text.t) => ((RT_m_1.R_exists (fn (stopId2'B4ED_:RT_Text.t) => ((RT_m_4.R_mem ((stopId'B420_, stopId2'B4ED_), (connectionMap'B3D9_))) orelse (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (85, 13)); RT_m_4.R_mem ((stopId2'B4ED_, stopId'B420_), (connectionMap'B3D9_))))) ((capacityMap'B3CC_))))) ((capacityMap'B3CC_)))));
+        end) (RT_m_4.R_ran(connectionMap'C699_))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:78:5: Argument of allStopsHaveConnection" ^ RT_x_5.toString (capacityMap'C68C_, connectionMap'C699_) ^ " not in subtype") else ((RT_m_1.R_all (fn (stopId'C6E0_:RT_Text.t) => ((RT_m_1.R_exists (fn (stopId2'C7AD_:RT_Text.t) => ((RT_m_4.R_mem ((stopId'C6E0_, stopId2'C7AD_), (connectionMap'C699_))) orelse (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (85, 13)); RT_m_4.R_mem ((stopId2'C7AD_, stopId'C6E0_), (connectionMap'C699_))))) ((capacityMap'C68C_))))) ((capacityMap'C68C_)))));
         
-        fun noSelfConnection'ADD9_ (capacityMap'AE4E_, connectionMap'AE5B_) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (66, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'AE4E_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun noSelfConnection'C099_ (capacityMap'C10E_, connectionMap'C11B_) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (66, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'C10E_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x43_'0_, x44_'0_, x45_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x43_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x44_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x45_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'AE5B_))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:64:5: Argument of noSelfConnection" ^ RT_x_5.toString (capacityMap'AE4E_, connectionMap'AE5B_) ^ " not in subtype") else ((RT_m_4.R_all (fn ((stopId1'AEA9_, stopId2'AEB2_):RT_x_2.t) => (RSL.C_not RT_Text.equ) (stopId1'AEA9_, stopId2'AEB2_)) ((connectionMap'AE5B_)))));
+        end) (RT_m_4.R_ran(connectionMap'C11B_))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:64:5: Argument of noSelfConnection" ^ RT_x_5.toString (capacityMap'C10E_, connectionMap'C11B_) ^ " not in subtype") else ((RT_m_4.R_all (fn ((stopId1'C169_, stopId2'C172_):RT_x_2.t) => (RSL.C_not RT_Text.equ) (stopId1'C169_, stopId2'C172_)) ((connectionMap'C11B_)))));
         
-        fun allStopsInConnectionMapAreInCapacityMap'B095_ (capacityMap'B121_, connectionMap'B12E_) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (73, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'B121_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun allStopsInConnectionMapAreInCapacityMap'C355_ (capacityMap'C3E1_, connectionMap'C3EE_) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (73, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'C3E1_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x48_'0_, x49_'0_, x50_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x48_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x49_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x50_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'B12E_))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:71:5: Argument of allStopsInConnectionMapAreInCapacityMap" ^ RT_x_5.toString (capacityMap'B121_, connectionMap'B12E_) ^ " not in subtype") else ((RT_m_4.R_all (fn ((stopId1'B165_, stopId2'B16E_):RT_x_2.t) => (RT_m_1.R_mem (stopId1'B165_, (capacityMap'B121_))) andalso (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (75, 42)); RT_m_1.R_mem (stopId2'B16E_, (capacityMap'B121_)))) ((connectionMap'B12E_)))));
+        end) (RT_m_4.R_ran(connectionMap'C3EE_))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:71:5: Argument of allStopsInConnectionMapAreInCapacityMap" ^ RT_x_5.toString (capacityMap'C3E1_, connectionMap'C3EE_) ^ " not in subtype") else ((RT_m_4.R_all (fn ((stopId1'C425_, stopId2'C42E_):RT_x_2.t) => (RT_m_1.R_mem (stopId1'C425_, (capacityMap'C3E1_))) andalso (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (75, 42)); RT_m_1.R_mem (stopId2'C42E_, (capacityMap'C3E1_)))) ((connectionMap'C3EE_)))));
         
-        fun isWellformed'B739_ net'B7AA_ = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (90, 7)); if not(let
-            val (x56_'0_, x57_'0_) = ((net'B7AA_):RT_x_5.t)
+        fun isWellformed'C9F9_ net'CA6A_ = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (90, 7)); if not(let
+            val (x56_'0_, x57_'0_) = ((net'CA6A_):RT_x_5.t)
         in
             ((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(x56_'0_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
                 val (x60_'0_, x61_'0_, x62_'0_) = ((x_'0_):RT_x_3.t)
             in
                 (RT_Nat.R_ge (x60_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x61_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x62_'0_, RT_Int.fromLit "0")))
             end) (RT_m_4.R_ran(x57_'0_))))
-        end) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:88:5: Argument of isWellformed" ^ "(" ^ RT_x_5.toString net'B7AA_ ^ ")" ^ " not in subtype") else (((noSelfConnection'ADD9_) (net'B7AA_))) andalso (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (91, 7)); (((allStopsInConnectionMapAreInCapacityMap'B095_) (net'B7AA_))) andalso (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (92, 7)); ((allStopsHaveConnection'B351_) (net'B7AA_)))));
+        end) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:88:5: Argument of isWellformed" ^ "(" ^ RT_x_5.toString net'CA6A_ ^ ")" ^ " not in subtype") else (((noSelfConnection'C099_) (net'CA6A_))) andalso (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (91, 7)); (((allStopsInConnectionMapAreInCapacityMap'C355_) (net'CA6A_))) andalso (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (92, 7)); ((allStopsHaveConnection'C611_) (net'CA6A_)))));
         
-        val empty'9A51_ = (RT_m_1.R_fromList [], RT_m_4.R_fromList []);
+        val empty'AD11_ = (RT_m_1.R_fromList [], RT_m_4.R_fromList []);
         
-        fun minDrivingTime'AA55_ (stopId1'AAC8_, stopId2'AAD1_, (capacityMap'AADB_, connectionMap'AAE8_)) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (57, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'AADB_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun minDrivingTime'BD15_ (stopId1'BD88_, stopId2'BD91_, (capacityMap'BD9B_, connectionMap'BDA8_)) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (57, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'BD9B_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x38_'0_, x39_'0_, x40_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x38_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x39_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x40_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'AAE8_))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:55:5: Argument of minDrivingTime" ^ RT_x_12.toString (stopId1'AAC8_, stopId2'AAD1_, (capacityMap'AADB_, connectionMap'AAE8_)) ^ " not in subtype") else let
-            val (headway'AB24_, drivingTime'AB2D_, capacity'AB3A_) = ((((RT_m_4.R_app(connectionMap'AAE8_)) (stopId1'AAC8_, stopId2'AAD1_))):RT_x_3.t)
+        end) (RT_m_4.R_ran(connectionMap'BDA8_))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:55:5: Argument of minDrivingTime" ^ RT_x_12.toString (stopId1'BD88_, stopId2'BD91_, (capacityMap'BD9B_, connectionMap'BDA8_)) ^ " not in subtype") else let
+            val (headway'BDE4_, drivingTime'BDED_, capacity'BDFA_) = ((((RT_m_4.R_app(connectionMap'BDA8_)) (stopId1'BD88_, stopId2'BD91_))):RT_x_3.t)
         in
-            drivingTime'AB2D_
+            drivingTime'BDED_
         end);
         
-        fun insertStop'9B19_ (stopId'9B88_, capacity'9B90_, (capacityMap'9B9B_, connectionMap'9BA8_)) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (18, 7)); if not((RT_Nat.R_ge (capacity'9B90_, RT_Int.fromLit "0")) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'9B9B_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun insertStop'ADD9_ (stopId'AE48_, capacity'AE50_, (capacityMap'AE5B_, connectionMap'AE68_)) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (18, 7)); if not((RT_Nat.R_ge (capacity'AE50_, RT_Int.fromLit "0")) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'AE5B_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x3_'0_, x4_'0_, x5_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x3_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x4_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x5_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'9BA8_)))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:16:5: Argument of insertStop" ^ RT_x_6.toString (stopId'9B88_, capacity'9B90_, (capacityMap'9B9B_, connectionMap'9BA8_)) ^ " not in subtype") else (RT_m_1.R_override (capacityMap'9B9B_, RT_m_1.R_fromList ([(stopId'9B88_, capacity'9B90_)])), connectionMap'9BA8_));
+        end) (RT_m_4.R_ran(connectionMap'AE68_)))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:16:5: Argument of insertStop" ^ RT_x_6.toString (stopId'AE48_, capacity'AE50_, (capacityMap'AE5B_, connectionMap'AE68_)) ^ " not in subtype") else (RT_m_1.R_override (capacityMap'AE5B_, RT_m_1.R_fromList ([(stopId'AE48_, capacity'AE50_)])), connectionMap'AE68_));
         
-        fun capacity'A735_ (stopId1'A7A2_, stopId2'A7AB_, (capacityMap'A7B5_, connectionMap'A7C2_)) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (49, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'A7B5_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun capacity'B9F5_ (stopId1'BA62_, stopId2'BA6B_, (capacityMap'BA75_, connectionMap'BA82_)) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (49, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'BA75_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x33_'0_, x34_'0_, x35_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x33_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x34_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x35_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'A7C2_))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:47:5: Argument of capacity" ^ RT_x_12.toString (stopId1'A7A2_, stopId2'A7AB_, (capacityMap'A7B5_, connectionMap'A7C2_)) ^ " not in subtype") else let
-            val (headway'A804_, drivingTime'A80D_, capacity'A81A_) = ((((RT_m_4.R_app(connectionMap'A7C2_)) (stopId1'A7A2_, stopId2'A7AB_))):RT_x_3.t)
+        end) (RT_m_4.R_ran(connectionMap'BA82_))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:47:5: Argument of capacity" ^ RT_x_12.toString (stopId1'BA62_, stopId2'BA6B_, (capacityMap'BA75_, connectionMap'BA82_)) ^ " not in subtype") else let
+            val (headway'BAC4_, drivingTime'BACD_, capacity'BADA_) = ((((RT_m_4.R_app(connectionMap'BA82_)) (stopId1'BA62_, stopId2'BA6B_))):RT_x_3.t)
         in
-            capacity'A81A_
+            capacity'BADA_
         end);
         
-        fun addConnection'9D0D_ (stopId1'9D7F_, stopId2'9D88_, headway'9D91_, capacity'9D9A_, drivingTime'9DA4_, (capacityMap'9DB2_, connectionMap'9DBF_)) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (23, 7)); if not((RT_Nat.R_ge (headway'9D91_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (capacity'9D9A_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (drivingTime'9DA4_, RT_Int.fromLit "0")) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'9DB2_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun addConnection'AFCD_ (stopId1'B03F_, stopId2'B048_, headway'B051_, capacity'B05A_, drivingTime'B064_, (capacityMap'B072_, connectionMap'B07F_)) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (23, 7)); if not((RT_Nat.R_ge (headway'B051_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (capacity'B05A_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (drivingTime'B064_, RT_Int.fromLit "0")) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'B072_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x8_'0_, x9_'0_, x10_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x8_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x9_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x10_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'9DBF_)))))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:21:5: Argument of addConnection" ^ RT_x_9.toString (stopId1'9D7F_, stopId2'9D88_, headway'9D91_, capacity'9D9A_, drivingTime'9DA4_, (capacityMap'9DB2_, connectionMap'9DBF_)) ^ " not in subtype") else (capacityMap'9DB2_, RT_m_4.R_override (connectionMap'9DBF_, RT_m_4.R_fromList ([((stopId1'9D7F_, stopId2'9D88_), (headway'9D91_, drivingTime'9DA4_, capacity'9D9A_))]))));
+        end) (RT_m_4.R_ran(connectionMap'B07F_)))))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:21:5: Argument of addConnection" ^ RT_x_9.toString (stopId1'B03F_, stopId2'B048_, headway'B051_, capacity'B05A_, drivingTime'B064_, (capacityMap'B072_, connectionMap'B07F_)) ^ " not in subtype") else (capacityMap'B072_, RT_m_4.R_override (connectionMap'B07F_, RT_m_4.R_fromList ([((stopId1'B03F_, stopId2'B048_), (headway'B051_, drivingTime'B064_, capacity'B05A_))]))));
         
-        fun minHeadway'A415_ (stopId1'A484_, stopId2'A48D_, (capacityMap'A497_, connectionMap'A4A4_)) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (41, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'A497_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun minHeadway'B6D5_ (stopId1'B744_, stopId2'B74D_, (capacityMap'B757_, connectionMap'B764_)) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (41, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'B757_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x28_'0_, x29_'0_, x30_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x28_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x29_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x30_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'A4A4_))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:39:5: Argument of minHeadway" ^ RT_x_12.toString (stopId1'A484_, stopId2'A48D_, (capacityMap'A497_, connectionMap'A4A4_)) ^ " not in subtype") else let
-            val (headway'A4E4_, drivingTime'A4ED_, capacity'A4FA_) = ((((RT_m_4.R_app(connectionMap'A4A4_)) (stopId1'A484_, stopId2'A48D_))):RT_x_3.t)
+        end) (RT_m_4.R_ran(connectionMap'B764_))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:39:5: Argument of minHeadway" ^ RT_x_12.toString (stopId1'B744_, stopId2'B74D_, (capacityMap'B757_, connectionMap'B764_)) ^ " not in subtype") else let
+            val (headway'B7A4_, drivingTime'B7AD_, capacity'B7BA_) = ((((RT_m_4.R_app(connectionMap'B764_)) (stopId1'B744_, stopId2'B74D_))):RT_x_3.t)
         in
-            headway'A4E4_
+            headway'B7A4_
         end);
         
-        fun isIn'9F01_ (stopId'9F6A_, (capacityMap'9F73_, connecitonMap'9F80_)) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (28, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'9F73_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun isIn'B1C1_ (stopId'B22A_, (capacityMap'B233_, connecitonMap'B240_)) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (28, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'B233_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x13_'0_, x14_'0_, x15_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x13_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x14_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x15_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connecitonMap'9F80_))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:26:5: Argument of isIn" ^ RT_x_10.toString (stopId'9F6A_, (capacityMap'9F73_, connecitonMap'9F80_)) ^ " not in subtype") else RT_m_1.R_mem (stopId'9F6A_, (capacityMap'9F73_)));
+        end) (RT_m_4.R_ran(connecitonMap'B240_))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:26:5: Argument of isIn" ^ RT_x_10.toString (stopId'B22A_, (capacityMap'B233_, connecitonMap'B240_)) ^ " not in subtype") else RT_m_1.R_mem (stopId'B22A_, (capacityMap'B233_)));
         
-        fun areDirectlyConnected'A221_ (stopId1'A29A_, stopId2'A2A3_, (capacityMap'A2AD_, connectionMap'A2BA_)) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (36, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'A2AD_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun areDirectlyConnected'B4E1_ (stopId1'B55A_, stopId2'B563_, (capacityMap'B56D_, connectionMap'B57A_)) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (36, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'B56D_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x23_'0_, x24_'0_, x25_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x23_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x24_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x25_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'A2BA_))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:34:5: Argument of areDirectlyConnected" ^ RT_x_12.toString (stopId1'A29A_, stopId2'A2A3_, (capacityMap'A2AD_, connectionMap'A2BA_)) ^ " not in subtype") else RT_m_4.R_mem ((stopId1'A29A_, stopId2'A2A3_), (connectionMap'A2BA_)));
+        end) (RT_m_4.R_ran(connectionMap'B57A_))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:34:5: Argument of areDirectlyConnected" ^ RT_x_12.toString (stopId1'B55A_, stopId2'B563_, (capacityMap'B56D_, connectionMap'B57A_)) ^ " not in subtype") else RT_m_4.R_mem ((stopId1'B55A_, stopId2'B563_), (connectionMap'B57A_)));
         
-        fun capacity'A091_ (stopId'A0FF_, (capacityMap'A107_, connectionMap'A114_)) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (32, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'A107_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun capacity'B351_ (stopId'B3BF_, (capacityMap'B3C7_, connectionMap'B3D4_)) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl", (32, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'B3C7_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x18_'0_, x19_'0_, x20_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x18_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x19_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x20_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'A114_))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:30:5: Argument of capacity" ^ RT_x_10.toString (stopId'A0FF_, (capacityMap'A107_, connectionMap'A114_)) ^ " not in subtype") else ((RT_m_1.R_app(capacityMap'A107_)) (stopId'A0FF_)));
+        end) (RT_m_4.R_ran(connectionMap'B3D4_))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/NET.rsl:30:5: Argument of capacity" ^ RT_x_10.toString (stopId'B3BF_, (capacityMap'B3C7_, connectionMap'B3D4_)) ^ " not in subtype") else ((RT_m_1.R_app(capacityMap'B3C7_)) (stopId'B3BF_)));
         
         type TimeTable_ = RT_m_16.t;
         
@@ -781,23 +823,23 @@ structure TIMETABLE =
             ((RT_s_23.R_all (fn ((tram1'4B75_, sid1'4B7C_, arrt1'4B82_, dept1'4B89_):RT_x_17.t) => not ((RT_Nat.R_ge (arrt1'4B82_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (dept1'4B89_, RT_Int.fromLit "0"))) orelse (((RT_s_23.R_all (fn ((tram2'4BDB_, sid2'4BE2_, arrt2'4BE8_, dept2'4BEF_):RT_x_17.t) => not ((RT_Nat.R_ge (arrt2'4BE8_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (dept2'4BEF_, RT_Int.fromLit "0"))) orelse ((RT_Nat.R_ge (RT_Nat.R_abs((RT_Nat.R_sub (dept1'4B89_, dept2'4BEF_))), headway'4AAA_)))) (RT_s_23.R_diff (((getAllDepaturesUsingConnection'1D51_) (stopid1'4A45_, stopid2'4A4E_, timetable'49FD_)), RT_s_23.R_fromList ([(tram1'4B75_, sid1'4B7C_, arrt1'4B82_, dept1'4B89_)]))))))) (((getAllDepaturesUsingConnection'1D51_) (stopid1'4A45_, stopid2'4A4E_, timetable'49FD_)))))
         end) ((connectionMap'4A16_)))));
         
-        fun isWellformed'921E_ (t'928F_, n'9292_) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (376, 8)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
-            val (x173_'0_, x174_'0_, x175_'0_) = ((x_'0_):RT_x_14.t)
+        fun isWellformed'A4DE_ (t'A54F_, n'A552_) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (424, 8)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+            val (x200_'0_, x201_'0_, x202_'0_) = ((x_'0_):RT_x_14.t)
         in
-            (RT_Nat.R_ge (x174_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x175_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(t'928F_)))) andalso (let
-            val (x176_'0_, x177_'0_) = ((n'9292_):RT_x_5.t)
+            (RT_Nat.R_ge (x201_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x202_'0_, RT_Int.fromLit "0"))
+        end) (x_'0_))) (RT_m_16.R_ran(t'A54F_)))) andalso (let
+            val (x203_'0_, x204_'0_) = ((n'A552_):RT_x_5.t)
         in
-            ((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(x176_'0_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
-                val (x180_'0_, x181_'0_, x182_'0_) = ((x_'0_):RT_x_3.t)
+            ((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(x203_'0_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+                val (x207_'0_, x208_'0_, x209_'0_) = ((x_'0_):RT_x_3.t)
             in
-                (RT_Nat.R_ge (x180_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x181_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x182_'0_, RT_Int.fromLit "0")))
-            end) (RT_m_4.R_ran(x177_'0_))))
-        end)) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl:374:6: Argument of isWellformed" ^ RT_x_27.toString (t'928F_, n'9292_) ^ " not in subtype") else (((tramStopsAtAllStopsItPasses'54C9_) (t'928F_))) andalso (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (376, 42)); (((timeBetweenDeparturesIsValidHeadway'4975_) (t'928F_, n'9292_))) andalso (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (377, 8)); ((RT_s_19.R_all (fn (plan'9351_:RT_l_15.t) => not ((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
-            val (x183_'0_, x184_'0_, x185_'0_) = ((x_'0_):RT_x_14.t)
+                (RT_Nat.R_ge (x207_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x208_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x209_'0_, RT_Int.fromLit "0")))
+            end) (RT_m_4.R_ran(x204_'0_))))
+        end)) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl:422:6: Argument of isWellformed" ^ RT_x_27.toString (t'A54F_, n'A552_) ^ " not in subtype") else (((tramStopsAtAllStopsItPasses'54C9_) (t'A54F_))) andalso (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (424, 42)); (((timeBetweenDeparturesIsValidHeadway'4975_) (t'A54F_, n'A552_))) andalso (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (425, 8)); ((RT_s_19.R_all (fn (plan'A611_:RT_l_15.t) => not ((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+            val (x210_'0_, x211_'0_, x212_'0_) = ((x_'0_):RT_x_14.t)
         in
-            (RT_Nat.R_ge (x184_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x185_'0_, RT_Int.fromLit "0"))
-        end) (plan'9351_))) orelse (((timeBetweenStopsIsDrivingTime'4209_) (plan'9351_, n'9292_)))) (RT_m_16.R_ran((t'928F_))))))));
+            (RT_Nat.R_ge (x211_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x212_'0_, RT_Int.fromLit "0"))
+        end) (plan'A611_))) orelse (((timeBetweenStopsIsDrivingTime'4209_) (plan'A611_, n'A552_)))) (RT_m_16.R_ran((t'A54F_))))))));
         
         fun findArrivalRowInPlan'36B5_ (stopid1'372E_, stopid2'3737_, plan'3740_, tram'3746_) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (142, 7)); if not((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x98_'0_, x99_'0_, x100_'0_) = ((x_'0_):RT_x_14.t)
@@ -918,6 +960,51 @@ structure TIMETABLE =
             (RT_Nat.R_ge (x158_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x159_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x160_'0_, RT_Int.fromLit "0")))
         end) (RT_m_4.R_ran(connectionMap'769B_)))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl:302:7: Argument of allStopCapacitiesAreNotExceeded" ^ RT_x_27.toString (timetable'7683_, (capacityMap'768F_, connectionMap'769B_)) ^ " not in subtype") else ((RT_m_1.R_all (fn (stopid'76CE_:RT_Text.t) => ((stopCapacityIsNotExceeded'791F_) (stopid'76CE_, timetable'7683_, capacityMap'768F_))) ((capacityMap'768F_)))));
         
+        fun stopsAreConnected'9413_ (plan'9489_, connectionMap'948F_) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (381, 9)); if not(((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+            val (x181_'0_, x182_'0_, x183_'0_) = ((x_'0_):RT_x_14.t)
+        in
+            (RT_Nat.R_ge (x182_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x183_'0_, RT_Int.fromLit "0"))
+        end) (plan'9489_))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+            val (x186_'0_, x187_'0_, x188_'0_) = ((x_'0_):RT_x_3.t)
+        in
+            (RT_Nat.R_ge (x186_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x187_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x188_'0_, RT_Int.fromLit "0")))
+        end) (RT_m_4.R_ran(connectionMap'948F_))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl:379:7: Argument of stopsAreConnected" ^ RT_x_34.toString (plan'9489_, connectionMap'948F_) ^ " not in subtype") else if RT_Nat.R_le (RT_l_15.R_length(plan'9489_), RT_Int.fromLit "1") then (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (382, 14)); true) else (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (384, 11)); let
+            val (sid'9672_, arrt'9677_, dept'967D_) = ((RT_l_15.R_hd(plan'9489_)):RT_x_14.t); 
+            val (sid2'96D6_, arrt2'96DC_, dept2'96E3_) = ((((nextStop'E17_) ((sid'9672_, arrt'9677_, dept'967D_), plan'9489_))):RT_x_14.t)
+        in
+            if (RT_m_4.R_mem ((sid'9672_, sid2'96D6_), (connectionMap'948F_))) orelse (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (388, 54)); RT_m_4.R_mem ((sid2'96D6_, sid'9672_), (connectionMap'948F_))) then (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (389, 18)); ((stopsAreConnected'9413_) (RT_l_15.R_tl(plan'9489_), connectionMap'948F_))) else (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (390, 18)); false)
+        end));
+        
+        fun allStopsAreConnected'90F3_ (timetable'916C_, (capacityMap'9178_, connectionMap'9184_)) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (373, 9)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+            val (x173_'0_, x174_'0_, x175_'0_) = ((x_'0_):RT_x_14.t)
+        in
+            (RT_Nat.R_ge (x174_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x175_'0_, RT_Int.fromLit "0"))
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'916C_)))) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'9178_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+            val (x178_'0_, x179_'0_, x180_'0_) = ((x_'0_):RT_x_3.t)
+        in
+            (RT_Nat.R_ge (x178_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x179_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x180_'0_, RT_Int.fromLit "0")))
+        end) (RT_m_4.R_ran(connectionMap'9184_)))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl:371:7: Argument of allStopsAreConnected" ^ RT_x_27.toString (timetable'916C_, (capacityMap'9178_, connectionMap'9184_)) ^ " not in subtype") else ((RT_m_16.R_all (fn (tramid'91C2_:RT_Text.t) => ((stopsAreConnected'9413_) (((RT_m_16.R_app(timetable'916C_)) (tramid'91C2_)), connectionMap'9184_))) ((timetable'916C_)))));
+        
+        fun stopsExist'9E39_ (plan'9EA8_, capacityMap'9EAE_) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (407, 7)); if not(((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+            val (x197_'0_, x198_'0_, x199_'0_) = ((x_'0_):RT_x_14.t)
+        in
+            (RT_Nat.R_ge (x198_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x199_'0_, RT_Int.fromLit "0"))
+        end) (plan'9EA8_))) andalso ((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'9EAE_))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl:405:5: Argument of stopsExist" ^ RT_x_35.toString (plan'9EA8_, capacityMap'9EAE_) ^ " not in subtype") else if RT_Nat.equ (RT_l_15.R_length(plan'9EA8_), RT_Int.fromLit "0") then (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (408, 12)); true) else (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (410, 9)); let
+            val (sid'A098_, arrt'A09D_, dept'A0A3_) = ((RT_l_15.R_hd(plan'9EA8_)):RT_x_14.t)
+        in
+            if RT_m_1.R_mem (sid'A098_, (capacityMap'9EAE_)) then (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (414, 16)); ((stopsExist'9E39_) (RT_l_15.R_tl(plan'9EA8_), capacityMap'9EAE_))) else (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (415, 16)); false)
+        end));
+        
+        fun allStopsInPlanExist'9B19_ (timetable'9B91_, (capacityMap'9B9D_, connectionMap'9BAA_)) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (399, 7)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+            val (x189_'0_, x190_'0_, x191_'0_) = ((x_'0_):RT_x_14.t)
+        in
+            (RT_Nat.R_ge (x190_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x191_'0_, RT_Int.fromLit "0"))
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'9B91_)))) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'9B9D_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+            val (x194_'0_, x195_'0_, x196_'0_) = ((x_'0_):RT_x_3.t)
+        in
+            (RT_Nat.R_ge (x194_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x195_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x196_'0_, RT_Int.fromLit "0")))
+        end) (RT_m_4.R_ran(connectionMap'9BAA_)))))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl:397:5: Argument of allStopsInPlanExist" ^ RT_x_27.toString (timetable'9B91_, (capacityMap'9B9D_, connectionMap'9BAA_)) ^ " not in subtype") else ((RT_m_16.R_all (fn (tramid'9BE8_:RT_Text.t) => ((stopsExist'9E39_) (((RT_m_16.R_app(timetable'9B91_)) (tramid'9BE8_)), capacityMap'9B9D_))) ((timetable'9B91_)))));
+        
         fun buildAllArrivalsUsingConnection'31A1_ (stopid1'3225_, stopid2'322E_, trams'3237_, timetable'323E_) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (129, 7)); if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x95_'0_, x96_'0_, x97_'0_) = ((x_'0_):RT_x_14.t)
         in
@@ -959,9 +1046,9 @@ structure TIMETABLE =
         end) (x_'0_))) (RT_m_16.R_ran(timetable'C2E_)))) then raise RSL.RSL_exception ("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl:30:5: Argument of isIn" ^ RT_x_18.toString (tramid'C26_, timetable'C2E_) ^ " not in subtype") else RT_m_16.R_mem (tramid'C26_, (timetable'C2E_)));
         
         val empty'57F_ = let val z__'591_ = RT_m_16.R_fromList [] in if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
-            val (x186_'0_, x187_'0_, x188_'0_) = ((x_'0_):RT_x_14.t)
+            val (x213_'0_, x214_'0_, x215_'0_) = ((x_'0_):RT_x_14.t)
         in
-            (RT_Nat.R_ge (x187_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x188_'0_, RT_Int.fromLit "0"))
+            (RT_Nat.R_ge (x214_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x215_'0_, RT_Int.fromLit "0"))
         end) (x_'0_))) (RT_m_16.R_ran(z__'591_)))) then (RSL.add_load_err("/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl:14:25: Value " ^ RT_m_16.toString(z__'591_) ^ " of empty not in subtype"); z__'591_) else z__'591_ end;
         
         fun addStop'89F_ (tramid'90B_, stopid'913_, arrival'91B_, departure'924_, timetable'92F_) = (R_coverage.cancel(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (24, 9)); if not((RT_Nat.R_ge (arrival'91B_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (departure'924_, RT_Int.fromLit "0")) andalso ((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
@@ -991,6 +1078,19 @@ R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEng
 R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (132, 9), (137, 7));
 R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (130, 12), (131, 10));
 R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (129, 7), (137, 10));
+R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (399, 7), (401, 8));
+R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (415, 16), (416, 11));
+R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (414, 16), (415, 14));
+R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (410, 9), (418, 7));
+R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (408, 12), (409, 10));
+R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (407, 7), (418, 10));
+R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (373, 9), (375, 10));
+R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (388, 54), (389, 16));
+R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (390, 18), (391, 13));
+R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (389, 18), (390, 16));
+R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (384, 11), (393, 9));
+R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (382, 14), (383, 12));
+R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (381, 9), (393, 12));
 R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (304, 9), (306, 10));
 R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (312, 9), (319, 12));
 R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (345, 11), (350, 9));
@@ -1037,9 +1137,9 @@ R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEng
 R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (150, 11), (156, 9));
 R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (148, 11), (149, 12));
 R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (142, 7), (161, 7));
-R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (377, 8), (380, 3));
-R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (376, 42), (380, 3));
-R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (376, 8), (380, 3));
+R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (425, 8), (428, 3));
+R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (424, 42), (428, 3));
+R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (424, 8), (428, 3));
 R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (190, 7), (198, 8));
 R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (77, 7), (81, 10));
 R_coverage.mark(RT_Text.fromLit "/home/noah/Documents/FormalAspectsOfSoftwareEngineering/mandatory2/TIMETABLE.rsl", (89, 9), (94, 7));

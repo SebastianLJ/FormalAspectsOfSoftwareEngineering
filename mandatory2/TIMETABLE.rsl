@@ -374,10 +374,58 @@ class
             end
           end
         end,
-
-
-    -- a tram must not drive on a track that is not connected to the previous track?!?!??!?!??!?!?!
-
+    
+    -- any two consecutive stops in every plan must be connected
+    -- (Noah)
+      allStopsAreConnected : TimeTable >< Net -> Bool
+      allStopsAreConnected(timetable, (capacityMap,connectionMap)) is
+        (all tramid : TramId :- tramid isin dom(timetable) =>
+          stopsAreConnected(timetable(tramid), connectionMap)
+        ),
+      
+      -- two conseuctive stops in specific plan must be connected
+      -- (Noah)
+      stopsAreConnected : Plan >< ConnectionMap -> Bool
+      stopsAreConnected(plan, connectionMap) is
+        if len plan <= 1
+        then true
+        else
+          let
+            (sid, arrt, dept) = hd plan,
+            (sid2, arrt2, dept2) = nextStop((sid, arrt, dept), plan)
+          in
+            if (sid,sid2) isin dom(connectionMap) \/ (sid2, sid) isin dom(connectionMap)
+            then stopsAreConnected(tl plan, connectionMap)
+            else false
+            end
+          end
+        end,
+    
+    -- all stops in all plants must exist 
+    -- (Noah)
+    allStopsInPlanExist : TimeTable >< Net -> Bool
+    allStopsInPlanExist(timetable, (capacityMap, connectionMap)) is 
+      (all tramid: TramId :- tramid isin dom(timetable) => 
+        stopsExist(timetable(tramid), capacityMap)
+      ),
+    
+    -- stops in a specific plan must exist
+    -- (Noah)
+    stopsExist : Plan >< CapacityMap -> Bool
+    stopsExist(plan, capacityMap) is 
+      if len plan = 0
+      then true
+      else
+        let
+          (sid, arrt, dept) = hd plan
+        in
+          if sid isin dom(capacityMap)
+          then stopsExist(tl plan, capacityMap)
+          else false
+          end
+        end
+      end,
+ 
     -- check that the given timetable is valid
     -- (Sebastian)
      isWellformed : TimeTable >< Net -~-> Bool
