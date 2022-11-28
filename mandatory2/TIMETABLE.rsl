@@ -433,7 +433,9 @@ class
        tramStopsAtAllStopsItPasses(t) /\ 
        timeBetweenDeparturesIsValidHeadway(t, n) /\
        timeBetweenArrivalIsValidHeadway(t, n) /\
-       (all plan : Plan :- plan isin rng(t) => timeBetweenStopsIsDrivingTime(plan, n))
+       (all plan : Plan :- plan isin rng(t) => timeBetweenStopsIsDrivingTime(plan, n)) /\
+       allTrackCapacitiesAreNotExceeded(t, n) /\
+       allStopCapacitiesAreNotExceeded(t, n)
  
      
 end  
