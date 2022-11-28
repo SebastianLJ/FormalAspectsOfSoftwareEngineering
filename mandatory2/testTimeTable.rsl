@@ -56,7 +56,14 @@ scheme testTimeTable =
            plan9: Plan = <.("A", 0, 1), ("B", 12, 14), ("C", 28, 32), ("A", 59, 60).>,
            timeTableWithInvalidConnection : TimeTable = ["tram1" +> plan1, "tram2" +> plan9]
 
+           /* Scenario 11 adding a tram to the time table  with an empty table*/
+           plan7 : Plan = <..>,
+           timetableWithAddedTram : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, tramNotIn +> plan7],
 
+            /* Scenario 12 adding a stop to the net*/
+            plan8 : Plan = <.("A", 0, 1), ("B", 12, 14), ("C", 28, 32), ("B", 46, 48), ("A", 59, 60), ("G", 5, 10).>,
+            plan9 : Plan = <.("D", 0, 2), ("B", 11, 13), ("A", 28, 32), ("B", 47, 50), ("D", 58, 60).>,
+            timetableWithAddedStop : TimeTable = ["tram1" +> plan8, "tram2" +> plan2]
            
 
         test_case
@@ -92,7 +99,15 @@ scheme testTimeTable =
             [s9_AllStopsInPlansDoNotExist] allStopsInPlanExist(timeTableWithInvalidStop, net) = false,
             -- Scenario 10 (Noah)
             [s10_allStopsAreConnected] allStopsAreConnected(timetableWF, net) = true,
-            [s10_allStopsAreNotConnected] allStopsAreConnected(timeTableWithInvalidConnection, net) = false
+            [s10_allStopsAreNotConnected] allStopsAreConnected(timeTableWithInvalidConnection, net) = false,           
+             -- Scenario 11 (Mads) --
+            [s12_AddingTram] addTram (tramNotIn, timetableWF) = timetableWithAddedTram,
+            -- Scenario 12 (Mads) --
+            [s12_addStop] addStop (tramIdA, "G", 5, 10, timetableWF ) = timetableWithAddedStop,
+            -- Scenario 13  (Mads) --
+            [s13_isinExisting01]isIn(tram1, timetableWF) = true,
+            [s13_isinExisting02]isIn(tram2, timetableWF) = true,
+            [s13_isNotin]isIn(tramNotIn, timetableWF) = false
 
 
 end
