@@ -125,11 +125,10 @@ scheme testTimeTable =
             [s13_isNotin]isIn(tramNotIn, timetableWF) = false,
             -- Scenario 15 (Susan) --
             [s15_stopsExist] stopsExist(plan1, stopCapacity) = true,
-            [s15_stopsDoNotExist] stopsExist(plan2, stopCapacitywithAddedStop) = false,
-
+            [s15_stopsDoNotExist] stopsExist(plan7, stopCapacity) = false,
             -- Scenario 16 (Susan) --
-            [s16_getConnection] getConnection("A", "B", net) = connectionTest,
-            [s16_getConnectionFail] getConnection("A", "E", net) = connectionTest
+            [s16_getConnection] getConnection("A", "B", net) = connectionTest
+
 
 
 end
