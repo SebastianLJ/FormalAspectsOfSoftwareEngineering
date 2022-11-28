@@ -52,6 +52,7 @@ scheme testTimeTable =
            plan7 : Plan = <.("C", 5, 7), ("B", 19, 21), ("Q", 31, 33).>,
            timeTableWithInvalidStop : TimeTable = ["tram1" +> plan1, "tram2" +> plan7],
 
+
            /* Scenario 10 */
            plan9: Plan = <.("A", 0, 1), ("B", 12, 14), ("C", 28, 32), ("A", 59, 60).>,
            timeTableWithInvalidConnection : TimeTable = ["tram1" +> plan1, "tram2" +> plan9],
@@ -63,7 +64,13 @@ scheme testTimeTable =
             /* Scenario 12 adding a stop to the net*/
             plan8 : Plan = <.("A", 0, 1), ("B", 12, 14), ("C", 28, 32), ("B", 46, 48), ("A", 59, 60), ("G", 5, 10).>,
             plan9 : Plan = <.("D", 0, 2), ("B", 11, 13), ("A", 28, 32), ("B", 47, 50), ("D", 58, 60).>,
-            timetableWithAddedStop : TimeTable = ["tram1" +> plan8, "tram2" +> plan2]
+            timetableWithAddedStop : TimeTable = ["tram1" +> plan8, "tram2" +> plan2],
+
+             /* Scenario 14 */
+             stopCapacitywithAddedStop : CapacityMap = ["A" +> 2, "B" +> 6, "C" +> 2, "D" +> 2, "E" +> 2],
+
+             /* Scenario 15 */
+             netWithAddedStop : Net = (stopCapacitywithAddedStop, connectionMap)
            
 
         test_case
@@ -114,6 +121,9 @@ scheme testTimeTable =
             -- Scenario 15 (Susan) --
             [s15_stopsExist] stopsExist(plan1, stopCapacity) = true,
             [s15_stopsDoNotExist] stopsExist(plan2, stopCapacitywithAddedStop) = false
+
+            -- Scenario 16 (Susan) --
+            [s16_getConnection] getConnection("A", "B", net) = "B"
 
 
 end
