@@ -29,17 +29,21 @@ scheme testTimeTable =
             planDuplicateDepartureHeadway : Plan = <.("A", 0, 1), ("B", 14, 16).>,
             timetableDuplicateDepartureHeadway : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, "tram3" +> planDuplicateDepartureHeadway],
 
-            /* Scenario 5 a tram does not stop a all stops in its plan */
+            /* Scenario 5 a plan in the timetable has a stop with a too short arrival headway */
+            planTooShortArrivalTime : Plan = <.("C", 0, 2), ("B", 46, 48).>,
+            timetableInvalidArrivalHeadway : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, "tram3" +> planTooShortArrivalTime],
+
+            /* Scenario 6 a tram does not stop a all stops in its plan */
             planWithoutStopTime : Plan = <.("A", 0, 1), ("B", 12, 12), ("C", 28, 32), ("B", 46, 48), ("A", 59, 60).>,
             timetableWithoutStopTime : TimeTable = ["tram1" +> planWithoutStopTime],
 
-            /* Scenario 6 number of trams on a track at any time must not exceed capacity of track */
+            /* Scenario 7 number of trams on a track at any time must not exceed capacity of track */
             plan3 : Plan = <.("C", 5, 7), ("B", 19, 21), ("A", 32, 34), ("B", 46, 48), ("A", 60, 3).>,
-            plan4 : Plan = <.("B", 28, 32), ("A", 48, 50).>,
+           -- plan4 : Plan = <.("B", 28, 32), ("A", 48, 50).>,
             timetableWithExceededTrackCapacities : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, "tram3" +> plan3],
-            timetableWithWhenTramDepartsAsTrainArrives : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, "tram4" +>plan4],
+           -- timetable2WithExceededTrackCapacities : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, "tram4" +>plan4]
             
-           /* Scenario 7 */
+           /* Scenario 8 */
            plan5 : Plan = <.("C", 5, 7), ("B", 19, 21), ("A", 31, 33), ("B", 46, 48), ("A", 60, 3).>,
            plan6 : Plan = <.("B", 15, 17), ("A", 29, 30), ("B", 46, 48), ("A", 60, 3).>,
            timeTableWithExceededStopCapacities : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, "tram3" +> plan5, "tram4" +> plan6],
@@ -70,21 +74,25 @@ scheme testTimeTable =
             [s4_duplicateHeadwayBetweenDeparture] timeBetweenDeparturesIsValidHeadway(timetableDuplicateDepartureHeadway, net) = false,
             [s4_NotWellFormedDuplicateDepatureHeadway] isWellformed(timetableDuplicateDepartureHeadway, net) = false,
             -- Scenario 5 (Sebastian)
-            [s5_tramStopsAtAllStopsItPasses] tramStopsAtAllStopsItPasses(timetableWF) = true,
-            [s5_tramDoesNotStopAtAllStopsItPasses] tramStopsAtAllStopsItPasses(timetableWithoutStopTime) = false,
-            [s5_NotWellFormedTramDoesNotStopAtAllStopsItPasses] isWellformed(timetableWithoutStopTime, net) = false,
-            --Scenario 6 (Noah)
-            [s6_NumberOfTrainsOnTrackDontExceedTrackCapacity] allTrackCapacitiesAreNotExceeded(timetableWF, net) = true,
-            [s6_NumberOfTrainsOnTrackDontExceedTrackCapacityWhenArrivalIsEqualToDeparture] allTrackCapacitiesAreNotExceeded(timetableWithWhenTramDepartsAsTrainArrives, net) = false,
-            [s6_NumberOfTrainsOnTrackDoExceedTrackCapacity] allTrackCapacitiesAreNotExceeded(timetableWithExceededTrackCapacities, net) = false,
-            -- Scenario 7 (Noah)
-            [s7_NumberOfTrainsAtStopDontExceedStopCapacity] allStopCapacitiesAreNotExceeded(timetableWF, net) = true,
-            [s7_NumberOfTrainsAtStopDoExceedStopCapacity] allStopCapacitiesAreNotExceeded(timeTableWithExceededStopCapacities, net) = false,
+            [s5_validHeadwayBetweenArrivals] timeBetweenArrivalIsValidHeadway(timetableWF, net) = true,
+            [s5_invalidHeadwayBetweenArrivals] timeBetweenArrivalIsValidHeadway(timetableInvalidArrivalHeadway, net) = false,
+            [s5_NotWellFormedArrivalHeadway] isWellformed(timetableInvalidArrivalHeadway, net) = false,
+            -- Scenario 6 (Sebastian)
+            [s6_tramStopsAtAllStopsItPasses] tramStopsAtAllStopsItPasses(timetableWF) = true,
+            [s6_tramDoesNotStopAtAllStopsItPasses] tramStopsAtAllStopsItPasses(timetableWithoutStopTime) = false,
+            [s6_NotWellFormedTramDoesNotStopAtAllStopsItPasses] isWellformed(timetableWithoutStopTime, net) = false,
+            --Scenario 7 (Noah)
+            [s7_NumberOfTrainsOnTrackDontExceedTrackCapacity] allTrackCapacitiesAreNotExceeded(timetableWF, net) = true,
+            [s7_NumberOfTrainsOnTrackDoExceedTrackCapacity] allTrackCapacitiesAreNotExceeded(timetableWithExceededTrackCapacities, net) = false,
+            --Scenario 8 (Noah)
+            [s8_NumberOfTrainsAtStopDontExceedStopCapacity] allStopCapacitiesAreNotExceeded(timetableWF, net) = true,
+            [s8_NumberOfTrainsAtStopDoExceedStopCapacity] allStopCapacitiesAreNotExceeded(timeTableWithExceededStopCapacities, net) = false,
             -- Scenario 9 (Noah)
             [s9_AllStopsInPlansExist] allStopsInPlanExist(timetableWF, net) = true,
             [s9_AllStopsInPlansDoNotExist] allStopsInPlanExist(timeTableWithInvalidStop, net) = false,
             -- Scenario 10 (Noah)
             [s10_allStopsAreConnected] allStopsAreConnected(timetableWF, net) = true,
             [s10_allStopsAreNotConnected] allStopsAreConnected(timeTableWithInvalidConnection, net) = false
+
 
 end
