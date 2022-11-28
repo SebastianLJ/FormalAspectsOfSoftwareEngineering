@@ -35,9 +35,9 @@ scheme testTimeTable =
 
             /* Scenario 6 number of trams on a track at any time must not exceed capacity of track */
             plan3 : Plan = <.("C", 5, 7), ("B", 19, 21), ("A", 32, 34), ("B", 46, 48), ("A", 60, 3).>,
-           -- plan4 : Plan = <.("B", 28, 32), ("A", 48, 50).>,
+            plan4 : Plan = <.("B", 28, 32), ("A", 48, 50).>,
             timetableWithExceededTrackCapacities : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, "tram3" +> plan3],
-           -- timetable2WithExceededTrackCapacities : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, "tram4" +>plan4]
+            timetableWithWhenTramDepartsAsTrainArrives : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, "tram4" +>plan4],
             
            /* Scenario 7 */
            plan5 : Plan = <.("C", 5, 7), ("B", 19, 21), ("A", 31, 33), ("B", 46, 48), ("A", 60, 3).>,
@@ -66,6 +66,7 @@ scheme testTimeTable =
             [s5_NotWellFormedTramDoesNotStopAtAllStopsItPasses] isWellformed(timetableWithoutStopTime, net) = false,
             --Scenario 6 (Noah)
             [s6_NumberOfTrainsOnTrackDontExceedTrackCapacity] allTrackCapacitiesAreNotExceeded(timetableWF, net) = true,
+            [s6_NumberOfTrainsOnTrackDontExceedTrackCapacityWhenArrivalIsEqualToDeparture] allTrackCapacitiesAreNotExceeded(timetableWithWhenTramDepartsAsTrainArrives, net) = false,
             [s6_NumberOfTrainsOnTrackDoExceedTrackCapacity] allTrackCapacitiesAreNotExceeded(timetableWithExceededTrackCapacities, net) = false,
             --Scenario 7 (Noah)
             [s7_NumberOfTrainsAtStopDontExceedStopCapacity] allStopCapacitiesAreNotExceeded(timetableWF, net) = true,
