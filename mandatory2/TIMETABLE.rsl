@@ -421,7 +421,9 @@ class
     -- (Sebastian)
      isWellformed : TimeTable >< Net -~-> Bool
      isWellformed(t, n) is
-       tramStopsAtAllStopsItPasses(t) /\ timeBetweenDeparturesIsValidHeadway(t, n) /\
+       tramStopsAtAllStopsItPasses(t) /\ 
+       timeBetweenDeparturesIsValidHeadway(t, n) /\
+       timeBetweenArrivalIsValidHeadway(t, n) /\
        (all plan : Plan :- plan isin rng(t) => timeBetweenStopsIsDrivingTime(plan, n))
  
      
