@@ -123,10 +123,7 @@ scheme testTimeTable =
             [s13_isinExisting01]isIn(tramIdA, timetableWF) = true,
             [s13_isinExisting02]isIn(tramIdB, timetableWF) = true,
             [s13_isNotin]isIn(tramNotIn, timetableWF) = false,
-            -- Scenario 15 (Susan) --
-            [s15_stopsExist] stopsExist(plan1, stopCapacity) = true,
-            [s15_stopsDoNotExist] stopsExist(plan7, stopCapacity) = false,
-            -- Scenario 16 (Susan) --
+            -- Scenario 14 (Susan) --
             [s16_getConnection] getConnection("A", "B", net) = connectionTest
 
 
