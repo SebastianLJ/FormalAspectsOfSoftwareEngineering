@@ -20,7 +20,7 @@ scheme testTimeTable =
             /* Scenario 1 timetable is wellformed */
             plan1 : Plan = <.("A", 0, 1), ("B", 12, 14), ("C", 28, 32), ("B", 46, 48), ("A", 59, 60).>,
             plan2 : Plan = <.("D", 0, 2), ("B", 11, 13), ("A", 28, 32), ("B", 47, 50), ("D", 58, 60).>,
-            timetableWF : TimeTable = ["tram1" +> plan1, "tram2" +> plan2],
+            timetableWF : TimeTable = addPlan("tram2", plan2, addPlan("tram1", plan1, empty)),
 
             /* Scenario 2 a plan in the timetable contains has a driving time faster than the possible time in a plan */
             planInvalidDrivingTime : Plan = <.("D", 0, 2), ("B", 8, 13), ("A", 28, 32), ("B", 47, 50), ("D", 58, 60).>,
@@ -44,7 +44,6 @@ scheme testTimeTable =
 
             /* Scenario 5 a plan in the timetable has a stop with a too short arrival headway */
             planTooShortArrivalTime : Plan = <.("C", 0, 2), ("B", 46, 48).>,
-            timetableInvalidArrivalHeadway : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, "tram3" +> planTooShortArrivalTime],
 
             /* Scenario 6 a tram does not stop a all stops in its plan */
             planWithoutStopTime : Plan = <.("A", 0, 1), ("B", 12, 12), ("C", 28, 32), ("B", 46, 48), ("A", 59, 60).>,
@@ -91,49 +90,79 @@ scheme testTimeTable =
 
         test_case
             -- Scenario 1 (Sebastian)
-            [s1_WellFormedTimetable] isWellformed(timetableWF, net) = true,
+            [s1_WellFormedTimetable] 
+                isWellformed(timetableWF, net) = true,
             -- Scenario 2 (Sebastian)
-            [s2_validDrivingTime] allTimeBetweenStopsIsValidDrivingTime(timetableWF, net) = true,
-            [s2_InvalidDrivingTime] allTimeBetweenStopsIsValidDrivingTime(timetableInvalidDrivingTime, net) = false,
-            [s2_NotWellFormedWithInvalidDrivingTime] isWellformed(timetableInvalidDrivingTime, net) = false,
+            [s2_validDrivingTime] 
+                allTimeBetweenStopsIsValidDrivingTime(timetableWF, net) = true,
+            [s2_InvalidDrivingTime] 
+                allTimeBetweenStopsIsValidDrivingTime(timetableInvalidDrivingTime, net) = false,
+            [s2_NotWellFormedWithInvalidDrivingTime] 
+                isWellformed(timetableInvalidDrivingTime, net) = false,
             -- Scenario 3 (Sebastian)
-            [s3_validHeadwayBetweenDeparture] timeBetweenDeparturesIsValidHeadway(timetableWF, net) = true,
-            [s3_invalidHeadwayBetweenDeparture] timeBetweenDeparturesIsValidHeadway(timetableInvalidDepartureHeadway, net) = false,
-            [s3_NotWellFormedDepatureHeadway] isWellformed(timetableInvalidDepartureHeadway, net) = false,
+            [s3_validHeadwayBetweenDeparture] 
+                timeBetweenDeparturesIsValidHeadway(timetableWF, net) = true,
+            [s3_invalidHeadwayBetweenDeparture] 
+                timeBetweenDeparturesIsValidHeadway(timetableInvalidDepartureHeadway, net) = false,
+            [s3_NotWellFormedDepatureHeadway] 
+                isWellformed(timetableInvalidDepartureHeadway, net) = false,
             -- Scenario 4 (Sebastian)
-            [s4_duplicateHeadwayBetweenDeparture] timeBetweenDeparturesIsValidHeadway(timetableDuplicateDepartureHeadway, net) = false,
-            [s4_NotWellFormedDuplicateDepatureHeadway] isWellformed(timetableDuplicateDepartureHeadway, net) = false,
+            [s4_duplicateHeadwayBetweenDeparture] 
+                timeBetweenDeparturesIsValidHeadway(timetableDuplicateDepartureHeadway, net) = false,
+            [s4_NotWellFormedDuplicateDepatureHeadway] 
+                isWellformed(timetableDuplicateDepartureHeadway, net) = false,
             -- Scenario 5 (Sebastian)
-            [s5_validHeadwayBetweenArrivals] timeBetweenArrivalIsValidHeadway(timetableWF, net) = true,
-            [s5_invalidHeadwayBetweenArrivals] timeBetweenArrivalIsValidHeadway(timetableInvalidArrivalHeadway, net) = false,
-            [s5_NotWellFormedArrivalHeadway] isWellformed(timetableInvalidArrivalHeadway, net) = false,
+            [s5_validHeadwayBetweenArrivals] 
+                timeBetweenArrivalIsValidHeadway(timetableWF, net) = true,
+            [s5_invalidHeadwayBetweenArrivals] 
+                timeBetweenArrivalIsValidHeadway(addPlan("tram3", planTooShortArrivalTime, timetableWF), net) = false,
+            [s5_NotWellFormedArrivalHeadway] 
+                isWellformed(addPlan("tram3", planTooShortArrivalTime, timetableWF), net) = false,
             -- Scenario 6 (Sebastian)
-            [s6_tramStopsAtAllStopsItPasses] tramStopsAtAllStopsItPasses(timetableWF) = true,
-            [s6_tramDoesNotStopAtAllStopsItPasses] tramStopsAtAllStopsItPasses(timetableWithoutStopTime) = false,
-            [s6_NotWellFormedTramDoesNotStopAtAllStopsItPasses] isWellformed(timetableWithoutStopTime, net) = false,
+            [s6_tramStopsAtAllStopsItPasses] 
+                tramStopsAtAllStopsItPasses(timetableWF) = true,
+            [s6_tramDoesNotStopAtAllStopsItPasses] 
+                tramStopsAtAllStopsItPasses(timetableWithoutStopTime) = false,
+            [s6_NotWellFormedTramDoesNotStopAtAllStopsItPasses] 
+                isWellformed(timetableWithoutStopTime, net) = false,
             --Scenario 7 (Noah)
-            [s7_NumberOfTramsOnTrackDontExceedTrackCapacity] allTrackCapacitiesAreNotExceeded(timetableWF, net) = true,
-            [s7_NumberOfTramsOnTrackAlmostExceedTrackCapacity] allTrackCapacitiesAreNotExceeded(timetableWithAlmostExceededTrackCapacities, net) = true,
-            [s7_NumberOfTramsOnTrackDoExceedTrackCapacity] allTrackCapacitiesAreNotExceeded(timetableWithExceededTrackCapacities, net) = false,
+            [s7_NumberOfTramsOnTrackDontExceedTrackCapacity] 
+                allTrackCapacitiesAreNotExceeded(timetableWF, net) = true,
+            [s7_NumberOfTramsOnTrackAlmostExceedTrackCapacity] 
+                allTrackCapacitiesAreNotExceeded(timetableWithAlmostExceededTrackCapacities, net) = true,
+            [s7_NumberOfTramsOnTrackDoExceedTrackCapacity] 
+                allTrackCapacitiesAreNotExceeded(timetableWithExceededTrackCapacities, net) = false,
             --Scenario 8 (Noah)
-            [s8_NumberOfTramsAtStopDontExceedStopCapacity] allStopCapacitiesAreNotExceeded(timetableWF, net) = true,
-            [s8_NumberOfTramsAtStopDoExceedStopCapacity] allStopCapacitiesAreNotExceeded(timeTableWithExceededStopCapacities, net) = false,
+            [s8_NumberOfTramsAtStopDontExceedStopCapacity] 
+                allStopCapacitiesAreNotExceeded(timetableWF, net) = true,
+            [s8_NumberOfTramsAtStopDoExceedStopCapacity] 
+                allStopCapacitiesAreNotExceeded(timeTableWithExceededStopCapacities, net) = false,
             -- Scenario 9 (Noah)
-            [s9_AllStopsInPlansExist] allStopsInPlanExist(timetableWF, net) = true,
-            [s9_AllStopsInPlansDoNotExist] allStopsInPlanExist(timeTableWithInvalidStop, net) = false,
+            [s9_AllStopsInPlansExist] 
+                allStopsInPlanExist(timetableWF, net) = true,
+            [s9_AllStopsInPlansDoNotExist] 
+                allStopsInPlanExist(timeTableWithInvalidStop, net) = false,
             -- Scenario 10 (Noah)
-            [s10_allStopsAreConnected] allStopsAreConnected(timetableWF, net) = true,
-            [s10_allStopsAreNotConnected] allStopsAreConnected(timeTableWithInvalidConnection, net) = false,           
+            [s10_allStopsAreConnected] 
+                allStopsAreConnected(timetableWF, net) = true,
+            [s10_allStopsAreNotConnected] 
+                allStopsAreConnected(timeTableWithInvalidConnection, net) = false,           
              -- Scenario 11 (Mads) --
-            [s12_AddingTram] addTram (tramNotIn, timetableWF) = timetableWithAddedTram,
+            [s12_AddingTram] 
+                addTram (tramNotIn, timetableWF) = timetableWithAddedTram,
             -- Scenario 12 (Mads) --
-            [s12_addStop] addStop (tramIdA, "G", 5, 10, timetableWF ) = timetableWithAddedStop,
+            [s12_addStop] 
+                addStop (tramIdA, "G", 5, 10, timetableWF ) = timetableWithAddedStop,
             -- Scenario 13  (Mads) --
-            [s13_isinExisting01]isIn(tramIdA, timetableWF) = true,
-            [s13_isinExisting02]isIn(tramIdB, timetableWF) = true,
-            [s13_isNotin]isIn(tramNotIn, timetableWF) = false,
+            [s13_isinExisting01]
+                isIn(tramIdA, timetableWF) = true,
+            [s13_isinExisting02]
+                isIn(tramIdB, timetableWF) = true,
+            [s13_isNotin]
+                isIn(tramNotIn, timetableWF) = false,
             -- Scenario 14 (Susan) --
-            [s16_getConnection] getConnection("A", "B", net) = connectionTest
+            [s16_getConnection] 
+                getConnection("A", "B", net) = connectionTest
 
 
 
