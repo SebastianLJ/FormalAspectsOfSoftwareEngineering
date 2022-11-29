@@ -160,7 +160,7 @@ scheme testTimeTable =
             [s13_isNotin]
                 isIn(tramNotIn, timetableWF) = false,
             -- Scenario 14 (Susan) --
-            [s16_getConnection] 
+            [s14_getConnection] 
                 getConnection("A", "B", net) = connectionTest
 
 
