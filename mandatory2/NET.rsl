@@ -33,7 +33,8 @@ class
     -- check whether two stops are directly connected in a network        
     areDirectlyConnected : StopId >< StopId >< Net -> Bool
     areDirectlyConnected(stopId1, stopId2, (capacityMap, connectionMap)) is
-      (stopId1, stopId2) isin dom(connectionMap),
+      (stopId1, stopId2) isin dom(connectionMap) \/
+      (stopId2, stopId1) isin dom(connectionMap),
 
     -- get minimum headway between two connected stops        
     minHeadway : StopId >< StopId >< Net -~-> Headway
@@ -72,7 +73,7 @@ class
     allStopsInConnectionMapAreInCapacityMap(capacityMap, connectionMap) is
       (all (stopId1, stopId2) : StopId >< StopId 
         :- (stopId1, stopId2) isin dom(connectionMap) =>
-        stopId1 isin dom(capacityMap) /\ stopId2 isin dom(capacityMap)),
+        isIn(stopId1, (capacityMap, connectionMap)) /\ isIn(stopId2, (capacityMap, connectionMap))),
 
     -- all stops must have a connection to another stop
     allStopsHaveConnection : Net -> Bool
