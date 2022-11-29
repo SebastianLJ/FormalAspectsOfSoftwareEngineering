@@ -1,0 +1,42 @@
+[s1_WellFormedTimetable] true
+
+[s2_validDrivingTime] true
+[s2_InvalidDrivingTime] true
+[s2_NotWellFormedWithInvalidDrivingTime] true
+
+[s3_validHeadwayBetweenDeparture] true
+[s3_invalidHeadwayBetweenDeparture] true
+[s3_NotWellFormedDepatureHeadway] true
+
+[s4_duplicateHeadwayBetweenDeparture] true
+[s4_NotWellFormedDuplicateDepatureHeadway] true
+
+[s5_validHeadwayBetweenArrivals] true
+[s5_invalidHeadwayBetweenArrivals] true
+[s5_NotWellFormedArrivalHeadway] true
+
+[s6_tramStopsAtAllStopsItPasses] true
+[s6_tramDoesNotStopAtAllStopsItPasses] true
+[s6_NotWellFormedTramDoesNotStopAtAllStopsItPasses] true
+
+[s7_NumberOfTramsOnTrackDontExceedTrackCapacity] true
+[s7_NumberOfTramsOnTrackAlmostExceedTrackCapacity] true
+[s7_NumberOfTramsOnTrackDoExceedTrackCapacity] true
+
+[s8_NumberOfTramsAtStopDontExceedStopCapacity] true
+[s8_NumberOfTramsAtStopDoExceedStopCapacity] true
+
+[s9_AllStopsInPlansExist] true
+[s9_AllStopsInPlansDoNotExist] true
+
+[s10_allStopsAreConnected] true
+[s10_allStopsAreNotConnected] true
+
+[s12_AddingTram] true
+[s12_addStop] true
+
+[s13_isinExisting01] true
+[s13_isinExisting02] true
+[s13_isNotin] true
+
+[s14_getConnection] true
