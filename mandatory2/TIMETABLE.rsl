@@ -275,7 +275,7 @@ class
           (stopid2, arrTime2, depTime2) = hd (tl plan)
         in
           let 
-            (headway,drivingTime, capacity) = getConnection(stopid1, stopid2, (capacityMap, connectionMap))
+            drivingTime = minDrivingTime(stopid1, stopid2, (capacityMap, connectionMap))
           in
             (arrTime2 - depTime1 >= drivingTime) /\ timeBetweenStopsIsDrivingTime(tl plan, (capacityMap, connectionMap))
           end
@@ -296,7 +296,7 @@ class
     timeBetweenDeparturesIsValidHeadway : TimeTable >< Net -> Bool
     timeBetweenDeparturesIsValidHeadway(timetable, (capacityMap, connectionMap)) is
       (all (stopid1, stopid2) : StopId >< StopId :- (stopid1, stopid2) isin dom(connectionMap) =>
-        let (headway,drivingTime, capacity) = connectionMap((stopid1, stopid2))
+        let headway = minHeadway(stopid1, stopid2, (capacityMap, connectionMap))
         in
           (all (tram1, sid1, arrt1, dept1) : TramPlanRow :- (tram1, sid1, arrt1, dept1) isin getAllDepaturesUsingConnection(stopid1, stopid2, timetable) =>
             (all (tram2, sid2, arrt2, dept2) : TramPlanRow :- (tram2, sid2, arrt2, dept2) isin getAllDepaturesUsingConnection(stopid1, stopid2, timetable) \ {(tram1, sid1, arrt1, dept1)} =>
@@ -317,7 +317,7 @@ class
     timeBetweenArrivalIsValidHeadway : TimeTable >< Net -> Bool
     timeBetweenArrivalIsValidHeadway(timetable, (capacityMap, connectionMap)) is
       (all (stopid1, stopid2) : StopId >< StopId :- (stopid1, stopid2) isin dom(connectionMap) =>
-        let (headway,drivingTime, capacity) = connectionMap((stopid1, stopid2))
+        let headway = minHeadway(stopid1, stopid2, (capacityMap, connectionMap))
         in
           (all (tram1, sid1, arrt1, dept1) : TramPlanRow :- (tram1, sid1, arrt1, dept1) isin getAllArrivalsUsingConnection(stopid1, stopid2, timetable) =>
             (all (tram2, sid2, arrt2, dept2) : TramPlanRow :- (tram2, sid2, arrt2, dept2) isin getAllArrivalsUsingConnection(stopid1, stopid2, timetable) \ {(tram1, sid1, arrt1, dept1)} =>
@@ -345,17 +345,17 @@ class
     allTrackCapacitiesAreNotExceeded : TimeTable >< Net -> Bool
     allTrackCapacitiesAreNotExceeded(timetable, (capacityMap,connectionMap)) is
       (all (stopid1, stopid2) : StopId >< StopId :- (stopid1, stopid2) isin dom(connectionMap) =>
-       trackCapacityIsNotExceeded(stopid1, stopid2, timetable, connectionMap)
+       trackCapacityIsNotExceeded(stopid1, stopid2, timetable, (capacityMap,connectionMap))
       ),
       
    -- the number of trams on a track must not exceed the capacity of the track
     -- (Noah)
-    trackCapacityIsNotExceeded : StopId >< StopId >< TimeTable >< ConnectionMap -> Bool
-    trackCapacityIsNotExceeded(stopid1 ,stopid2, timetable, connectionMap) is
+    trackCapacityIsNotExceeded : StopId >< StopId >< TimeTable >< Net -> Bool
+    trackCapacityIsNotExceeded(stopid1 ,stopid2, timetable, net) is
        let
          times1 = buildAllTimesForTrack(stopid1, stopid2, dom(timetable), timetable),
          times2 = buildAllTimesForTrack(stopid2, stopid1, dom(timetable), timetable),
-         (headway, drivingtime, trackcapacity) = connectionMap(stopid1, stopid2)          
+         trackcapacity = capacity(stopid1, stopid2, net)
        in
          (all (tramid, deptime, arrtime) : TramId >< Time >< Time :- (tramid, deptime, arrtime) isin times1 =>
                (1 +countOverlappingTimesForTrack(tramid, deptime, arrtime, times1) <= trackcapacity)
@@ -369,16 +369,16 @@ class
       allStopCapacitiesAreNotExceeded : TimeTable >< Net -> Bool
       allStopCapacitiesAreNotExceeded(timetable, (capacityMap,connectionMap)) is
         (all stopid : StopId :- stopid isin dom(capacityMap) =>
-          stopCapacityIsNotExceeded(stopid, timetable, capacityMap)
+          stopCapacityIsNotExceeded(stopid, timetable, (capacityMap, connectionMap))
         ),  
     
     -- the number of trams at a stop must not exceed the capacity of the stop
     -- (Noah)
-      stopCapacityIsNotExceeded : StopId >< TimeTable >< CapacityMap -> Bool
-      stopCapacityIsNotExceeded(stopid, timetable, capacityMap) is
+      stopCapacityIsNotExceeded : StopId >< TimeTable >< Net -> Bool
+      stopCapacityIsNotExceeded(stopid, timetable, net) is
         let 
           times = buildAllTimesForStop(stopid, dom(timetable), timetable),
-          capacity = capacityMap(stopid)
+          capacity = capacity(stopid, net)
         in
           (all (tramid, arrtime, deptime) : TramId >< Time >< Time :- (tramid, arrtime, deptime) isin times =>
             (1 + countOverlappingTimesForStop(tramid, arrtime, deptime, times) <= capacity)
@@ -415,23 +415,23 @@ class
     -- all stops in all plans must exist 
     -- (Noah)
     allStopsInPlanExist : TimeTable >< Net -> Bool
-    allStopsInPlanExist(timetable, (capacityMap, connectionMap)) is 
+    allStopsInPlanExist(timetable, net) is 
       (all tramid: TramId :- tramid isin dom(timetable) => 
-        stopsExist(timetable(tramid), capacityMap)
+        stopsExist(timetable(tramid), net)
       ),
     
     -- stops in a specific plan must exist
     -- (Noah)
-    stopsExist : Plan >< CapacityMap -> Bool
-    stopsExist(plan, capacityMap) is 
+    stopsExist : Plan >< Net -> Bool
+    stopsExist(plan, net) is 
       if len plan = 0
       then true
       else
         let
           (sid, arrt, dept) = hd plan
         in
-          if sid isin dom(capacityMap)
-          then stopsExist(tl plan, capacityMap)
+          if isIn(sid, net)
+          then stopsExist(tl plan, net)
           else false
           end
         end
