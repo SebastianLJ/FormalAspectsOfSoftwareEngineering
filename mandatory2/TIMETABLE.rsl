@@ -279,6 +279,8 @@ class
         true
       end,
 
+    -- Quantification of function above for use in isWellformed
+    -- (Sebastian)
     allTimeBetweenStopsIsValidDrivingTime : TimeTable >< Net -~-> Bool
     allTimeBetweenStopsIsValidDrivingTime(t, n) is
       (all plan : Plan :- plan isin rng(t) => 
