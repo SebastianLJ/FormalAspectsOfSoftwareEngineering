@@ -11,7 +11,7 @@ class
     Connection = (Headway >< DrivingTime >< Capacity),
     ConnectionMap = (StopId >< StopId) -m-> Connection -- connection map with headway and driving time
   value /* generators  */
-    empty :  Net = ([],[]),  -- the empty net
+    --empty :  Net = ([],[]),  -- the empty net
     -- insert a stop with a given name and capacity 
     insertStop : StopId >< Capacity >< Net -> Net
     insertStop(stopId, capacity, (capacityMap, connectionMap)) is
