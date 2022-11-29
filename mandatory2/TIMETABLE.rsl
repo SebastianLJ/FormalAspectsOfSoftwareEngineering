@@ -279,6 +279,11 @@ class
         true
       end,
 
+    allTimeBetweenStopsIsValidDrivingTime : TimeTable >< Net -~-> Bool
+    allTimeBetweenStopsIsValidDrivingTime(t, n) is
+      (all plan : Plan :- plan isin rng(t) => 
+        timeBetweenStopsIsDrivingTime(plan, n)),
+
     -- the difference in departure times for any two trams moving on the same track must be greater than or equal to the headway time
     -- (Sebastian and Noah)
     timeBetweenDeparturesIsValidHeadway : TimeTable >< Net -> Bool
@@ -432,7 +437,7 @@ class
        tramStopsAtAllStopsItPasses(t) /\ 
        timeBetweenDeparturesIsValidHeadway(t, n) /\
        timeBetweenArrivalIsValidHeadway(t, n) /\
-       (all plan : Plan :- plan isin rng(t) => timeBetweenStopsIsDrivingTime(plan, n)) /\
+       allTimeBetweenStopsIsValidDrivingTime(t, n) /\
        allTrackCapacitiesAreNotExceeded(t, n) /\
        allStopCapacitiesAreNotExceeded(t, n)
  
