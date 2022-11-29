@@ -447,6 +447,4 @@ class
        allTimeBetweenStopsIsValidDrivingTime(t, n) /\
        allTrackCapacitiesAreNotExceeded(t, n) /\
        allStopCapacitiesAreNotExceeded(t, n)
- 
-     
 end  

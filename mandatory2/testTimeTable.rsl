@@ -162,7 +162,4 @@ scheme testTimeTable =
             -- Scenario 14 (Susan) --
             [s14_getConnection] 
                 getConnection("A", "B", net) = connectionTest
-
-
-
 end
