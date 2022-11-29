@@ -33,11 +33,14 @@ scheme testTimeTable =
                         addTram("tram3", timetableWF)
                     )
                 ),
-            --timetableInvalidDepartureHeadway : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, "tram3" +> planShortDepartureHeadway],
 
             /* Scenario 4 two plans in the timetable has an identical planrow going to the same stop */
-            planDuplicateDepartureHeadway : Plan = <.("A", 0, 1), ("B", 14, 16).>,
-            timetableDuplicateDepartureHeadway : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, "tram3" +> planDuplicateDepartureHeadway],
+            timetableDuplicateDepartureHeadway : TimeTable =
+                addStop("tram3", "B", 14, 16, 
+                    addStop("tram3", "A", 0, 1, 
+                        addTram("tram3", timetableWF)
+                    )
+                ),
 
             /* Scenario 5 a plan in the timetable has a stop with a too short arrival headway */
             planTooShortArrivalTime : Plan = <.("C", 0, 2), ("B", 46, 48).>,
