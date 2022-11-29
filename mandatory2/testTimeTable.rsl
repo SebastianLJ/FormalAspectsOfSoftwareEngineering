@@ -4,11 +4,6 @@ scheme testTimeTable =
     extend TIMETABLE with
     class
         value
-            -- Trams --
-            tramIdA : TramId = "tram1",
-            tramIdB : TramId = "tram2",
-            tramNotIn : TramId = "tramG",
-
             /* ConnectionMap and CapacityMap */
             connectionMap : ConnectionMap = [("B", "D") +> (2, 7, 2), ("A","B") +> (1, 10, 1), ("B", "C") +> (2, 12, 3)],
             stopCapacity : CapacityMap = ["A" +> 2, "B" +> 6, "C" +> 2, "D" +> 2],
@@ -54,28 +49,33 @@ scheme testTimeTable =
             timetableWithExceededTrackCapacities : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, "tram3" +> plan3],
             timetableWithAlmostExceededTrackCapacities : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, "tram4" +>plan4],
             
-           /* Scenario 8 number of trams at a stop at any time must not exceed the capacity of the stop  */
-           plan5 : Plan = <.("C", 5, 7), ("B", 19, 21), ("A", 31, 33), ("B", 46, 48), ("A", 60, 3).>,
-           plan6 : Plan = <.("B", 15, 17), ("A", 29, 30), ("B", 46, 48), ("A", 60, 3).>,
-           timeTableWithExceededStopCapacities : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, "tram3" +> plan5, "tram4" +> plan6],
+            /* Scenario 8 number of trams at a stop at any time must not exceed the capacity of the stop  */
+            plan5 : Plan = <.("C", 5, 7), ("B", 19, 21), ("A", 31, 33), ("B", 46, 48), ("A", 60, 3).>,
+            plan6 : Plan = <.("B", 15, 17), ("A", 29, 30), ("B", 46, 48), ("A", 60, 3).>,
+            timeTableWithExceededStopCapacities : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, "tram3" +> plan5, "tram4" +> plan6],
 
-           /* Scenario 9 all stops in plan must exist in net */
-           plan7 : Plan = <.("C", 5, 7), ("B", 19, 21), ("Q", 31, 33).>,
-           timeTableWithInvalidStop : TimeTable = ["tram1" +> plan1, "tram2" +> plan7],
+            /* Scenario 9 all stops in plan must exist in net */
+            plan7 : Plan = <.("C", 5, 7), ("B", 19, 21), ("Q", 31, 33).>,
+            timeTableWithInvalidStop : TimeTable = ["tram1" +> plan1, "tram2" +> plan7],
 
 
-           /* Scenario 10 all connections in plan must exist in net */
-           plan9: Plan = <.("A", 0, 1), ("B", 12, 14), ("C", 28, 32), ("A", 59, 60).>,
-           timeTableWithInvalidConnection : TimeTable = ["tram1" +> plan1, "tram2" +> plan9],
+            /* Scenario 10 all connections in plan must exist in net */
+            plan9: Plan = <.("A", 0, 1), ("B", 12, 14), ("C", 28, 32), ("A", 59, 60).>,
+            timeTableWithInvalidConnection : TimeTable = ["tram1" +> plan1, "tram2" +> plan9],
 
-           /* Scenario 11 adding a tram to the time table  with an empty table*/
-           plan11 : Plan = <..>,
-           timetableWithAddedTram : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, tramNotIn +> plan11],
+            /* Scenario 11 adding a tram to the time table  with an empty table*/
+            plan11 : Plan = <..>,
+            timetableWithAddedTram : TimeTable = ["tram1" +> plan1, "tram2" +> plan2, tramNotIn +> plan11],
 
             /* Scenario 12 adding a stop to the net*/
             plan12 : Plan = <.("A", 0, 1), ("B", 12, 14), ("C", 28, 32), ("B", 46, 48), ("A", 59, 60), ("G", 5, 10).>,
             plan13 : Plan = <.("D", 0, 2), ("B", 11, 13), ("A", 28, 32), ("B", 47, 50), ("D", 58, 60).>,
             timetableWithAddedStop : TimeTable = ["tram1" +> plan12, "tram2" +> plan13],
+
+            /* Scenario 13 test isIn function */
+            tramIdA : TramId = "tram1",
+            tramIdB : TramId = "tram2",
+            tramNotIn : TramId = "tramG",
 
             /* Scenario 14 */
             connectionTest : Connection = (1, 10, 1)
