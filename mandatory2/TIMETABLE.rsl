@@ -65,15 +65,6 @@ class
         end
         pre len plan > 1,
 
-    -- (Sebastian and Noah)
-      getConnection : StopId >< StopId >< Net -~-> Connection
-      getConnection(stop1, stop2, (capacityMap, connectionMap)) is
-      if (stop1, stop2) isin dom(connectionMap)
-      then
-        connectionMap((stop1, stop2))
-      else
-        connectionMap((stop2, stop1))
-      end,
     -- you can add more observers here
 
     -- (Sebastian)
