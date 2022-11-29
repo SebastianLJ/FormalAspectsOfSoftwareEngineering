@@ -47,7 +47,6 @@ scheme testTimeTable =
 
             /* Scenario 6 a tram does not stop a all stops in its plan */
             planWithoutStopTime : Plan = <.("A", 0, 1), ("B", 12, 12), ("C", 28, 32), ("B", 46, 48), ("A", 59, 60).>,
-            timetableWithoutStopTime : TimeTable = ["tram1" +> planWithoutStopTime],
 
             /* Scenario 7 number of trams on a track at any time must not exceed capacity of track */
             plan3 : Plan = <.("C", 5, 7), ("B", 19, 21), ("A", 32, 34), ("B", 46, 48), ("A", 60, 3).>,
@@ -122,9 +121,9 @@ scheme testTimeTable =
             [s6_tramStopsAtAllStopsItPasses] 
                 tramStopsAtAllStopsItPasses(timetableWF) = true,
             [s6_tramDoesNotStopAtAllStopsItPasses] 
-                tramStopsAtAllStopsItPasses(timetableWithoutStopTime) = false,
+                tramStopsAtAllStopsItPasses(addPlan("tram1", planWithoutStopTime, empty)) = false,
             [s6_NotWellFormedTramDoesNotStopAtAllStopsItPasses] 
-                isWellformed(timetableWithoutStopTime, net) = false,
+                isWellformed(addPlan("tram1", planWithoutStopTime, empty), net) = false,
             --Scenario 7 (Noah)
             [s7_NumberOfTramsOnTrackDontExceedTrackCapacity] 
                 allTrackCapacitiesAreNotExceeded(timetableWF, net) = true,

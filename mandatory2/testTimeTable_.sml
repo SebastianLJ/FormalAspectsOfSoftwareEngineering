@@ -649,95 +649,95 @@ structure testTimeTable =
         
         type ConnectionMap_ = RT_m_4.t;
         
-        fun allStopsHaveConnection'10685_ (capacityMap'10700_, connectionMap'1070D_) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (81, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'10700_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun allStopsHaveConnection'111D9_ (capacityMap'11254_, connectionMap'11261_) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (81, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'11254_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x53_'0_, x54_'0_, x55_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x53_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x54_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x55_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'1070D_))))) then raise RSL.RSL_exception ("./NET.rsl:79:5: Argument of allStopsHaveConnection" ^ RT_x_5.toString (capacityMap'10700_, connectionMap'1070D_) ^ " not in subtype") else ((RT_m_1.R_all (fn (stopId'10754_:RT_Text.t) => ((RT_m_1.R_exists (fn (stopId2'10821_:RT_Text.t) => ((RT_m_4.R_mem ((stopId'10754_, stopId2'10821_), (connectionMap'1070D_))) orelse (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (86, 13)); RT_m_4.R_mem ((stopId2'10821_, stopId'10754_), (connectionMap'1070D_))))) ((capacityMap'10700_))))) ((capacityMap'10700_)))));
+        end) (RT_m_4.R_ran(connectionMap'11261_))))) then raise RSL.RSL_exception ("./NET.rsl:79:5: Argument of allStopsHaveConnection" ^ RT_x_5.toString (capacityMap'11254_, connectionMap'11261_) ^ " not in subtype") else ((RT_m_1.R_all (fn (stopId'112A8_:RT_Text.t) => ((RT_m_1.R_exists (fn (stopId2'11375_:RT_Text.t) => ((RT_m_4.R_mem ((stopId'112A8_, stopId2'11375_), (connectionMap'11261_))) orelse (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (86, 13)); RT_m_4.R_mem ((stopId2'11375_, stopId'112A8_), (connectionMap'11261_))))) ((capacityMap'11254_))))) ((capacityMap'11254_)))));
         
-        fun noSelfConnection'1010D_ (capacityMap'10182_, connectionMap'1018F_) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (67, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'10182_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun noSelfConnection'10C61_ (capacityMap'10CD6_, connectionMap'10CE3_) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (67, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'10CD6_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x43_'0_, x44_'0_, x45_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x43_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x44_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x45_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'1018F_))))) then raise RSL.RSL_exception ("./NET.rsl:65:5: Argument of noSelfConnection" ^ RT_x_5.toString (capacityMap'10182_, connectionMap'1018F_) ^ " not in subtype") else ((RT_m_4.R_all (fn ((stopId1'101DD_, stopId2'101E6_):RT_x_2.t) => (RSL.C_not RT_Text.equ) (stopId1'101DD_, stopId2'101E6_)) ((connectionMap'1018F_)))));
+        end) (RT_m_4.R_ran(connectionMap'10CE3_))))) then raise RSL.RSL_exception ("./NET.rsl:65:5: Argument of noSelfConnection" ^ RT_x_5.toString (capacityMap'10CD6_, connectionMap'10CE3_) ^ " not in subtype") else ((RT_m_4.R_all (fn ((stopId1'10D31_, stopId2'10D3A_):RT_x_2.t) => (RSL.C_not RT_Text.equ) (stopId1'10D31_, stopId2'10D3A_)) ((connectionMap'10CE3_)))));
         
-        fun isIn'F1D1_ (stopId'F23A_, (capacityMap'F243_, connecitonMap'F250_)) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (28, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'F243_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun isIn'FD25_ (stopId'FD8E_, (capacityMap'FD97_, connecitonMap'FDA4_)) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (28, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'FD97_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x13_'0_, x14_'0_, x15_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x13_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x14_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x15_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connecitonMap'F250_))))) then raise RSL.RSL_exception ("./NET.rsl:26:5: Argument of isIn" ^ RT_x_10.toString (stopId'F23A_, (capacityMap'F243_, connecitonMap'F250_)) ^ " not in subtype") else RT_m_1.R_mem (stopId'F23A_, (capacityMap'F243_)));
+        end) (RT_m_4.R_ran(connecitonMap'FDA4_))))) then raise RSL.RSL_exception ("./NET.rsl:26:5: Argument of isIn" ^ RT_x_10.toString (stopId'FD8E_, (capacityMap'FD97_, connecitonMap'FDA4_)) ^ " not in subtype") else RT_m_1.R_mem (stopId'FD8E_, (capacityMap'FD97_)));
         
-        fun allStopsInConnectionMapAreInCapacityMap'103C9_ (capacityMap'10455_, connectionMap'10462_) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (74, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'10455_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun allStopsInConnectionMapAreInCapacityMap'10F1D_ (capacityMap'10FA9_, connectionMap'10FB6_) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (74, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'10FA9_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x48_'0_, x49_'0_, x50_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x48_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x49_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x50_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'10462_))))) then raise RSL.RSL_exception ("./NET.rsl:72:5: Argument of allStopsInConnectionMapAreInCapacityMap" ^ RT_x_5.toString (capacityMap'10455_, connectionMap'10462_) ^ " not in subtype") else ((RT_m_4.R_all (fn ((stopId1'10499_, stopId2'104A2_):RT_x_2.t) => (((isIn'F1D1_) (stopId1'10499_, (capacityMap'10455_, connectionMap'10462_)))) andalso (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (76, 56)); ((isIn'F1D1_) (stopId2'104A2_, (capacityMap'10455_, connectionMap'10462_))))) ((connectionMap'10462_)))));
+        end) (RT_m_4.R_ran(connectionMap'10FB6_))))) then raise RSL.RSL_exception ("./NET.rsl:72:5: Argument of allStopsInConnectionMapAreInCapacityMap" ^ RT_x_5.toString (capacityMap'10FA9_, connectionMap'10FB6_) ^ " not in subtype") else ((RT_m_4.R_all (fn ((stopId1'10FED_, stopId2'10FF6_):RT_x_2.t) => (((isIn'FD25_) (stopId1'10FED_, (capacityMap'10FA9_, connectionMap'10FB6_)))) andalso (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (76, 56)); ((isIn'FD25_) (stopId2'10FF6_, (capacityMap'10FA9_, connectionMap'10FB6_))))) ((connectionMap'10FB6_)))));
         
-        fun isWellformed'10A6D_ net'10ADE_ = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (91, 7)); if not(let
-            val (x56_'0_, x57_'0_) = ((net'10ADE_):RT_x_5.t)
+        fun isWellformed'115C1_ net'11632_ = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (91, 7)); if not(let
+            val (x56_'0_, x57_'0_) = ((net'11632_):RT_x_5.t)
         in
             ((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(x56_'0_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
                 val (x60_'0_, x61_'0_, x62_'0_) = ((x_'0_):RT_x_3.t)
             in
                 (RT_Nat.R_ge (x60_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x61_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x62_'0_, RT_Int.fromLit "0")))
             end) (RT_m_4.R_ran(x57_'0_))))
-        end) then raise RSL.RSL_exception ("./NET.rsl:89:5: Argument of isWellformed" ^ "(" ^ RT_x_5.toString net'10ADE_ ^ ")" ^ " not in subtype") else (((noSelfConnection'1010D_) (net'10ADE_))) andalso (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (92, 7)); (((allStopsInConnectionMapAreInCapacityMap'103C9_) (net'10ADE_))) andalso (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (93, 7)); ((allStopsHaveConnection'10685_) (net'10ADE_)))));
+        end) then raise RSL.RSL_exception ("./NET.rsl:89:5: Argument of isWellformed" ^ "(" ^ RT_x_5.toString net'11632_ ^ ")" ^ " not in subtype") else (((noSelfConnection'10C61_) (net'11632_))) andalso (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (92, 7)); (((allStopsInConnectionMapAreInCapacityMap'10F1D_) (net'11632_))) andalso (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (93, 7)); ((allStopsHaveConnection'111D9_) (net'11632_)))));
         
-        fun minDrivingTime'FD89_ (stopId1'FDFC_, stopId2'FE05_, (capacityMap'FE0F_, connectionMap'FE1C_)) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (58, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'FE0F_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun minDrivingTime'108DD_ (stopId1'10950_, stopId2'10959_, (capacityMap'10963_, connectionMap'10970_)) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (58, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'10963_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x38_'0_, x39_'0_, x40_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x38_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x39_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x40_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'FE1C_))))) then raise RSL.RSL_exception ("./NET.rsl:56:5: Argument of minDrivingTime" ^ RT_x_12.toString (stopId1'FDFC_, stopId2'FE05_, (capacityMap'FE0F_, connectionMap'FE1C_)) ^ " not in subtype") else let
-            val (headway'FE58_, drivingTime'FE61_, capacity'FE6E_) = ((((RT_m_4.R_app(connectionMap'FE1C_)) (stopId1'FDFC_, stopId2'FE05_))):RT_x_3.t)
+        end) (RT_m_4.R_ran(connectionMap'10970_))))) then raise RSL.RSL_exception ("./NET.rsl:56:5: Argument of minDrivingTime" ^ RT_x_12.toString (stopId1'10950_, stopId2'10959_, (capacityMap'10963_, connectionMap'10970_)) ^ " not in subtype") else let
+            val (headway'109AC_, drivingTime'109B5_, capacity'109C2_) = ((((RT_m_4.R_app(connectionMap'10970_)) (stopId1'10950_, stopId2'10959_))):RT_x_3.t)
         in
-            drivingTime'FE61_
+            drivingTime'109B5_
         end);
         
-        fun addConnection'EFDD_ (stopId1'F04F_, stopId2'F058_, headway'F061_, capacity'F06A_, drivingTime'F074_, (capacityMap'F082_, connectionMap'F08F_)) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (23, 7)); if not((RT_Nat.R_ge (headway'F061_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (capacity'F06A_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (drivingTime'F074_, RT_Int.fromLit "0")) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'F082_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun addConnection'FB31_ (stopId1'FBA3_, stopId2'FBAC_, headway'FBB5_, capacity'FBBE_, drivingTime'FBC8_, (capacityMap'FBD6_, connectionMap'FBE3_)) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (23, 7)); if not((RT_Nat.R_ge (headway'FBB5_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (capacity'FBBE_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (drivingTime'FBC8_, RT_Int.fromLit "0")) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'FBD6_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x8_'0_, x9_'0_, x10_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x8_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x9_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x10_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'F08F_)))))))) then raise RSL.RSL_exception ("./NET.rsl:21:5: Argument of addConnection" ^ RT_x_9.toString (stopId1'F04F_, stopId2'F058_, headway'F061_, capacity'F06A_, drivingTime'F074_, (capacityMap'F082_, connectionMap'F08F_)) ^ " not in subtype") else (capacityMap'F082_, RT_m_4.R_override (connectionMap'F08F_, RT_m_4.R_fromList ([((stopId1'F04F_, stopId2'F058_), (headway'F061_, drivingTime'F074_, capacity'F06A_))]))));
+        end) (RT_m_4.R_ran(connectionMap'FBE3_)))))))) then raise RSL.RSL_exception ("./NET.rsl:21:5: Argument of addConnection" ^ RT_x_9.toString (stopId1'FBA3_, stopId2'FBAC_, headway'FBB5_, capacity'FBBE_, drivingTime'FBC8_, (capacityMap'FBD6_, connectionMap'FBE3_)) ^ " not in subtype") else (capacityMap'FBD6_, RT_m_4.R_override (connectionMap'FBE3_, RT_m_4.R_fromList ([((stopId1'FBA3_, stopId2'FBAC_), (headway'FBB5_, drivingTime'FBC8_, capacity'FBBE_))]))));
         
-        fun capacity'FA69_ (stopId1'FAD6_, stopId2'FADF_, (capacityMap'FAE9_, connectionMap'FAF6_)) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (50, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'FAE9_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun capacity'105BD_ (stopId1'1062A_, stopId2'10633_, (capacityMap'1063D_, connectionMap'1064A_)) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (50, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'1063D_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x33_'0_, x34_'0_, x35_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x33_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x34_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x35_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'FAF6_))))) then raise RSL.RSL_exception ("./NET.rsl:48:5: Argument of capacity" ^ RT_x_12.toString (stopId1'FAD6_, stopId2'FADF_, (capacityMap'FAE9_, connectionMap'FAF6_)) ^ " not in subtype") else let
-            val (headway'FB38_, drivingTime'FB41_, capacity'FB4E_) = ((((RT_m_4.R_app(connectionMap'FAF6_)) (stopId1'FAD6_, stopId2'FADF_))):RT_x_3.t)
+        end) (RT_m_4.R_ran(connectionMap'1064A_))))) then raise RSL.RSL_exception ("./NET.rsl:48:5: Argument of capacity" ^ RT_x_12.toString (stopId1'1062A_, stopId2'10633_, (capacityMap'1063D_, connectionMap'1064A_)) ^ " not in subtype") else let
+            val (headway'1068C_, drivingTime'10695_, capacity'106A2_) = ((((RT_m_4.R_app(connectionMap'1064A_)) (stopId1'1062A_, stopId2'10633_))):RT_x_3.t)
         in
-            capacity'FB4E_
+            capacity'106A2_
         end);
         
-        fun insertStop'EDE9_ (stopId'EE58_, capacity'EE60_, (capacityMap'EE6B_, connectionMap'EE78_)) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (18, 7)); if not((RT_Nat.R_ge (capacity'EE60_, RT_Int.fromLit "0")) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'EE6B_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun insertStop'F93D_ (stopId'F9AC_, capacity'F9B4_, (capacityMap'F9BF_, connectionMap'F9CC_)) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (18, 7)); if not((RT_Nat.R_ge (capacity'F9B4_, RT_Int.fromLit "0")) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'F9BF_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x3_'0_, x4_'0_, x5_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x3_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x4_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x5_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'EE78_)))))) then raise RSL.RSL_exception ("./NET.rsl:16:5: Argument of insertStop" ^ RT_x_6.toString (stopId'EE58_, capacity'EE60_, (capacityMap'EE6B_, connectionMap'EE78_)) ^ " not in subtype") else (RT_m_1.R_override (capacityMap'EE6B_, RT_m_1.R_fromList ([(stopId'EE58_, capacity'EE60_)])), connectionMap'EE78_));
+        end) (RT_m_4.R_ran(connectionMap'F9CC_)))))) then raise RSL.RSL_exception ("./NET.rsl:16:5: Argument of insertStop" ^ RT_x_6.toString (stopId'F9AC_, capacity'F9B4_, (capacityMap'F9BF_, connectionMap'F9CC_)) ^ " not in subtype") else (RT_m_1.R_override (capacityMap'F9BF_, RT_m_1.R_fromList ([(stopId'F9AC_, capacity'F9B4_)])), connectionMap'F9CC_));
         
-        fun minHeadway'F749_ (stopId1'F7B8_, stopId2'F7C1_, (capacityMap'F7CB_, connectionMap'F7D8_)) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (42, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'F7CB_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun minHeadway'1029D_ (stopId1'1030C_, stopId2'10315_, (capacityMap'1031F_, connectionMap'1032C_)) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (42, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'1031F_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x28_'0_, x29_'0_, x30_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x28_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x29_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x30_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'F7D8_))))) then raise RSL.RSL_exception ("./NET.rsl:40:5: Argument of minHeadway" ^ RT_x_12.toString (stopId1'F7B8_, stopId2'F7C1_, (capacityMap'F7CB_, connectionMap'F7D8_)) ^ " not in subtype") else let
-            val (headway'F818_, drivingTime'F821_, capacity'F82E_) = ((((RT_m_4.R_app(connectionMap'F7D8_)) (stopId1'F7B8_, stopId2'F7C1_))):RT_x_3.t)
+        end) (RT_m_4.R_ran(connectionMap'1032C_))))) then raise RSL.RSL_exception ("./NET.rsl:40:5: Argument of minHeadway" ^ RT_x_12.toString (stopId1'1030C_, stopId2'10315_, (capacityMap'1031F_, connectionMap'1032C_)) ^ " not in subtype") else let
+            val (headway'1036C_, drivingTime'10375_, capacity'10382_) = ((((RT_m_4.R_app(connectionMap'1032C_)) (stopId1'1030C_, stopId2'10315_))):RT_x_3.t)
         in
-            headway'F818_
+            headway'1036C_
         end);
         
-        val empty'ED21_ = (RT_m_1.R_fromList [], RT_m_4.R_fromList []);
+        val empty'F875_ = (RT_m_1.R_fromList [], RT_m_4.R_fromList []);
         
-        fun areDirectlyConnected'F4F1_ (stopId1'F56A_, stopId2'F573_, (capacityMap'F57D_, connectionMap'F58A_)) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (36, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'F57D_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun areDirectlyConnected'10045_ (stopId1'100BE_, stopId2'100C7_, (capacityMap'100D1_, connectionMap'100DE_)) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (36, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'100D1_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x23_'0_, x24_'0_, x25_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x23_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x24_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x25_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'F58A_))))) then raise RSL.RSL_exception ("./NET.rsl:34:5: Argument of areDirectlyConnected" ^ RT_x_12.toString (stopId1'F56A_, stopId2'F573_, (capacityMap'F57D_, connectionMap'F58A_)) ^ " not in subtype") else (RT_m_4.R_mem ((stopId1'F56A_, stopId2'F573_), (connectionMap'F58A_))) orelse (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (37, 7)); RT_m_4.R_mem ((stopId2'F573_, stopId1'F56A_), (connectionMap'F58A_))));
+        end) (RT_m_4.R_ran(connectionMap'100DE_))))) then raise RSL.RSL_exception ("./NET.rsl:34:5: Argument of areDirectlyConnected" ^ RT_x_12.toString (stopId1'100BE_, stopId2'100C7_, (capacityMap'100D1_, connectionMap'100DE_)) ^ " not in subtype") else (RT_m_4.R_mem ((stopId1'100BE_, stopId2'100C7_), (connectionMap'100DE_))) orelse (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (37, 7)); RT_m_4.R_mem ((stopId2'100C7_, stopId1'100BE_), (connectionMap'100DE_))));
         
-        fun capacity'F361_ (stopId'F3CF_, (capacityMap'F3D7_, connectionMap'F3E4_)) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (32, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'F3D7_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun capacity'FEB5_ (stopId'FF23_, (capacityMap'FF2B_, connectionMap'FF38_)) = (R_coverage.cancel(RT_Text.fromLit "./NET.rsl", (32, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'FF2B_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x18_'0_, x19_'0_, x20_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x18_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x19_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x20_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'F3E4_))))) then raise RSL.RSL_exception ("./NET.rsl:30:5: Argument of capacity" ^ RT_x_10.toString (stopId'F3CF_, (capacityMap'F3D7_, connectionMap'F3E4_)) ^ " not in subtype") else ((RT_m_1.R_app(capacityMap'F3D7_)) (stopId'F3CF_)));
+        end) (RT_m_4.R_ran(connectionMap'FF38_))))) then raise RSL.RSL_exception ("./NET.rsl:30:5: Argument of capacity" ^ RT_x_10.toString (stopId'FF23_, (capacityMap'FF2B_, connectionMap'FF38_)) ^ " not in subtype") else ((RT_m_1.R_app(capacityMap'FF2B_)) (stopId'FF23_)));
         
         type TimeTable_ = RT_m_16.t;
         
@@ -749,399 +749,399 @@ structure testTimeTable =
         
         type Plan_ = RT_l_15.t;
         
-        fun buildTimesForTramOnStop'9731_ (stopid'97AD_, plan'97B5_, tramid'97BB_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (249, 7)); if not((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun buildTimesForTramOnStop'A285_ (stopid'A301_, plan'A309_, tramid'A30F_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (249, 7)); if not((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x122_'0_, x123_'0_, x124_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x123_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x124_'0_, RT_Int.fromLit "0"))
-        end) (plan'97B5_))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:247:5: Argument of buildTimesForTramOnStop" ^ RT_x_30.toString (stopid'97AD_, plan'97B5_, tramid'97BB_) ^ " not in subtype") else if RT_Nat.R_lt (RT_l_15.R_length(plan'97B5_), RT_Int.fromLit "1") then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (250, 12)); RT_s_27.R_fromList []) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (252, 9)); let
-            val (sid'9990_, arrt'9995_, dept'999B_) = ((RT_l_15.R_hd(plan'97B5_)):RT_x_14.t)
+        end) (plan'A309_))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:247:5: Argument of buildTimesForTramOnStop" ^ RT_x_30.toString (stopid'A301_, plan'A309_, tramid'A30F_) ^ " not in subtype") else if RT_Nat.R_lt (RT_l_15.R_length(plan'A309_), RT_Int.fromLit "1") then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (250, 12)); RT_s_27.R_fromList []) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (252, 9)); let
+            val (sid'A4E4_, arrt'A4E9_, dept'A4EF_) = ((RT_l_15.R_hd(plan'A309_)):RT_x_14.t)
         in
-            if RT_Text.equ (sid'9990_, stopid'97AD_) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (256, 16)); RT_s_27.R_union (RT_s_27.R_fromList ([(tramid'97BB_, arrt'9995_, dept'999B_)]), ((buildTimesForTramOnStop'9731_) (stopid'97AD_, RT_l_15.R_tl(plan'97B5_), tramid'97BB_)))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (257, 16)); ((buildTimesForTramOnStop'9731_) (stopid'97AD_, RT_l_15.R_tl(plan'97B5_), tramid'97BB_)))
+            if RT_Text.equ (sid'A4E4_, stopid'A301_) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (256, 16)); RT_s_27.R_union (RT_s_27.R_fromList ([(tramid'A30F_, arrt'A4E9_, dept'A4EF_)]), ((buildTimesForTramOnStop'A285_) (stopid'A301_, RT_l_15.R_tl(plan'A309_), tramid'A30F_)))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (257, 16)); ((buildTimesForTramOnStop'A285_) (stopid'A301_, RT_l_15.R_tl(plan'A309_), tramid'A30F_)))
         end));
         
-        fun buildAllTimesForStop'91B9_ (stopid'9232_, trams'923A_, timetable'9241_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (235, 7)); if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun buildAllTimesForStop'9D0D_ (stopid'9D86_, trams'9D8E_, timetable'9D95_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (235, 7)); if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x119_'0_, x120_'0_, x121_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x120_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x121_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(timetable'9241_)))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:233:5: Argument of buildAllTimesForStop" ^ RT_x_29.toString (stopid'9232_, trams'923A_, timetable'9241_) ^ " not in subtype") else if RT_s_11.equ (trams'923A_, RT_s_11.R_fromList []) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (236, 12)); RT_s_27.R_fromList []) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (238, 9)); let
-            val tramid'9417_ = ((RT_s_11.R_hd(trams'923A_)):RT_Text.t)
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'9D95_)))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:233:5: Argument of buildAllTimesForStop" ^ RT_x_29.toString (stopid'9D86_, trams'9D8E_, timetable'9D95_) ^ " not in subtype") else if RT_s_11.equ (trams'9D8E_, RT_s_11.R_fromList []) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (236, 12)); RT_s_27.R_fromList []) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (238, 9)); let
+            val tramid'9F6B_ = ((RT_s_11.R_hd(trams'9D8E_)):RT_Text.t)
         in
-            RT_s_27.R_union (((buildTimesForTramOnStop'9731_) (stopid'9232_, ((RT_m_16.R_app(timetable'9241_)) (tramid'9417_)), tramid'9417_)), ((buildAllTimesForStop'91B9_) (stopid'9232_, RT_s_11.R_diff (trams'923A_, RT_s_11.R_fromList ([tramid'9417_])), timetable'9241_)))
+            RT_s_27.R_union (((buildTimesForTramOnStop'A285_) (stopid'9D86_, ((RT_m_16.R_app(timetable'9D95_)) (tramid'9F6B_)), tramid'9F6B_)), ((buildAllTimesForStop'9D0D_) (stopid'9D86_, RT_s_11.R_diff (trams'9D8E_, RT_s_11.R_fromList ([tramid'9F6B_])), timetable'9D95_)))
         end));
         
-        fun countOverlappingTimesForStop'8B15_ (tramid'8B96_, arrtime'8B9D_, deptime'8BA6_, times'8BAF_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (218, 7)); if not((RT_Nat.R_ge (arrtime'8B9D_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (deptime'8BA6_, RT_Int.fromLit "0")) andalso ((RT_s_27.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun countOverlappingTimesForStop'9669_ (tramid'96EA_, arrtime'96F1_, deptime'96FA_, times'9703_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (218, 7)); if not((RT_Nat.R_ge (arrtime'96F1_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (deptime'96FA_, RT_Int.fromLit "0")) andalso ((RT_s_27.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x116_'0_, x117_'0_, x118_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x117_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x118_'0_, RT_Int.fromLit "0"))
-        end) (times'8BAF_))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:216:5: Argument of countOverlappingTimesForStop" ^ RT_x_28.toString (tramid'8B96_, arrtime'8B9D_, deptime'8BA6_, times'8BAF_) ^ " not in subtype") else if RT_s_27.equ (times'8BAF_, RT_s_27.R_fromList []) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (219, 12)); RT_Int.fromLit "0") else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (221, 9)); let
-            val (tramid2'8D74_, arrtime2'8D7D_, deptime2'8D87_) = ((RT_s_27.R_hd(times'8BAF_)):RT_x_14.t)
+        end) (times'9703_))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:216:5: Argument of countOverlappingTimesForStop" ^ RT_x_28.toString (tramid'96EA_, arrtime'96F1_, deptime'96FA_, times'9703_) ^ " not in subtype") else if RT_s_27.equ (times'9703_, RT_s_27.R_fromList []) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (219, 12)); RT_Int.fromLit "0") else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (221, 9)); let
+            val (tramid2'98C8_, arrtime2'98D1_, deptime2'98DB_) = ((RT_s_27.R_hd(times'9703_)):RT_x_14.t)
         in
-            if ((RSL.C_not RT_Text.equ) (tramid'8B96_, tramid2'8D74_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (224, 35)); ((((RT_Nat.R_lt (arrtime'8B9D_, arrtime2'8D7D_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (224, 59)); RT_Nat.R_lt (arrtime2'8D7D_, deptime'8BA6_)))) orelse (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (224, 81)); ((RT_Nat.R_lt (arrtime'8B9D_, deptime2'8D87_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (225, 4)); RT_Nat.R_lt (deptime2'8D87_, deptime'8BA6_)))))) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (225, 16)); RT_Nat.R_add (RT_Int.fromLit "1", ((countOverlappingTimesForStop'8B15_) (tramid'8B96_, arrtime'8B9D_, deptime'8BA6_, RT_s_27.R_diff (times'8BAF_, RT_s_27.R_fromList ([(tramid2'8D74_, arrtime2'8D7D_, deptime2'8D87_)])))))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (226, 16)); ((countOverlappingTimesForStop'8B15_) (tramid'8B96_, arrtime'8B9D_, deptime'8BA6_, RT_s_27.R_diff (times'8BAF_, RT_s_27.R_fromList ([(tramid2'8D74_, arrtime2'8D7D_, deptime2'8D87_)])))))
+            if ((RSL.C_not RT_Text.equ) (tramid'96EA_, tramid2'98C8_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (224, 35)); ((((RT_Nat.R_lt (arrtime'96F1_, arrtime2'98D1_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (224, 59)); RT_Nat.R_lt (arrtime2'98D1_, deptime'96FA_)))) orelse (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (224, 81)); ((RT_Nat.R_lt (arrtime'96F1_, deptime2'98DB_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (225, 4)); RT_Nat.R_lt (deptime2'98DB_, deptime'96FA_)))))) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (225, 16)); RT_Nat.R_add (RT_Int.fromLit "1", ((countOverlappingTimesForStop'9669_) (tramid'96EA_, arrtime'96F1_, deptime'96FA_, RT_s_27.R_diff (times'9703_, RT_s_27.R_fromList ([(tramid2'98C8_, arrtime2'98D1_, deptime2'98DB_)])))))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (226, 16)); ((countOverlappingTimesForStop'9669_) (tramid'96EA_, arrtime'96F1_, deptime'96FA_, RT_s_27.R_diff (times'9703_, RT_s_27.R_fromList ([(tramid2'98C8_, arrtime2'98D1_, deptime2'98DB_)])))))
         end));
         
-        fun stopCapacityIsNotExceeded'C9FB_ (stopid'CA79_, timetable'CA81_, capacityMap'CA8C_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (379, 9)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun stopCapacityIsNotExceeded'D54F_ (stopid'D5CD_, timetable'D5D5_, capacityMap'D5E0_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (379, 9)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x186_'0_, x187_'0_, x188_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x187_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x188_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(timetable'CA81_)))) andalso ((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'CA8C_))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:377:7: Argument of stopCapacityIsNotExceeded" ^ RT_x_34.toString (stopid'CA79_, timetable'CA81_, capacityMap'CA8C_) ^ " not in subtype") else let
-            val times'CB2B_ = ((((buildAllTimesForStop'91B9_) (stopid'CA79_, RT_m_16.R_dom((timetable'CA81_)), timetable'CA81_))):RT_s_27.t); 
-            val capacity'CB8F_ = ((((RT_m_1.R_app(capacityMap'CA8C_)) (stopid'CA79_))):RT_Nat.t)
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'D5D5_)))) andalso ((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'D5E0_))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:377:7: Argument of stopCapacityIsNotExceeded" ^ RT_x_34.toString (stopid'D5CD_, timetable'D5D5_, capacityMap'D5E0_) ^ " not in subtype") else let
+            val times'D67F_ = ((((buildAllTimesForStop'9D0D_) (stopid'D5CD_, RT_m_16.R_dom((timetable'D5D5_)), timetable'D5D5_))):RT_s_27.t); 
+            val capacity'D6E3_ = ((((RT_m_1.R_app(capacityMap'D5E0_)) (stopid'D5CD_))):RT_Nat.t)
         in
-            ((RT_s_27.R_all (fn ((tramid'CC5D_, arrtime'CC65_, deptime'CC6E_):RT_x_14.t) => not ((RT_Nat.R_ge (arrtime'CC65_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (deptime'CC6E_, RT_Int.fromLit "0"))) orelse ((RT_Nat.R_le (RT_Nat.R_add (RT_Int.fromLit "1", ((countOverlappingTimesForStop'8B15_) (tramid'CC5D_, arrtime'CC65_, deptime'CC6E_, times'CB2B_))), capacity'CB8F_)))) (times'CB2B_)))
+            ((RT_s_27.R_all (fn ((tramid'D7B1_, arrtime'D7B9_, deptime'D7C2_):RT_x_14.t) => not ((RT_Nat.R_ge (arrtime'D7B9_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (deptime'D7C2_, RT_Int.fromLit "0"))) orelse ((RT_Nat.R_le (RT_Nat.R_add (RT_Int.fromLit "1", ((countOverlappingTimesForStop'9669_) (tramid'D7B1_, arrtime'D7B9_, deptime'D7C2_, times'D67F_))), capacity'D6E3_)))) (times'D67F_)))
         end);
         
-        fun allStopCapacitiesAreNotExceeded'C6DB_ (timetable'C75F_, (capacityMap'C76B_, connectionMap'C777_)) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (371, 9)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun allStopCapacitiesAreNotExceeded'D22F_ (timetable'D2B3_, (capacityMap'D2BF_, connectionMap'D2CB_)) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (371, 9)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x178_'0_, x179_'0_, x180_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x179_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x180_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(timetable'C75F_)))) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'C76B_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'D2B3_)))) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'D2BF_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x183_'0_, x184_'0_, x185_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x183_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x184_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x185_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'C777_)))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:369:7: Argument of allStopCapacitiesAreNotExceeded" ^ RT_x_32.toString (timetable'C75F_, (capacityMap'C76B_, connectionMap'C777_)) ^ " not in subtype") else ((RT_m_1.R_all (fn (stopid'C7AA_:RT_Text.t) => ((stopCapacityIsNotExceeded'C9FB_) (stopid'C7AA_, timetable'C75F_, capacityMap'C76B_))) ((capacityMap'C76B_)))));
+        end) (RT_m_4.R_ran(connectionMap'D2CB_)))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:369:7: Argument of allStopCapacitiesAreNotExceeded" ^ RT_x_32.toString (timetable'D2B3_, (capacityMap'D2BF_, connectionMap'D2CB_)) ^ " not in subtype") else ((RT_m_1.R_all (fn (stopid'D2FE_:RT_Text.t) => ((stopCapacityIsNotExceeded'D54F_) (stopid'D2FE_, timetable'D2B3_, capacityMap'D2BF_))) ((capacityMap'D2BF_)))));
         
-        fun getConnection'51AB_ (stop1'521D_, stop2'5224_, (capacityMap'522C_, connectionMap'5239_)) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (71, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'522C_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        fun getConnection'5CFF_ (stop1'5D71_, stop2'5D78_, (capacityMap'5D80_, connectionMap'5D8D_)) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (71, 7)); if not(((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'5D80_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x86_'0_, x87_'0_, x88_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x86_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x87_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x88_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'5239_))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:69:7: Argument of getConnection" ^ RT_x_12.toString (stop1'521D_, stop2'5224_, (capacityMap'522C_, connectionMap'5239_)) ^ " not in subtype") else if RT_m_4.R_mem ((stop1'521D_, stop2'5224_), (connectionMap'5239_)) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (73, 9)); ((RT_m_4.R_app(connectionMap'5239_)) ((stop1'521D_, stop2'5224_)))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (75, 9)); ((RT_m_4.R_app(connectionMap'5239_)) ((stop2'5224_, stop1'521D_)))));
+        end) (RT_m_4.R_ran(connectionMap'5D8D_))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:69:7: Argument of getConnection" ^ RT_x_12.toString (stop1'5D71_, stop2'5D78_, (capacityMap'5D80_, connectionMap'5D8D_)) ^ " not in subtype") else if RT_m_4.R_mem ((stop1'5D71_, stop2'5D78_), (connectionMap'5D8D_)) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (73, 9)); ((RT_m_4.R_app(connectionMap'5D8D_)) ((stop1'5D71_, stop2'5D78_)))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (75, 9)); ((RT_m_4.R_app(connectionMap'5D8D_)) ((stop2'5D78_, stop1'5D71_)))));
         
-        fun timeBetweenStopsIsDrivingTime'A02D_ (plan'A0AF_, (capacityMap'A0B6_, connectionMap'A0C3_)) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (272, 7)); if not(((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun timeBetweenStopsIsDrivingTime'AB81_ (plan'AC03_, (capacityMap'AC0A_, connectionMap'AC17_)) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (272, 7)); if not(((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x125_'0_, x126_'0_, x127_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x126_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x127_'0_, RT_Int.fromLit "0"))
-        end) (plan'A0AF_))) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'A0B6_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        end) (plan'AC03_))) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'AC0A_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x130_'0_, x131_'0_, x132_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x130_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x131_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x132_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'A0C3_)))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:270:5: Argument of timeBetweenStopsIsDrivingTime" ^ RT_x_31.toString (plan'A0AF_, (capacityMap'A0B6_, connectionMap'A0C3_)) ^ " not in subtype") else if RT_Nat.R_gt (RT_l_15.R_length(plan'A0AF_), RT_Int.fromLit "1") then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (273, 9)); let
-            val (stopid1'A1C4_, arrTime1'A1CD_, depTime1'A1D7_) = ((RT_l_15.R_hd(plan'A0AF_)):RT_x_14.t); 
-            val (stopid2'A228_, arrTime2'A231_, depTime2'A23B_) = ((RT_l_15.R_hd((RT_l_15.R_tl(plan'A0AF_)))):RT_x_14.t)
+        end) (RT_m_4.R_ran(connectionMap'AC17_)))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:270:5: Argument of timeBetweenStopsIsDrivingTime" ^ RT_x_31.toString (plan'AC03_, (capacityMap'AC0A_, connectionMap'AC17_)) ^ " not in subtype") else if RT_Nat.R_gt (RT_l_15.R_length(plan'AC03_), RT_Int.fromLit "1") then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (273, 9)); let
+            val (stopid1'AD18_, arrTime1'AD21_, depTime1'AD2B_) = ((RT_l_15.R_hd(plan'AC03_)):RT_x_14.t); 
+            val (stopid2'AD7C_, arrTime2'AD85_, depTime2'AD8F_) = ((RT_l_15.R_hd((RT_l_15.R_tl(plan'AC03_)))):RT_x_14.t)
         in
             let
-                val (headway'A356_, drivingTime'A35E_, capacity'A36B_) = ((((getConnection'51AB_) (stopid1'A1C4_, stopid2'A228_, (capacityMap'A0B6_, connectionMap'A0C3_)))):RT_x_3.t)
+                val (headway'AEAA_, drivingTime'AEB2_, capacity'AEBF_) = ((((getConnection'5CFF_) (stopid1'AD18_, stopid2'AD7C_, (capacityMap'AC0A_, connectionMap'AC17_)))):RT_x_3.t)
             in
-                ((RT_Nat.R_ge (RT_Nat.R_sub (arrTime2'A231_, depTime1'A1D7_), drivingTime'A35E_))) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (280, 53)); ((timeBetweenStopsIsDrivingTime'A02D_) (RT_l_15.R_tl(plan'A0AF_), (capacityMap'A0B6_, connectionMap'A0C3_))))
+                ((RT_Nat.R_ge (RT_Nat.R_sub (arrTime2'AD85_, depTime1'AD2B_), drivingTime'AEB2_))) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (280, 53)); ((timeBetweenStopsIsDrivingTime'AB81_) (RT_l_15.R_tl(plan'AC03_), (capacityMap'AC0A_, connectionMap'AC17_))))
             end
         end) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (284, 9)); true));
         
-        fun allTimeBetweenStopsIsValidDrivingTime'A799_ (t'A823_, n'A826_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (291, 7)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun allTimeBetweenStopsIsValidDrivingTime'B2ED_ (t'B377_, n'B37A_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (291, 7)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x133_'0_, x134_'0_, x135_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x134_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x135_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(t'A823_)))) andalso (let
-            val (x136_'0_, x137_'0_) = ((n'A826_):RT_x_5.t)
+        end) (x_'0_))) (RT_m_16.R_ran(t'B377_)))) andalso (let
+            val (x136_'0_, x137_'0_) = ((n'B37A_):RT_x_5.t)
         in
             ((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(x136_'0_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
                 val (x140_'0_, x141_'0_, x142_'0_) = ((x_'0_):RT_x_3.t)
             in
                 (RT_Nat.R_ge (x140_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x141_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x142_'0_, RT_Int.fromLit "0")))
             end) (RT_m_4.R_ran(x137_'0_))))
-        end)) then raise RSL.RSL_exception ("./TIMETABLE.rsl:289:5: Argument of allTimeBetweenStopsIsValidDrivingTime" ^ RT_x_32.toString (t'A823_, n'A826_) ^ " not in subtype") else ((RT_s_19.R_all (fn (plan'A868_:RT_l_15.t) => not ((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        end)) then raise RSL.RSL_exception ("./TIMETABLE.rsl:289:5: Argument of allTimeBetweenStopsIsValidDrivingTime" ^ RT_x_32.toString (t'B377_, n'B37A_) ^ " not in subtype") else ((RT_s_19.R_all (fn (plan'B3BC_:RT_l_15.t) => not ((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x226_'0_, x227_'0_, x228_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x227_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x228_'0_, RT_Int.fromLit "0"))
-        end) (plan'A868_))) orelse (((timeBetweenStopsIsDrivingTime'A02D_) (plan'A868_, n'A826_)))) (RT_m_16.R_ran((t'A823_))))));
+        end) (plan'B3BC_))) orelse (((timeBetweenStopsIsDrivingTime'AB81_) (plan'B3BC_, n'B37A_)))) (RT_m_16.R_ran((t'B377_))))));
         
-        fun nextStop'46BB_ (planRow'4728_, plan'4731_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (43, 9)); if not((let
-            val (x78_'0_, x79_'0_, x80_'0_) = ((planRow'4728_):RT_x_14.t)
+        fun nextStop'520F_ (planRow'527C_, plan'5285_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (43, 9)); if not((let
+            val (x78_'0_, x79_'0_, x80_'0_) = ((planRow'527C_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x79_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x80_'0_, RT_Int.fromLit "0"))
         end) andalso ((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x81_'0_, x82_'0_, x83_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x82_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x83_'0_, RT_Int.fromLit "0"))
-        end) (plan'4731_)))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:41:7: Argument of nextStop" ^ RT_x_22.toString (planRow'4728_, plan'4731_) ^ " not in subtype") else if not(RT_Nat.R_gt (RT_l_15.R_length(plan'4731_), RT_Int.fromLit "1")) then raise RSL.RSL_exception ("./TIMETABLE.rsl:66:13: Precondition of nextStop" ^ RT_x_22.toString (planRow'4728_, plan'4731_) ^ " not satisfied") else let
-            val iPlanRow'47EB_ = ((RT_l_15.R_hd(plan'4731_)):RT_x_14.t)
+        end) (plan'5285_)))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:41:7: Argument of nextStop" ^ RT_x_22.toString (planRow'527C_, plan'5285_) ^ " not in subtype") else if not(RT_Nat.R_gt (RT_l_15.R_length(plan'5285_), RT_Int.fromLit "1")) then raise RSL.RSL_exception ("./TIMETABLE.rsl:66:13: Precondition of nextStop" ^ RT_x_22.toString (planRow'527C_, plan'5285_) ^ " not satisfied") else let
+            val iPlanRow'533F_ = ((RT_l_15.R_hd(plan'5285_)):RT_x_14.t)
         in
-            if RT_x_14.equ (iPlanRow'47EB_, planRow'4728_) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (48, 13)); let
-                val (sid'49E4_, arrt'49E9_, dept'49EF_) = ((RT_l_15.R_hd((RT_l_15.R_tl(plan'4731_)))):RT_x_14.t)
+            if RT_x_14.equ (iPlanRow'533F_, planRow'527C_) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (48, 13)); let
+                val (sid'5538_, arrt'553D_, dept'5543_) = ((RT_l_15.R_hd((RT_l_15.R_tl(plan'5285_)))):RT_x_14.t)
             in
-                (sid'49E4_, arrt'49E9_, dept'49EF_)
-            end) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (54, 13)); if RT_Nat.R_gt (RT_l_15.R_length((RT_l_15.R_tl(plan'4731_))), RT_Int.fromLit "1") then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (56, 15)); ((nextStop'46BB_) (planRow'4728_, RT_l_15.R_tl(plan'4731_)))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (58, 15)); let
-                val (sid'4DCE_, arrt'4DD3_, dept'4DD9_) = ((iPlanRow'47EB_):RT_x_14.t)
+                (sid'5538_, arrt'553D_, dept'5543_)
+            end) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (54, 13)); if RT_Nat.R_gt (RT_l_15.R_length((RT_l_15.R_tl(plan'5285_))), RT_Int.fromLit "1") then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (56, 15)); ((nextStop'520F_) (planRow'527C_, RT_l_15.R_tl(plan'5285_)))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (58, 15)); let
+                val (sid'5922_, arrt'5927_, dept'592D_) = ((iPlanRow'533F_):RT_x_14.t)
             in
-                iPlanRow'47EB_
+                iPlanRow'533F_
             end))
         end);
         
-        fun buildTimesForTramOnTrack'840D_ (stopid1'848B_, stopid2'8494_, plan'849D_, tramid'84A3_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (200, 7)); if not((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun buildTimesForTramOnTrack'8F61_ (stopid1'8FDF_, stopid2'8FE8_, plan'8FF1_, tramid'8FF7_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (200, 7)); if not((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x113_'0_, x114_'0_, x115_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x114_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x115_'0_, RT_Int.fromLit "0"))
-        end) (plan'849D_))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:198:5: Argument of buildTimesForTramOnTrack" ^ RT_x_26.toString (stopid1'848B_, stopid2'8494_, plan'849D_, tramid'84A3_) ^ " not in subtype") else if RT_Nat.R_le (RT_l_15.R_length(plan'849D_), RT_Int.fromLit "1") then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (201, 12)); RT_s_27.R_fromList []) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (203, 9)); let
-            val (sid'866C_, arrt'8671_, dept'8677_) = ((RT_l_15.R_hd(plan'849D_)):RT_x_14.t); 
-            val (sid2'86D0_, arrt2'86D6_, dept2'86DD_) = ((((nextStop'46BB_) ((sid'866C_, arrt'8671_, dept'8677_), plan'849D_))):RT_x_14.t)
+        end) (plan'8FF1_))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:198:5: Argument of buildTimesForTramOnTrack" ^ RT_x_26.toString (stopid1'8FDF_, stopid2'8FE8_, plan'8FF1_, tramid'8FF7_) ^ " not in subtype") else if RT_Nat.R_le (RT_l_15.R_length(plan'8FF1_), RT_Int.fromLit "1") then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (201, 12)); RT_s_27.R_fromList []) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (203, 9)); let
+            val (sid'91C0_, arrt'91C5_, dept'91CB_) = ((RT_l_15.R_hd(plan'8FF1_)):RT_x_14.t); 
+            val (sid2'9224_, arrt2'922A_, dept2'9231_) = ((((nextStop'520F_) ((sid'91C0_, arrt'91C5_, dept'91CB_), plan'8FF1_))):RT_x_14.t)
         in
-            if (RT_Text.equ (sid'866C_, stopid1'848B_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (207, 31)); RT_Text.equ (sid2'86D0_, stopid2'8494_)) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (208, 16)); RT_s_27.R_union (RT_s_27.R_fromList ([(tramid'84A3_, dept'8677_, arrt2'86D6_)]), ((buildTimesForTramOnTrack'840D_) (stopid1'848B_, stopid2'8494_, RT_l_15.R_tl(plan'849D_), tramid'84A3_)))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (209, 16)); ((buildTimesForTramOnTrack'840D_) (stopid1'848B_, stopid2'8494_, RT_l_15.R_tl(plan'849D_), tramid'84A3_)))
+            if (RT_Text.equ (sid'91C0_, stopid1'8FDF_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (207, 31)); RT_Text.equ (sid2'9224_, stopid2'8FE8_)) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (208, 16)); RT_s_27.R_union (RT_s_27.R_fromList ([(tramid'8FF7_, dept'91CB_, arrt2'922A_)]), ((buildTimesForTramOnTrack'8F61_) (stopid1'8FDF_, stopid2'8FE8_, RT_l_15.R_tl(plan'8FF1_), tramid'8FF7_)))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (209, 16)); ((buildTimesForTramOnTrack'8F61_) (stopid1'8FDF_, stopid2'8FE8_, RT_l_15.R_tl(plan'8FF1_), tramid'8FF7_)))
         end));
         
-        fun buildAllTimesForTrack'7E95_ (stopid1'7F0F_, stopid2'7F18_, trams'7F21_, timetable'7F28_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (186, 7)); if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun buildAllTimesForTrack'89E9_ (stopid1'8A63_, stopid2'8A6C_, trams'8A75_, timetable'8A7C_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (186, 7)); if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x110_'0_, x111_'0_, x112_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x111_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x112_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(timetable'7F28_)))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:184:5: Argument of buildAllTimesForTrack" ^ RT_x_25.toString (stopid1'7F0F_, stopid2'7F18_, trams'7F21_, timetable'7F28_) ^ " not in subtype") else if RT_s_11.equ (trams'7F21_, RT_s_11.R_fromList []) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (187, 12)); RT_s_27.R_fromList []) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (189, 9)); let
-            val tramid'80F3_ = ((RT_s_11.R_hd(trams'7F21_)):RT_Text.t)
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'8A7C_)))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:184:5: Argument of buildAllTimesForTrack" ^ RT_x_25.toString (stopid1'8A63_, stopid2'8A6C_, trams'8A75_, timetable'8A7C_) ^ " not in subtype") else if RT_s_11.equ (trams'8A75_, RT_s_11.R_fromList []) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (187, 12)); RT_s_27.R_fromList []) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (189, 9)); let
+            val tramid'8C47_ = ((RT_s_11.R_hd(trams'8A75_)):RT_Text.t)
         in
-            RT_s_27.R_union (((buildTimesForTramOnTrack'840D_) (stopid1'7F0F_, stopid2'7F18_, ((RT_m_16.R_app(timetable'7F28_)) (tramid'80F3_)), tramid'80F3_)), ((buildAllTimesForTrack'7E95_) (stopid1'7F0F_, stopid2'7F18_, RT_s_11.R_diff (trams'7F21_, RT_s_11.R_fromList ([tramid'80F3_])), timetable'7F28_)))
+            RT_s_27.R_union (((buildTimesForTramOnTrack'8F61_) (stopid1'8A63_, stopid2'8A6C_, ((RT_m_16.R_app(timetable'8A7C_)) (tramid'8C47_)), tramid'8C47_)), ((buildAllTimesForTrack'89E9_) (stopid1'8A63_, stopid2'8A6C_, RT_s_11.R_diff (trams'8A75_, RT_s_11.R_fromList ([tramid'8C47_])), timetable'8A7C_)))
         end));
         
-        fun countOverlappingTimesForTrack'77F1_ (tramid'7873_, deptime'787A_, arrtime'7883_, times'788C_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (169, 7)); if not((RT_Nat.R_ge (deptime'787A_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (arrtime'7883_, RT_Int.fromLit "0")) andalso ((RT_s_27.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun countOverlappingTimesForTrack'8345_ (tramid'83C7_, deptime'83CE_, arrtime'83D7_, times'83E0_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (169, 7)); if not((RT_Nat.R_ge (deptime'83CE_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (arrtime'83D7_, RT_Int.fromLit "0")) andalso ((RT_s_27.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x107_'0_, x108_'0_, x109_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x108_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x109_'0_, RT_Int.fromLit "0"))
-        end) (times'788C_))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:167:5: Argument of countOverlappingTimesForTrack" ^ RT_x_28.toString (tramid'7873_, deptime'787A_, arrtime'7883_, times'788C_) ^ " not in subtype") else if RT_s_27.equ (times'788C_, RT_s_27.R_fromList []) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (170, 12)); RT_Int.fromLit "0") else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (172, 9)); let
-            val (tramid2'7A50_, deptime2'7A59_, arrtime2'7A63_) = ((RT_s_27.R_hd(times'788C_)):RT_x_14.t)
+        end) (times'83E0_))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:167:5: Argument of countOverlappingTimesForTrack" ^ RT_x_28.toString (tramid'83C7_, deptime'83CE_, arrtime'83D7_, times'83E0_) ^ " not in subtype") else if RT_s_27.equ (times'83E0_, RT_s_27.R_fromList []) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (170, 12)); RT_Int.fromLit "0") else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (172, 9)); let
+            val (tramid2'85A4_, deptime2'85AD_, arrtime2'85B7_) = ((RT_s_27.R_hd(times'83E0_)):RT_x_14.t)
         in
-            if ((RSL.C_not RT_Text.equ) (tramid'7873_, tramid2'7A50_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (175, 35)); ((((RT_Nat.R_lt (deptime'787A_, deptime2'7A59_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (175, 59)); RT_Nat.R_lt (deptime2'7A59_, arrtime'7883_)))) orelse (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (175, 81)); ((RT_Nat.R_lt (deptime'787A_, arrtime2'7A63_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (176, 4)); RT_Nat.R_lt (arrtime2'7A63_, arrtime'7883_)))))) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (176, 16)); RT_Nat.R_add (RT_Int.fromLit "1", ((countOverlappingTimesForTrack'77F1_) (tramid'7873_, deptime'787A_, arrtime'7883_, RT_s_27.R_diff (times'788C_, RT_s_27.R_fromList ([(tramid2'7A50_, deptime2'7A59_, arrtime2'7A63_)])))))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (177, 16)); ((countOverlappingTimesForTrack'77F1_) (tramid'7873_, deptime'787A_, arrtime'7883_, RT_s_27.R_diff (times'788C_, RT_s_27.R_fromList ([(tramid2'7A50_, deptime2'7A59_, arrtime2'7A63_)])))))
+            if ((RSL.C_not RT_Text.equ) (tramid'83C7_, tramid2'85A4_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (175, 35)); ((((RT_Nat.R_lt (deptime'83CE_, deptime2'85AD_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (175, 59)); RT_Nat.R_lt (deptime2'85AD_, arrtime'83D7_)))) orelse (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (175, 81)); ((RT_Nat.R_lt (deptime'83CE_, arrtime2'85B7_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (176, 4)); RT_Nat.R_lt (arrtime2'85B7_, arrtime'83D7_)))))) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (176, 16)); RT_Nat.R_add (RT_Int.fromLit "1", ((countOverlappingTimesForTrack'8345_) (tramid'83C7_, deptime'83CE_, arrtime'83D7_, RT_s_27.R_diff (times'83E0_, RT_s_27.R_fromList ([(tramid2'85A4_, deptime2'85AD_, arrtime2'85B7_)])))))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (177, 16)); ((countOverlappingTimesForTrack'8345_) (tramid'83C7_, deptime'83CE_, arrtime'83D7_, RT_s_27.R_diff (times'83E0_, RT_s_27.R_fromList ([(tramid2'85A4_, deptime2'85AD_, arrtime2'85B7_)])))))
         end));
         
-        fun trackCapacityIsNotExceeded'C099_ (stopid1'C118_, stopid2'C121_, timetable'C12A_, connectionMap'C135_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (355, 8)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun trackCapacityIsNotExceeded'CBED_ (stopid1'CC6C_, stopid2'CC75_, timetable'CC7E_, connectionMap'CC89_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (355, 8)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x170_'0_, x171_'0_, x172_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x171_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x172_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(timetable'C12A_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'CC7E_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x175_'0_, x176_'0_, x177_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x175_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x176_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x177_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'C135_))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:353:5: Argument of trackCapacityIsNotExceeded" ^ RT_x_33.toString (stopid1'C118_, stopid2'C121_, timetable'C12A_, connectionMap'C135_) ^ " not in subtype") else let
-            val times1'C1CA_ = ((((buildAllTimesForTrack'7E95_) (stopid1'C118_, stopid2'C121_, RT_m_16.R_dom((timetable'C12A_)), timetable'C12A_))):RT_s_27.t); 
-            val times2'C22E_ = ((((buildAllTimesForTrack'7E95_) (stopid2'C121_, stopid1'C118_, RT_m_16.R_dom((timetable'C12A_)), timetable'C12A_))):RT_s_27.t); 
-            val (headway'C293_, drivingtime'C29C_, trackcapacity'C2A9_) = ((((RT_m_4.R_app(connectionMap'C135_)) (stopid1'C118_, stopid2'C121_))):RT_x_3.t)
+        end) (RT_m_4.R_ran(connectionMap'CC89_))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:353:5: Argument of trackCapacityIsNotExceeded" ^ RT_x_33.toString (stopid1'CC6C_, stopid2'CC75_, timetable'CC7E_, connectionMap'CC89_) ^ " not in subtype") else let
+            val times1'CD1E_ = ((((buildAllTimesForTrack'89E9_) (stopid1'CC6C_, stopid2'CC75_, RT_m_16.R_dom((timetable'CC7E_)), timetable'CC7E_))):RT_s_27.t); 
+            val times2'CD82_ = ((((buildAllTimesForTrack'89E9_) (stopid2'CC75_, stopid1'CC6C_, RT_m_16.R_dom((timetable'CC7E_)), timetable'CC7E_))):RT_s_27.t); 
+            val (headway'CDE7_, drivingtime'CDF0_, trackcapacity'CDFD_) = ((((RT_m_4.R_app(connectionMap'CC89_)) (stopid1'CC6C_, stopid2'CC75_))):RT_x_3.t)
         in
-            (((RT_s_27.R_all (fn ((tramid'C360_, deptime'C368_, arrtime'C371_):RT_x_14.t) => not ((RT_Nat.R_ge (deptime'C368_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (arrtime'C371_, RT_Int.fromLit "0"))) orelse ((RT_Nat.R_le (RT_Nat.R_add (RT_Int.fromLit "1", ((countOverlappingTimesForTrack'77F1_) (tramid'C360_, deptime'C368_, arrtime'C371_, times1'C1CA_))), trackcapacity'C2A9_)))) (times1'C1CA_)))) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (362, 15)); ((RT_s_27.R_all (fn ((tramid'C42D_, deptime'C435_, arrtime'C43E_):RT_x_14.t) => not ((RT_Nat.R_ge (deptime'C435_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (arrtime'C43E_, RT_Int.fromLit "0"))) orelse ((RT_Nat.R_le (RT_Nat.R_add (RT_Int.fromLit "1", ((countOverlappingTimesForTrack'77F1_) (tramid'C42D_, deptime'C435_, arrtime'C43E_, times2'C22E_))), trackcapacity'C2A9_)))) (times2'C22E_))))
+            (((RT_s_27.R_all (fn ((tramid'CEB4_, deptime'CEBC_, arrtime'CEC5_):RT_x_14.t) => not ((RT_Nat.R_ge (deptime'CEBC_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (arrtime'CEC5_, RT_Int.fromLit "0"))) orelse ((RT_Nat.R_le (RT_Nat.R_add (RT_Int.fromLit "1", ((countOverlappingTimesForTrack'8345_) (tramid'CEB4_, deptime'CEBC_, arrtime'CEC5_, times1'CD1E_))), trackcapacity'CDFD_)))) (times1'CD1E_)))) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (362, 15)); ((RT_s_27.R_all (fn ((tramid'CF81_, deptime'CF89_, arrtime'CF92_):RT_x_14.t) => not ((RT_Nat.R_ge (deptime'CF89_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (arrtime'CF92_, RT_Int.fromLit "0"))) orelse ((RT_Nat.R_le (RT_Nat.R_add (RT_Int.fromLit "1", ((countOverlappingTimesForTrack'8345_) (tramid'CF81_, deptime'CF89_, arrtime'CF92_, times2'CD82_))), trackcapacity'CDFD_)))) (times2'CD82_))))
         end);
         
-        fun allTrackCapacitiesAreNotExceeded'BD79_ (timetable'BDFE_, (capacityMap'BE0A_, connectionMap'BE16_)) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (347, 7)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun allTrackCapacitiesAreNotExceeded'C8CD_ (timetable'C952_, (capacityMap'C95E_, connectionMap'C96A_)) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (347, 7)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x162_'0_, x163_'0_, x164_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x163_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x164_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(timetable'BDFE_)))) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'BE0A_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'C952_)))) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'C95E_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x167_'0_, x168_'0_, x169_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x167_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x168_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x169_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'BE16_)))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:345:5: Argument of allTrackCapacitiesAreNotExceeded" ^ RT_x_32.toString (timetable'BDFE_, (capacityMap'BE0A_, connectionMap'BE16_)) ^ " not in subtype") else ((RT_m_4.R_all (fn ((stopid1'BE49_, stopid2'BE52_):RT_x_2.t) => ((trackCapacityIsNotExceeded'C099_) (stopid1'BE49_, stopid2'BE52_, timetable'BDFE_, connectionMap'BE16_))) ((connectionMap'BE16_)))));
+        end) (RT_m_4.R_ran(connectionMap'C96A_)))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:345:5: Argument of allTrackCapacitiesAreNotExceeded" ^ RT_x_32.toString (timetable'C952_, (capacityMap'C95E_, connectionMap'C96A_)) ^ " not in subtype") else ((RT_m_4.R_all (fn ((stopid1'C99D_, stopid2'C9A6_):RT_x_2.t) => ((trackCapacityIsNotExceeded'CBED_) (stopid1'C99D_, stopid2'C9A6_, timetable'C952_, connectionMap'C96A_))) ((connectionMap'C96A_)))));
         
-        fun findDepartureRowInPlan'5E8D_ (stopid1'5F08_, stopid2'5F11_, plan'5F1A_, tram'5F20_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (104, 7)); if not((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun findDepartureRowInPlan'69E1_ (stopid1'6A5C_, stopid2'6A65_, plan'6A6E_, tram'6A74_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (104, 7)); if not((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x95_'0_, x96_'0_, x97_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x96_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x97_'0_, RT_Int.fromLit "0"))
-        end) (plan'5F1A_))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:102:5: Argument of findDepartureRowInPlan" ^ RT_x_26.toString (stopid1'5F08_, stopid2'5F11_, plan'5F1A_, tram'5F20_) ^ " not in subtype") else if not(RT_Nat.R_gt (RT_l_15.R_length(plan'5F1A_), RT_Int.fromLit "1")) then raise RSL.RSL_exception ("./TIMETABLE.rsl:120:11: Precondition of findDepartureRowInPlan" ^ RT_x_26.toString (stopid1'5F08_, stopid2'5F11_, plan'5F1A_, tram'5F20_) ^ " not satisfied") else let
-            val (hStopId'5FBE_, hArrTime'5FC7_, hDepTime'5FD1_) = ((RT_l_15.R_hd(plan'5F1A_)):RT_x_14.t); 
-            val (nStopId'6022_, nArrTime'602B_, nDepTime'6035_) = ((((nextStop'46BB_) (RT_l_15.R_hd(plan'5F1A_), plan'5F1A_))):RT_x_14.t)
+        end) (plan'6A6E_))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:102:5: Argument of findDepartureRowInPlan" ^ RT_x_26.toString (stopid1'6A5C_, stopid2'6A65_, plan'6A6E_, tram'6A74_) ^ " not in subtype") else if not(RT_Nat.R_gt (RT_l_15.R_length(plan'6A6E_), RT_Int.fromLit "1")) then raise RSL.RSL_exception ("./TIMETABLE.rsl:120:11: Precondition of findDepartureRowInPlan" ^ RT_x_26.toString (stopid1'6A5C_, stopid2'6A65_, plan'6A6E_, tram'6A74_) ^ " not satisfied") else let
+            val (hStopId'6B12_, hArrTime'6B1B_, hDepTime'6B25_) = ((RT_l_15.R_hd(plan'6A6E_)):RT_x_14.t); 
+            val (nStopId'6B76_, nArrTime'6B7F_, nDepTime'6B89_) = ((((nextStop'520F_) (RT_l_15.R_hd(plan'6A6E_), plan'6A6E_))):RT_x_14.t)
         in
-            if (RT_Text.equ (hStopId'5FBE_, stopid1'5F08_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (108, 33)); RT_Text.equ (nStopId'6022_, stopid2'5F11_)) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (110, 11)); (tram'5F20_, hStopId'5FBE_, hArrTime'5FC7_, hDepTime'5FD1_)) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (112, 11)); if RT_Nat.R_gt (RT_l_15.R_length(RT_l_15.R_tl(plan'5F1A_)), RT_Int.fromLit "1") then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (114, 13)); ((findDepartureRowInPlan'5E8D_) (stopid1'5F08_, stopid2'5F11_, RT_l_15.R_tl(plan'5F1A_), tram'5F20_))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (116, 13)); (RT_Text.fromLit "", RT_Text.fromLit "", RT_Int.fromLit "0", RT_Int.fromLit "0")))
+            if (RT_Text.equ (hStopId'6B12_, stopid1'6A5C_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (108, 33)); RT_Text.equ (nStopId'6B76_, stopid2'6A65_)) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (110, 11)); (tram'6A74_, hStopId'6B12_, hArrTime'6B1B_, hDepTime'6B25_)) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (112, 11)); if RT_Nat.R_gt (RT_l_15.R_length(RT_l_15.R_tl(plan'6A6E_)), RT_Int.fromLit "1") then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (114, 13)); ((findDepartureRowInPlan'69E1_) (stopid1'6A5C_, stopid2'6A65_, RT_l_15.R_tl(plan'6A6E_), tram'6A74_))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (116, 13)); (RT_Text.fromLit "", RT_Text.fromLit "", RT_Int.fromLit "0", RT_Int.fromLit "0")))
         end);
         
-        fun buildAllDeparturesUsingConnection'5979_ (stopid1'59FF_, stopid2'5A08_, trams'5A11_, timetable'5A18_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (91, 7)); if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun buildAllDeparturesUsingConnection'64CD_ (stopid1'6553_, stopid2'655C_, trams'6565_, timetable'656C_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (91, 7)); if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x92_'0_, x93_'0_, x94_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x93_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x94_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(timetable'5A18_)))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:89:5: Argument of buildAllDeparturesUsingConnection" ^ RT_x_25.toString (stopid1'59FF_, stopid2'5A08_, trams'5A11_, timetable'5A18_) ^ " not in subtype") else if RT_s_11.equ (trams'5A11_, RT_s_11.R_fromList []) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (92, 12)); RT_s_24.R_fromList []) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (94, 9)); let
-            val tram'5BD7_ = ((RT_s_11.R_hd(trams'5A11_)):RT_Text.t)
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'656C_)))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:89:5: Argument of buildAllDeparturesUsingConnection" ^ RT_x_25.toString (stopid1'6553_, stopid2'655C_, trams'6565_, timetable'656C_) ^ " not in subtype") else if RT_s_11.equ (trams'6565_, RT_s_11.R_fromList []) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (92, 12)); RT_s_24.R_fromList []) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (94, 9)); let
+            val tram'672B_ = ((RT_s_11.R_hd(trams'6565_)):RT_Text.t)
         in
-            RT_s_24.R_union (RT_s_24.R_fromList ([((findDepartureRowInPlan'5E8D_) (stopid1'59FF_, stopid2'5A08_, ((RT_m_16.R_app(timetable'5A18_)) (tram'5BD7_)), tram'5BD7_))]), ((buildAllDeparturesUsingConnection'5979_) (stopid1'59FF_, stopid2'5A08_, RT_s_11.R_diff (trams'5A11_, RT_s_11.R_fromList ([tram'5BD7_])), timetable'5A18_)))
+            RT_s_24.R_union (RT_s_24.R_fromList ([((findDepartureRowInPlan'69E1_) (stopid1'6553_, stopid2'655C_, ((RT_m_16.R_app(timetable'656C_)) (tram'672B_)), tram'672B_))]), ((buildAllDeparturesUsingConnection'64CD_) (stopid1'6553_, stopid2'655C_, RT_s_11.R_diff (trams'6565_, RT_s_11.R_fromList ([tram'672B_])), timetable'656C_)))
         end));
         
-        fun getAllDepaturesUsingConnection'55F5_ (stopid1'5678_, stopid2'5681_, timetable'568A_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (82, 7)); if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun getAllDepaturesUsingConnection'6149_ (stopid1'61CC_, stopid2'61D5_, timetable'61DE_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (82, 7)); if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x89_'0_, x90_'0_, x91_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x90_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x91_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(timetable'568A_)))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:80:5: Argument of getAllDepaturesUsingConnection" ^ RT_x_23.toString (stopid1'5678_, stopid2'5681_, timetable'568A_) ^ " not in subtype") else let
-            val allTrams'5725_ = ((RT_m_16.R_dom(timetable'568A_)):RT_s_11.t)
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'61DE_)))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:80:5: Argument of getAllDepaturesUsingConnection" ^ RT_x_23.toString (stopid1'61CC_, stopid2'61D5_, timetable'61DE_) ^ " not in subtype") else let
+            val allTrams'6279_ = ((RT_m_16.R_dom(timetable'61DE_)):RT_s_11.t)
         in
-            ((buildAllDeparturesUsingConnection'5979_) (stopid1'5678_, stopid2'5681_, allTrams'5725_, timetable'568A_))
+            ((buildAllDeparturesUsingConnection'64CD_) (stopid1'61CC_, stopid2'61D5_, allTrams'6279_, timetable'61DE_))
         end);
         
-        fun timeBetweenDeparturesIsValidHeadway'AA55_ (timetable'AADD_, (capacityMap'AAE9_, connectionMap'AAF6_)) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (298, 7)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun timeBetweenDeparturesIsValidHeadway'B5A9_ (timetable'B631_, (capacityMap'B63D_, connectionMap'B64A_)) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (298, 7)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x143_'0_, x144_'0_, x145_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x144_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x145_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(timetable'AADD_)))) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'AAE9_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'B631_)))) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'B63D_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x148_'0_, x149_'0_, x150_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x148_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x149_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x150_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'AAF6_)))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:296:5: Argument of timeBetweenDeparturesIsValidHeadway" ^ RT_x_32.toString (timetable'AADD_, (capacityMap'AAE9_, connectionMap'AAF6_)) ^ " not in subtype") else ((RT_m_4.R_all (fn ((stopid1'AB25_, stopid2'AB2E_):RT_x_2.t) => let
-            val (headway'AB8A_, drivingTime'AB92_, capacity'AB9F_) = ((((RT_m_4.R_app(connectionMap'AAF6_)) ((stopid1'AB25_, stopid2'AB2E_)))):RT_x_3.t)
+        end) (RT_m_4.R_ran(connectionMap'B64A_)))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:296:5: Argument of timeBetweenDeparturesIsValidHeadway" ^ RT_x_32.toString (timetable'B631_, (capacityMap'B63D_, connectionMap'B64A_)) ^ " not in subtype") else ((RT_m_4.R_all (fn ((stopid1'B679_, stopid2'B682_):RT_x_2.t) => let
+            val (headway'B6DE_, drivingTime'B6E6_, capacity'B6F3_) = ((((RT_m_4.R_app(connectionMap'B64A_)) ((stopid1'B679_, stopid2'B682_)))):RT_x_3.t)
         in
-            (((RT_s_24.R_all (fn ((tram1'AC55_, sid1'AC5C_, arrt1'AC62_, dept1'AC69_):RT_x_17.t) => not ((RT_Nat.R_ge (arrt1'AC62_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (dept1'AC69_, RT_Int.fromLit "0"))) orelse (((RT_s_24.R_all (fn ((tram2'ACBB_, sid2'ACC2_, arrt2'ACC8_, dept2'ACCF_):RT_x_17.t) => not ((RT_Nat.R_ge (arrt2'ACC8_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (dept2'ACCF_, RT_Int.fromLit "0"))) orelse ((RT_Nat.R_ge (RT_Nat.R_abs((RT_Nat.R_sub (dept1'AC69_, dept2'ACCF_))), headway'AB8A_)))) (RT_s_24.R_diff (((getAllDepaturesUsingConnection'55F5_) (stopid1'AB25_, stopid2'AB2E_, timetable'AADD_)), RT_s_24.R_fromList ([(tram1'AC55_, sid1'AC5C_, arrt1'AC62_, dept1'AC69_)]))))))) (((getAllDepaturesUsingConnection'55F5_) (stopid1'AB25_, stopid2'AB2E_, timetable'AADD_)))))) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (305, 11)); ((RT_s_24.R_all (fn ((tram1'ADE5_, sid1'ADEC_, arrt1'ADF2_, dept1'ADF9_):RT_x_17.t) => not ((RT_Nat.R_ge (arrt1'ADF2_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (dept1'ADF9_, RT_Int.fromLit "0"))) orelse (((RT_s_24.R_all (fn ((tram2'AE49_, sid2'AE50_, arrt2'AE56_, dept2'AE5D_):RT_x_17.t) => not ((RT_Nat.R_ge (arrt2'AE56_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (dept2'AE5D_, RT_Int.fromLit "0"))) orelse ((RT_Nat.R_ge (RT_Nat.R_abs((RT_Nat.R_sub (dept1'ADF9_, dept2'AE5D_))), headway'AB8A_)))) (RT_s_24.R_diff (((getAllDepaturesUsingConnection'55F5_) (stopid2'AB2E_, stopid1'AB25_, timetable'AADD_)), RT_s_24.R_fromList ([(tram1'ADE5_, sid1'ADEC_, arrt1'ADF2_, dept1'ADF9_)]))))))) (((getAllDepaturesUsingConnection'55F5_) (stopid2'AB2E_, stopid1'AB25_, timetable'AADD_))))))
-        end) ((connectionMap'AAF6_)))));
+            (((RT_s_24.R_all (fn ((tram1'B7A9_, sid1'B7B0_, arrt1'B7B6_, dept1'B7BD_):RT_x_17.t) => not ((RT_Nat.R_ge (arrt1'B7B6_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (dept1'B7BD_, RT_Int.fromLit "0"))) orelse (((RT_s_24.R_all (fn ((tram2'B80F_, sid2'B816_, arrt2'B81C_, dept2'B823_):RT_x_17.t) => not ((RT_Nat.R_ge (arrt2'B81C_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (dept2'B823_, RT_Int.fromLit "0"))) orelse ((RT_Nat.R_ge (RT_Nat.R_abs((RT_Nat.R_sub (dept1'B7BD_, dept2'B823_))), headway'B6DE_)))) (RT_s_24.R_diff (((getAllDepaturesUsingConnection'6149_) (stopid1'B679_, stopid2'B682_, timetable'B631_)), RT_s_24.R_fromList ([(tram1'B7A9_, sid1'B7B0_, arrt1'B7B6_, dept1'B7BD_)]))))))) (((getAllDepaturesUsingConnection'6149_) (stopid1'B679_, stopid2'B682_, timetable'B631_)))))) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (305, 11)); ((RT_s_24.R_all (fn ((tram1'B939_, sid1'B940_, arrt1'B946_, dept1'B94D_):RT_x_17.t) => not ((RT_Nat.R_ge (arrt1'B946_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (dept1'B94D_, RT_Int.fromLit "0"))) orelse (((RT_s_24.R_all (fn ((tram2'B99D_, sid2'B9A4_, arrt2'B9AA_, dept2'B9B1_):RT_x_17.t) => not ((RT_Nat.R_ge (arrt2'B9AA_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (dept2'B9B1_, RT_Int.fromLit "0"))) orelse ((RT_Nat.R_ge (RT_Nat.R_abs((RT_Nat.R_sub (dept1'B94D_, dept2'B9B1_))), headway'B6DE_)))) (RT_s_24.R_diff (((getAllDepaturesUsingConnection'6149_) (stopid2'B682_, stopid1'B679_, timetable'B631_)), RT_s_24.R_fromList ([(tram1'B939_, sid1'B940_, arrt1'B946_, dept1'B94D_)]))))))) (((getAllDepaturesUsingConnection'6149_) (stopid2'B682_, stopid1'B679_, timetable'B631_))))))
+        end) ((connectionMap'B64A_)))));
         
-        fun tramStopsAtAllStopsItPasses'B92D_ timetable'B9AD_ = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (336, 7)); if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun tramStopsAtAllStopsItPasses'C481_ timetable'C501_ = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (336, 7)); if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x159_'0_, x160_'0_, x161_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x160_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x161_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(timetable'B9AD_)))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:334:5: Argument of tramStopsAtAllStopsItPasses" ^ "(" ^ RT_m_16.toString timetable'B9AD_ ^ ")" ^ " not in subtype") else ((RT_m_16.R_all (fn (tramid'B9FC_:RT_Text.t) => ((RT_l_15.R_all (fn ((stopid'BA63_, arrTime'BA6B_, depTime'BA74_):RT_x_14.t) => not ((RT_Nat.R_ge (arrTime'BA6B_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (depTime'BA74_, RT_Int.fromLit "0"))) orelse (RT_Nat.R_ge (RT_Nat.R_sub (depTime'BA74_, arrTime'BA6B_), RT_Int.fromLit "1"))) (((RT_m_16.R_app(timetable'B9AD_)) (tramid'B9FC_)))))) ((timetable'B9AD_)))));
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'C501_)))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:334:5: Argument of tramStopsAtAllStopsItPasses" ^ "(" ^ RT_m_16.toString timetable'C501_ ^ ")" ^ " not in subtype") else ((RT_m_16.R_all (fn (tramid'C550_:RT_Text.t) => ((RT_l_15.R_all (fn ((stopid'C5B7_, arrTime'C5BF_, depTime'C5C8_):RT_x_14.t) => not ((RT_Nat.R_ge (arrTime'C5BF_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (depTime'C5C8_, RT_Int.fromLit "0"))) orelse (RT_Nat.R_ge (RT_Nat.R_sub (depTime'C5C8_, arrTime'C5BF_), RT_Int.fromLit "1"))) (((RT_m_16.R_app(timetable'C501_)) (tramid'C550_)))))) ((timetable'C501_)))));
         
-        fun findArrivalRowInPlan'6F59_ (stopid1'6FD2_, stopid2'6FDB_, plan'6FE4_, tram'6FEA_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (147, 7)); if not((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun findArrivalRowInPlan'7AAD_ (stopid1'7B26_, stopid2'7B2F_, plan'7B38_, tram'7B3E_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (147, 7)); if not((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x104_'0_, x105_'0_, x106_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x105_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x106_'0_, RT_Int.fromLit "0"))
-        end) (plan'6FE4_))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:145:5: Argument of findArrivalRowInPlan" ^ RT_x_26.toString (stopid1'6FD2_, stopid2'6FDB_, plan'6FE4_, tram'6FEA_) ^ " not in subtype") else if not(RT_Nat.R_gt (RT_l_15.R_length(plan'6FE4_), RT_Int.fromLit "1")) then raise RSL.RSL_exception ("./TIMETABLE.rsl:163:11: Precondition of findArrivalRowInPlan" ^ RT_x_26.toString (stopid1'6FD2_, stopid2'6FDB_, plan'6FE4_, tram'6FEA_) ^ " not satisfied") else let
-            val (hStopId'708A_, hArrTime'7093_, hDepTime'709D_) = ((RT_l_15.R_hd(plan'6FE4_)):RT_x_14.t); 
-            val (nStopId'70EE_, nArrTime'70F7_, nDepTime'7101_) = ((((nextStop'46BB_) (RT_l_15.R_hd(plan'6FE4_), plan'6FE4_))):RT_x_14.t)
+        end) (plan'7B38_))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:145:5: Argument of findArrivalRowInPlan" ^ RT_x_26.toString (stopid1'7B26_, stopid2'7B2F_, plan'7B38_, tram'7B3E_) ^ " not in subtype") else if not(RT_Nat.R_gt (RT_l_15.R_length(plan'7B38_), RT_Int.fromLit "1")) then raise RSL.RSL_exception ("./TIMETABLE.rsl:163:11: Precondition of findArrivalRowInPlan" ^ RT_x_26.toString (stopid1'7B26_, stopid2'7B2F_, plan'7B38_, tram'7B3E_) ^ " not satisfied") else let
+            val (hStopId'7BDE_, hArrTime'7BE7_, hDepTime'7BF1_) = ((RT_l_15.R_hd(plan'7B38_)):RT_x_14.t); 
+            val (nStopId'7C42_, nArrTime'7C4B_, nDepTime'7C55_) = ((((nextStop'520F_) (RT_l_15.R_hd(plan'7B38_), plan'7B38_))):RT_x_14.t)
         in
-            if (RT_Text.equ (hStopId'708A_, stopid1'6FD2_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (151, 33)); RT_Text.equ (nStopId'70EE_, stopid2'6FDB_)) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (153, 11)); (tram'6FEA_, nStopId'70EE_, nArrTime'70F7_, nDepTime'7101_)) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (155, 11)); if RT_Nat.R_gt (RT_l_15.R_length(RT_l_15.R_tl(plan'6FE4_)), RT_Int.fromLit "1") then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (157, 13)); ((findArrivalRowInPlan'6F59_) (stopid1'6FD2_, stopid2'6FDB_, RT_l_15.R_tl(plan'6FE4_), tram'6FEA_))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (159, 13)); (RT_Text.fromLit "", RT_Text.fromLit "", RT_Int.fromLit "0", RT_Int.fromLit "0")))
+            if (RT_Text.equ (hStopId'7BDE_, stopid1'7B26_)) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (151, 33)); RT_Text.equ (nStopId'7C42_, stopid2'7B2F_)) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (153, 11)); (tram'7B3E_, nStopId'7C42_, nArrTime'7C4B_, nDepTime'7C55_)) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (155, 11)); if RT_Nat.R_gt (RT_l_15.R_length(RT_l_15.R_tl(plan'7B38_)), RT_Int.fromLit "1") then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (157, 13)); ((findArrivalRowInPlan'7AAD_) (stopid1'7B26_, stopid2'7B2F_, RT_l_15.R_tl(plan'7B38_), tram'7B3E_))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (159, 13)); (RT_Text.fromLit "", RT_Text.fromLit "", RT_Int.fromLit "0", RT_Int.fromLit "0")))
         end);
         
-        fun buildAllArrivalsUsingConnection'6A45_ (stopid1'6AC9_, stopid2'6AD2_, trams'6ADB_, timetable'6AE2_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (134, 7)); if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun buildAllArrivalsUsingConnection'7599_ (stopid1'761D_, stopid2'7626_, trams'762F_, timetable'7636_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (134, 7)); if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x101_'0_, x102_'0_, x103_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x102_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x103_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(timetable'6AE2_)))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:132:5: Argument of buildAllArrivalsUsingConnection" ^ RT_x_25.toString (stopid1'6AC9_, stopid2'6AD2_, trams'6ADB_, timetable'6AE2_) ^ " not in subtype") else if RT_s_11.equ (trams'6ADB_, RT_s_11.R_fromList []) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (135, 12)); RT_s_24.R_fromList []) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (137, 9)); let
-            val tram'6CA3_ = ((RT_s_11.R_hd(trams'6ADB_)):RT_Text.t)
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'7636_)))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:132:5: Argument of buildAllArrivalsUsingConnection" ^ RT_x_25.toString (stopid1'761D_, stopid2'7626_, trams'762F_, timetable'7636_) ^ " not in subtype") else if RT_s_11.equ (trams'762F_, RT_s_11.R_fromList []) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (135, 12)); RT_s_24.R_fromList []) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (137, 9)); let
+            val tram'77F7_ = ((RT_s_11.R_hd(trams'762F_)):RT_Text.t)
         in
-            RT_s_24.R_union (RT_s_24.R_fromList ([((findArrivalRowInPlan'6F59_) (stopid1'6AC9_, stopid2'6AD2_, ((RT_m_16.R_app(timetable'6AE2_)) (tram'6CA3_)), tram'6CA3_))]), ((buildAllArrivalsUsingConnection'6A45_) (stopid1'6AC9_, stopid2'6AD2_, RT_s_11.R_diff (trams'6ADB_, RT_s_11.R_fromList ([tram'6CA3_])), timetable'6AE2_)))
+            RT_s_24.R_union (RT_s_24.R_fromList ([((findArrivalRowInPlan'7AAD_) (stopid1'761D_, stopid2'7626_, ((RT_m_16.R_app(timetable'7636_)) (tram'77F7_)), tram'77F7_))]), ((buildAllArrivalsUsingConnection'7599_) (stopid1'761D_, stopid2'7626_, RT_s_11.R_diff (trams'762F_, RT_s_11.R_fromList ([tram'77F7_])), timetable'7636_)))
         end));
         
-        fun getAllArrivalsUsingConnection'66C1_ (stopid1'6743_, stopid2'674C_, timetable'6755_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (125, 7)); if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun getAllArrivalsUsingConnection'7215_ (stopid1'7297_, stopid2'72A0_, timetable'72A9_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (125, 7)); if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x98_'0_, x99_'0_, x100_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x99_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x100_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(timetable'6755_)))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:123:5: Argument of getAllArrivalsUsingConnection" ^ RT_x_23.toString (stopid1'6743_, stopid2'674C_, timetable'6755_) ^ " not in subtype") else let
-            val allTrams'67F1_ = ((RT_m_16.R_dom(timetable'6755_)):RT_s_11.t)
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'72A9_)))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:123:5: Argument of getAllArrivalsUsingConnection" ^ RT_x_23.toString (stopid1'7297_, stopid2'72A0_, timetable'72A9_) ^ " not in subtype") else let
+            val allTrams'7345_ = ((RT_m_16.R_dom(timetable'72A9_)):RT_s_11.t)
         in
-            ((buildAllArrivalsUsingConnection'6A45_) (stopid1'6743_, stopid2'674C_, allTrams'67F1_, timetable'6755_))
+            ((buildAllArrivalsUsingConnection'7599_) (stopid1'7297_, stopid2'72A0_, allTrams'7345_, timetable'72A9_))
         end);
         
-        fun timeBetweenArrivalIsValidHeadway'B289_ (timetable'B30E_, (capacityMap'B31A_, connectionMap'B327_)) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (319, 7)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun timeBetweenArrivalIsValidHeadway'BDDD_ (timetable'BE62_, (capacityMap'BE6E_, connectionMap'BE7B_)) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (319, 7)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x151_'0_, x152_'0_, x153_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x152_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x153_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(timetable'B30E_)))) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'B31A_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'BE62_)))) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'BE6E_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x156_'0_, x157_'0_, x158_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x156_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x157_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x158_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'B327_)))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:317:5: Argument of timeBetweenArrivalIsValidHeadway" ^ RT_x_32.toString (timetable'B30E_, (capacityMap'B31A_, connectionMap'B327_)) ^ " not in subtype") else ((RT_m_4.R_all (fn ((stopid1'B359_, stopid2'B362_):RT_x_2.t) => let
-            val (headway'B3BE_, drivingTime'B3C6_, capacity'B3D3_) = ((((RT_m_4.R_app(connectionMap'B327_)) ((stopid1'B359_, stopid2'B362_)))):RT_x_3.t)
+        end) (RT_m_4.R_ran(connectionMap'BE7B_)))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:317:5: Argument of timeBetweenArrivalIsValidHeadway" ^ RT_x_32.toString (timetable'BE62_, (capacityMap'BE6E_, connectionMap'BE7B_)) ^ " not in subtype") else ((RT_m_4.R_all (fn ((stopid1'BEAD_, stopid2'BEB6_):RT_x_2.t) => let
+            val (headway'BF12_, drivingTime'BF1A_, capacity'BF27_) = ((((RT_m_4.R_app(connectionMap'BE7B_)) ((stopid1'BEAD_, stopid2'BEB6_)))):RT_x_3.t)
         in
-            (((RT_s_24.R_all (fn ((tram1'B489_, sid1'B490_, arrt1'B496_, dept1'B49D_):RT_x_17.t) => not ((RT_Nat.R_ge (arrt1'B496_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (dept1'B49D_, RT_Int.fromLit "0"))) orelse (((RT_s_24.R_all (fn ((tram2'B4EF_, sid2'B4F6_, arrt2'B4FC_, dept2'B503_):RT_x_17.t) => not ((RT_Nat.R_ge (arrt2'B4FC_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (dept2'B503_, RT_Int.fromLit "0"))) orelse ((RT_Nat.R_ge (RT_Nat.R_abs((RT_Nat.R_sub (arrt1'B496_, arrt2'B4FC_))), headway'B3BE_)))) (RT_s_24.R_diff (((getAllArrivalsUsingConnection'66C1_) (stopid1'B359_, stopid2'B362_, timetable'B30E_)), RT_s_24.R_fromList ([(tram1'B489_, sid1'B490_, arrt1'B496_, dept1'B49D_)]))))))) (((getAllArrivalsUsingConnection'66C1_) (stopid1'B359_, stopid2'B362_, timetable'B30E_)))))) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (326, 11)); ((RT_s_24.R_all (fn ((tram1'B619_, sid1'B620_, arrt1'B626_, dept1'B62D_):RT_x_17.t) => not ((RT_Nat.R_ge (arrt1'B626_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (dept1'B62D_, RT_Int.fromLit "0"))) orelse (((RT_s_24.R_all (fn ((tram2'B67F_, sid2'B686_, arrt2'B68C_, dept2'B693_):RT_x_17.t) => not ((RT_Nat.R_ge (arrt2'B68C_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (dept2'B693_, RT_Int.fromLit "0"))) orelse ((RT_Nat.R_ge (RT_Nat.R_abs((RT_Nat.R_sub (arrt1'B626_, arrt2'B68C_))), headway'B3BE_)))) (RT_s_24.R_diff (((getAllArrivalsUsingConnection'66C1_) (stopid2'B362_, stopid1'B359_, timetable'B30E_)), RT_s_24.R_fromList ([(tram1'B619_, sid1'B620_, arrt1'B626_, dept1'B62D_)]))))))) (((getAllArrivalsUsingConnection'66C1_) (stopid2'B362_, stopid1'B359_, timetable'B30E_))))))
-        end) ((connectionMap'B327_)))));
+            (((RT_s_24.R_all (fn ((tram1'BFDD_, sid1'BFE4_, arrt1'BFEA_, dept1'BFF1_):RT_x_17.t) => not ((RT_Nat.R_ge (arrt1'BFEA_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (dept1'BFF1_, RT_Int.fromLit "0"))) orelse (((RT_s_24.R_all (fn ((tram2'C043_, sid2'C04A_, arrt2'C050_, dept2'C057_):RT_x_17.t) => not ((RT_Nat.R_ge (arrt2'C050_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (dept2'C057_, RT_Int.fromLit "0"))) orelse ((RT_Nat.R_ge (RT_Nat.R_abs((RT_Nat.R_sub (arrt1'BFEA_, arrt2'C050_))), headway'BF12_)))) (RT_s_24.R_diff (((getAllArrivalsUsingConnection'7215_) (stopid1'BEAD_, stopid2'BEB6_, timetable'BE62_)), RT_s_24.R_fromList ([(tram1'BFDD_, sid1'BFE4_, arrt1'BFEA_, dept1'BFF1_)]))))))) (((getAllArrivalsUsingConnection'7215_) (stopid1'BEAD_, stopid2'BEB6_, timetable'BE62_)))))) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (326, 11)); ((RT_s_24.R_all (fn ((tram1'C16D_, sid1'C174_, arrt1'C17A_, dept1'C181_):RT_x_17.t) => not ((RT_Nat.R_ge (arrt1'C17A_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (dept1'C181_, RT_Int.fromLit "0"))) orelse (((RT_s_24.R_all (fn ((tram2'C1D3_, sid2'C1DA_, arrt2'C1E0_, dept2'C1E7_):RT_x_17.t) => not ((RT_Nat.R_ge (arrt2'C1E0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (dept2'C1E7_, RT_Int.fromLit "0"))) orelse ((RT_Nat.R_ge (RT_Nat.R_abs((RT_Nat.R_sub (arrt1'C17A_, arrt2'C1E0_))), headway'BF12_)))) (RT_s_24.R_diff (((getAllArrivalsUsingConnection'7215_) (stopid2'BEB6_, stopid1'BEAD_, timetable'BE62_)), RT_s_24.R_fromList ([(tram1'C16D_, sid1'C174_, arrt1'C17A_, dept1'C181_)]))))))) (((getAllArrivalsUsingConnection'7215_) (stopid2'BEB6_, stopid1'BEAD_, timetable'BE62_))))))
+        end) ((connectionMap'BE7B_)))));
         
-        fun isWellformed'E35E_ (t'E3CF_, n'E3D2_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (444, 8)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun isWellformed'EEB2_ (t'EF23_, n'EF26_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (444, 8)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x216_'0_, x217_'0_, x218_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x217_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x218_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(t'E3CF_)))) andalso (let
-            val (x219_'0_, x220_'0_) = ((n'E3D2_):RT_x_5.t)
+        end) (x_'0_))) (RT_m_16.R_ran(t'EF23_)))) andalso (let
+            val (x219_'0_, x220_'0_) = ((n'EF26_):RT_x_5.t)
         in
             ((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(x219_'0_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
                 val (x223_'0_, x224_'0_, x225_'0_) = ((x_'0_):RT_x_3.t)
             in
                 (RT_Nat.R_ge (x223_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x224_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x225_'0_, RT_Int.fromLit "0")))
             end) (RT_m_4.R_ran(x220_'0_))))
-        end)) then raise RSL.RSL_exception ("./TIMETABLE.rsl:442:6: Argument of isWellformed" ^ RT_x_32.toString (t'E3CF_, n'E3D2_) ^ " not in subtype") else (((tramStopsAtAllStopsItPasses'B92D_) (t'E3CF_))) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (445, 8)); (((timeBetweenDeparturesIsValidHeadway'AA55_) (t'E3CF_, n'E3D2_))) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (446, 8)); (((timeBetweenArrivalIsValidHeadway'B289_) (t'E3CF_, n'E3D2_))) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (447, 8)); (((allTimeBetweenStopsIsValidDrivingTime'A799_) (t'E3CF_, n'E3D2_))) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (448, 8)); (((allTrackCapacitiesAreNotExceeded'BD79_) (t'E3CF_, n'E3D2_))) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (449, 8)); ((allStopCapacitiesAreNotExceeded'C6DB_) (t'E3CF_, n'E3D2_))))))));
+        end)) then raise RSL.RSL_exception ("./TIMETABLE.rsl:442:6: Argument of isWellformed" ^ RT_x_32.toString (t'EF23_, n'EF26_) ^ " not in subtype") else (((tramStopsAtAllStopsItPasses'C481_) (t'EF23_))) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (445, 8)); (((timeBetweenDeparturesIsValidHeadway'B5A9_) (t'EF23_, n'EF26_))) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (446, 8)); (((timeBetweenArrivalIsValidHeadway'BDDD_) (t'EF23_, n'EF26_))) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (447, 8)); (((allTimeBetweenStopsIsValidDrivingTime'B2ED_) (t'EF23_, n'EF26_))) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (448, 8)); (((allTrackCapacitiesAreNotExceeded'C8CD_) (t'EF23_, n'EF26_))) andalso (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (449, 8)); ((allStopCapacitiesAreNotExceeded'D22F_) (t'EF23_, n'EF26_))))))));
         
-        fun stopsAreConnected'D293_ (plan'D309_, connectionMap'D30F_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (401, 9)); if not(((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun stopsAreConnected'DDE7_ (plan'DE5D_, connectionMap'DE63_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (401, 9)); if not(((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x197_'0_, x198_'0_, x199_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x198_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x199_'0_, RT_Int.fromLit "0"))
-        end) (plan'D309_))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        end) (plan'DE5D_))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x202_'0_, x203_'0_, x204_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x202_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x203_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x204_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'D30F_))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:399:7: Argument of stopsAreConnected" ^ RT_x_35.toString (plan'D309_, connectionMap'D30F_) ^ " not in subtype") else if RT_Nat.R_le (RT_l_15.R_length(plan'D309_), RT_Int.fromLit "1") then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (402, 14)); true) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (404, 11)); let
-            val (sid'D4F2_, arrt'D4F7_, dept'D4FD_) = ((RT_l_15.R_hd(plan'D309_)):RT_x_14.t); 
-            val (sid2'D556_, arrt2'D55C_, dept2'D563_) = ((((nextStop'46BB_) ((sid'D4F2_, arrt'D4F7_, dept'D4FD_), plan'D309_))):RT_x_14.t)
+        end) (RT_m_4.R_ran(connectionMap'DE63_))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:399:7: Argument of stopsAreConnected" ^ RT_x_35.toString (plan'DE5D_, connectionMap'DE63_) ^ " not in subtype") else if RT_Nat.R_le (RT_l_15.R_length(plan'DE5D_), RT_Int.fromLit "1") then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (402, 14)); true) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (404, 11)); let
+            val (sid'E046_, arrt'E04B_, dept'E051_) = ((RT_l_15.R_hd(plan'DE5D_)):RT_x_14.t); 
+            val (sid2'E0AA_, arrt2'E0B0_, dept2'E0B7_) = ((((nextStop'520F_) ((sid'E046_, arrt'E04B_, dept'E051_), plan'DE5D_))):RT_x_14.t)
         in
-            if (RT_m_4.R_mem ((sid'D4F2_, sid2'D556_), (connectionMap'D30F_))) orelse (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (408, 54)); RT_m_4.R_mem ((sid2'D556_, sid'D4F2_), (connectionMap'D30F_))) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (409, 18)); ((stopsAreConnected'D293_) (RT_l_15.R_tl(plan'D309_), connectionMap'D30F_))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (410, 18)); false)
+            if (RT_m_4.R_mem ((sid'E046_, sid2'E0AA_), (connectionMap'DE63_))) orelse (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (408, 54)); RT_m_4.R_mem ((sid2'E0AA_, sid'E046_), (connectionMap'DE63_))) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (409, 18)); ((stopsAreConnected'DDE7_) (RT_l_15.R_tl(plan'DE5D_), connectionMap'DE63_))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (410, 18)); false)
         end));
         
-        fun allStopsAreConnected'CF73_ (timetable'CFEC_, (capacityMap'CFF8_, connectionMap'D004_)) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (393, 9)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun allStopsAreConnected'DAC7_ (timetable'DB40_, (capacityMap'DB4C_, connectionMap'DB58_)) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (393, 9)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x189_'0_, x190_'0_, x191_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x190_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x191_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(timetable'CFEC_)))) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'CFF8_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'DB40_)))) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'DB4C_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x194_'0_, x195_'0_, x196_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x194_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x195_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x196_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'D004_)))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:391:7: Argument of allStopsAreConnected" ^ RT_x_32.toString (timetable'CFEC_, (capacityMap'CFF8_, connectionMap'D004_)) ^ " not in subtype") else ((RT_m_16.R_all (fn (tramid'D042_:RT_Text.t) => ((stopsAreConnected'D293_) (((RT_m_16.R_app(timetable'CFEC_)) (tramid'D042_)), connectionMap'D004_))) ((timetable'CFEC_)))));
+        end) (RT_m_4.R_ran(connectionMap'DB58_)))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:391:7: Argument of allStopsAreConnected" ^ RT_x_32.toString (timetable'DB40_, (capacityMap'DB4C_, connectionMap'DB58_)) ^ " not in subtype") else ((RT_m_16.R_all (fn (tramid'DB96_:RT_Text.t) => ((stopsAreConnected'DDE7_) (((RT_m_16.R_app(timetable'DB40_)) (tramid'DB96_)), connectionMap'DB58_))) ((timetable'DB40_)))));
         
-        fun stopsExist'DCB9_ (plan'DD28_, capacityMap'DD2E_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (427, 7)); if not(((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun stopsExist'E80D_ (plan'E87C_, capacityMap'E882_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (427, 7)); if not(((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x213_'0_, x214_'0_, x215_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x214_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x215_'0_, RT_Int.fromLit "0"))
-        end) (plan'DD28_))) andalso ((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'DD2E_))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:425:5: Argument of stopsExist" ^ RT_x_36.toString (plan'DD28_, capacityMap'DD2E_) ^ " not in subtype") else if RT_Nat.equ (RT_l_15.R_length(plan'DD28_), RT_Int.fromLit "0") then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (428, 12)); true) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (430, 9)); let
-            val (sid'DF18_, arrt'DF1D_, dept'DF23_) = ((RT_l_15.R_hd(plan'DD28_)):RT_x_14.t)
+        end) (plan'E87C_))) andalso ((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'E882_))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:425:5: Argument of stopsExist" ^ RT_x_36.toString (plan'E87C_, capacityMap'E882_) ^ " not in subtype") else if RT_Nat.equ (RT_l_15.R_length(plan'E87C_), RT_Int.fromLit "0") then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (428, 12)); true) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (430, 9)); let
+            val (sid'EA6C_, arrt'EA71_, dept'EA77_) = ((RT_l_15.R_hd(plan'E87C_)):RT_x_14.t)
         in
-            if RT_m_1.R_mem (sid'DF18_, (capacityMap'DD2E_)) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (434, 16)); ((stopsExist'DCB9_) (RT_l_15.R_tl(plan'DD28_), capacityMap'DD2E_))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (435, 16)); false)
+            if RT_m_1.R_mem (sid'EA6C_, (capacityMap'E882_)) then (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (434, 16)); ((stopsExist'E80D_) (RT_l_15.R_tl(plan'E87C_), capacityMap'E882_))) else (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (435, 16)); false)
         end));
         
-        fun allStopsInPlanExist'D999_ (timetable'DA11_, (capacityMap'DA1D_, connectionMap'DA2A_)) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (419, 7)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun allStopsInPlanExist'E4ED_ (timetable'E565_, (capacityMap'E571_, connectionMap'E57E_)) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (419, 7)); if not(((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x205_'0_, x206_'0_, x207_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x206_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x207_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(timetable'DA11_)))) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'DA1D_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'E565_)))) andalso (((RT_s_7.R_all (fn (x_'0_:RT_Nat.t) => RT_Nat.R_ge (x_'0_, RT_Int.fromLit "0")) (RT_m_1.R_ran(capacityMap'E571_)))) andalso ((RT_s_8.R_all (fn (x_'0_:RT_x_3.t) => let
             val (x210_'0_, x211_'0_, x212_'0_) = ((x_'0_):RT_x_3.t)
         in
             (RT_Nat.R_ge (x210_'0_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (x211_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x212_'0_, RT_Int.fromLit "0")))
-        end) (RT_m_4.R_ran(connectionMap'DA2A_)))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:417:5: Argument of allStopsInPlanExist" ^ RT_x_32.toString (timetable'DA11_, (capacityMap'DA1D_, connectionMap'DA2A_)) ^ " not in subtype") else ((RT_m_16.R_all (fn (tramid'DA68_:RT_Text.t) => ((stopsExist'DCB9_) (((RT_m_16.R_app(timetable'DA11_)) (tramid'DA68_)), capacityMap'DA1D_))) ((timetable'DA11_)))));
+        end) (RT_m_4.R_ran(connectionMap'E57E_)))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:417:5: Argument of allStopsInPlanExist" ^ RT_x_32.toString (timetable'E565_, (capacityMap'E571_, connectionMap'E57E_)) ^ " not in subtype") else ((RT_m_16.R_all (fn (tramid'E5BC_:RT_Text.t) => ((stopsExist'E80D_) (((RT_m_16.R_app(timetable'E565_)) (tramid'E5BC_)), capacityMap'E571_))) ((timetable'E565_)))));
         
-        fun isIn'4461_ (tramid'44CA_, timetable'44D2_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (37, 7)); if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun isIn'4FB5_ (tramid'501E_, timetable'5026_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (37, 7)); if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x75_'0_, x76_'0_, x77_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x76_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x77_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(timetable'44D2_)))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:35:5: Argument of isIn" ^ RT_x_18.toString (tramid'44CA_, timetable'44D2_) ^ " not in subtype") else RT_m_16.R_mem (tramid'44CA_, (timetable'44D2_)));
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'5026_)))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:35:5: Argument of isIn" ^ RT_x_18.toString (tramid'501E_, timetable'5026_) ^ " not in subtype") else RT_m_16.R_mem (tramid'501E_, (timetable'5026_)));
         
-        val empty'3C2F_ = let val z__'3C41_ = RT_m_16.R_fromList [] in if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        val empty'4783_ = let val z__'4795_ = RT_m_16.R_fromList [] in if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x229_'0_, x230_'0_, x231_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x230_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x231_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(z__'3C41_)))) then (RSL.add_load_err("./TIMETABLE.rsl:14:25: Value " ^ RT_m_16.toString(z__'3C41_) ^ " of empty not in subtype"); z__'3C41_) else z__'3C41_ end;
+        end) (x_'0_))) (RT_m_16.R_ran(z__'4795_)))) then (RSL.add_load_err("./TIMETABLE.rsl:14:25: Value " ^ RT_m_16.toString(z__'4795_) ^ " of empty not in subtype"); z__'4795_) else z__'4795_ end;
         
-        fun addPlan'4143_ (tramid'41AF_, plan'41B7_, timetable'41BD_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (29, 9)); if not(((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun addPlan'4C97_ (tramid'4D03_, plan'4D0B_, timetable'4D11_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (29, 9)); if not(((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x69_'0_, x70_'0_, x71_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x70_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x71_'0_, RT_Int.fromLit "0"))
-        end) (plan'41B7_))) andalso ((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        end) (plan'4D0B_))) andalso ((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x72_'0_, x73_'0_, x74_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x73_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x74_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(timetable'41BD_))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:27:7: Argument of addPlan" ^ RT_x_21.toString (tramid'41AF_, plan'41B7_, timetable'41BD_) ^ " not in subtype") else RT_m_16.R_override (timetable'41BD_, RT_m_16.R_fromList ([(tramid'41AF_, plan'41B7_)])));
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'4D11_))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:27:7: Argument of addPlan" ^ RT_x_21.toString (tramid'4D03_, plan'4D0B_, timetable'4D11_) ^ " not in subtype") else RT_m_16.R_override (timetable'4D11_, RT_m_16.R_fromList ([(tramid'4D03_, plan'4D0B_)])));
         
-        fun addTram'3D5B_ (tramid'3DC7_, timetable'3DCF_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (19, 9)); if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun addTram'48AF_ (tramid'491B_, timetable'4923_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (19, 9)); if not((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x63_'0_, x64_'0_, x65_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x64_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x65_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(timetable'3DCF_)))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:17:7: Argument of addTram" ^ RT_x_18.toString (tramid'3DC7_, timetable'3DCF_) ^ " not in subtype") else RT_m_16.R_override (timetable'3DCF_, RT_m_16.R_fromList ([(tramid'3DC7_, ([]:RT_l_15.t))])));
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'4923_)))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:17:7: Argument of addTram" ^ RT_x_18.toString (tramid'491B_, timetable'4923_) ^ " not in subtype") else RT_m_16.R_override (timetable'4923_, RT_m_16.R_fromList ([(tramid'491B_, ([]:RT_l_15.t))])));
         
-        fun addStop'3F4F_ (tramid'3FBB_, stopid'3FC3_, arrival'3FCB_, departure'3FD4_, timetable'3FDF_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (24, 9)); if not((RT_Nat.R_ge (arrival'3FCB_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (departure'3FD4_, RT_Int.fromLit "0")) andalso ((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        fun addStop'4AA3_ (tramid'4B0F_, stopid'4B17_, arrival'4B1F_, departure'4B28_, timetable'4B33_) = (R_coverage.cancel(RT_Text.fromLit "./TIMETABLE.rsl", (24, 9)); if not((RT_Nat.R_ge (arrival'4B1F_, RT_Int.fromLit "0")) andalso ((RT_Nat.R_ge (departure'4B28_, RT_Int.fromLit "0")) andalso ((RT_s_19.R_all (fn (x_'0_:RT_l_15.t) => (RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x66_'0_, x67_'0_, x68_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x67_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x68_'0_, RT_Int.fromLit "0"))
-        end) (x_'0_))) (RT_m_16.R_ran(timetable'3FDF_)))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:22:7: Argument of addStop" ^ RT_x_20.toString (tramid'3FBB_, stopid'3FC3_, arrival'3FCB_, departure'3FD4_, timetable'3FDF_) ^ " not in subtype") else RT_m_16.R_override (timetable'3FDF_, RT_m_16.R_fromList ([(tramid'3FBB_, RT_l_15.R_concat (((RT_m_16.R_app(timetable'3FDF_)) (tramid'3FBB_)), [(stopid'3FC3_, arrival'3FCB_, departure'3FD4_)]))])));
+        end) (x_'0_))) (RT_m_16.R_ran(timetable'4B33_)))))) then raise RSL.RSL_exception ("./TIMETABLE.rsl:22:7: Argument of addStop" ^ RT_x_20.toString (tramid'4B0F_, stopid'4B17_, arrival'4B1F_, departure'4B28_, timetable'4B33_) ^ " not in subtype") else RT_m_16.R_override (timetable'4B33_, RT_m_16.R_fromList ([(tramid'4B0F_, RT_l_15.R_concat (((RT_m_16.R_app(timetable'4B33_)) (tramid'4B0F_)), [(stopid'4B17_, arrival'4B1F_, departure'4B28_)]))])));
         
-        val connectionTest'226E_ = (RT_Int.fromLit "1", RT_Int.fromLit "10", RT_Int.fromLit "1");
+        val connectionTest'220A_ = (RT_Int.fromLit "1", RT_Int.fromLit "10", RT_Int.fromLit "1");
         
         val tramIdA'32D_ = RT_Text.fromLit "tram1";
         
-        val stopCapacitywithAddedStop'2016_ = RT_m_1.R_fromList ([(RT_Text.fromLit "A", RT_Int.fromLit "2"), (RT_Text.fromLit "B", RT_Int.fromLit "6"), (RT_Text.fromLit "C", RT_Int.fromLit "2"), (RT_Text.fromLit "D", RT_Int.fromLit "2"), (RT_Text.fromLit "E", RT_Int.fromLit "2")]);
+        val stopCapacitywithAddedStop'1FB2_ = RT_m_1.R_fromList ([(RT_Text.fromLit "A", RT_Int.fromLit "2"), (RT_Text.fromLit "B", RT_Int.fromLit "6"), (RT_Text.fromLit "C", RT_Int.fromLit "2"), (RT_Text.fromLit "D", RT_Int.fromLit "2"), (RT_Text.fromLit "E", RT_Int.fromLit "2")]);
         
         val connectionMap'521_ = RT_m_4.R_fromList ([((RT_Text.fromLit "B", RT_Text.fromLit "D"), (RT_Int.fromLit "2", RT_Int.fromLit "7", RT_Int.fromLit "2")), ((RT_Text.fromLit "A", RT_Text.fromLit "B"), (RT_Int.fromLit "1", RT_Int.fromLit "10", RT_Int.fromLit "1")), ((RT_Text.fromLit "B", RT_Text.fromLit "C"), (RT_Int.fromLit "2", RT_Int.fromLit "12", RT_Int.fromLit "3"))]);
         
-        val netWithAddedStop'2142_ = (stopCapacitywithAddedStop'2016_, connectionMap'521_);
+        val netWithAddedStop'20DE_ = (stopCapacitywithAddedStop'1FB2_, connectionMap'521_);
         
         val tramNotIn'3F5_ = RT_Text.fromLit "tramG";
         
-        val plan13'1E85_ = [(RT_Text.fromLit "D", RT_Int.fromLit "0", RT_Int.fromLit "2"), (RT_Text.fromLit "B", RT_Int.fromLit "11", RT_Int.fromLit "13"), (RT_Text.fromLit "A", RT_Int.fromLit "28", RT_Int.fromLit "32"), (RT_Text.fromLit "B", RT_Int.fromLit "47", RT_Int.fromLit "50"), (RT_Text.fromLit "D", RT_Int.fromLit "58", RT_Int.fromLit "60")];
+        val plan13'1E21_ = [(RT_Text.fromLit "D", RT_Int.fromLit "0", RT_Int.fromLit "2"), (RT_Text.fromLit "B", RT_Int.fromLit "11", RT_Int.fromLit "13"), (RT_Text.fromLit "A", RT_Int.fromLit "28", RT_Int.fromLit "32"), (RT_Text.fromLit "B", RT_Int.fromLit "47", RT_Int.fromLit "50"), (RT_Text.fromLit "D", RT_Int.fromLit "58", RT_Int.fromLit "60")];
         
-        val plan12'1E21_ = [(RT_Text.fromLit "A", RT_Int.fromLit "0", RT_Int.fromLit "1"), (RT_Text.fromLit "B", RT_Int.fromLit "12", RT_Int.fromLit "14"), (RT_Text.fromLit "C", RT_Int.fromLit "28", RT_Int.fromLit "32"), (RT_Text.fromLit "B", RT_Int.fromLit "46", RT_Int.fromLit "48"), (RT_Text.fromLit "A", RT_Int.fromLit "59", RT_Int.fromLit "60"), (RT_Text.fromLit "G", RT_Int.fromLit "5", RT_Int.fromLit "10")];
+        val plan12'1DBD_ = [(RT_Text.fromLit "A", RT_Int.fromLit "0", RT_Int.fromLit "1"), (RT_Text.fromLit "B", RT_Int.fromLit "12", RT_Int.fromLit "14"), (RT_Text.fromLit "C", RT_Int.fromLit "28", RT_Int.fromLit "32"), (RT_Text.fromLit "B", RT_Int.fromLit "46", RT_Int.fromLit "48"), (RT_Text.fromLit "A", RT_Int.fromLit "59", RT_Int.fromLit "60"), (RT_Text.fromLit "G", RT_Int.fromLit "5", RT_Int.fromLit "10")];
         
-        val timetableWithAddedStop'1EE9_ = RT_m_16.R_fromList ([(RT_Text.fromLit "tram1", plan12'1E21_), (RT_Text.fromLit "tram2", plan13'1E85_)]);
+        val timetableWithAddedStop'1E85_ = RT_m_16.R_fromList ([(RT_Text.fromLit "tram1", plan12'1DBD_), (RT_Text.fromLit "tram2", plan13'1E21_)]);
         
-        val plan11'1C90_ = let val z__'1C9E_ = ([]:RT_l_15.t) in if not((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
+        val plan11'1C2C_ = let val z__'1C3A_ = ([]:RT_l_15.t) in if not((RT_l_15.R_all (fn (x_'0_:RT_x_14.t) => let
             val (x232_'0_, x233_'0_, x234_'0_) = ((x_'0_):RT_x_14.t)
         in
             (RT_Nat.R_ge (x233_'0_, RT_Int.fromLit "0")) andalso (RT_Nat.R_ge (x234_'0_, RT_Int.fromLit "0"))
-        end) (z__'1C9E_))) then (RSL.add_load_err("./testTimeTable.rsl:73:26: Value " ^ RT_l_15.toString(z__'1C9E_) ^ " of plan11 not in subtype"); z__'1C9E_) else z__'1C9E_ end;
+        end) (z__'1C3A_))) then (RSL.add_load_err("./testTimeTable.rsl:72:26: Value " ^ RT_l_15.toString(z__'1C3A_) ^ " of plan11 not in subtype"); z__'1C3A_) else z__'1C3A_ end;
         
         val plan1'841_ = [(RT_Text.fromLit "A", RT_Int.fromLit "0", RT_Int.fromLit "1"), (RT_Text.fromLit "B", RT_Int.fromLit "12", RT_Int.fromLit "14"), (RT_Text.fromLit "C", RT_Int.fromLit "28", RT_Int.fromLit "32"), (RT_Text.fromLit "B", RT_Int.fromLit "46", RT_Int.fromLit "48"), (RT_Text.fromLit "A", RT_Int.fromLit "59", RT_Int.fromLit "60")];
         
         val plan2'8A5_ = [(RT_Text.fromLit "D", RT_Int.fromLit "0", RT_Int.fromLit "2"), (RT_Text.fromLit "B", RT_Int.fromLit "11", RT_Int.fromLit "13"), (RT_Text.fromLit "A", RT_Int.fromLit "28", RT_Int.fromLit "32"), (RT_Text.fromLit "B", RT_Int.fromLit "47", RT_Int.fromLit "50"), (RT_Text.fromLit "D", RT_Int.fromLit "58", RT_Int.fromLit "60")];
         
-        val timetableWithAddedTram'1CF4_ = RT_m_16.R_fromList ([(RT_Text.fromLit "tram1", plan1'841_), (RT_Text.fromLit "tram2", plan2'8A5_), (tramNotIn'3F5_, plan11'1C90_)]);
+        val timetableWithAddedTram'1C90_ = RT_m_16.R_fromList ([(RT_Text.fromLit "tram1", plan1'841_), (RT_Text.fromLit "tram2", plan2'8A5_), (tramNotIn'3F5_, plan11'1C2C_)]);
         
-        val timetableWF'909_ = ((addPlan'4143_) (RT_Text.fromLit "tram2", plan2'8A5_, ((addPlan'4143_) (RT_Text.fromLit "tram1", plan1'841_, empty'3C2F_))));
+        val timetableWF'909_ = ((addPlan'4C97_) (RT_Text.fromLit "tram2", plan2'8A5_, ((addPlan'4C97_) (RT_Text.fromLit "tram1", plan1'841_, empty'4783_))));
         
         val stopCapacity'585_ = RT_m_1.R_fromList ([(RT_Text.fromLit "A", RT_Int.fromLit "2"), (RT_Text.fromLit "B", RT_Int.fromLit "6"), (RT_Text.fromLit "C", RT_Int.fromLit "2"), (RT_Text.fromLit "D", RT_Int.fromLit "2")]);
         
@@ -1151,39 +1151,37 @@ structure testTimeTable =
         
         val planInvalidDrivingTime'A35_ = [(RT_Text.fromLit "D", RT_Int.fromLit "0", RT_Int.fromLit "2"), (RT_Text.fromLit "B", RT_Int.fromLit "8", RT_Int.fromLit "13"), (RT_Text.fromLit "A", RT_Int.fromLit "28", RT_Int.fromLit "32"), (RT_Text.fromLit "B", RT_Int.fromLit "47", RT_Int.fromLit "50"), (RT_Text.fromLit "D", RT_Int.fromLit "58", RT_Int.fromLit "60")];
         
-        val plan9'1B00_ = [(RT_Text.fromLit "A", RT_Int.fromLit "0", RT_Int.fromLit "1"), (RT_Text.fromLit "B", RT_Int.fromLit "12", RT_Int.fromLit "14"), (RT_Text.fromLit "C", RT_Int.fromLit "28", RT_Int.fromLit "32"), (RT_Text.fromLit "A", RT_Int.fromLit "59", RT_Int.fromLit "60")];
+        val plan9'1A9C_ = [(RT_Text.fromLit "A", RT_Int.fromLit "0", RT_Int.fromLit "1"), (RT_Text.fromLit "B", RT_Int.fromLit "12", RT_Int.fromLit "14"), (RT_Text.fromLit "C", RT_Int.fromLit "28", RT_Int.fromLit "32"), (RT_Text.fromLit "A", RT_Int.fromLit "59", RT_Int.fromLit "60")];
         
-        val timeTableWithInvalidConnection'1B64_ = RT_m_16.R_fromList ([(RT_Text.fromLit "tram1", plan1'841_), (RT_Text.fromLit "tram2", plan9'1B00_)]);
+        val timeTableWithInvalidConnection'1B00_ = RT_m_16.R_fromList ([(RT_Text.fromLit "tram1", plan1'841_), (RT_Text.fromLit "tram2", plan9'1A9C_)]);
         
-        val plan7'190C_ = [(RT_Text.fromLit "C", RT_Int.fromLit "5", RT_Int.fromLit "7"), (RT_Text.fromLit "B", RT_Int.fromLit "19", RT_Int.fromLit "21"), (RT_Text.fromLit "Q", RT_Int.fromLit "31", RT_Int.fromLit "33")];
+        val plan7'18A8_ = [(RT_Text.fromLit "C", RT_Int.fromLit "5", RT_Int.fromLit "7"), (RT_Text.fromLit "B", RT_Int.fromLit "19", RT_Int.fromLit "21"), (RT_Text.fromLit "Q", RT_Int.fromLit "31", RT_Int.fromLit "33")];
         
-        val timeTableWithInvalidStop'1970_ = RT_m_16.R_fromList ([(RT_Text.fromLit "tram1", plan1'841_), (RT_Text.fromLit "tram2", plan7'190C_)]);
+        val timeTableWithInvalidStop'190C_ = RT_m_16.R_fromList ([(RT_Text.fromLit "tram1", plan1'841_), (RT_Text.fromLit "tram2", plan7'18A8_)]);
         
-        val plan6'177C_ = [(RT_Text.fromLit "B", RT_Int.fromLit "15", RT_Int.fromLit "17"), (RT_Text.fromLit "A", RT_Int.fromLit "29", RT_Int.fromLit "30"), (RT_Text.fromLit "B", RT_Int.fromLit "46", RT_Int.fromLit "48"), (RT_Text.fromLit "A", RT_Int.fromLit "60", RT_Int.fromLit "3")];
+        val plan6'1718_ = [(RT_Text.fromLit "B", RT_Int.fromLit "15", RT_Int.fromLit "17"), (RT_Text.fromLit "A", RT_Int.fromLit "29", RT_Int.fromLit "30"), (RT_Text.fromLit "B", RT_Int.fromLit "46", RT_Int.fromLit "48"), (RT_Text.fromLit "A", RT_Int.fromLit "60", RT_Int.fromLit "3")];
         
-        val plan5'1718_ = [(RT_Text.fromLit "C", RT_Int.fromLit "5", RT_Int.fromLit "7"), (RT_Text.fromLit "B", RT_Int.fromLit "19", RT_Int.fromLit "21"), (RT_Text.fromLit "A", RT_Int.fromLit "31", RT_Int.fromLit "33"), (RT_Text.fromLit "B", RT_Int.fromLit "46", RT_Int.fromLit "48"), (RT_Text.fromLit "A", RT_Int.fromLit "60", RT_Int.fromLit "3")];
+        val plan5'16B4_ = [(RT_Text.fromLit "C", RT_Int.fromLit "5", RT_Int.fromLit "7"), (RT_Text.fromLit "B", RT_Int.fromLit "19", RT_Int.fromLit "21"), (RT_Text.fromLit "A", RT_Int.fromLit "31", RT_Int.fromLit "33"), (RT_Text.fromLit "B", RT_Int.fromLit "46", RT_Int.fromLit "48"), (RT_Text.fromLit "A", RT_Int.fromLit "60", RT_Int.fromLit "3")];
         
-        val timeTableWithExceededStopCapacities'17E0_ = RT_m_16.R_fromList ([(RT_Text.fromLit "tram1", plan1'841_), (RT_Text.fromLit "tram2", plan2'8A5_), (RT_Text.fromLit "tram3", plan5'1718_), (RT_Text.fromLit "tram4", plan6'177C_)]);
+        val timeTableWithExceededStopCapacities'177C_ = RT_m_16.R_fromList ([(RT_Text.fromLit "tram1", plan1'841_), (RT_Text.fromLit "tram2", plan2'8A5_), (RT_Text.fromLit "tram3", plan5'16B4_), (RT_Text.fromLit "tram4", plan6'1718_)]);
         
-        val plan4'1525_ = [(RT_Text.fromLit "B", RT_Int.fromLit "28", RT_Int.fromLit "32"), (RT_Text.fromLit "A", RT_Int.fromLit "48", RT_Int.fromLit "50")];
+        val plan4'14C1_ = [(RT_Text.fromLit "B", RT_Int.fromLit "28", RT_Int.fromLit "32"), (RT_Text.fromLit "A", RT_Int.fromLit "48", RT_Int.fromLit "50")];
         
-        val timetableWithAlmostExceededTrackCapacities'15ED_ = RT_m_16.R_fromList ([(RT_Text.fromLit "tram1", plan1'841_), (RT_Text.fromLit "tram2", plan2'8A5_), (RT_Text.fromLit "tram4", plan4'1525_)]);
+        val timetableWithAlmostExceededTrackCapacities'1589_ = RT_m_16.R_fromList ([(RT_Text.fromLit "tram1", plan1'841_), (RT_Text.fromLit "tram2", plan2'8A5_), (RT_Text.fromLit "tram4", plan4'14C1_)]);
         
-        val plan3'14C1_ = [(RT_Text.fromLit "C", RT_Int.fromLit "5", RT_Int.fromLit "7"), (RT_Text.fromLit "B", RT_Int.fromLit "19", RT_Int.fromLit "21"), (RT_Text.fromLit "A", RT_Int.fromLit "32", RT_Int.fromLit "34"), (RT_Text.fromLit "B", RT_Int.fromLit "46", RT_Int.fromLit "48"), (RT_Text.fromLit "A", RT_Int.fromLit "60", RT_Int.fromLit "3")];
+        val plan3'145D_ = [(RT_Text.fromLit "C", RT_Int.fromLit "5", RT_Int.fromLit "7"), (RT_Text.fromLit "B", RT_Int.fromLit "19", RT_Int.fromLit "21"), (RT_Text.fromLit "A", RT_Int.fromLit "32", RT_Int.fromLit "34"), (RT_Text.fromLit "B", RT_Int.fromLit "46", RT_Int.fromLit "48"), (RT_Text.fromLit "A", RT_Int.fromLit "60", RT_Int.fromLit "3")];
         
-        val timetableWithExceededTrackCapacities'1589_ = RT_m_16.R_fromList ([(RT_Text.fromLit "tram1", plan1'841_), (RT_Text.fromLit "tram2", plan2'8A5_), (RT_Text.fromLit "tram3", plan3'14C1_)]);
+        val timetableWithExceededTrackCapacities'1525_ = RT_m_16.R_fromList ([(RT_Text.fromLit "tram1", plan1'841_), (RT_Text.fromLit "tram2", plan2'8A5_), (RT_Text.fromLit "tram3", plan3'145D_)]);
         
         val planWithoutStopTime'1331_ = [(RT_Text.fromLit "A", RT_Int.fromLit "0", RT_Int.fromLit "1"), (RT_Text.fromLit "B", RT_Int.fromLit "12", RT_Int.fromLit "12"), (RT_Text.fromLit "C", RT_Int.fromLit "28", RT_Int.fromLit "32"), (RT_Text.fromLit "B", RT_Int.fromLit "46", RT_Int.fromLit "48"), (RT_Text.fromLit "A", RT_Int.fromLit "59", RT_Int.fromLit "60")];
         
-        val timetableWithoutStopTime'1395_ = RT_m_16.R_fromList ([(RT_Text.fromLit "tram1", planWithoutStopTime'1331_)]);
+        val timetableInvalidDrivingTime'A99_ = RT_m_16.R_fromList ([(RT_Text.fromLit "tram1", plan1'841_), (RT_Text.fromLit "tram2", planInvalidDrivingTime'A35_)]);
         
         val planTooShortArrivalTime'1205_ = [(RT_Text.fromLit "C", RT_Int.fromLit "0", RT_Int.fromLit "2"), (RT_Text.fromLit "B", RT_Int.fromLit "46", RT_Int.fromLit "48")];
         
-        val timetableInvalidDrivingTime'A99_ = RT_m_16.R_fromList ([(RT_Text.fromLit "tram1", plan1'841_), (RT_Text.fromLit "tram2", planInvalidDrivingTime'A35_)]);
+        val timetableInvalidDepartureHeadway'BC5_ = ((addStop'4AA3_) (RT_Text.fromLit "tram3", RT_Text.fromLit "C", RT_Int.fromLit "30", RT_Int.fromLit "60", ((addStop'4AA3_) (RT_Text.fromLit "tram3", RT_Text.fromLit "B", RT_Int.fromLit "0", RT_Int.fromLit "14", ((addTram'48AF_) (RT_Text.fromLit "tram3", timetableWF'909_))))));
         
-        val timetableDuplicateDepartureHeadway'EE5_ = ((addStop'3F4F_) (RT_Text.fromLit "tram3", RT_Text.fromLit "B", RT_Int.fromLit "14", RT_Int.fromLit "16", ((addStop'3F4F_) (RT_Text.fromLit "tram3", RT_Text.fromLit "A", RT_Int.fromLit "0", RT_Int.fromLit "1", ((addTram'3D5B_) (RT_Text.fromLit "tram3", timetableWF'909_))))));
-        
-        val timetableInvalidDepartureHeadway'BC5_ = ((addStop'3F4F_) (RT_Text.fromLit "tram3", RT_Text.fromLit "C", RT_Int.fromLit "30", RT_Int.fromLit "60", ((addStop'3F4F_) (RT_Text.fromLit "tram3", RT_Text.fromLit "B", RT_Int.fromLit "0", RT_Int.fromLit "14", ((addTram'3D5B_) (RT_Text.fromLit "tram3", timetableWF'909_))))));
+        val timetableDuplicateDepartureHeadway'EE5_ = ((addStop'4AA3_) (RT_Text.fromLit "tram3", RT_Text.fromLit "B", RT_Int.fromLit "14", RT_Int.fromLit "16", ((addStop'4AA3_) (RT_Text.fromLit "tram3", RT_Text.fromLit "A", RT_Int.fromLit "0", RT_Int.fromLit "1", ((addTram'48AF_) (RT_Text.fromLit "tram3", timetableWF'909_))))));
         
     end;
     
@@ -1310,65 +1308,65 @@ R_coverage.mark(RT_Text.fromLit "./NET.rsl", (28, 7), (28, 35));
 R_coverage.mark(RT_Text.fromLit "./NET.rsl", (67, 7), (69, 28));
 R_coverage.mark(RT_Text.fromLit "./NET.rsl", (86, 13), (86, 54));
 R_coverage.mark(RT_Text.fromLit "./NET.rsl", (81, 7), (86, 57)));
-(RSL.C_output "[s1_WellFormedTimetable] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((isWellformed'E35E_) (timetableWF'909_, net'6B1_)), true)));
+(RSL.C_output "[s1_WellFormedTimetable] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((isWellformed'EEB2_) (timetableWF'909_, net'6B1_)), true)));
 
-(RSL.C_output "[s2_validDrivingTime] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allTimeBetweenStopsIsValidDrivingTime'A799_) (timetableWF'909_, net'6B1_)), true)));
+(RSL.C_output "[s2_validDrivingTime] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allTimeBetweenStopsIsValidDrivingTime'B2ED_) (timetableWF'909_, net'6B1_)), true)));
 
-(RSL.C_output "[s2_InvalidDrivingTime] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allTimeBetweenStopsIsValidDrivingTime'A799_) (timetableInvalidDrivingTime'A99_, net'6B1_)), false)));
+(RSL.C_output "[s2_InvalidDrivingTime] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allTimeBetweenStopsIsValidDrivingTime'B2ED_) (timetableInvalidDrivingTime'A99_, net'6B1_)), false)));
 
-(RSL.C_output "[s2_NotWellFormedWithInvalidDrivingTime] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((isWellformed'E35E_) (timetableInvalidDrivingTime'A99_, net'6B1_)), false)));
+(RSL.C_output "[s2_NotWellFormedWithInvalidDrivingTime] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((isWellformed'EEB2_) (timetableInvalidDrivingTime'A99_, net'6B1_)), false)));
 
-(RSL.C_output "[s3_validHeadwayBetweenDeparture] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((timeBetweenDeparturesIsValidHeadway'AA55_) (timetableWF'909_, net'6B1_)), true)));
+(RSL.C_output "[s3_validHeadwayBetweenDeparture] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((timeBetweenDeparturesIsValidHeadway'B5A9_) (timetableWF'909_, net'6B1_)), true)));
 
-(RSL.C_output "[s3_invalidHeadwayBetweenDeparture] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((timeBetweenDeparturesIsValidHeadway'AA55_) (timetableInvalidDepartureHeadway'BC5_, net'6B1_)), false)));
+(RSL.C_output "[s3_invalidHeadwayBetweenDeparture] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((timeBetweenDeparturesIsValidHeadway'B5A9_) (timetableInvalidDepartureHeadway'BC5_, net'6B1_)), false)));
 
-(RSL.C_output "[s3_NotWellFormedDepatureHeadway] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((isWellformed'E35E_) (timetableInvalidDepartureHeadway'BC5_, net'6B1_)), false)));
+(RSL.C_output "[s3_NotWellFormedDepatureHeadway] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((isWellformed'EEB2_) (timetableInvalidDepartureHeadway'BC5_, net'6B1_)), false)));
 
-(RSL.C_output "[s4_duplicateHeadwayBetweenDeparture] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((timeBetweenDeparturesIsValidHeadway'AA55_) (timetableDuplicateDepartureHeadway'EE5_, net'6B1_)), false)));
+(RSL.C_output "[s4_duplicateHeadwayBetweenDeparture] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((timeBetweenDeparturesIsValidHeadway'B5A9_) (timetableDuplicateDepartureHeadway'EE5_, net'6B1_)), false)));
 
-(RSL.C_output "[s4_NotWellFormedDuplicateDepatureHeadway] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((isWellformed'E35E_) (timetableDuplicateDepartureHeadway'EE5_, net'6B1_)), false)));
+(RSL.C_output "[s4_NotWellFormedDuplicateDepatureHeadway] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((isWellformed'EEB2_) (timetableDuplicateDepartureHeadway'EE5_, net'6B1_)), false)));
 
-(RSL.C_output "[s5_validHeadwayBetweenArrivals] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((timeBetweenArrivalIsValidHeadway'B289_) (timetableWF'909_, net'6B1_)), true)));
+(RSL.C_output "[s5_validHeadwayBetweenArrivals] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((timeBetweenArrivalIsValidHeadway'BDDD_) (timetableWF'909_, net'6B1_)), true)));
 
-(RSL.C_output "[s5_invalidHeadwayBetweenArrivals] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((timeBetweenArrivalIsValidHeadway'B289_) (((addPlan'4143_) (RT_Text.fromLit "tram3", planTooShortArrivalTime'1205_, timetableWF'909_)), net'6B1_)), false)));
+(RSL.C_output "[s5_invalidHeadwayBetweenArrivals] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((timeBetweenArrivalIsValidHeadway'BDDD_) (((addPlan'4C97_) (RT_Text.fromLit "tram3", planTooShortArrivalTime'1205_, timetableWF'909_)), net'6B1_)), false)));
 
-(RSL.C_output "[s5_NotWellFormedArrivalHeadway] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((isWellformed'E35E_) (((addPlan'4143_) (RT_Text.fromLit "tram3", planTooShortArrivalTime'1205_, timetableWF'909_)), net'6B1_)), false)));
+(RSL.C_output "[s5_NotWellFormedArrivalHeadway] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((isWellformed'EEB2_) (((addPlan'4C97_) (RT_Text.fromLit "tram3", planTooShortArrivalTime'1205_, timetableWF'909_)), net'6B1_)), false)));
 
-(RSL.C_output "[s6_tramStopsAtAllStopsItPasses] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((tramStopsAtAllStopsItPasses'B92D_) (timetableWF'909_)), true)));
+(RSL.C_output "[s6_tramStopsAtAllStopsItPasses] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((tramStopsAtAllStopsItPasses'C481_) (timetableWF'909_)), true)));
 
-(RSL.C_output "[s6_tramDoesNotStopAtAllStopsItPasses] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((tramStopsAtAllStopsItPasses'B92D_) (timetableWithoutStopTime'1395_)), false)));
+(RSL.C_output "[s6_tramDoesNotStopAtAllStopsItPasses] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((tramStopsAtAllStopsItPasses'C481_) (((addPlan'4C97_) (RT_Text.fromLit "tram1", planWithoutStopTime'1331_, empty'4783_)))), false)));
 
-(RSL.C_output "[s6_NotWellFormedTramDoesNotStopAtAllStopsItPasses] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((isWellformed'E35E_) (timetableWithoutStopTime'1395_, net'6B1_)), false)));
+(RSL.C_output "[s6_NotWellFormedTramDoesNotStopAtAllStopsItPasses] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((isWellformed'EEB2_) (((addPlan'4C97_) (RT_Text.fromLit "tram1", planWithoutStopTime'1331_, empty'4783_)), net'6B1_)), false)));
 
-(RSL.C_output "[s7_NumberOfTramsOnTrackDontExceedTrackCapacity] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allTrackCapacitiesAreNotExceeded'BD79_) (timetableWF'909_, net'6B1_)), true)));
+(RSL.C_output "[s7_NumberOfTramsOnTrackDontExceedTrackCapacity] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allTrackCapacitiesAreNotExceeded'C8CD_) (timetableWF'909_, net'6B1_)), true)));
 
-(RSL.C_output "[s7_NumberOfTramsOnTrackAlmostExceedTrackCapacity] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allTrackCapacitiesAreNotExceeded'BD79_) (timetableWithAlmostExceededTrackCapacities'15ED_, net'6B1_)), true)));
+(RSL.C_output "[s7_NumberOfTramsOnTrackAlmostExceedTrackCapacity] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allTrackCapacitiesAreNotExceeded'C8CD_) (timetableWithAlmostExceededTrackCapacities'1589_, net'6B1_)), true)));
 
-(RSL.C_output "[s7_NumberOfTramsOnTrackDoExceedTrackCapacity] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allTrackCapacitiesAreNotExceeded'BD79_) (timetableWithExceededTrackCapacities'1589_, net'6B1_)), false)));
+(RSL.C_output "[s7_NumberOfTramsOnTrackDoExceedTrackCapacity] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allTrackCapacitiesAreNotExceeded'C8CD_) (timetableWithExceededTrackCapacities'1525_, net'6B1_)), false)));
 
-(RSL.C_output "[s8_NumberOfTramsAtStopDontExceedStopCapacity] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allStopCapacitiesAreNotExceeded'C6DB_) (timetableWF'909_, net'6B1_)), true)));
+(RSL.C_output "[s8_NumberOfTramsAtStopDontExceedStopCapacity] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allStopCapacitiesAreNotExceeded'D22F_) (timetableWF'909_, net'6B1_)), true)));
 
-(RSL.C_output "[s8_NumberOfTramsAtStopDoExceedStopCapacity] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allStopCapacitiesAreNotExceeded'C6DB_) (timeTableWithExceededStopCapacities'17E0_, net'6B1_)), false)));
+(RSL.C_output "[s8_NumberOfTramsAtStopDoExceedStopCapacity] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allStopCapacitiesAreNotExceeded'D22F_) (timeTableWithExceededStopCapacities'177C_, net'6B1_)), false)));
 
-(RSL.C_output "[s9_AllStopsInPlansExist] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allStopsInPlanExist'D999_) (timetableWF'909_, net'6B1_)), true)));
+(RSL.C_output "[s9_AllStopsInPlansExist] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allStopsInPlanExist'E4ED_) (timetableWF'909_, net'6B1_)), true)));
 
-(RSL.C_output "[s9_AllStopsInPlansDoNotExist] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allStopsInPlanExist'D999_) (timeTableWithInvalidStop'1970_, net'6B1_)), false)));
+(RSL.C_output "[s9_AllStopsInPlansDoNotExist] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allStopsInPlanExist'E4ED_) (timeTableWithInvalidStop'190C_, net'6B1_)), false)));
 
-(RSL.C_output "[s10_allStopsAreConnected] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allStopsAreConnected'CF73_) (timetableWF'909_, net'6B1_)), true)));
+(RSL.C_output "[s10_allStopsAreConnected] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allStopsAreConnected'DAC7_) (timetableWF'909_, net'6B1_)), true)));
 
-(RSL.C_output "[s10_allStopsAreNotConnected] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allStopsAreConnected'CF73_) (timeTableWithInvalidConnection'1B64_, net'6B1_)), false)));
+(RSL.C_output "[s10_allStopsAreNotConnected] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((allStopsAreConnected'DAC7_) (timeTableWithInvalidConnection'1B00_, net'6B1_)), false)));
 
-(RSL.C_output "[s12_AddingTram] " RT_Bool.toStringSafe (fn _ => RT_m_16.equ (((addTram'3D5B_) (tramNotIn'3F5_, timetableWF'909_)), timetableWithAddedTram'1CF4_)));
+(RSL.C_output "[s12_AddingTram] " RT_Bool.toStringSafe (fn _ => RT_m_16.equ (((addTram'48AF_) (tramNotIn'3F5_, timetableWF'909_)), timetableWithAddedTram'1C90_)));
 
-(RSL.C_output "[s12_addStop] " RT_Bool.toStringSafe (fn _ => RT_m_16.equ (((addStop'3F4F_) (tramIdA'32D_, RT_Text.fromLit "G", RT_Int.fromLit "5", RT_Int.fromLit "10", timetableWF'909_)), timetableWithAddedStop'1EE9_)));
+(RSL.C_output "[s12_addStop] " RT_Bool.toStringSafe (fn _ => RT_m_16.equ (((addStop'4AA3_) (tramIdA'32D_, RT_Text.fromLit "G", RT_Int.fromLit "5", RT_Int.fromLit "10", timetableWF'909_)), timetableWithAddedStop'1E85_)));
 
-(RSL.C_output "[s13_isinExisting01] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((isIn'4461_) (tramIdA'32D_, timetableWF'909_)), true)));
+(RSL.C_output "[s13_isinExisting01] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((isIn'4FB5_) (tramIdA'32D_, timetableWF'909_)), true)));
 
-(RSL.C_output "[s13_isinExisting02] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((isIn'4461_) (tramIdB'391_, timetableWF'909_)), true)));
+(RSL.C_output "[s13_isinExisting02] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((isIn'4FB5_) (tramIdB'391_, timetableWF'909_)), true)));
 
-(RSL.C_output "[s13_isNotin] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((isIn'4461_) (tramNotIn'3F5_, timetableWF'909_)), false)));
+(RSL.C_output "[s13_isNotin] " RT_Bool.toStringSafe (fn _ => RT_Bool.equ (((isIn'4FB5_) (tramNotIn'3F5_, timetableWF'909_)), false)));
 
-(RSL.C_output "[s16_getConnection] " RT_Bool.toStringSafe (fn _ => RT_x_3.equ (((getConnection'51AB_) (RT_Text.fromLit "A", RT_Text.fromLit "B", net'6B1_)), connectionTest'226E_)));
+(RSL.C_output "[s16_getConnection] " RT_Bool.toStringSafe (fn _ => RT_x_3.equ (((getConnection'5CFF_) (RT_Text.fromLit "A", RT_Text.fromLit "B", net'6B1_)), connectionTest'220A_)));
 
 RSL.print_error_count();
 R_coverage.save_marked();
