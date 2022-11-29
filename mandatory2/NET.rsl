@@ -36,26 +36,39 @@ class
       (stopId1, stopId2) isin dom(connectionMap) \/
       (stopId2, stopId1) isin dom(connectionMap),
 
+    -- (Sebastian and Noah)
+    getConnection : StopId >< StopId >< Net -~-> Connection
+    getConnection(stop1, stop2, (capacityMap, connectionMap)) is
+      if (stop1, stop2) isin dom(connectionMap)
+      then
+        connectionMap((stop1, stop2))
+      else
+        connectionMap((stop2, stop1))
+      end,
+
     -- get minimum headway between two connected stops        
     minHeadway : StopId >< StopId >< Net -~-> Headway
-    minHeadway(stopId1, stopId2, (capacityMap, connectionMap)) is
-      let (headway, drivingTime, capacity) = connectionMap(stopId1, stopId2)
+    minHeadway(stopId1, stopId2, net) is
+      let 
+        (headway, drivingTime, capacity) = getConnection(stopId1, stopId2, net)
       in
         headway
       end,
 
    -- get the capacity for a connection between two connected stops
     capacity : StopId >< StopId >< Net -~-> Capacity
-    capacity(stopId1, stopId2, (capacityMap, connectionMap)) is
-      let (headway, drivingTime, capacity) = connectionMap(stopId1, stopId2)
+    capacity(stopId1, stopId2, net) is
+      let 
+        (headway, drivingTime, capacity) = getConnection(stopId1, stopId2, net)
       in
         capacity
       end,
  
     -- get minimum driving time between two connected stops        
     minDrivingTime : StopId >< StopId >< Net -~-> DrivingTime
-    minDrivingTime(stopId1, stopId2, (capacityMap, connectionMap)) is
-      let (headway, drivingTime, capacity) = connectionMap(stopId1, stopId2)
+    minDrivingTime(stopId1, stopId2, net) is
+      let 
+        (headway, drivingTime, capacity) = getConnection(stopId1, stopId2, net)
       in 
         drivingTime
       end
