@@ -36,7 +36,7 @@ class
       (stopId1, stopId2) isin dom(connectionMap) \/
       (stopId2, stopId1) isin dom(connectionMap),
 
-    -- (Sebastian and Noah)
+    -- Get a connection between two stops
     getConnection : StopId >< StopId >< Net -~-> Connection
     getConnection(stop1, stop2, (capacityMap, connectionMap)) is
       if (stop1, stop2) isin dom(connectionMap)
