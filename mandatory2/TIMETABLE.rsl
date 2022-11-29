@@ -21,7 +21,12 @@ class
       -- add a stop with arrival time and departure time to the plan for a given tram
       addStop : TramId >< StopId >< Time >< Time >< TimeTable -> TimeTable
       addStop(tramid, stopid, arrival, departure, timetable) is
-        timetable !! [tramid +> timetable(tramid) ^ <.(stopid, arrival, departure).>]
+        timetable !! [tramid +> timetable(tramid) ^ <.(stopid, arrival, departure).>],
+
+      -- add a plan to the timetable
+      addPlan : TramId >< Plan >< TimeTable -> TimeTable
+      addPlan(tramid, plan, timetable) is
+        timetable !! [tramid +> plan]
 
   value /* observers */
 
