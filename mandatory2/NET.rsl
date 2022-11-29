@@ -82,8 +82,7 @@ class
         :- stopId isin dom(capacityMap) =>
         (exists stopId2 : StopId 
           :- stopId2 isin dom(capacityMap) /\ 
-            ((stopId, stopId2) isin dom(connectionMap) \/ 
-            (stopId2, stopId) isin dom(connectionMap)))),
+            (areDirectlyConnected(stopId, stopId2, (capacityMap, connectionMap))))),
 
     -- check whether a net is valid
     isWellformed : Net -> Bool
